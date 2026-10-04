@@ -1,0 +1,26 @@
+# Dependencias y builds
+node_modules/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Entorno
+.env
+.env.local
+.env.*.local
+
+# Firmware (PlatformIO)
+.pio/
+firmware/.pio/
+firmware/include/config.h
+
+# Infraestructura local (credenciales reales)
+infra/mosquitto/passwd
+infra/mosquitto/data/
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.vscode/settings.json
+.idea/

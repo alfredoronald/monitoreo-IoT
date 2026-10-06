@@ -4,7 +4,7 @@ Grupo 22 · Servicios Telemáticos · UMSS
 
 Léelo completo una vez antes de crear tu primera rama. Después vuelve solo a la tabla de la sección 1.
 
-**Regla de oro del idioma:** lo que lee el equipo y el docente va en **español** (issues, tareas, documentación, textos de la interfaz). Lo que lee Git y el código va en **inglés** (ramas, commits, pull requests, nombres de variables y funciones). **Sin emojis** en ningún nombre, mensaje ni descripción.
+**Regla de oro del idioma:** lo que lee el equipo y el docente va en **español** (issues, tareas, descripciones de pull requests, documentación, textos de la interfaz). Lo que lee Git y el código va en **inglés** (ramas, commits, títulos de pull requests, nombres de variables y funciones). **Sin emojis** en ningún nombre, mensaje ni descripción.
 
 ---
 
@@ -14,9 +14,11 @@ Léelo completo una vez antes de crear tu primera rama. Después vuelve solo a l
 |---|---|---|---|
 | Issue de HU (padre) | Español | `[HU-0X] Título de la historia` | `[HU-02] Almacenar lecturas en PostgreSQL` |
 | Sub-issue de tarea | Español | `T-X.Y Título de la tarea` | `T-2.4 Crear el proyecto Node.js/Express en TypeScript` |
+| Referencia a otro issue (dependencias, comentarios, PR) | — | `#N` (número del issue, nunca `T-X.Y`) | `Depende de #7, #9` |
 | Rama | Inglés | `tipo/<nro-issue>-<descripcion-corta>` | `feat/23-express-typescript-setup` |
 | Commit | Inglés | `tipo(alcance): resumen` | `feat(backend): add lecturas endpoint` |
 | Título de PR | Inglés | `tipo(alcance): resumen (#nro-issue)` | `feat(backend): add lecturas endpoint (#23)` |
+| Descripción de PR | Español | plantilla de §4 | `## Qué`, `## Por qué`, `## Cómo probarlo` |
 | Código: variables, funciones, clases | Inglés | según carpeta (ver §6) | `getReadingsByVariable()` |
 | Textos de la interfaz, informe, `docs/` | Español | — | "Temperatura promedio" |
 | Tablas y columnas de la base de datos | Español | `snake_case` (ya definidas) | `lecturas(fecha_hora, tipo_variable, valor)` |
@@ -25,7 +27,10 @@ Léelo completo una vez antes de crear tu primera rama. Después vuelve solo a l
 
 ## 2. Ramas
 
-`main` es la **única rama permanente** y está protegida: nadie trabaja ni sube directo a ella. Todo cambio entra por pull request.
+Hay **dos ramas permanentes**, ambas protegidas: nadie trabaja ni sube directo a ellas. Todo cambio entra por pull request.
+
+- `develop`: rama **por defecto** e integración. Aquí se fusiona todo el trabajo del sprint y de aquí sale cada rama nueva.
+- `main`: versión estable. Solo recibe `develop` al cerrar el sprint (tras la Sprint Review), mediante un PR `develop` → `main`.
 
 **Formato:** `tipo/<nro-issue>-<descripcion-corta-en-ingles>`
 
@@ -37,14 +42,14 @@ docs/12-sprint1-evidence
 
 Reglas:
 
-1. El **número del issue** es el que GitHub le asignó al sub-issue de tu tarea (el `#23` que aparece en el título).
+1. El **número del issue** es el que GitHub le asignó al sub-issue de tu tarea (el `#23` que GitHub muestra junto al título).
 2. La descripción va en **inglés**, en minúsculas, separada por guiones, de 2 a 5 palabras. Sin tildes, sin `ñ`, sin espacios, sin puntos.
 3. El `tipo` es el mismo de la tabla de commits (§3).
 4. Una rama por tarea. Si la tarea es tuya y de tu pareja, trabajan sobre la misma rama.
-5. Crea la rama siempre desde `main` actualizado:
+5. Crea la rama siempre desde `develop` actualizado:
 
 ```bash
-git switch main
+git switch develop
 git pull
 git switch -c feat/23-express-typescript-setup
 ```
@@ -108,23 +113,23 @@ Refs #18
 feat(backend): add lecturas endpoint (#23)
 ```
 
-**Descripción:** en inglés, con esta plantilla. Copia y rellena:
+**Descripción:** en **español**, con esta plantilla. Copia y rellena:
 
 ```markdown
-## What
-Short description of the change.
+## Qué
+Descripción breve del cambio.
 
-## Why
+## Por qué
 Closes #23
 
-## How to test
-1. Step one
-2. Step two
+## Cómo probarlo
+1. Primer paso
+2. Segundo paso
 
 ## Checklist
-- [ ] Acceptance criteria of the issue are met
-- [ ] No secrets or .env files committed
-- [ ] Tested locally
+- [ ] Se cumplen los criterios de aceptación del issue
+- [ ] No se subieron secretos ni archivos .env
+- [ ] Probado en local
 ```
 
 Reglas:
@@ -133,16 +138,17 @@ Reglas:
 2. Abre la PR en cuanto tengas algo que mostrar, con el prefijo `Draft:` si aún no está lista. Así nadie duplica tu trabajo.
 3. **Mínimo una aprobación** antes de fusionar: la de tu pareja de la HU o la del Scrum Master.
 4. **Nadie fusiona su propia PR sin aprobación.**
-5. Método de fusión: **Squash and merge** (el historial de `main` queda con un commit limpio por tarea).
-6. Si hay conflictos, los resuelve quien abrió la PR, actualizando su rama:
+5. Método de fusión: **Squash and merge** (el historial de `develop` queda con un commit limpio por tarea).
+6. Las PRs de tareas apuntan a `develop`, nunca a `main`.
+7. Si hay conflictos, los resuelve quien abrió la PR, actualizando su rama:
 
 ```bash
-git switch main && git pull
+git switch develop && git pull
 git switch feat/23-express-typescript-setup
-git merge main
+git merge develop
 ```
 
-7. Al fusionar: mueve la tarjeta a **Terminado** en el tablero y marca los criterios de aceptación del issue.
+8. Al fusionar: mueve la tarjeta a **Terminado** en el tablero y marca los criterios de aceptación del issue.
 
 ### Cómo revisar (para quien aprueba)
 
@@ -158,6 +164,7 @@ Las tarjetas ya se crean con este formato; respétalo al editarlas o al crear nu
 
 - **Issue padre** = una HU completa. **Sub-issues** = sus tareas.
 - Cuerpo del sub-issue, en español: `Descripción técnica`, `Task: ... · Sprint 1 · DX → DY`, `Cubre`, `Rama sugerida`, `Criterios de aceptación` (checklist), `Dependencias`.
+- **Dependencias y referencias entre issues siempre con `#N`**, no con el código `T-X.Y`. Así GitHub crea el enlace y muestra el estado de la tarea en el propio texto. Ejemplo: `Dependencias: #7, #9` en lugar de `T-1.2, T-1.3`. El código `T-X.Y` queda solo en el título, como identificador del Excel.
 - Campos obligatorios de la barra lateral: **Assignees**, **Labels**, **Status**, **Sprint**, **Priority**, **Estimate** y **Milestone**.
 - Estados: `Por hacer` → `En progreso` → `En revisión` → `Terminado`. Mueve la tarjeta **el mismo día** en que cambia.
 - Si descubres trabajo que no está en el tablero, crea el issue. Nada se trabaja sin tarjeta.
@@ -194,7 +201,7 @@ Cuando agregues una variable de configuración nueva, **añádela también a `.e
 ## 8. Tu día a día, paso a paso
 
 1. Toma tu tarjeta del tablero y pásala a **En progreso**.
-2. `git switch main && git pull`
+2. `git switch develop && git pull`
 3. Crea tu rama con el formato de §2.
 4. Trabaja en commits pequeños, con el formato de §3.
 5. `git push -u origin <tu-rama>`
@@ -217,4 +224,4 @@ Cuando agregues una variable de configuración nueva, **añádela también a `.e
 
 ## 10. Dudas sobre las convenciones
 
-Si algo no está cubierto aquí, decide lo más parecido a lo que ya existe en el repo y coméntalo en el canal del equipo. 
+Si algo no está cubierto aquí, decide lo más parecido a lo que ya existe en el repo y coméntalo en el canal del equipo. Los cambios a este documento se proponen por PR con `docs(repo): ...`, igual que cualquier otro cambio.

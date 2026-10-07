@@ -1,0 +1,10 @@
+# Topic access control — matches the MQTT contract in README.md
+# "user" names must exist in infra/mosquitto/passwd (local, not committed).
+
+# ESP32 firmware publishes sensor readings
+user esp32
+topic write ambiente/#
+
+# Backend API subscribes to sensor readings
+user api
+topic read ambiente/#

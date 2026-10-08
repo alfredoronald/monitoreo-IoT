@@ -54,10 +54,50 @@ monitoreo-IoT/
 
 1. **Base de datos** — crear la base `monitoreo_ambiental` y el usuario de
    la app; después ejecutar el script de `database/` con DBeaver o `psql`.
-2. **Broker MQTT** — instalar Mosquitto, copiar la configuración de
-   `infra/mosquitto/` y crear los usuarios (`esp32` y `api`) con
-   `mosquitto_passwd`. Sin usuarios no hay conexión: desde la versión 2.0,
-   al definir un `listener` el broker deja de aceptar clientes anónimos.
+2. **Broker MQTT** — instalar Mosquitto 2.x y levantarlo con la
+   configuración del repositorio:
+
+   ```bash
+   winget install --id EclipseFoundation.Mosquitto -e
+   ```
+
+   El instalador no agrega `C:\Program Files\mosquitto` al `PATH`. En la
+   consola abierta se recarga sin reiniciar (PowerShell):
+
+   ```powershell
+   $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+   ```
+
+   El servicio automático de Windows arranca con la configuración por
+   defecto y ocuparía el puerto 1883; se detiene y se deja en manual
+   (PowerShell):
+
+   ```powershell
+   Stop-Service -Name mosquitto
+   Set-Service -Name mosquitto -StartupType Manual
+   ```
+
+   Crear los usuarios locales (`infra/mosquitto/passwd` **no** se
+   versiona, cada quien usa sus propias credenciales; el repo trae
+   `infra/mosquitto/passwd.example` con hashes de ejemplo del formato):
+
+   ```bash
+   mosquitto_passwd -c -b infra/mosquitto/passwd esp32 <contraseña>
+   mosquitto_passwd -b infra/mosquitto/passwd backend <contraseña>
+   ```
+
+   Levantar el broker **desde la raíz del repo** (las rutas de
+   `mosquitto.conf` son relativas a la raíz):
+
+   ```bash
+   mosquitto -c infra/mosquitto/mosquitto.conf -v
+   ```
+
+   Sin usuarios no hay conexión: desde la versión 2.0, al definir un
+   `listener` el broker deja de aceptar clientes anónimos, y con
+   `allow_anonymous false` más `password_file` y `acl_file` cada cliente
+   necesita sus credenciales y solo puede tocar los topics del ACL
+   (`esp32` publica en `ambiente/#`, `backend` solo lee).
 3. **Backend** — `pnpm install`, completar `backend/.env` (copiado de
    `.env.example`) y `pnpm dev` (puerto 3000).
 4. **Frontend** — `pnpm dev` (puerto 5173, con proxy de `/api` al backend).

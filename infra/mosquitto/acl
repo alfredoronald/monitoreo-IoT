@@ -5,6 +5,6 @@
 user esp32
 topic write ambiente/#
 
-# Backend API subscribes to sensor readings
-user api
+# Backend subscribes to sensor readings (read only, no publish)
+user backend
 topic read ambiente/#

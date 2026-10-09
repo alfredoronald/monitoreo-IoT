@@ -78,11 +78,12 @@ monitoreo-IoT/
    ```
 
    Crear los usuarios locales (`infra/mosquitto/passwd` **no** se
-   versiona, cada quien usa sus propias credenciales):
+   versiona, cada quien usa sus propias credenciales; el repo trae
+   `infra/mosquitto/passwd.example` con hashes de ejemplo del formato):
 
    ```bash
    mosquitto_passwd -c -b infra/mosquitto/passwd esp32 <contraseña>
-   mosquitto_passwd -b infra/mosquitto/passwd api <contraseña>
+   mosquitto_passwd -b infra/mosquitto/passwd backend <contraseña>
    ```
 
    Levantar el broker **desde la raíz del repo** (las rutas de
@@ -96,7 +97,7 @@ monitoreo-IoT/
    `listener` el broker deja de aceptar clientes anónimos, y con
    `allow_anonymous false` más `password_file` y `acl_file` cada cliente
    necesita sus credenciales y solo puede tocar los topics del ACL
-   (`esp32` publica en `ambiente/#`, `api` solo lee).
+   (`esp32` publica en `ambiente/#`, `backend` solo lee).
 3. **Backend** — `pnpm install`, completar `backend/.env` (copiado de
    `.env.example`) y `pnpm dev` (puerto 3000).
 4. **Frontend** — `pnpm dev` (puerto 5173, con proxy de `/api` al backend).

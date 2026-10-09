@@ -109,8 +109,11 @@ monitoreo-IoT/
 
    Si ya existe `backend/.env`, conservar sus valores. La plantilla
    `.env.example` está versionada; el archivo `.env` local está ignorado por Git.
-   `PG_*` y `MQTT_*` quedan preparados para las próximas tareas de conexión:
-   el servidor inicial arranca sin PostgreSQL ni Mosquitto activos.
+   `PG_*` queda preparado para las próximas tareas de conexión a PostgreSQL.
+   Completar `MQTT_URL`, `MQTT_USER=backend` y `MQTT_PASS` con las credenciales
+   locales del broker. Las tres variables MQTT son obligatorias; PostgreSQL
+   todavía no necesita estar activo. Si Mosquitto está detenido, el backend
+   permanece activo e intenta reconectar cada 2 segundos.
    `API_KEY` puede quedar vacía; se utilizará en el Sprint 3.
    La plantilla define `API_PORT=3000` y `CORS_ORIGIN=http://localhost:5173`.
 
@@ -149,6 +152,29 @@ monitoreo-IoT/
 
    Los dos primeros comandos deben mostrar `backend/.env` y `.env.example`,
    respectivamente. La evidencia de la issue #18 será el commit publicado en GitHub.
+
+   **Comprobar el suscriptor MQTT (#19):** con Mosquitto activo y `pnpm dev`
+   ejecutándose, la consola del backend debe mostrar `[MQTT] Conectado al broker`
+   y `[MQTT] Suscrito a ambiente/#`. En otra terminal Git Bash desde la raíz:
+
+   ```bash
+   read -r -s -p 'Contraseña MQTT de esp32: ' MQTT_TEST_PASS
+   printf '\n'
+   mosquitto_pub -h localhost -p 1883 -u esp32 -P "$MQTT_TEST_PASS" -t ambiente/temperatura -m '25.0'
+   mosquitto_pub -h localhost -p 1883 -u esp32 -P "$MQTT_TEST_PASS" -t ambiente/humedad -m '55'
+   mosquitto_pub -h localhost -p 1883 -u esp32 -P "$MQTT_TEST_PASS" -t ambiente/co2 -m '700'
+   unset MQTT_TEST_PASS
+   ```
+
+   Si Mosquitto no está en el PATH de Git Bash, usar
+   `"/c/Program Files/mosquitto/mosquitto_pub.exe"` en lugar de `mosquitto_pub`.
+   Cada mensaje debe aparecer con su topic y contenido, por ejemplo
+   `[MQTT] ambiente/temperatura: 25.0`. Para comprobar la reconexión, detener
+   solo el broker con `Ctrl+C` y volver a iniciarlo desde la raíz con
+   `mosquitto -c infra/mosquitto/mosquitto.conf -v`. El backend debe reconectar
+   y suscribirse sin reiniciarlo; publicar otro mensaje para confirmar
+   que vuelve a recibir. La evidencia de #19 es una captura de esa consola,
+   sin mostrar contraseñas ni el contenido de `.env`.
 4. **Frontend** — `pnpm dev` (puerto 5173, con proxy de `/api` al backend).
 5. **Firmware** — copiar `config.example.h` a `config.h`, completar WiFi y
    credenciales MQTT, y ejecutar `pio run -t upload`.

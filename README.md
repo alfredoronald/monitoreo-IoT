@@ -42,10 +42,11 @@ monitoreo-IoT/
 | Rama | Propósito |
 |---|---|
 | `main` | Código estable y probado, listo para la demostración final |
-| `develop` | Rama de integración continua donde se fusionan los avances de los módulos |
+| `develop` | Rama de integración que recibe PR de las ramas de área, no de tareas individuales |
 | `feature/firmware-esp32` | Lecturas de sensores y protocolo PubSubClient |
-| `feature/backend-mqtt-api` | Suscriptor Node.js, conexiones PostgreSQL y endpoints Express |
+| `feature/backend-mqtt-api` | Broker, backend, PostgreSQL y sus tareas y evidencias |
 | `feature/frontend-dashboard` | Componentes React, gráficos Recharts y hojas de estilos |
+| `feature/repo-guidelines` | Normas, tablero y documentación general del repositorio |
 
 ## Cómo levantar cada parte
 
@@ -109,10 +110,12 @@ monitoreo-IoT/
 
    Si ya existe `backend/.env`, conservar sus valores. La plantilla
    `.env.example` está versionada; el archivo `.env` local está ignorado por Git.
-   `PG_*` queda preparado para las próximas tareas de conexión a PostgreSQL.
+   Completar `PG_HOST`, `PG_PORT`, `PG_DB`, `PG_USER` y `PG_PASS`. El
+   backend verifica la conexión a PostgreSQL antes de escuchar en el puerto
+   HTTP y muestra un error claro si la base no está disponible.
    Completar `MQTT_URL`, `MQTT_USER=backend` y `MQTT_PASS` con las credenciales
-   locales del broker. Las tres variables MQTT son obligatorias; PostgreSQL
-   todavía no necesita estar activo. Si Mosquitto está detenido, el backend
+   locales del broker. Las tres variables MQTT son obligatorias.
+   Si PostgreSQL está disponible y Mosquitto está detenido, el backend
    permanece activo e intenta reconectar cada 2 segundos.
    `API_KEY` puede quedar vacía; se utilizará en el Sprint 3.
    La plantilla define `API_PORT=3000` y `CORS_ORIGIN=http://localhost:5173`.

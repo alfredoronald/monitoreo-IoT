@@ -99,8 +99,57 @@ monitoreo-IoT/
    `allow_anonymous false` más `password_file` y `acl_file` cada cliente
    necesita sus credenciales y solo puede tocar los topics del ACL
    (`esp32` publica en `ambiente/#`, `backend` solo lee).
-3. **Backend** — `pnpm install`, completar `backend/.env` (copiado de
-   `.env.example`) y `pnpm dev` (puerto 3000).
+3. **Backend** — preparar el entorno desde la raíz del repositorio (PowerShell):
+
+   ```powershell
+   Copy-Item .env.example backend/.env
+   cd backend
+   pnpm install
+   pnpm dev
+   ```
+
+   Si ya existe `backend/.env`, conservar sus valores. La plantilla
+   `.env.example` está versionada; el archivo `.env` local está ignorado por Git.
+   `PG_*` y `MQTT_*` quedan preparados para las próximas tareas de conexión:
+   el servidor inicial arranca sin PostgreSQL ni Mosquitto activos.
+   `API_KEY` puede quedar vacía; se utilizará en el Sprint 3.
+   La plantilla define `API_PORT=3000` y `CORS_ORIGIN=http://localhost:5173`.
+
+   El modo de desarrollo reinicia el servidor al cambiar el código.
+   Abrir `http://localhost:3000/` debe devolver HTTP 200:
+
+   ```json
+   {"status":"ok","message":"Servidor de monitoreo ambiental activo"}
+   ```
+
+   Esta ruta comprueba el arranque de Express. Los endpoints `/api/lecturas`,
+   `/api/lecturas/ultima` y `/api/salud` se implementarán en sus tareas respectivas.
+
+   Para comprobar tipos, compilar y ejecutar, dentro de `backend/`:
+
+   ```powershell
+   pnpm typecheck
+   pnpm build
+   pnpm start
+   ```
+
+   Detener `pnpm dev` con `Ctrl+C` antes de ejecutar `pnpm start` para liberar
+   el puerto 3000. `build` genera `dist/` y `start` ejecuta `dist/index.js`
+   directamente en Node. `tsconfig.json` hereda de `../tsconfig.base.json`
+   y usa `module` y `moduleResolution` en `NodeNext`; los imports locales
+   usan extensión `.js` para los archivos compilados.
+   `dist/` y `node_modules/` están ignorados por Git.
+
+   Desde la raíz, comprobar los archivos antes del commit:
+
+   ```powershell
+   git check-ignore backend/.env
+   git ls-files .env.example
+   git status --short
+   ```
+
+   Los dos primeros comandos deben mostrar `backend/.env` y `.env.example`,
+   respectivamente. La evidencia de la issue #18 será el commit publicado en GitHub.
 4. **Frontend** — `pnpm dev` (puerto 5173, con proxy de `/api` al backend).
 5. **Firmware** — copiar `config.example.h` a `config.h`, completar WiFi y
    credenciales MQTT, y ejecutar `pio run -t upload`.

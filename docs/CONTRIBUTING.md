@@ -16,6 +16,7 @@ Léelo completo una vez antes de crear tu primera rama. Después vuelve solo a l
 | Sub-issue de tarea | Español | `T-X.Y Título de la tarea` | `T-2.4 Crear el proyecto Node.js/Express en TypeScript` |
 | Referencia a otro issue (dependencias, comentarios, PR) | — | `#N` (número del issue, nunca `T-X.Y`) | `Depende de #7, #9` |
 | Rama | Inglés | `tipo/<nro-issue>-<descripcion-corta>` | `feat/23-express-typescript-setup` |
+| Rama base y destino de PR de tarea | — | rama de área de §2 | `feature/backend-mqtt-api` para backend |
 | Commit | Inglés | `tipo(alcance): resumen` | `feat(backend): add lecturas endpoint` |
 | Título de PR | Inglés | `tipo(alcance): resumen (#nro-issue)` | `feat(backend): add lecturas endpoint (#23)` |
 | Descripción de PR | Español | plantilla de §4 | `## Qué`, `## Por qué`, `## Cómo probarlo` |
@@ -27,10 +28,21 @@ Léelo completo una vez antes de crear tu primera rama. Después vuelve solo a l
 
 ## 2. Ramas
 
-Hay **dos ramas permanentes**, ambas protegidas: nadie trabaja ni sube directo a ellas. Todo cambio entra por pull request.
+Hay **dos ramas de integración permanentes**, ambas protegidas: nadie trabaja ni sube directo a ellas.
 
-- `develop`: rama **por defecto** e integración. Aquí se fusiona todo el trabajo del sprint y de aquí sale cada rama nueva.
+- `develop`: rama **por defecto** que recibe únicamente PR de integración de las ramas de área, nunca PR de tareas individuales.
 - `main`: versión estable. Solo recibe `develop` al cerrar el sprint (tras la Sprint Review), mediante un PR `develop` → `main`.
+
+Cada tarea se desarrolla desde la rama de su área y vuelve a ella mediante una PR. Una vez creadas, tampoco se suben cambios de tareas directamente a las ramas de área. Estas son:
+
+| Área de la tarea | Rama base y destino de su PR |
+|---|---|
+| Firmware | `feature/firmware-esp32` |
+| Frontend | `feature/frontend-dashboard` |
+| Backend, base de datos e infraestructura del broker | `feature/backend-mqtt-api` |
+| Gestión, normas y documentación general del repositorio | `feature/repo-guidelines` |
+
+La evidencia y la documentación de una tarea siguen la rama de su área, aunque los archivos estén en `docs/`. Por ejemplo, la evidencia de #17 apunta a `feature/backend-mqtt-api`.
 
 **Formato:** `tipo/<nro-issue>-<descripcion-corta-en-ingles>`
 
@@ -46,15 +58,16 @@ Reglas:
 2. La descripción va en **inglés**, en minúsculas, separada por guiones, de 2 a 5 palabras. Sin tildes, sin `ñ`, sin espacios, sin puntos.
 3. El `tipo` es el mismo de la tabla de commits (§3).
 4. Una rama por tarea. Si la tarea es tuya y de tu pareja, trabajan sobre la misma rama.
-5. Crea la rama siempre desde `develop` actualizado:
+5. Crea la rama desde su **rama de área actualizada**, nunca desde `develop`. Ejemplo para #17:
 
 ```bash
-git switch develop
+git switch feature/backend-mqtt-api
 git pull
-git switch -c feat/23-express-typescript-setup
+git switch -c test/17-mqtt-pub-sub-evidence
 ```
 
-6. Después de que el PR se fusione, borra la rama (GitHub ofrece el botón "Delete branch").
+6. La PR de esa rama apunta a `feature/backend-mqtt-api`. Después de fusionarla, borra la rama de tarea (GitHub ofrece el botón "Delete branch").
+7. Cuando el área esté lista para integrarse, abre una PR de su rama `feature/*` hacia `develop`. Si la rama de área necesita cambios recientes de `develop`, sincronízala antes mediante una PR `develop` → rama de área; no mezcles esos cambios en la rama de tarea.
 
 > Si el issue trae el campo "Rama sugerida" con otro formato, manda este manual: el manual es la referencia válida.
 
@@ -138,17 +151,18 @@ Reglas:
 2. Abre la PR en cuanto tengas algo que mostrar, con el prefijo `Draft:` si aún no está lista. Así nadie duplica tu trabajo.
 3. **Mínimo una aprobación** antes de fusionar: la de tu pareja de la HU o la del Scrum Master.
 4. **Nadie fusiona su propia PR sin aprobación.**
-5. Método de fusión: **Squash and merge** (el historial de `develop` queda con un commit limpio por tarea).
-6. Las PRs de tareas apuntan a `develop`, nunca a `main`.
+5. Las PR de tareas se fusionan en su rama de área con **Squash and merge** (un commit limpio por tarea).
+6. Las PR de tareas apuntan a su rama de área según §2; **nunca directamente a `develop` ni a `main`**.
 7. Si hay conflictos, los resuelve quien abrió la PR, actualizando su rama:
 
 ```bash
-git switch develop && git pull
-git switch feat/23-express-typescript-setup
-git merge develop
+git switch feature/backend-mqtt-api && git pull
+git switch test/17-mqtt-pub-sub-evidence
+git merge feature/backend-mqtt-api
 ```
 
 8. Al fusionar: mueve la tarjeta a **Terminado** en el tablero y marca los criterios de aceptación del issue.
+9. Las PR de integración `feature/*` → `develop` y de sincronización `develop` → `feature/*` usan **merge commit**, con revisión y aprobación, para preservar la relación entre ramas y evitar que reaparezcan cambios ya integrados en la siguiente PR. La PR de cierre `develop` → `main` también usa merge commit.
 
 ### Cómo revisar (para quien aprueba)
 
@@ -201,13 +215,14 @@ Cuando agregues una variable de configuración nueva, **añádela también a `.e
 ## 8. Tu día a día, paso a paso
 
 1. Toma tu tarjeta del tablero y pásala a **En progreso**.
-2. `git switch develop && git pull`
-3. Crea tu rama con el formato de §2.
+2. Cambia a la rama de área de §2 y actualízala, por ejemplo `git switch feature/backend-mqtt-api && git pull`.
+3. Crea tu rama de tarea desde esa rama de área, con el formato de §2.
 4. Trabaja en commits pequeños, con el formato de §3.
 5. `git push -u origin <tu-rama>`
-6. Abre la PR con el formato de §4 y pide revisión a tu pareja. Pasa la tarjeta a **En revisión**.
+6. Abre la PR **hacia la misma rama de área** con el formato de §4 y pide revisión a tu pareja. Pasa la tarjeta a **En revisión**.
 7. Atiende los comentarios con commits nuevos en la misma rama.
-8. Con la aprobación, **Squash and merge**, borra la rama y pasa la tarjeta a **Terminado**.
+8. Con la aprobación, usa **Squash and merge** para integrar la tarea en la rama de área, borra la rama de tarea y pasa la tarjeta a **Terminado**.
+9. Cuando corresponda integrar el área, abre y revisa una PR `feature/*` → `develop` y fusiónala con **merge commit**. Ninguna tarea individual salta este paso.
 
 ---
 
@@ -218,10 +233,11 @@ Cuando agregues una variable de configuración nueva, **añádela también a `.e
 - [ ] No subí `.env`, credenciales ni carpetas generadas.
 - [ ] Mis commits están en inglés y con el formato `tipo(alcance): resumen`.
 - [ ] La PR enlaza su issue (`Closes #NN`).
+- [ ] La rama nació de su rama de área y la PR apunta a esa misma rama, no a `develop`.
 - [ ] Si agregué configuración, actualicé `.env.example` y el `README.md`.
 
 ---
 
 ## 10. Dudas sobre las convenciones
 
-Si algo no está cubierto aquí, decide lo más parecido a lo que ya existe en el repo y coméntalo en el canal del equipo. Los cambios a este documento se proponen por PR con `docs(repo): ...`, igual que cualquier otro cambio.
+Si algo no está cubierto aquí, decide lo más parecido a lo que ya existe en el repo y coméntalo en el canal del equipo. Los cambios a este documento se proponen por PR hacia `feature/repo-guidelines` con `docs(repo): ...`, igual que cualquier otra tarea.

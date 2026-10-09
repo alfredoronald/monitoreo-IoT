@@ -7,9 +7,9 @@
 #include <Arduino.h>
 
 void setup() {
-  // inicialización
+  Serial.begin(115200);
+  Serial.println("Firmware ESP32 iniciado");
 }
 
 void loop() {
-  // bucle principal
 }

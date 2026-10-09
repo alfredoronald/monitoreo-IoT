@@ -61,8 +61,41 @@ monitoreo-IoT/
 3. **Backend** — `pnpm install`, completar `backend/.env` (copiado de
    `.env.example`) y `pnpm dev` (puerto 3000).
 4. **Frontend** — `pnpm dev` (puerto 5173, con proxy de `/api` al backend).
-5. **Firmware** — copiar `config.example.h` a `config.h`, completar WiFi y
-   credenciales MQTT, y ejecutar `pio run -t upload`.
+5. **Firmware** — en VS Code con PlatformIO IDE, abrir PlatformIO Home,
+   elegir **Open Project** y seleccionar la carpeta `firmware/`, donde
+   está `platformio.ini`. Abrir una terminal de PlatformIO en esa carpeta.
+
+   Crear la configuración privada copiando la plantilla (PowerShell):
+
+   ```powershell
+   Copy-Item include/config.example.h include/config.h
+   ```
+
+   Completar en `include/config.h` el SSID, la contraseña WiFi y el host,
+   puerto, usuario y contraseña del broker. Este archivo está excluido
+   por `.gitignore`. El arranque inicial solo imprime un mensaje serie;
+   la configuración se utilizará en las próximas tareas de conexión.
+
+   Compilar desde `firmware/`:
+
+   ```bash
+   pio run
+   ```
+
+   Conectar el ESP32 por USB y cargar el firmware:
+
+   ```bash
+   pio run -t upload
+   ```
+
+   Abrir el monitor serie a 115200 baudios:
+
+   ```bash
+   pio device monitor --baud 115200
+   ```
+
+   Con el monitor abierto, pulsar **EN/RESET** en el ESP32 para observar
+   el mensaje `Firmware ESP32 iniciado`. Salir del monitor con `Ctrl+C`.
 
 ## Contrato de datos
 

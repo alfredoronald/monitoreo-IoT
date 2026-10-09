@@ -42,10 +42,11 @@ monitoreo-IoT/
 | Rama | Propósito |
 |---|---|
 | `main` | Código estable y probado, listo para la demostración final |
-| `develop` | Rama de integración continua donde se fusionan los avances de los módulos |
+| `develop` | Rama de integración que recibe PR de las ramas de área, no de tareas individuales |
 | `feature/firmware-esp32` | Lecturas de sensores y protocolo PubSubClient |
-| `feature/backend-mqtt-api` | Suscriptor Node.js, conexiones PostgreSQL y endpoints Express |
+| `feature/backend-mqtt-api` | Broker, backend, PostgreSQL y sus tareas y evidencias |
 | `feature/frontend-dashboard` | Componentes React, gráficos Recharts y hojas de estilos |
+| `feature/repo-guidelines` | Normas, tablero y documentación general del repositorio |
 
 ## Cómo levantar cada parte
 

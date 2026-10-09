@@ -110,8 +110,9 @@ monitoreo-IoT/
 
    Si ya existe `backend/.env`, conservar sus valores. La plantilla
    `.env.example` está versionada; el archivo `.env` local está ignorado por Git.
-   `PG_*` y `MQTT_*` quedan preparados para las próximas tareas de conexión:
-   el servidor inicial arranca sin PostgreSQL ni Mosquitto activos.
+   `PG_*` y `MQTT_*` quedan preparados para las tareas de conexión. El
+   backend verifica la conexión a PostgreSQL antes de escuchar en el puerto
+   HTTP y muestra un error claro si la base no está disponible.
    `API_KEY` puede quedar vacía; se utilizará en el Sprint 3.
    La plantilla define `API_PORT=3000` y `CORS_ORIGIN=http://localhost:5173`.
 

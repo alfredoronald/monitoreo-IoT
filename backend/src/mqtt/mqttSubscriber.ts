@@ -1,4 +1,5 @@
 import mqtt from 'mqtt';
+import { validateMessage } from './messageValidator.js';
 
 export function startMqttSubscriber() {
   const { MQTT_URL, MQTT_USER, MQTT_PASS } = process.env;
@@ -29,6 +30,13 @@ export function startMqttSubscriber() {
 
   client.on('message', (topic, payload) => {
     console.log(`[MQTT] ${topic}: ${payload.toString('utf8')}`);
+    const result = validateMessage(topic, payload.toString('utf8'));
+    if (!result.valid) {
+      console.log(`[MQTT] Descartado: ${result.reason}`);
+      return;
+    }
+
+    console.log(`[MQTT] Lectura válida: ${JSON.stringify(result.reading)}`);
   });
 
   client.on('reconnect', () => {

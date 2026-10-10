@@ -50,137 +50,274 @@ monitoreo-IoT/
 
 ## Cómo levantar cada parte
 
-> Próximos pasos: los archivos de configuración y código se agregan en la
-> task de implementación.
+### 1. Requisitos y preparación (Windows / PowerShell)
 
-1. **Base de datos** — crear la base `monitoreo_ambiental` y el usuario de
-   la app; después ejecutar el script de `database/` con DBeaver o `psql`.
-2. **Broker MQTT** — instalar Mosquitto 2.x y levantarlo con la
-   configuración del repositorio:
+Este recorrido usa **Windows / PowerShell, sin Docker**. No hace falta un ESP32;
+los bloques indican desde qué carpeta y consola ejecutar los comandos.
 
-   ```bash
-   winget install --id EclipseFoundation.Mosquitto -e
-   ```
+Instalar Git y Node.js LTS (22 o 24) con `winget`, disponible mediante
+**Instalador de aplicación** de Microsoft Store:
 
-   El instalador no agrega `C:\Program Files\mosquitto` al `PATH`. En la
-   consola abierta se recarga sin reiniciar (PowerShell):
+```powershell
+winget install --id Git.Git -e
+winget install --id OpenJS.NodeJS.LTS -e
+```
 
-   ```powershell
-   $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-   ```
+Cerrar y abrir PowerShell para cargar el PATH actualizado. Instalar pnpm 10
+(compatible con `backend/pnpm-lock.yaml`) y comprobar las herramientas:
 
-   El servicio automático de Windows arranca con la configuración por
-   defecto y ocuparía el puerto 1883; se detiene y se deja en manual
-   (PowerShell):
+```powershell
+npm install --global pnpm@10
+git --version
+node --version
+pnpm --version
+```
 
-   ```powershell
-   Stop-Service -Name mosquitto
-   Set-Service -Name mosquitto -StartupType Manual
-   ```
+Desde la carpeta donde se guardará el proyecto:
 
-   Crear los usuarios locales (`infra/mosquitto/passwd` **no** se
-   versiona, cada quien usa sus propias credenciales; el repo trae
-   `infra/mosquitto/passwd.example` con hashes de ejemplo del formato):
+```powershell
+git clone https://github.com/alfredoronald/monitoreo-IoT.git
+Set-Location monitoreo-IoT
+git switch feature/backend-mqtt-api
+git pull --ff-only origin feature/backend-mqtt-api
+```
 
-   ```bash
-   mosquitto_passwd -c -b infra/mosquitto/passwd esp32 <contraseña>
-   mosquitto_passwd -b infra/mosquitto/passwd backend <contraseña>
-   ```
+Si ya existe una copia, actualizarla desde su raíz con los dos últimos comandos,
+conservando el trabajo local. Para contribuir, seguir [CONTRIBUTING.md](docs/CONTRIBUTING.md)
+y crear una rama de tarea desde esa base actualizada.
 
-   Levantar el broker **desde la raíz del repo** (las rutas de
-   `mosquitto.conf` son relativas a la raíz):
+### 2. Preparar PostgreSQL
 
-   ```bash
-   mosquitto -c infra/mosquitto/mosquitto.conf -v
-   ```
+El backend requiere PostgreSQL para abrir el puerto HTTP. Instalarlo con el
+[instalador para Windows](https://www.postgresql.org/download/windows/), conservar
+el puerto **5432** y definir la contraseña de `postgres`. En `services.msc`, iniciar
+`postgresql-x64-<versión>`. Más detalles y DBeaver: [guía de PostgreSQL](infra/postgres/README.md).
 
-   Sin usuarios no hay conexión: desde la versión 2.0, al definir un
-   `listener` el broker deja de aceptar clientes anónimos, y con
-   `allow_anonymous false` más `password_file` y `acl_file` cada cliente
-   necesita sus credenciales y solo puede tocar los topics del ACL
-   (`esp32` publica en `ambiente/#`, `backend` solo lee).
-3. **Backend** — preparar el entorno desde la raíz del repositorio (PowerShell):
+Desde la **raíz del repositorio**, agregar `psql` al PATH de esta consola
+(cambiar `18` si se instaló otra versión) y crear la base y el rol `app`:
 
-   ```powershell
-   Copy-Item .env.example backend/.env
-   cd backend
-   pnpm install
-   pnpm dev
-   ```
+```powershell
+$env:Path += ";C:\Program Files\PostgreSQL\18\bin"
+psql --version
+psql -U postgres -h localhost -d postgres -f infra/postgres/01_instalar_db.sql
+psql -U postgres -h localhost -d postgres
+```
 
-   Si ya existe `backend/.env`, conservar sus valores. La plantilla
-   `.env.example` está versionada; el archivo `.env` local está ignorado por Git.
-   Completar `PG_HOST`, `PG_PORT`, `PG_DB`, `PG_USER` y `PG_PASS`. El
-   backend verifica la conexión a PostgreSQL antes de escuchar en el puerto
-   HTTP y muestra un error claro si la base no está disponible.
-   Completar `MQTT_URL`, `MQTT_USER=backend` y `MQTT_PASS` con las credenciales
-   locales del broker. Las tres variables MQTT son obligatorias.
-   Si PostgreSQL está disponible y Mosquitto está detenido, el backend
-   permanece activo e intenta reconectar cada 2 segundos.
-   `API_KEY` puede quedar vacía; se utilizará en el Sprint 3.
-   La plantilla define `API_PORT=3000` y `CORS_ORIGIN=http://localhost:5173`.
+Introducir la contraseña de `postgres`. En `psql`, asignar la de `app` y salir:
 
-   El modo de desarrollo reinicia el servidor al cambiar el código.
-   Abrir `http://localhost:3000/` debe devolver HTTP 200:
+```text
+\password app
+\q
+```
 
-   ```json
-   {"status":"ok","message":"Servidor de monitoreo ambiental activo"}
-   ```
+`\password` solicita y confirma la contraseña. De nuevo en PowerShell, cargar
+el esquema **como `app`**, para que las tablas sean suyas:
 
-   Esta ruta comprueba el arranque de Express. Los endpoints `/api/lecturas`,
-   `/api/lecturas/ultima` y `/api/salud` se implementarán en sus tareas respectivas.
+```powershell
+psql -U app -h localhost -d monitoreo_ambiental -f database/esquema.sql
+psql -U app -h localhost -d monitoreo_ambiental -c "SELECT current_user, current_database();"
+```
 
-   Para comprobar tipos, compilar y ejecutar, dentro de `backend/`:
+La consulta debe devolver `app` y `monitoreo_ambiental` tras introducir la contraseña
+de `app`. Si la base ya existía, `database already exists` es esperado; conservarla.
 
-   ```powershell
-   pnpm typecheck
-   pnpm build
-   pnpm start
-   ```
+### 3. Instalar y configurar Mosquitto 2.x
 
-   Detener `pnpm dev` con `Ctrl+C` antes de ejecutar `pnpm start` para liberar
-   el puerto 3000. `build` genera `dist/` y `start` ejecuta `dist/index.js`
-   directamente en Node. `tsconfig.json` hereda de `../tsconfig.base.json`
-   y usa `module` y `moduleResolution` en `NodeNext`; los imports locales
-   usan extensión `.js` para los archivos compilados.
-   `dist/` y `node_modules/` están ignorados por Git.
+```powershell
+winget install --id EclipseFoundation.Mosquitto -e
+& "C:\Program Files\mosquitto\mosquitto.exe" -h
+```
 
-   Desde la raíz, comprobar los archivos antes del commit:
+La ayuda debe mostrar la versión 2.x. Se usa la ruta completa porque Mosquitto
+puede no estar en el PATH; reemplazarla si se eligió otra carpeta de instalación.
 
-   ```powershell
-   git check-ignore backend/.env
-   git ls-files .env.example
-   git status --short
-   ```
+El servicio de Windows usa su propia configuración y puede ocupar el puerto
+1883. En una **PowerShell como administrador**, detenerlo y dejarlo en manual:
 
-   Los dos primeros comandos deben mostrar `backend/.env` y `.env.example`,
-   respectivamente. La evidencia de la issue #18 será el commit publicado en GitHub.
+```powershell
+if (Get-Service -Name mosquitto -ErrorAction SilentlyContinue) {
+    Stop-Service -Name mosquitto
+    Set-Service -Name mosquitto -StartupType Manual
+}
+```
 
-   **Comprobar el suscriptor MQTT (#19):** con Mosquitto activo y `pnpm dev`
-   ejecutándose, la consola del backend debe mostrar `[MQTT] Conectado al broker`
-   y `[MQTT] Suscrito a ambiente/#`. En otra terminal Git Bash desde la raíz:
+Volver a la consola normal, en la **raíz del repositorio**, y crear los usuarios:
 
-   ```bash
-   read -r -s -p 'Contraseña MQTT de esp32: ' MQTT_TEST_PASS
-   printf '\n'
-   mosquitto_pub -h localhost -p 1883 -u esp32 -P "$MQTT_TEST_PASS" -t ambiente/temperatura -m '25.0'
-   mosquitto_pub -h localhost -p 1883 -u esp32 -P "$MQTT_TEST_PASS" -t ambiente/humedad -m '55'
-   mosquitto_pub -h localhost -p 1883 -u esp32 -P "$MQTT_TEST_PASS" -t ambiente/co2 -m '700'
-   unset MQTT_TEST_PASS
-   ```
+```powershell
+if (-not (Test-Path -LiteralPath infra/mosquitto/passwd)) {
+    & "C:\Program Files\mosquitto\mosquitto_passwd.exe" -c infra/mosquitto/passwd esp32
+} else {
+    & "C:\Program Files\mosquitto\mosquitto_passwd.exe" infra/mosquitto/passwd esp32
+}
+& "C:\Program Files\mosquitto\mosquitto_passwd.exe" infra/mosquitto/passwd backend
+New-Item -ItemType Directory -Force -Path infra/mosquitto/data | Out-Null
+```
 
-   Si Mosquitto no está en el PATH de Git Bash, usar
-   `"/c/Program Files/mosquitto/mosquitto_pub.exe"` en lugar de `mosquitto_pub`.
-   Cada mensaje debe aparecer con su topic y contenido, por ejemplo
-   `[MQTT] ambiente/temperatura: 25.0`. Para comprobar la reconexión, detener
-   solo el broker con `Ctrl+C` y volver a iniciarlo desde la raíz con
-   `mosquitto -c infra/mosquitto/mosquitto.conf -v`. El backend debe reconectar
-   y suscribirse sin reiniciarlo; publicar otro mensaje para confirmar
-   que vuelve a recibir. La evidencia de #19 es una captura de esa consola,
-   sin mostrar contraseñas ni el contenido de `.env`.
-4. **Frontend** — `pnpm dev` (puerto 5173, con proxy de `/api` al backend).
-5. **Firmware** — copiar `config.example.h` a `config.h`, completar WiFi y
-   credenciales MQTT, y ejecutar `pio run -t upload`.
+Cada comando solicita y confirma una contraseña: guardar la de `esp32` para
+publicar y la de `backend` para `MQTT_PASS`. **`-c` sobrescribe el archivo completo**:
+usarlo solo al crearlo. Sin `-c`, agrega o actualiza un usuario. `passwd.example`
+solo ilustra el formato; cada integrante genera su `passwd`, ignorado por Git.
+
+La configuración [mosquitto.conf](infra/mosquitto/mosquitto.conf) escucha en **1883**,
+deshabilita conexiones anónimas y usa [acl](infra/mosquitto/acl):
+
+| Usuario MQTT | Permiso |
+|---|---|
+| `esp32` | Publicar en `ambiente/#` |
+| `backend` | Leer y suscribirse a `ambiente/#` |
+
+### 4. Configurar el entorno del backend
+
+Desde la **raíz**, copiar la plantilla solo si aún no existe el archivo local:
+
+```powershell
+if (-not (Test-Path -LiteralPath backend/.env)) {
+    Copy-Item -LiteralPath .env.example -Destination backend/.env
+}
+notepad backend/.env
+```
+
+Completar y guardar las variables de [`.env.example`](.env.example):
+
+| Variable | Valor local / propósito | Requisito |
+|---|---|---|
+| `PG_HOST` | `localhost`, servidor PostgreSQL | Obligatoria |
+| `PG_PORT` | `5432`, puerto PostgreSQL | Predeterminado: `5432` |
+| `PG_DB` | `monitoreo_ambiental` | Obligatoria |
+| `PG_USER` | `app`, rol dueño de las tablas | Obligatoria |
+| `PG_PASS` | Contraseña del rol PostgreSQL `app` | Obligatoria |
+| `MQTT_URL` | `mqtt://localhost:1883` | Obligatoria |
+| `MQTT_USER` | `backend`, usuario creado con `mosquitto_passwd` | Obligatoria |
+| `MQTT_PASS` | Contraseña MQTT del usuario `backend` | Obligatoria |
+| `API_PORT` | `3000`, puerto HTTP | Predeterminado: `3000` |
+| `CORS_ORIGIN` | `http://localhost:5173`, origen del frontend | Tiene ese valor predeterminado |
+| `API_KEY` | Vacía; prevista para el Sprint 3 | No condiciona el arranque actual |
+
+`PG_PASS` y `MQTT_PASS` son de servicios distintos. Guardarlas solo en `backend/.env`;
+si contienen `#`, envolver el valor en comillas dobles para evitar comentarios
+de dotenv. El código usa `PG_*`; no lee las variables `SUPABASE_*` de la plantilla.
+
+Instalar las dependencias desde `backend/`, respetando el archivo de bloqueo:
+
+```powershell
+Set-Location backend
+pnpm install --frozen-lockfile
+```
+
+### 5. Levantar y comprobar los servicios
+
+Mantener PostgreSQL iniciado y abrir **tres terminales PowerShell** en la raíz
+del repositorio (en el explorador, abrir la carpeta y elegir «Abrir en Terminal»).
+
+**Terminal 1 — broker:** iniciar con la configuración del repositorio, desde
+la raíz; las rutas del archivo son relativas a esa carpeta:
+
+```powershell
+& "C:\Program Files\mosquitto\mosquitto.exe" -c infra/mosquitto/mosquitto.conf -v
+```
+
+Debe informar que abre el puerto **1883**. Mantener esta terminal abierta.
+
+**Terminal 2 — backend:**
+
+```powershell
+Set-Location backend
+pnpm dev
+```
+
+El modo de desarrollo reinicia al cambiar código. Debe mostrar (en cualquier orden):
+
+```text
+Conexión PostgreSQL establecida en localhost:5432/monitoreo_ambiental
+Servidor de monitoreo ambiental disponible en http://localhost:3000
+[MQTT] Conectado al broker
+[MQTT] Suscrito a ambiente/#
+```
+
+**Terminal 3 — comprobación HTTP y publicación MQTT:**
+
+```powershell
+Invoke-RestMethod -Uri http://localhost:3000/ | ConvertTo-Json -Compress
+```
+
+Debe responder HTTP 200 con:
+
+```json
+{"status":"ok","message":"Servidor de monitoreo ambiental activo"}
+```
+
+Esta ruta comprueba Express; las rutas `/api/lecturas`, `/api/lecturas/ultima`
+y `/api/salud` se implementarán en sus tareas respectivas.
+
+Publicar con la contraseña de **`esp32`**, solicitándola sin mostrarla al escribir:
+
+```powershell
+$mqttSecret = Read-Host 'Contraseña MQTT de esp32' -AsSecureString
+$mqttPassword = [System.Net.NetworkCredential]::new('', $mqttSecret).Password
+try {
+    & "C:\Program Files\mosquitto\mosquitto_pub.exe" -h localhost -p 1883 -u esp32 -P "$mqttPassword" -t ambiente/temperatura -m '25.0'
+    & "C:\Program Files\mosquitto\mosquitto_pub.exe" -h localhost -p 1883 -u esp32 -P "$mqttPassword" -t ambiente/humedad -m '55'
+    & "C:\Program Files\mosquitto\mosquitto_pub.exe" -h localhost -p 1883 -u esp32 -P "$mqttPassword" -t ambiente/co2 -m '700'
+} finally {
+    Remove-Variable mqttPassword, mqttSecret
+}
+```
+
+En la **terminal 2** deben aparecer:
+
+```text
+[MQTT] ambiente/temperatura: 25.0
+[MQTT] ambiente/humedad: 55
+[MQTT] ambiente/co2: 700
+```
+
+Para probar reconexión, detener **solo el broker** con `Ctrl+C` en la terminal 1.
+El backend debe seguir activo e intentar reconectar cada **2 segundos**.
+Repetir el comando de arranque del broker en esa terminal: el backend debe
+volver a conectar y suscribirse sin reiniciarlo. Repetir el bloque de publicación
+en la terminal 3 y comprobar de nuevo la recepción.
+
+Finalizar con `Ctrl+C` en el backend y el broker. En los próximos arranques,
+comprobar PostgreSQL e iniciar ambos sin recrear usuarios ni copiar `.env`.
+
+### 6. Comprobar tipos y ejecutar la compilación
+
+Con el broker y PostgreSQL activos, detener `pnpm dev` para liberar el puerto
+HTTP y ejecutar **dentro de `backend/`**:
+
+```powershell
+pnpm typecheck
+pnpm build
+pnpm start
+```
+
+`typecheck` y `build` deben terminar sin errores. `build` genera `dist/`; `start`
+ejecuta `dist/index.js`. Repetir las comprobaciones del paso 5 y terminar con `Ctrl+C`.
+
+### 7. Problemas frecuentes
+
+| Síntoma | Solución |
+|---|---|
+| `node`, `pnpm` o `psql` no se reconoce | Abrir una consola nueva tras instalar. Para `psql`, agregar la carpeta `bin` de la versión instalada al PATH como en el paso 2. |
+| PowerShell bloquea `npm.ps1` o `pnpm.ps1` | Usar `npm.cmd` o `pnpm.cmd` en los mismos comandos. |
+| Mosquitto no se encuentra | Usar la ruta completa entre comillas y el operador `&`; comprobar su carpeta de instalación. |
+| Mosquitto no puede abrir `passwd`, `acl` o guardar persistencia | Ejecutarlo desde la raíz, crear los usuarios y la carpeta `infra/mosquitto/data`, y comprobar permisos sobre ella. |
+| El puerto 1883 ya está en uso | Detener el servicio Mosquitto como administrador o cerrar otra instancia del broker antes de iniciar la del repositorio. |
+| MQTT informa `Not authorized` o no llegan mensajes | Revisar que `MQTT_PASS` corresponde a `backend` y la publicación usa `esp32`. Confirmar los nombres del ACL y reiniciar el broker tras cambiar usuarios. |
+| Faltan variables o falla la conexión PostgreSQL | Completar `PG_*` en `backend/.env`, comprobar el servicio y repetir la consulta del paso 2 con el rol `app`. Reiniciar `pnpm dev` tras editar `.env`. |
+| `EADDRINUSE` en el backend | Detener el otro backend antes de iniciar `pnpm start`, o cambiar `API_PORT` y usar ese puerto en la consulta HTTP. |
+
+### 8. Revisión y evidencia de #23
+
+La evidencia de #23 es este README en GitHub. Otra persona debe seguir los pasos
+1–6 desde una instalación nueva y confirmar en la PR el arranque, HTTP, recepción
+MQTT y reconexión sin ayuda. Las evidencias no deben mostrar contraseñas ni `.env`.
+
+### Frontend y firmware
+
+- **Frontend:** desde `frontend/`, ejecutar `pnpm install` y `pnpm dev` (puerto 5173).
+- **Firmware:** cuando esté disponible la plantilla `config.example.h`, copiarla
+  a `config.h`, completar WiFi y MQTT y ejecutar `pio run -t upload` desde `firmware/`.
 
 ## Contrato de datos
 

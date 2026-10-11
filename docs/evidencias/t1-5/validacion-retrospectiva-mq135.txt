@@ -1,0 +1,1 @@
+Comprobaciones de algoritmo retrospectivo; no validación física. 0 fallos.

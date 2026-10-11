@@ -3,6 +3,7 @@
 // T-1.4: lectura del DHT22 con validación del rango del aula.
 // T-1.5: inicio físico automático con referencia provisional; demo [SIMULADO].
 // T-1.6: WiFi/MQTT con reconexión, sin esperar conexiones en loop().
+// T-1.7: publicación periódica de muestras físicas recientes, por variable.
 // ============================================================
 #include <Arduino.h>
 #include <DHT.h>
@@ -19,6 +20,8 @@
 #include <cstdarg>
 #include "../include/config.h"  // Privado; ruta explícita para evitar otro config.h.
 #include "connection_retry.h"
+#include "mqtt_publication.h"
+#include "mqtt_publication_config.h"
 #include "dht_validation.h"
 #include "mq135_experimental.h"
 #include "mq135_reference_log.h"
@@ -36,6 +39,10 @@
 // Versión final: comandos y métricas de prueba temporal excluidos.
 #ifndef WIFI_TEMPORARY_TEST
 #define WIFI_TEMPORARY_TEST 0
+#endif
+
+#if MQTT_TEMPORARY_TEST && WIFI_TEMPORARY_TEST
+#error "La prueba MQTT requiere WIFI_TEMPORARY_TEST=0: un solo lector Serial"
 #endif
 
 namespace {
@@ -59,6 +66,30 @@ using dht_validation::HUMIDITY_MAX_PERCENT;
 
 DHT dht(DHT_PIN, DHT22);
 unsigned long lastAttemptFinishedMs = 0;
+
+// Solo se comparte esta copia, nunca dht, mq135 ni el cliente MQTT.
+portMUX_TYPE publicationMux = portMUX_INITIALIZER_UNLOCKED;
+mqtt_publication::Snapshot publicationSnapshot;
+
+#if MQTT_TEMPORARY_TEST
+// Exclusivo de loop(); la tarea de red solo lee el snapshot protegido.
+bool mqttTestCo2Omitted = false;
+#endif
+
+mqtt_publication::Snapshot copyPublicationSnapshot() {
+  portENTER_CRITICAL(&publicationMux);
+  const auto snapshot = publicationSnapshot;
+  portEXIT_CRITICAL(&publicationMux);
+  return snapshot;
+}
+
+void invalidateCo2Publication() {
+  const auto now = static_cast<std::uint32_t>(millis());
+  portENTER_CRITICAL(&publicationMux);
+  mqtt_publication::record(publicationSnapshot.co2,
+      mqtt_publication::SampleState::Unavailable, 0.0, now);
+  portEXIT_CRITICAL(&publicationMux);
+}
 
 constexpr unsigned long WIFI_ATTEMPT_WATCHDOG_MS = 20000UL;
 enum class WifiEventKind { Started, Associated, Disconnected, Stopped, GotIp, ScanDone };
@@ -522,9 +553,13 @@ void connectionTask(void*) {
   PubSubClient mqtt(transport);
   connection_retry::Scheduler retries(wifi_retry_interval_ms,
                                       mqtt_retry_interval_ms);
+  mqtt_publication::Scheduler publications(mqtt_publication_config::INTERVAL_MS);
   mqtt.setServer(mqtt_host, mqtt_port);
   mqtt.setSocketTimeout(mqtt_socket_timeout_s);
   mqtt.setKeepAlive(mqtt_keepalive_s);
+  Serial.printf("MQTT publicacion: intervalo=%lu ms; edad maxima=%lu ms; CO2 provisional\n",
+                static_cast<unsigned long>(mqtt_publication_config::INTERVAL_MS),
+                static_cast<unsigned long>(mqtt_publication::MAX_SAMPLE_AGE_MS));
   wifiObservations = xQueueCreate(16, sizeof(WifiObservation));
   if (wifiObservations == nullptr) {
     Serial.println("WiFi ERROR: sin memoria para eventos; se usará comprobación del driver");
@@ -632,8 +667,9 @@ void connectionTask(void*) {
         }
       }
     }
-    const auto decision = retries.poll(millis(), wifiReady,
-                                       wifiReady && mqtt.connected(),
+    const bool mqttReady = wifiReady && mqtt.connected();
+    if (!mqttReady) publications.disconnected();
+    const auto decision = retries.poll(millis(), wifiReady, mqttReady,
                                        wifiAttemptPending || wifiAssociated ||
                                            wifiCancelSettling || wifiSuspended);
     if (decision.wifiDisconnected) {
@@ -709,7 +745,7 @@ void connectionTask(void*) {
                     mqttStarted ? "intentando reconexión" : "iniciando conexión");
       mqttStarted = true;
       // connect() y loop() de PubSubClient pueden esperar: solo en esta tarea,
-      // nunca en el loop de sensores. No imprimir credenciales ni publicar topics.
+      // nunca en el loop de sensores. No imprimir credenciales.
       const char* user = mqtt_user[0] == '\0' ? nullptr : mqtt_user;
       const char* password = user == nullptr ? nullptr : mqtt_password;
       if (!mqtt.connect(mqtt_client_id, user, password)) {
@@ -722,6 +758,29 @@ void connectionTask(void*) {
         reportWifiTestMqtt(millis());  // connect() acaba de aceptar CONNACK.
       }
 #endif
+    }
+    // Copia coherente; ninguna operación de red o Serial bajo la sección crítica.
+    const auto snapshot = copyPublicationSnapshot();
+    const auto publicationMs = static_cast<std::uint32_t>(millis());
+    const bool publicationReady = !wifiSuspended &&
+        WiFi.status() == WL_CONNECTED && mqtt.connected();
+    const auto cycle = publications.poll(publicationMs, publicationReady, snapshot);
+    if (cycle.due) {
+      for (const auto& message : cycle.messages) {
+        if (message.omission != mqtt_publication::Omission::None) {
+          Serial.printf("[%lu ms] MQTT omitido: %s; %s\n",
+                        static_cast<unsigned long>(publicationMs), message.topic,
+                        mqtt_publication::omissionName(message.omission));
+        }
+      }
+      mqtt_publication::transmit(cycle, [&mqtt, publicationMs](const char* topic,
+                                                             const char* payload) {
+        const bool sent = mqtt.publish(topic, payload, false);  // QoS 0, no retained.
+        Serial.printf("[%lu ms] MQTT publicacion: %s; payload=%s; %s\n",
+                      static_cast<unsigned long>(publicationMs), topic, payload,
+                      sent ? "enviado (QoS 0)" : "fallo; sin reenvio atrasado");
+        return sent;
+      });
     }
     // Ceder CPU entre turnos; no es una espera de conexión ni afecta al DHT22.
     vTaskDelay(pdMS_TO_TICKS(20));
@@ -895,6 +954,7 @@ void reportMq135AdcDiagnostic() {
 }
 
 void configureMq135() {
+  invalidateCo2Publication();
   discardMq135Output();  // No transmitir resultados pendientes de otra configuración.
   mq135AdcConversionAvailable = false;
   mq135AdcCharacteristics = {};
@@ -992,6 +1052,12 @@ void readDhtIfDue() {
   // Copia para trazabilidad; no cambia lecturas, validación ni intervalo DHT22.
   lastDhtSnapshot.available = false;
 
+  // Las dos variables se actualizan juntas, incluso si la pareja se descarta.
+  portENTER_CRITICAL(&publicationMux);
+  mqtt_publication::recordDht(publicationSnapshot, temperature, humidity,
+                            static_cast<std::uint32_t>(lastAttemptFinishedMs));
+  portEXIT_CRITICAL(&publicationMux);
+
   const auto validation = dht_validation::validate(temperature, humidity);
   if (validation.hasNaN) {
     Serial.printf("[%lu ms] DHT22 ERROR: lectura NaN; muestra descartada\n",
@@ -1063,6 +1129,17 @@ void updateMq135() {
   const auto observation = mq135.observe(adcValue, voltageAvailable,
                                         milliVolts, environment);
 #endif
+  // Controller ya aplicó calentamiento, ADC 100–950 mV, referencia y emisión.
+  // La publicación añade procedencia física; jamás envía la demo como CO2 real.
+  auto co2State = mqtt_publication::mq135State(observation, mq135.record() != nullptr);
+#if MQTT_TEMPORARY_TEST
+  // Solo inhibir la copia MQTT: conservar adquisición, estimador y salida física.
+  if (mqttTestCo2Omitted) co2State = mqtt_publication::SampleState::Unavailable;
+#endif
+  portENTER_CRITICAL(&publicationMux);
+  mqtt_publication::record(publicationSnapshot.co2, co2State,
+                          observation.ppm.value, timestampMs);
+  portEXIT_CRITICAL(&publicationMux);
   char output[384];
   const int written = mq135_acquisition::formatObservation(observation, output,
                                                           sizeof(output));
@@ -1108,6 +1185,24 @@ void updateMq135() {
 #endif
 }
 
+#if MQTT_TEMPORARY_TEST
+bool handleMqttTestCommand(const char* command) {
+  if (std::strcmp(command, "mqtt prueba co2 omitir") == 0) {
+    mqttTestCo2Omitted = true;
+    invalidateCo2Publication();  // Borrar inmediatamente cualquier valor previo.
+    queueMq135Output("MQTT PRUEBA: omision CO2 activada; sensores continúan\n");
+    return true;
+  }
+  if (std::strcmp(command, "mqtt prueba co2 restaurar") == 0) {
+    invalidateCo2Publication();  // Restaurar nunca recupera un valor almacenado.
+    mqttTestCo2Omitted = false;
+    queueMq135Output("MQTT PRUEBA: CO2 restaurado; esperando nueva muestra fisica valida\n");
+    return true;
+  }
+  return false;
+}
+#endif
+
 void handleMq135Command(const char* command) {
   using mq135_experimental::Status;
   Status result = Status::Ok;
@@ -1144,6 +1239,7 @@ void handleMq135Command(const char* command) {
   } else if (std::strcmp(command, "mq135 referencia cancelar") == 0) {
     mq135.cancelReference();
   } else if (std::strcmp(command, "mq135 referencia invalidar") == 0) {
+    invalidateCo2Publication();
     mq135.invalidateReference();
     discardMq135Output();
   } else if (std::strcmp(command, "mq135 ppm habilitar") == 0) {
@@ -1151,6 +1247,7 @@ void handleMq135Command(const char* command) {
     // bloqueos eléctricos y la referencia física; no exige calibración HU-08.
     result = mq135.enableEmission();
   } else if (std::strcmp(command, "mq135 ppm deshabilitar") == 0) {
+    invalidateCo2Publication();
     mq135.disableEmission();
     discardMq135Output();
   } else if (std::strcmp(command, "mq135 estado") == 0) {
@@ -1197,7 +1294,13 @@ void processMq135Commands() {
       if (overflow) queueMq135Output("Comando MQ-135 descartado: demasiado largo\n");
       else if (length > 0) {
         command[length] = '\0';
+#if MQTT_TEMPORARY_TEST
+        if (!handleMqttTestCommand(command)) {
+          handleMq135Command(command);
+        }
+#else
         handleMq135Command(command);
+#endif
       }
       length = 0;
       overflow = false;

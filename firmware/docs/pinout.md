@@ -1,102 +1,108 @@
-# T-1.3 — Pinout del circuito ESP32, DHT22 y MQ-135
+# T-1.3 / T-1.5 — Pinout ESP32, DHT22 y MQ-135
 
-## 1. Alcance y origen de los datos
+## Montaje físico actual comunicado
 
-- **Proyecto:** monitoreo-IoT.
-- **Issue:** [#9 — Circuito en protoboard](https://github.com/alfredoronald/monitoreo-IoT/issues/9).
-- **Rama:** `docs/9-circuito-esp32`.
-- **Montaje:** completado según la confirmación del responsable comunicada para esta tarea.
-- **Informe:** [Evidencia de T-1.3](../../docs/T-1.3-breadboard-circuit-evidence.md).
+ESP32-WROOM-32 y MQ-135 Flying-Fish. El responsable comunica un **divisor
+instalado y comprobado de dos resistencias de 10 kΩ**, sustituyendo la
+conexión AO directo de las lecturas anteriores. VCC desde VIN/5V,
+aproximadamente 4,89 V; GND común; DO desconectado.
 
-Los GPIO indicados a continuación corresponden al montaje comunicado. El responsable confirmó el cumplimiento de los cuatro criterios de aceptación, incluida la medición con multímetro de una tensión no superior a 3,3 V en la entrada analógica. También confirmó la alimentación y la instalación de un divisor en AO. No se comunicaron el valor numérico medido ni los valores de sus resistencias.
+| Componente | Terminal | Conexión actual |
+|---|---|---|
+| ESP32 | Alimentación | USB, según el montaje comunicado |
+| DHT22 | VCC / + | 3V3 del ESP32 |
+| DHT22 | DATA | GPIO23 |
+| MQ-135 | VCC | VIN/5V del ESP32 |
+| MQ-135 | AO | R1=10 kΩ entre AO y el nodo ADC |
+| Divisor | R2=10 kΩ | Entre el nodo ADC y GND |
+| ESP32 | GPIO34 / ADC1_CH6 | Nodo común R1–R2 |
+| ESP32 y sensores | GND | Compartida |
+| MQ-135 | DO | Sin conectar |
 
-Las recomendaciones se distinguen de las conexiones confirmadas por el responsable y de las observaciones de las fotografías reales. Los valores propuestos anteriormente para un divisor no se presentan como valores instalados.
-
-## 2. Conexiones reales comunicadas
-
-| Componente | Terminal | Conexión / función | Información disponible |
-|---|---|---|---|
-| DHT22 | DATA | GPIO23 del ESP32 | GPIO indicado para el montaje. Comunicación digital bidireccional. |
-| MQ-135 | AO | Hacia GPIO34 del ESP32, ADC1_CH6, mediante divisor según confirmación del responsable | Los valores de las resistencias no fueron comunicados; el divisor externo no se distingue en las fotografías. |
-| ESP32 | Alimentación | USB | Confirmado por el responsable; cable USB visible en la foto general. |
-| DHT22 | VCC / + | 3V3 del ESP32 | Confirmado por el responsable. |
-| MQ-135 | VCC | VIN/5V del ESP32, alimentado por USB | Confirmado por el responsable. VIN/5V se utiliza como alimentación del sensor, no como entrada de otra fuente. |
-| ESP32 y sensores | GND | Referencia común necesaria para las señales | La distribución física de tierra y su comprobación de continuidad no fueron detalladas. |
-| DHT22 | Pull-up de DATA | Presencia y valor no especificados | No se afirma que exista una resistencia externa o integrada. |
-| MQ-135 | Protección de AO | Divisor de voltaje confirmado por el responsable | Valores, ubicación y disposición de las resistencias no detallados. La fotografía no permite verificarlo. |
-| MQ-135 | DO | Sin cable visible en la fotografía del módulo | No se utiliza para la adquisición analógica documentada. |
-
-Los nombres GPIO23 y GPIO34 identifican señales del ESP32; no son números de posición del conector ni coordenadas de la protoboard. La posición física se debe identificar con la serigrafía y el pinout de la placa utilizada.
-
-## 3. Esquema de señales comunicado
+La presencia/valor de pull-up del DHT22 no se especificó; esta edición no
+modifica el DHT22 ni añade componentes a su circuito. Los GPIO son señales,
+no posiciones del conector; verificar la serigrafía de la placa.
 
 ```text
-USB -------------------------------- ESP32
-ESP32 3V3 --------------------------- DHT22 VCC / +
-ESP32 VIN/5V ------------------------ MQ-135 VCC
-DHT22 DATA -------------------------- GPIO23
+USB ------------------------------- ESP32
+ESP32 3V3 ------------------------- DHT22 VCC
+DHT22 DATA ------------------------ GPIO23
+ESP32 VIN/5V ---------------------- MQ-135 VCC
 
-MQ-135 AO -- [divisor confirmado;
-              resistencias sin
-              valores comunicados] -- GPIO34 / ADC1_CH6
+MQ-135 AO -- R1=10 kΩ --+----------- GPIO34 / ADC1_CH6
+                       |
+                    R2=10 kΩ
+                       |
+                      GND
 
-GND ESP32 y GND sensores: referencia común requerida.
+GND ESP32, MQ-135 y DHT22: común
 ```
 
-El divisor se incluye por confirmación del responsable. En las fotografías se aprecia el cable de AO hacia GPIO34 sin un divisor externo identificable; por ello no se atribuyen a las imágenes la verificación de sus resistencias ni de su ubicación. Este esquema no es una instrucción para conectar AO directamente al ESP32.
+## Mediciones y reconstrucción
 
-## 4. Justificación de los GPIO
-
-- **GPIO23 / DHT22:** admite entrada y salida, necesarias para iniciar la comunicación con el sensor y recibir su respuesta.
-- **GPIO34 / MQ-135:** corresponde a **ADC1_CH6** en el ESP32 clásico. Solo admite entrada y no dispone de pull-up/pull-down internos habilitables por software. Es adecuado para adquirir una señal analógica acondicionada, pero no para DATA del DHT22.
-- **ADC1:** evita la limitación del ADC2, compartido con WiFi en el ESP32 clásico. Esta elección permite conservar la adquisición del MQ-135 cuando se implemente la comunicación WiFi/MQTT.
-
-En la revisión estática, `firmware/src/main.cpp` todavía contiene únicamente el arranque serie; no implementa lecturas de sensores. Este documento no modifica ni demuestra la implementación de los GPIO en firmware.
-
-## 5. Alimentación y protección: recomendaciones
-
-Estas indicaciones son recomendaciones para revisar el circuito real; no describen componentes instalados sin confirmación.
-
-| Elemento | Recomendación |
+| Magnitud | Resultado comunicado |
 |---|---|
-| ESP32 | Usar una ruta de alimentación admitida por la placa. No unir fuentes externas a VIN/5V simultáneamente con USB sin verificar el circuito de alimentación. |
-| DHT22 | Para un sensor compatible con 3,3 V, alimentar desde 3V3 y mantener DATA referida a 3,3 V. Identificar los terminales del modelo real. |
-| Pull-up DHT22 | Verificar si el módulo incorpora pull-up. Si necesita una externa, usar aproximadamente 4,7–5,1 kΩ entre DATA y 3V3, con cables cortos. |
-| MQ-135 | Alimentar el calefactor a 5 V según el fabricante; no alimentarlo desde un GPIO ni desde 3V3. Verificar capacidad de fuente y cableado. |
-| Tierra | Conectar GND del ESP32, GND del DHT22 y GND del MQ-135 a una referencia común; comprobar cortes de rieles en la protoboard. |
-| AO / GPIO34 | Si AO puede superar 3,3 V, incorporar un divisor o acondicionamiento adecuado antes del GPIO. Una lectura puntual segura no garantiza el máximo de AO en otras condiciones. |
-| DO del MQ-135 | No se necesita para esta adquisición analógica. No conectarlo al ESP32 sin comprobar sus niveles eléctricos. |
+| VCC del MQ-135 | Aproximadamente 4,89 V |
+| AO–GND al comprobar el divisor | 0,24 V |
+| GPIO34–GND al comprobar el divisor | 0,12 V |
+| Relación nominal y medida | k=0,50 |
+| Diagnóstico con divisor y 11 dB | Mediana ADC=70; `EFUSE_VREF`=196 mV |
+| Contraste posterior REV3 a 0 dB | GPIO34–GND fluctuó entre 0,17 y 0,20 V; mediana ADC=511; `EFUSE_VREF`=191 mV |
 
-Un divisor recomendado se diseña con una resistencia superior entre AO y el nodo ADC y una resistencia inferior entre ese nodo y GND:
+`VADC=VAO×k`; el firmware reconstruye `VAO=VADC/0.5`. No utiliza la
+medición puntual para establecer q de referencia. El divisor carga AO,
+por lo que se necesitan tres muestras nuevas con este montaje definitivo.
+La cancelación de carga efectiva del modelo presupone que se mantenga fija.
 
-```text
-AO -- Rsuperior --+-- GPIO34
-                 |
-              Rinferior
-                 |
-                GND
-```
+Antes del divisor se comunicaron 0,34 V con GPIO34 desconectado, 0,42 V
+conectado, 0,37 V posterior sin conexión especificada y 0,38 V en GPIO34.
+El intervalo 0,27–0,44 V observado anteriormente no establece un máximo
+de AO. Las [fotografías históricas](../../docs/T-1.3-breadboard-circuit-evidence.md)
+corresponden al antecedente de T-1.3; no prueban el montaje nuevo.
 
-`VADC = VAO × Rinferior / (Rsuperior + Rinferior)`.
+## Configuración de firmware preparada
 
-Los valores deben dimensionarse considerando el máximo de AO, las tolerancias y el rango de adquisición del ADC. Para T-1.5 deberán registrarse los valores efectivamente instalados y su efecto en la conversión y calibración. La instalación del divisor fue confirmada, pero no se asignan valores a sus resistencias porque no fueron comunicados.
+GPIO34 es ADC1_CH6 y solo admite entrada; no sirve para DATA del DHT22.
+Se mantiene ADC1 para evitar la dependencia de ADC2 con Wi-Fi. El DHT22
+conserva GPIO23, lecturas y validaciones independientes.
 
-## 6. Comprobación eléctrica comunicada
+Revisión preparada **3**: divisor 10 kΩ + 10 kΩ y ADC de **12 bits / 0 dB**.
+La adquisición y ambas curvas `esp_adc_cal` utilizan la misma atenuación.
+Se conservan calentamiento de 30 segundos, mediana de 11 lecturas y periodo
+de 2000 ms. No se agrega un filtro ni se cambia Wi-Fi/MQTT.
 
-| Dato | Registro |
-|---|---|
-| Magnitud | Tensión en la entrada analógica utilizada por el MQ-135. |
-| Punto | GPIO34 respecto de GND. |
-| Instrumento exigido por la Issue | Multímetro. |
-| Resultado comunicado | Criterio de tensión máxima de 3,3 V cumplido según confirmación del responsable. |
-| Valor numérico | No comunicado; no se inventa una lectura. |
-| Condiciones y registro fotográfico de la medición | No comunicados. Las tres fotografías disponibles muestran el montaje, no una lectura de multímetro. |
+La unidad comunicada dispone de VREF eFuse=1058 mV, TP no disponible.
+El método efectivo se vuelve a consultar al arrancar; Vref no es VCC del
+MQ-135. Se conserva rechazo de cero, saturación y valores inválidos.
+El [diagnóstico](mq135-adc-diagnostic.md) muestra los detalles mediante comando.
 
-La confirmación se registra como resultado del responsable; no como una medición ejecutada durante esta edición documental. Tampoco certifica por sí sola la protección ante todos los valores futuros de AO. Las [fotografías reales del circuito](../../docs/T-1.3-breadboard-circuit-evidence.md#5-evidencias-fotográficas) complementan el registro del montaje.
+## Alcance de la verificación
 
-## 7. Referencias técnicas
+La instalación comprobada respalda `electricalVerified=true` para el
+montaje VIN/5V y GND común comunicado. Bajo AO limitada por esa alimentación,
+4,89×0,5=2,445 V es un límite nominal **calculado**, no medido. No se
+certifican fallos de componentes, transitorios o uso de otras fuentes.
+La atenuación ADC no protege eléctricamente GPIO34.
 
-- [ESP32-WROOM-32: funciones de los pines](https://documentation.espressif.com/esp32-wroom-32_datasheet_en.html).
-- [Espressif: ADC1, ADC2 y limitaciones con WiFi](https://docs.espressif.com/projects/esp-idf/en/v4.4.8/esp32/api-reference/peripherals/adc.html).
-- [Aosong: manual AM2302, alimentación e interfaz](https://www.aosong.com/uploadfiles/2025/04/20250417105409216.pdf).
+La discrepancia antigua a 11 dB fue 196−120=76 mV, sin incertidumbres/desfase
+aportados. El nuevo contraste a **0 dB** es ADC=511 → **191 mV**, dentro del
+intervalo **170–200 mV** observado en GPIO34–GND. Se marca
+`adcConversionVerified=true` para este uso experimental puntual; esa evidencia
+sigue limitada a 170–200 mV. El guard operativo admite 100–950 mV inclusive.
+No se cuantifica precisión ni se declara calibración metrológica o validación
+en toda la escala. Los 100–950 mV de la
+[guía ADC de Espressif](https://docs.espressif.com/projects/esp-idf/en/v4.4.8/esp32/api-reference/peripherals/adc.html)
+son el rango operativo recomendado a 0 dB, no un rango contrastado en esta placa.
+Saturación/rango ADC y límite eléctrico del GPIO son condiciones distintas.
+
+La [evidencia REV3](../../docs/evidencias/t1-5/mq135-divisor-10k-rev3.md)
+recoge montaje, mediciones y pendientes. La configuración actual permite
+capturar referencia de tres muestras nuevas y después habilitar ppm
+provisionales con 400 ppm supuestos. No exige HU-08 ni usa datos simulados.
+El [entorno demo](mq135-simulated-demo.md) permanece separado y sin cambios.
+
+## Referencias
+
+- [ESP32-WROOM-32: pines y límites eléctricos](https://documentation.espressif.com/esp32-wroom-32_datasheet_en.html).
+- [Espressif: ADC y calibración](https://docs.espressif.com/projects/esp-idf/en/v4.4.8/esp32/api-reference/peripherals/adc.html).
 - [Winsen: manual MQ135](https://www.winsen-sensor.com/d/files/manual/mq135.pdf).

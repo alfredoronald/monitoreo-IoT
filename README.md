@@ -73,8 +73,10 @@ monitoreo-IoT/
 
    Completar en `include/config.h` el SSID, la contraseña WiFi y el host,
    puerto, usuario y contraseña del broker. Este archivo está excluido
-   por `.gitignore`. El arranque inicial solo imprime un mensaje serie;
-   la configuración se utilizará en las próximas tareas de conexión.
+   por `.gitignore`. Completar también el identificador MQTT único y los
+   intervalos/timeouts de la plantilla. El firmware conecta y reconecta WiFi
+   y MQTT mientras el DHT22 continúa adquiriendo muestras; consultar el
+   [procedimiento T-1.6](firmware/docs/wifi-mqtt-reconnect.md).
 
    Compilar desde `firmware/`:
 
@@ -95,7 +97,8 @@ monitoreo-IoT/
    ```
 
    Con el monitor abierto, pulsar **EN/RESET** en el ESP32 para observar
-   el mensaje `Firmware ESP32 iniciado`. Salir del monitor con `Ctrl+C`.
+   el mensaje `Firmware ESP32 iniciado`, la IP WiFi y la conexión MQTT.
+   Salir del monitor con `Ctrl+C`.
 
 ## Contrato de datos
 

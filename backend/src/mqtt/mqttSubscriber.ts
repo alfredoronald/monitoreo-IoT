@@ -1,7 +1,12 @@
 import mqtt from 'mqtt';
+import { insertReading } from '../db.js';
 import { validateMessage } from './messageValidator.js';
 
-export function startMqttSubscriber() {
+export interface ReadingRepository {
+  insertReading(reading: Parameters<typeof insertReading>[0]): Promise<void>;
+}
+
+export function startMqttSubscriber(repository: ReadingRepository = { insertReading }) {
   const { MQTT_URL, MQTT_USER, MQTT_PASS } = process.env;
   if (!MQTT_URL || !MQTT_USER || !MQTT_PASS) {
     throw new Error('Completa MQTT_URL, MQTT_USER y MQTT_PASS en backend/.env');
@@ -37,6 +42,10 @@ export function startMqttSubscriber() {
     }
 
     console.log(`[MQTT] Lectura válida: ${JSON.stringify(result.reading)}`);
+    void repository.insertReading(result.reading).catch((error: unknown) => {
+      const message = error instanceof Error ? error.message : String(error);
+      console.error('[DB] No se pudo guardar la lectura:', message);
+    });
   });
 
   client.on('reconnect', () => {

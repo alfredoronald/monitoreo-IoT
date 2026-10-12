@@ -1,5 +1,6 @@
 import { Pool } from 'pg';
 import { config } from './config.js';
+import type { Reading } from './mqtt/messageValidator.js';
 
 function validateDatabaseConfig() {
   const { host, port, database, user, password } = config.database;
@@ -35,4 +36,12 @@ export async function connectDatabase(): Promise<void> {
   } finally {
     client.release();
   }
+}
+
+export async function insertReading(reading: Reading): Promise<void> {
+  await pool.query(
+    `INSERT INTO lecturas (fecha_hora, tipo_variable, valor)
+     VALUES ($1, $2, $3)`,
+    [reading.fecha_hora, reading.tipo_variable, reading.valor],
+  );
 }

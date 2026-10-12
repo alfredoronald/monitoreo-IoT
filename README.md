@@ -313,6 +313,39 @@ La evidencia de #23 es este README en GitHub. Otra persona debe seguir los pasos
 1–6 desde una instalación nueva y confirmar en la PR el arranque, HTTP, recepción
 MQTT y reconexión sin ayuda. Las evidencias no deben mostrar contraseñas ni `.env`.
 
+### Log de mensajes MQTT (#21)
+
+El backend registra en `backend/logs/mqtt-messages.jsonl` cada mensaje
+recibido (`received`) y cada descarte (`discarded`). El archivo se crea
+al recibir el primer mensaje y se conserva entre ejecuciones: cada línea
+contiene un JSON con `timestamp`, `event`, `topic` y `content`.
+Los descartes incluyen también `reason`, tomado del validador de #20.
+Un mensaje inválido tiene un registro de recepción y otro de descarte.
+Un fallo al insertar una lectura válida es un error de base de datos,
+no un descarte del validador.
+
+Los mismos registros se muestran en consola. Los saltos de línea del
+contenido quedan escapados, para que un descarte ocupe una única línea.
+Se ocultan los valores secretos configurados en el entorno y las
+contraseñas identificadas en mensajes o URLs; no se vuelca `.env`.
+`backend/logs/` está ignorado por Git. Si no se puede escribir el archivo,
+se avisa en consola y se continúa procesando los mensajes.
+
+Para obtener la evidencia, levantar broker y backend como se indica arriba.
+Publicar como `esp32` un valor válido en `ambiente/temperatura`, un valor
+no numérico en `ambiente/humedad`, un mensaje en `ambiente/status` y otro
+en `ambiente/presion`. Revisar el archivo desde la raíz en Git Bash:
+
+```bash
+cat backend/logs/mqtt-messages.jsonl
+```
+
+Cada descarte debe mostrar el topic, contenido y motivo en la misma línea.
+Adjuntar el archivo de log a la PR como evidencia después de revisar que
+solo contiene los mensajes de prueba y ningún dato sensible.
+Las pruebas automatizadas usan archivos temporales fuera del repositorio:
+desde `backend/`, ejecutar `npm test`.
+
 ### Frontend y firmware
 
 - **Frontend:** desde `frontend/`, ejecutar `pnpm install` y `pnpm dev` (puerto 5173).

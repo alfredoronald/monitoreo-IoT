@@ -1,12 +1,16 @@
 import mqtt from 'mqtt';
 import { insertReading } from '../db.js';
 import { validateMessage } from './messageValidator.js';
+import { createMessageLogger, redactLogText } from './messageLogger.js';
 
 export interface ReadingRepository {
   insertReading(reading: Parameters<typeof insertReading>[0]): Promise<void>;
 }
 
-export function startMqttSubscriber(repository: ReadingRepository = { insertReading }) {
+export function startMqttSubscriber(
+  repository: ReadingRepository = { insertReading },
+  messageLogger = createMessageLogger(),
+) {
   const { MQTT_URL, MQTT_USER, MQTT_PASS } = process.env;
   if (!MQTT_URL || !MQTT_USER || !MQTT_PASS) {
     throw new Error('Completa MQTT_URL, MQTT_USER y MQTT_PASS en backend/.env');
@@ -34,17 +38,18 @@ export function startMqttSubscriber(repository: ReadingRepository = { insertRead
   });
 
   client.on('message', (topic, payload) => {
-    console.log(`[MQTT] ${topic}: ${payload.toString('utf8')}`);
-    const result = validateMessage(topic, payload.toString('utf8'));
+    const content = payload.toString('utf8');
+    messageLogger('received', topic, content);
+    const result = validateMessage(topic, content);
     if (!result.valid) {
-      console.log(`[MQTT] Descartado: ${result.reason}`);
+      messageLogger('discarded', topic, content, result.reason);
       return;
     }
 
-    console.log(`[MQTT] Lectura válida: ${JSON.stringify(result.reading)}`);
+    console.log(`[MQTT] Lectura válida: ${redactLogText(JSON.stringify(result.reading))}`);
     void repository.insertReading(result.reading).catch((error: unknown) => {
       const message = error instanceof Error ? error.message : String(error);
-      console.error('[DB] No se pudo guardar la lectura:', message);
+      console.error('[DB] No se pudo guardar la lectura:', redactLogText(message));
     });
   });
 
@@ -57,7 +62,7 @@ export function startMqttSubscriber(repository: ReadingRepository = { insertRead
   });
 
   client.on('error', (error) => {
-    console.error('[MQTT] Error de conexión:', error.message);
+    console.error('[MQTT] Error de conexión:', redactLogText(error.message));
   });
 
   return client;

@@ -346,6 +346,48 @@ solo contiene los mensajes de prueba y ningún dato sensible.
 Las pruebas automatizadas usan archivos temporales fuera del repositorio:
 desde `backend/`, ejecutar `npm test`.
 
+### Prueba de carga de 100 mensajes (#22)
+
+La prueba ejecuta `mosquitto_pub` 100 veces en un bucle, sin pausa entre
+envíos. Cada ejecución abre una conexión MQTT. Usa QoS **0** tanto en la
+publicación como en la suscripción actual del backend: no hay confirmación
+MQTT de entrega. Un comando que finaliza correctamente cuenta como enviado;
+la recepción se verifica por separado en el log.
+
+1. Levantar PostgreSQL, Mosquitto y **una sola instancia del backend**.
+   Detener el ESP32 y otros publicadores durante la medición.
+2. Comprobar que el backend muestra `Suscrito a ambiente/#` y que existe
+   `backend/logs/mqtt-messages.jsonl` (enviar un mensaje previo si falta).
+3. En otra terminal **Git Bash**, desde `backend/`, ejecutar:
+
+   ```bash
+   read -s -p "Contraseña MQTT de esp32: " MQTT_PUBLISH_PASS
+   export MQTT_PUBLISH_PASS
+   npm run test:load
+   unset MQTT_PUBLISH_PASS
+   ```
+
+El script toma la conexión PostgreSQL y la URL del broker de `backend/.env`.
+La contraseña de publicación corresponde a `esp32`, no al usuario `backend`.
+No se imprime ni se guarda en el repositorio. En Windows se busca
+`C:\Program Files\mosquitto\mosquitto_pub.exe`; para otra instalación,
+definir `MOSQUITTO_PUB_PATH` en esa terminal con la ruta del ejecutable.
+
+Se publican 100 valores sintéticos distintos en `ambiente/co2`, dentro de
+un rango que no contiene lecturas previas. **No son mediciones reales**:
+quedan guardados en la base local como datos de prueba. El script cuenta
+solo registros nuevos del log y filas nuevas de ese rango en PostgreSQL;
+no borra el historial. Espera hasta 15 segundos después del último envío
+para permitir que terminen las inserciones.
+
+La terminal imprime una tabla Markdown con enviados, recibidos, guardados,
+QoS y pérdidas, además de duplicados y el rango usado. Si una publicación
+falla, informa que la prueba quedó incompleta; no presenta 100 envíos como
+si hubieran ocurrido. Para la evidencia, copiar **la tabla real que imprime**
+en el PR y adjuntar una captura de esa terminal. No hace falta crear un
+documento adicional en el proyecto. Conservar también el log para revisar
+el detalle. Si hay pérdidas, anotarlas aunque el resultado no sea 100/100/100.
+
 ### Frontend y firmware
 
 - **Frontend:** desde `frontend/`, ejecutar `pnpm install` y `pnpm dev` (puerto 5173).

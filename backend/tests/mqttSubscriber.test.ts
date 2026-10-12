@@ -2,7 +2,11 @@ import assert from 'node:assert/strict';
 import { once } from 'node:events';
 import { createServer } from 'node:net';
 import test from 'node:test';
+import { mkdtempSync, readFileSync, rmSync, rmdirSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { startMqttSubscriber } from '../src/mqtt/mqttSubscriber.js';
+import { createMessageLogger } from '../src/mqtt/messageLogger.js';
 
 test('El suscriptor guarda cada lectura válida y continúa si falla una inserción', { timeout: 5000 }, async (context) => {
   // Broker mínimo de prueba: CONNECT, SUBSCRIBE y PUBLISH con QoS 0.
@@ -39,12 +43,16 @@ test('El suscriptor guarda cada lectura válida y continúa si falla una inserci
   const insertedReadings: Array<{ tipo_variable: string; valor: number; fecha_hora: string }> = [];
   const insertions: Promise<void>[] = [];
   const previousEnvironment = { ...process.env };
+  const logDirectory = mkdtempSync(join(tmpdir(), 'mqtt-log-test-'));
+  const logPath = join(logDirectory, 'messages.jsonl');
   process.env.MQTT_URL = `mqtt://127.0.0.1:${address.port}`;
   process.env.MQTT_USER = 'backend';
   process.env.MQTT_PASS = 'test-only';
   context.after(() => {
     process.env = previousEnvironment;
     broker.close();
+    rmSync(logPath, { force: true });
+    rmdirSync(logDirectory);
   });
   context.mock.method(console, 'log', (message: string) => output.push(message));
   context.mock.method(console, 'error', (message: string, detail: string) => errors.push(`${message} ${detail}`));
@@ -58,7 +66,7 @@ test('El suscriptor guarda cada lectura válida y continúa si falla una inserci
       insertions.push(insertion);
       return insertion;
     },
-  });
+  }, createMessageLogger(logPath));
   context.after(() => client.end(true));
   await new Promise<void>((resolve) => {
     let received = 0;
@@ -82,4 +90,12 @@ test('El suscriptor guarda cada lectura válida y continúa si falla una inserci
   assert.equal(errors.length, 1);
   assert.match(errors[0], /fallo simulado/);
   assert.equal(output.filter((line) => line.startsWith('[MQTT] Descartado: ')).length, 3);
+  const records = readFileSync(logPath, 'utf8').trim().split('\n').map((line) => JSON.parse(line));
+  assert.equal(records.filter((record) => record.event === 'received').length, 5);
+  const discarded = records.filter((record) => record.event === 'discarded');
+  assert.deepEqual(discarded.map(({ topic, content, reason }) => ({ topic, content, reason })), [
+    { topic: 'ambiente/humedad', content: 'abc', reason: 'El contenido no es numérico' },
+    { topic: 'ambiente/status', content: '1', reason: 'El mensaje de estado no es una lectura' },
+    { topic: 'ambiente/presion', content: '1013', reason: 'Topic de lectura desconocido' },
+  ]);
 });

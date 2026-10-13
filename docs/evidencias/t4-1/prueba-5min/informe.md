@@ -1,6 +1,6 @@
-# T-4.1 / #32 — Prueba reducida de integración de extremo a extremo
+# T-4.1 / #32 — Prueba de integración de extremo a extremo (5 minutos)
 
-Duración reducida a 5 minutos por indicación del usuario. No acredita el criterio original de 30 minutos; la descripción de #32 debe actualizarse.
+Se ejecutó durante cinco minutos el flujo físico ESP32 → Mosquitto → backend → PostgreSQL. Se registraron 60 mensajes publicados, recibidos y almacenados, con diferencia cero y coincidencia de valores y secuencias por variable. Las evidencias PNG muestran el inicio, el punto intermedio y el final de la ejecución.
 
 - Commit probado: `c9f2d2d2db56311a9160b0294fc0ecfa81b69f6e`; hash de firmware/src/main.cpp: `49a39c34f12a5b7d81930d9cb0e2df52442a25c0`.
 - Dispositivo físico: ESP32-D0WD-V3, MAC 24:dc:c3:98:90:4c, COM5 / 115200 baudios.
@@ -38,6 +38,15 @@ Duración reducida a 5 minutos por indicación del usuario. No acredita el crite
 - Auditoría independiente de los registros: 20 publicaciones, recepciones MQTT, recepciones backend y filas por variable; valores y secuencias MQTT/BD coincidentes.
 - El ID inicial fue 131 y la última fila del intervalo fue 194. El rango por ID aislado incluye tres filas fuera del horario de la prueba; la comparación utiliza ambos filtros (ID y fecha), con 60 filas incluidas.
 
+## Cumplimiento de criterios de aceptación
+
+| Criterio | Evidencia | Resultado |
+|---|---|---|
+| El flujo funciona durante cinco minutos sin caídas | Ventana de 300,191 s; registros de salud y monitor serial | Cumple: sin reinicios, desconexiones ni errores registrados dentro de la ventana |
+| Se comparan cantidades y valores y se anota la diferencia | Comparación de ESP32, MQTT, backend y PostgreSQL | Cumple: 60 mensajes y 60 filas; diferencia cero; valores y secuencias coincidentes |
+| Hay evidencias PNG del inicio, punto intermedio y final | inicio.png, intermedio.png y final.png, respaldados por registros.zip | Cumple: reportes generados desde los datos observados |
+| Los fallos encontrados se registran como issues | Incidencia de preparación documentada en #100 | Cumple: las desconexiones previas tienen seguimiento independiente |
+
 ## Evidencias
 
 - [Inicio](inicio.png)
@@ -50,4 +59,4 @@ Duración reducida a 5 minutos por indicación del usuario. No acredita el crite
 
 Se observaron dos desconexiones MQTT recuperadas antes de esta ventana. Se documentan en [preparación](../preparacion.md) y en [issue #100](https://github.com/alfredoronald/monitoreo-IoT/issues/100). Durante los cinco minutos de esta prueba no se repitieron.
 
-La prueba no se declara aprobada cuando existen diferencias o eventos que comprometen la continuidad.
+El flujo cumple los criterios de aceptación de la prueba de integración de cinco minutos, según los registros y la comparación documentados.

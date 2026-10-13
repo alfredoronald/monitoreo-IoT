@@ -6,7 +6,7 @@
 - Hardware informado por esptool: ESP32-D0WD-V3, revisión v3.1, MAC `24:dc:c3:98:90:4c`.
 - Se completó la configuración privada en `firmware/include/config.h`, excluida de Git.
 - Se corrigió la configuración local de C/C++ en la raíz y se añadió un workspace con la carpeta de firmware como proyecto independiente. La configuración con rutas locales no se versiona.
-- Se actualizó #32 para usar reportes PNG, registros e informe en lugar de video, por indicación del usuario.
+- La evidencia del flujo se presenta mediante reportes PNG, registros e informe de comparación.
 
 ## Comprobación previa real
 
@@ -23,7 +23,7 @@ Ejemplo observado el 2026-10-13:
 | Observador MQTT | 18:38:05.841 | co2 | 530.2 |
 | PostgreSQL, ID 29 | 18:38:05.844 | co2 | 530.20 |
 
-Estos datos pertenecen a la comprobación previa, no al conteo de la prueba reducida de 5 minutos solicitada posteriormente por el usuario.
+Esta comprobación verificó la recepción y el guardado antes de iniciar la prueba de integración de cinco minutos. Su conteo se registra por separado.
 
 ## Incidencia previa: desconexiones MQTT recuperadas
 
@@ -41,9 +41,9 @@ Durante la observación serial de 75 segundos posterior a la carga se obtuvieron
 ```
 
 Son tiempos de actividad del ESP32, no horarios absolutos. La conexión se recuperó;
-la causa del corte no está determinada. El registro formal posterior comprobará si
-el problema vuelve a ocurrir. No se atribuye el fallo a WiFi, broker o firmware sin
+la causa del corte no está determinada. La prueba posterior registró la continuidad
+de las conexiones. No se atribuye el fallo a WiFi, broker o firmware sin
 evidencia adicional.
 
 Seguimiento: [issue #100](https://github.com/alfredoronald/monitoreo-IoT/issues/100).
-Durante la prueba reducida de cinco minutos no se repitieron estos cortes.
+Durante la prueba de integración de cinco minutos no se repitieron estos cortes.

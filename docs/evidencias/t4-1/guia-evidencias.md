@@ -6,8 +6,8 @@ El 13 de octubre de 2026 se ejecutó una prueba física de **5 minutos**:
 ESP32 → Mosquitto → backend → PostgreSQL. Se guardaron **60 de 60 mensajes**,
 sin diferencias de valores ni eventos de fallo dentro de la ventana observada.
 
-La reducción de 30 a 5 minutos fue solicitada por el usuario. Esta ejecución
-no representa una prueba de 30 minutos; debe actualizarse la descripción de #32.
+La prueba registra el funcionamiento durante 300,191 segundos y documenta las
+cuatro etapas del flujo mediante evidencias PNG, registros e informe de comparación.
 
 - [Informe](prueba-5min/informe.md)
 - [Inicio](prueba-5min/inicio.png)

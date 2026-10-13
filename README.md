@@ -50,59 +50,348 @@ monitoreo-IoT/
 
 ## Cómo levantar cada parte
 
-> Próximos pasos: los archivos de configuración y código se agregan en la
-> task de implementación.
+### 1. Requisitos y preparación (Windows / PowerShell)
 
-1. **Base de datos** — crear la base `monitoreo_ambiental` y el usuario de
-   la app; después ejecutar el script de `database/` con DBeaver o `psql`.
-2. **Broker MQTT** — instalar Mosquitto 2.x y levantarlo con la
-   configuración del repositorio:
+Este recorrido usa **Windows / PowerShell, sin Docker**. No hace falta un ESP32;
+los bloques indican desde qué carpeta y consola ejecutar los comandos.
+
+Instalar Git y Node.js LTS (22 o 24) con `winget`, disponible mediante
+**Instalador de aplicación** de Microsoft Store:
+
+```powershell
+winget install --id Git.Git -e
+winget install --id OpenJS.NodeJS.LTS -e
+```
+
+Cerrar y abrir PowerShell para cargar el PATH actualizado. Instalar pnpm 10
+(compatible con `backend/pnpm-lock.yaml`) y comprobar las herramientas:
+
+```powershell
+npm install --global pnpm@10
+git --version
+node --version
+pnpm --version
+```
+
+Desde la carpeta donde se guardará el proyecto:
+
+```powershell
+git clone https://github.com/alfredoronald/monitoreo-IoT.git
+Set-Location monitoreo-IoT
+git switch feature/backend-mqtt-api
+git pull --ff-only origin feature/backend-mqtt-api
+```
+
+Si ya existe una copia, actualizarla desde su raíz con los dos últimos comandos,
+conservando el trabajo local. Para contribuir, seguir [CONTRIBUTING.md](docs/CONTRIBUTING.md)
+y crear una rama de tarea desde esa base actualizada.
+
+### 2. Preparar PostgreSQL
+
+El backend requiere PostgreSQL para abrir el puerto HTTP. Instalarlo con el
+[instalador para Windows](https://www.postgresql.org/download/windows/), conservar
+el puerto **5432** y definir la contraseña de `postgres`. En `services.msc`, iniciar
+`postgresql-x64-<versión>`. Más detalles y DBeaver: [guía de PostgreSQL](infra/postgres/README.md).
+
+Desde la **raíz del repositorio**, agregar `psql` al PATH de esta consola
+(cambiar `18` si se instaló otra versión) y crear la base y el rol `app`:
+
+```powershell
+$env:Path += ";C:\Program Files\PostgreSQL\18\bin"
+psql --version
+psql -U postgres -h localhost -d postgres -f infra/postgres/01_instalar_db.sql
+psql -U postgres -h localhost -d postgres
+```
+
+Introducir la contraseña de `postgres`. En `psql`, asignar la de `app` y salir:
+
+```text
+\password app
+\q
+```
+
+`\password` solicita y confirma la contraseña. De nuevo en PowerShell, cargar
+el esquema **como `app`**, para que las tablas sean suyas:
+
+```powershell
+psql -U app -h localhost -d monitoreo_ambiental -f database/esquema.sql
+psql -U app -h localhost -d monitoreo_ambiental -c "SELECT current_user, current_database();"
+```
+
+La consulta debe devolver `app` y `monitoreo_ambiental` tras introducir la contraseña
+de `app`. Si la base ya existía, `database already exists` es esperado; conservarla.
+
+### 3. Instalar y configurar Mosquitto 2.x
+
+```powershell
+winget install --id EclipseFoundation.Mosquitto -e
+& "C:\Program Files\mosquitto\mosquitto.exe" -h
+```
+
+La ayuda debe mostrar la versión 2.x. Se usa la ruta completa porque Mosquitto
+puede no estar en el PATH; reemplazarla si se eligió otra carpeta de instalación.
+
+El servicio de Windows usa su propia configuración y puede ocupar el puerto
+1883. En una **PowerShell como administrador**, detenerlo y dejarlo en manual:
+
+```powershell
+if (Get-Service -Name mosquitto -ErrorAction SilentlyContinue) {
+    Stop-Service -Name mosquitto
+    Set-Service -Name mosquitto -StartupType Manual
+}
+```
+
+Volver a la consola normal, en la **raíz del repositorio**, y crear los usuarios:
+
+```powershell
+if (-not (Test-Path -LiteralPath infra/mosquitto/passwd)) {
+    & "C:\Program Files\mosquitto\mosquitto_passwd.exe" -c infra/mosquitto/passwd esp32
+} else {
+    & "C:\Program Files\mosquitto\mosquitto_passwd.exe" infra/mosquitto/passwd esp32
+}
+& "C:\Program Files\mosquitto\mosquitto_passwd.exe" infra/mosquitto/passwd backend
+New-Item -ItemType Directory -Force -Path infra/mosquitto/data | Out-Null
+```
+
+Cada comando solicita y confirma una contraseña: guardar la de `esp32` para
+publicar y la de `backend` para `MQTT_PASS`. **`-c` sobrescribe el archivo completo**:
+usarlo solo al crearlo. Sin `-c`, agrega o actualiza un usuario. `passwd.example`
+solo ilustra el formato; cada integrante genera su `passwd`, ignorado por Git.
+
+La configuración [mosquitto.conf](infra/mosquitto/mosquitto.conf) escucha en **1883**,
+deshabilita conexiones anónimas y usa [acl](infra/mosquitto/acl):
+
+| Usuario MQTT | Permiso |
+|---|---|
+| `esp32` | Publicar en `ambiente/#` |
+| `backend` | Leer y suscribirse a `ambiente/#` |
+
+### 4. Configurar el entorno del backend
+
+Desde la **raíz**, copiar la plantilla solo si aún no existe el archivo local:
+
+```powershell
+if (-not (Test-Path -LiteralPath backend/.env)) {
+    Copy-Item -LiteralPath .env.example -Destination backend/.env
+}
+notepad backend/.env
+```
+
+Completar y guardar las variables de [`.env.example`](.env.example):
+
+| Variable | Valor local / propósito | Requisito |
+|---|---|---|
+| `PG_HOST` | `localhost`, servidor PostgreSQL | Obligatoria |
+| `PG_PORT` | `5432`, puerto PostgreSQL | Predeterminado: `5432` |
+| `PG_DB` | `monitoreo_ambiental` | Obligatoria |
+| `PG_USER` | `app`, rol dueño de las tablas | Obligatoria |
+| `PG_PASS` | Contraseña del rol PostgreSQL `app` | Obligatoria |
+| `MQTT_URL` | `mqtt://localhost:1883` | Obligatoria |
+| `MQTT_USER` | `backend`, usuario creado con `mosquitto_passwd` | Obligatoria |
+| `MQTT_PASS` | Contraseña MQTT del usuario `backend` | Obligatoria |
+| `API_PORT` | `3000`, puerto HTTP | Predeterminado: `3000` |
+| `CORS_ORIGIN` | `http://localhost:5173`, origen del frontend | Tiene ese valor predeterminado |
+| `API_KEY` | Vacía; prevista para el Sprint 3 | No condiciona el arranque actual |
+
+`PG_PASS` y `MQTT_PASS` son de servicios distintos. Guardarlas solo en `backend/.env`;
+si contienen `#`, envolver el valor en comillas dobles para evitar comentarios
+de dotenv. El código usa `PG_*`; no lee las variables `SUPABASE_*` de la plantilla.
+
+Instalar las dependencias desde `backend/`, respetando el archivo de bloqueo:
+
+```powershell
+Set-Location backend
+pnpm install --frozen-lockfile
+```
+
+### 5. Levantar y comprobar los servicios
+
+Mantener PostgreSQL iniciado y abrir **tres terminales PowerShell** en la raíz
+del repositorio (en el explorador, abrir la carpeta y elegir «Abrir en Terminal»).
+
+**Terminal 1 — broker:** iniciar con la configuración del repositorio, desde
+la raíz; las rutas del archivo son relativas a esa carpeta:
+
+```powershell
+& "C:\Program Files\mosquitto\mosquitto.exe" -c infra/mosquitto/mosquitto.conf -v
+```
+
+Debe informar que abre el puerto **1883**. Mantener esta terminal abierta.
+
+**Terminal 2 — backend:**
+
+```powershell
+Set-Location backend
+pnpm dev
+```
+
+El modo de desarrollo reinicia al cambiar código. Debe mostrar (en cualquier orden):
+
+```text
+Conexión PostgreSQL establecida en localhost:5432/monitoreo_ambiental
+Servidor de monitoreo ambiental disponible en http://localhost:3000
+[MQTT] Conectado al broker
+[MQTT] Suscrito a ambiente/#
+```
+
+**Terminal 3 — comprobación HTTP y publicación MQTT:**
+
+```powershell
+Invoke-RestMethod -Uri http://localhost:3000/ | ConvertTo-Json -Compress
+```
+
+Debe responder HTTP 200 con:
+
+```json
+{"status":"ok","message":"Servidor de monitoreo ambiental activo"}
+```
+
+Esta ruta comprueba Express; las rutas `/api/lecturas`, `/api/lecturas/ultima`
+y `/api/salud` se implementarán en sus tareas respectivas.
+
+Publicar con la contraseña de **`esp32`**, solicitándola sin mostrarla al escribir:
+
+```powershell
+$mqttSecret = Read-Host 'Contraseña MQTT de esp32' -AsSecureString
+$mqttPassword = [System.Net.NetworkCredential]::new('', $mqttSecret).Password
+try {
+    & "C:\Program Files\mosquitto\mosquitto_pub.exe" -h localhost -p 1883 -u esp32 -P "$mqttPassword" -t ambiente/temperatura -m '25.0'
+    & "C:\Program Files\mosquitto\mosquitto_pub.exe" -h localhost -p 1883 -u esp32 -P "$mqttPassword" -t ambiente/humedad -m '55'
+    & "C:\Program Files\mosquitto\mosquitto_pub.exe" -h localhost -p 1883 -u esp32 -P "$mqttPassword" -t ambiente/co2 -m '700'
+} finally {
+    Remove-Variable mqttPassword, mqttSecret
+}
+```
+
+En la **terminal 2** deben aparecer:
+
+```text
+[MQTT] ambiente/temperatura: 25.0
+[MQTT] ambiente/humedad: 55
+[MQTT] ambiente/co2: 700
+```
+
+Para probar reconexión, detener **solo el broker** con `Ctrl+C` en la terminal 1.
+El backend debe seguir activo e intentar reconectar cada **2 segundos**.
+Repetir el comando de arranque del broker en esa terminal: el backend debe
+volver a conectar y suscribirse sin reiniciarlo. Repetir el bloque de publicación
+en la terminal 3 y comprobar de nuevo la recepción.
+
+Finalizar con `Ctrl+C` en el backend y el broker. En los próximos arranques,
+comprobar PostgreSQL e iniciar ambos sin recrear usuarios ni copiar `.env`.
+
+### 6. Comprobar tipos y ejecutar la compilación
+
+Con el broker y PostgreSQL activos, detener `pnpm dev` para liberar el puerto
+HTTP y ejecutar **dentro de `backend/`**:
+
+```powershell
+pnpm typecheck
+pnpm build
+pnpm start
+```
+
+`typecheck` y `build` deben terminar sin errores. `build` genera `dist/`; `start`
+ejecuta `dist/index.js`. Repetir las comprobaciones del paso 5 y terminar con `Ctrl+C`.
+
+### 7. Problemas frecuentes
+
+| Síntoma | Solución |
+|---|---|
+| `node`, `pnpm` o `psql` no se reconoce | Abrir una consola nueva tras instalar. Para `psql`, agregar la carpeta `bin` de la versión instalada al PATH como en el paso 2. |
+| PowerShell bloquea `npm.ps1` o `pnpm.ps1` | Usar `npm.cmd` o `pnpm.cmd` en los mismos comandos. |
+| Mosquitto no se encuentra | Usar la ruta completa entre comillas y el operador `&`; comprobar su carpeta de instalación. |
+| Mosquitto no puede abrir `passwd`, `acl` o guardar persistencia | Ejecutarlo desde la raíz, crear los usuarios y la carpeta `infra/mosquitto/data`, y comprobar permisos sobre ella. |
+| El puerto 1883 ya está en uso | Detener el servicio Mosquitto como administrador o cerrar otra instancia del broker antes de iniciar la del repositorio. |
+| MQTT informa `Not authorized` o no llegan mensajes | Revisar que `MQTT_PASS` corresponde a `backend` y la publicación usa `esp32`. Confirmar los nombres del ACL y reiniciar el broker tras cambiar usuarios. |
+| Faltan variables o falla la conexión PostgreSQL | Completar `PG_*` en `backend/.env`, comprobar el servicio y repetir la consulta del paso 2 con el rol `app`. Reiniciar `pnpm dev` tras editar `.env`. |
+| `EADDRINUSE` en el backend | Detener el otro backend antes de iniciar `pnpm start`, o cambiar `API_PORT` y usar ese puerto en la consulta HTTP. |
+
+### 8. Revisión y evidencia de #23
+
+La evidencia de #23 es este README en GitHub. Otra persona debe seguir los pasos
+1–6 desde una instalación nueva y confirmar en la PR el arranque, HTTP, recepción
+MQTT y reconexión sin ayuda. Las evidencias no deben mostrar contraseñas ni `.env`.
+
+### Log de mensajes MQTT (#21)
+
+El backend registra en `backend/logs/mqtt-messages.jsonl` cada mensaje
+recibido (`received`) y cada descarte (`discarded`). El archivo se crea
+al recibir el primer mensaje y se conserva entre ejecuciones: cada línea
+contiene un JSON con `timestamp`, `event`, `topic` y `content`.
+Los descartes incluyen también `reason`, tomado del validador de #20.
+Un mensaje inválido tiene un registro de recepción y otro de descarte.
+Un fallo al insertar una lectura válida es un error de base de datos,
+no un descarte del validador.
+
+Los mismos registros se muestran en consola. Los saltos de línea del
+contenido quedan escapados, para que un descarte ocupe una única línea.
+Se ocultan los valores secretos configurados en el entorno y las
+contraseñas identificadas en mensajes o URLs; no se vuelca `.env`.
+`backend/logs/` está ignorado por Git. Si no se puede escribir el archivo,
+se avisa en consola y se continúa procesando los mensajes.
+
+Para obtener la evidencia, levantar broker y backend como se indica arriba.
+Publicar como `esp32` un valor válido en `ambiente/temperatura`, un valor
+no numérico en `ambiente/humedad`, un mensaje en `ambiente/status` y otro
+en `ambiente/presion`. Revisar el archivo desde la raíz en Git Bash:
+
+```bash
+cat backend/logs/mqtt-messages.jsonl
+```
+
+Cada descarte debe mostrar el topic, contenido y motivo en la misma línea.
+Adjuntar el archivo de log a la PR como evidencia después de revisar que
+solo contiene los mensajes de prueba y ningún dato sensible.
+Las pruebas automatizadas usan archivos temporales fuera del repositorio:
+desde `backend/`, ejecutar `npm test`.
+
+### Prueba de carga de 100 mensajes (#22)
+
+La prueba ejecuta `mosquitto_pub` 100 veces en un bucle, sin pausa entre
+envíos. Cada ejecución abre una conexión MQTT. Usa QoS **0** tanto en la
+publicación como en la suscripción actual del backend: no hay confirmación
+MQTT de entrega. Un comando que finaliza correctamente cuenta como enviado;
+la recepción se verifica por separado en el log.
+
+1. Levantar PostgreSQL, Mosquitto y **una sola instancia del backend**.
+   Detener el ESP32 y otros publicadores durante la medición.
+2. Comprobar que el backend muestra `Suscrito a ambiente/#` y que existe
+   `backend/logs/mqtt-messages.jsonl` (enviar un mensaje previo si falta).
+3. En otra terminal **Git Bash**, desde `backend/`, ejecutar:
 
    ```bash
-   winget install --id EclipseFoundation.Mosquitto -e
+   read -s -p "Contraseña MQTT de esp32: " MQTT_PUBLISH_PASS
+   export MQTT_PUBLISH_PASS
+   npm run test:load
+   unset MQTT_PUBLISH_PASS
    ```
 
-   El instalador no agrega `C:\Program Files\mosquitto` al `PATH`. En la
-   consola abierta se recarga sin reiniciar (PowerShell):
+El script toma la conexión PostgreSQL y la URL del broker de `backend/.env`.
+La contraseña de publicación corresponde a `esp32`, no al usuario `backend`.
+No se imprime ni se guarda en el repositorio. En Windows se busca
+`C:\Program Files\mosquitto\mosquitto_pub.exe`; para otra instalación,
+definir `MOSQUITTO_PUB_PATH` en esa terminal con la ruta del ejecutable.
 
-   ```powershell
-   $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-   ```
+Se publican 100 valores sintéticos distintos en `ambiente/co2`, dentro de
+un rango que no contiene lecturas previas. **No son mediciones reales**:
+quedan guardados en la base local como datos de prueba. El script cuenta
+solo registros nuevos del log y filas nuevas de ese rango en PostgreSQL;
+no borra el historial. Espera hasta 15 segundos después del último envío
+para permitir que terminen las inserciones.
 
-   El servicio automático de Windows arranca con la configuración por
-   defecto y ocuparía el puerto 1883; se detiene y se deja en manual
-   (PowerShell):
+La terminal imprime una tabla Markdown con enviados, recibidos, guardados,
+QoS y pérdidas, además de duplicados y el rango usado. Si una publicación
+falla, informa que la prueba quedó incompleta; no presenta 100 envíos como
+si hubieran ocurrido. Para la evidencia, copiar **la tabla real que imprime**
+en el PR y adjuntar una captura de esa terminal. No hace falta crear un
+documento adicional en el proyecto. Conservar también el log para revisar
+el detalle. Si hay pérdidas, anotarlas aunque el resultado no sea 100/100/100.
 
-   ```powershell
-   Stop-Service -Name mosquitto
-   Set-Service -Name mosquitto -StartupType Manual
-   ```
+### Frontend y firmware
 
-   Crear los usuarios locales (`infra/mosquitto/passwd` **no** se
-   versiona, cada quien usa sus propias credenciales; el repo trae
-   `infra/mosquitto/passwd.example` con hashes de ejemplo del formato):
-
-   ```bash
-   mosquitto_passwd -c -b infra/mosquitto/passwd esp32 <contraseña>
-   mosquitto_passwd -b infra/mosquitto/passwd backend <contraseña>
-   ```
-
-   Levantar el broker **desde la raíz del repo** (las rutas de
-   `mosquitto.conf` son relativas a la raíz):
-
-   ```bash
-   mosquitto -c infra/mosquitto/mosquitto.conf -v
-   ```
-
-   Sin usuarios no hay conexión: desde la versión 2.0, al definir un
-   `listener` el broker deja de aceptar clientes anónimos, y con
-   `allow_anonymous false` más `password_file` y `acl_file` cada cliente
-   necesita sus credenciales y solo puede tocar los topics del ACL
-   (`esp32` publica en `ambiente/#`, `backend` solo lee).
-3. **Backend** — `pnpm install`, completar `backend/.env` (copiado de
-   `.env.example`) y `pnpm dev` (puerto 3000).
-4. **Frontend** — `pnpm dev` (puerto 5173, con proxy de `/api` al backend).
-5. **Firmware** — en VS Code con PlatformIO IDE, abrir PlatformIO Home,
+- **Frontend:** desde `frontend/`, ejecutar `pnpm install` y `pnpm dev` (puerto 5173).
+- **Firmware:** en VS Code con PlatformIO IDE, abrir PlatformIO Home,
    elegir **Open Project** y seleccionar la carpeta `firmware/`, donde
    está `platformio.ini`. Abrir una terminal de PlatformIO en esa carpeta.
 

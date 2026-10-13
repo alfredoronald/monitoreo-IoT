@@ -1,21 +1,7 @@
--- =====================================================================
--- Monitoreo IoT de Calidad Ambiental · Grupo 22 · Esquema del proyecto completo
--- Para ejecutar en DBeaver sobre una conexión PostgreSQL.
---
---   Sprint 1 (HU-01 a HU-03)  lecturas, pruebas_transmision
---   Sprint 2 (HU-04 a HU-06)  umbrales, alertas, vistas para la API y el dashboard
---   Sprint 3 (HU-07 a HU-09)  calibraciones (HU-08), pruebas_transmision (HU-09)
---
--- HU-07 (clave de la API) no necesita tabla: API_KEY va en el .env del backend.
--- Se puede ejecutar más de una vez sin errores (IF NOT EXISTS / OR REPLACE).
--- =====================================================================
+-- Esquema completo para PostgreSQL 15+: tablas, índices, vistas y RLS.
+-- No recrea tablas existentes; actualiza las vistas.
 
-
--- =====================================================================
--- SPRINT 1 · LECTURAS (HU-03)
--- Una fila por cada mensaje MQTT válido que guarda el backend.
--- Campos del plan: id, fecha_hora, tipo_variable, valor.
--- =====================================================================
+-- Una fila por lectura MQTT válida.
 CREATE TABLE IF NOT EXISTS lecturas (
     id             BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     fecha_hora     TIMESTAMPTZ  NOT NULL DEFAULT now(),   -- guarda zona horaria
@@ -27,19 +13,15 @@ CREATE TABLE IF NOT EXISTS lecturas (
         CHECK (tipo_variable <> 'humedad' OR valor BETWEEN 0 AND 100)
 );
 
--- CA 3 de HU-03: consultas por rango de fechas rápidas
+-- Búsquedas por fecha.
 CREATE INDEX IF NOT EXISTS idx_lecturas_fecha_hora
     ON lecturas (fecha_hora);
--- Para GET /api/lecturas?variable=&desde=&hasta= y "última lectura por variable"
+-- Búsquedas por variable y fecha.
 CREATE INDEX IF NOT EXISTS idx_lecturas_variable_fecha
     ON lecturas (tipo_variable, fecha_hora DESC);
 
 
--- =====================================================================
--- SPRINT 1 y 3 · PRUEBAS_TRANSMISION (T-1.8, T-2.8, T-4.1 y HU-09)
--- Guarda las tablas "enviados / recibidos / guardados" de cada prueba,
--- para citarlas en el informe sin buscar capturas sueltas.
--- =====================================================================
+-- Resultados de pruebas: mensajes enviados, recibidos y guardados.
 CREATE TABLE IF NOT EXISTS pruebas_transmision (
     id             INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     fecha_hora     TIMESTAMPTZ  NOT NULL DEFAULT now(),
@@ -60,12 +42,7 @@ CREATE TABLE IF NOT EXISTS pruebas_transmision (
 );
 
 
--- =====================================================================
--- SPRINT 2 · UMBRALES (HU-06)
--- Rangos que definen el estado del aire. Cada fila indica desde qué valor
--- empieza un nivel; el nivel vigente es el de mayor valor_desde que no
--- supere la lectura. Se editan sin tocar el código.
--- =====================================================================
+-- Cada nivel comienza en valor_desde; se aplica el mayor que no supere la lectura.
 CREATE TABLE IF NOT EXISTS umbrales (
     id             INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     tipo_variable  VARCHAR(20) NOT NULL,
@@ -80,7 +57,7 @@ CREATE TABLE IF NOT EXISTS umbrales (
     CONSTRAINT uq_umbrales_variable_nivel UNIQUE (tipo_variable, nivel)
 );
 
--- Valores iniciales PROVISIONALES para CO2 (se ajustan tras la calibración de HU-08)
+-- Umbrales provisionales de CO2, pendientes de calibración.
 INSERT INTO umbrales (tipo_variable, nivel, valor_desde, etiqueta, recomendacion) VALUES
     ('co2', 'bueno',       0, 'Aire bueno',     'No hace falta ventilar.'),
     ('co2', 'moderado',  800, 'Aire moderado',  'Conviene ventilar pronto.'),
@@ -88,10 +65,7 @@ INSERT INTO umbrales (tipo_variable, nivel, valor_desde, etiqueta, recomendacion
 ON CONFLICT (tipo_variable, nivel) DO NOTHING;
 
 
--- =====================================================================
--- SPRINT 2 · ALERTAS (HU-06)
--- Se genera una fila cuando una lectura entra en un nivel "moderado" o "malo".
--- =====================================================================
+-- Alertas asociadas a lecturas y umbrales.
 CREATE TABLE IF NOT EXISTS alertas (
     id          BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     lectura_id  BIGINT      NOT NULL REFERENCES lecturas(id) ON DELETE CASCADE,
@@ -107,11 +81,7 @@ CREATE INDEX IF NOT EXISTS idx_alertas_pendientes
     ON alertas (fecha_hora DESC) WHERE atendida = false;
 
 
--- =====================================================================
--- SPRINT 3 · CALIBRACIONES (HU-08)
--- Historial de calibraciones del MQ-135. Solo una puede estar vigente;
--- el backend o el firmware toman el Ro de esa fila.
--- =====================================================================
+-- Historial de calibraciones del MQ-135.
 CREATE TABLE IF NOT EXISTS calibraciones (
     id                       INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     sensor                   VARCHAR(20)  NOT NULL DEFAULT 'MQ-135',
@@ -129,10 +99,7 @@ CREATE UNIQUE INDEX IF NOT EXISTS uq_calibracion_vigente
     ON calibraciones (sensor) WHERE vigente;
 
 
--- =====================================================================
--- SPRINT 2 · VISTAS PARA LA API Y EL DASHBOARD (HU-04, HU-05, HU-06)
--- security_invoker: válido en PostgreSQL 15+ (no es exclusivo de Supabase).
--- =====================================================================
+-- Vistas para el dashboard; usan los permisos del usuario que consulta.
 CREATE OR REPLACE VIEW v_ultima_lectura
 WITH (security_invoker = true) AS
 SELECT DISTINCT ON (tipo_variable)
@@ -155,15 +122,7 @@ JOIN LATERAL (
 ) u ON true;
 
 
--- =====================================================================
--- SEGURIDAD (RLS): opcional para uso local en DBeaver.
--- Row Level Security no bloquea al dueño de las tablas (el usuario con el
--- que te conectas normalmente desde DBeaver), así que puedes dejar esto
--- activado sin que te impida leer/escribir en desarrollo local. Tiene
--- sentido real cuando expongas la base a través de la API pública de
--- Supabase (rol "anon") — ahí sí necesitarás políticas explícitas.
--- Si prefieres omitirlo por ahora, comenta este bloque.
--- =====================================================================
+-- RLS: el dueño normalmente la omite; otros roles requieren políticas explícitas.
 ALTER TABLE lecturas             ENABLE ROW LEVEL SECURITY;
 ALTER TABLE pruebas_transmision  ENABLE ROW LEVEL SECURITY;
 ALTER TABLE umbrales             ENABLE ROW LEVEL SECURITY;
@@ -171,11 +130,7 @@ ALTER TABLE alertas              ENABLE ROW LEVEL SECURITY;
 ALTER TABLE calibraciones        ENABLE ROW LEVEL SECURITY;
 
 
--- =====================================================================
--- OPCIONAL · T-3.3 Datos de prueba (240 lecturas por variable, cada 15 s)
--- Descomentar para usarlo. Antes de las pruebas reales, vacía la tabla con:
---   TRUNCATE lecturas RESTART IDENTITY CASCADE;
--- =====================================================================
+-- Datos sintéticos opcionales: 240 lecturas por variable, separadas por 15 s.
 -- INSERT INTO lecturas (fecha_hora, tipo_variable, valor)
 -- SELECT now() - (g * interval '15 seconds'),
 --        v.nombre,
@@ -188,8 +143,6 @@ ALTER TABLE calibraciones        ENABLE ROW LEVEL SECURITY;
 -- ) AS v(nombre, base, amplitud);
 
 
--- =====================================================================
--- VERIFICACIÓN: deben salir las 5 tablas y las 2 vistas
--- =====================================================================
+-- Verificación opcional: cinco tablas y dos vistas del proyecto.
 -- SELECT table_name, table_type FROM information_schema.tables
 -- WHERE table_schema = 'public' ORDER BY table_type, table_name;

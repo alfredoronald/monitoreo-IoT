@@ -21,6 +21,10 @@ ORDER BY tipo_variable, fecha_hora DESC, id DESC;
 SELECT COALESCE(MAX(id), 0) AS limite_id FROM lecturas;
 
 -- Sustituir NULL por los límites inicial y final registrados en la prueba.
+-- Ejecutar SELECT COALESCE(MAX(id), 0) FROM lecturas en ambos momentos:
+-- antes de publicar (baseline_id) y después de completar las inserciones (final_id).
+-- Ejemplo ilustrativo: si los resultados son 123 y 456, usar en la CTE:
+-- SELECT 123::bigint AS baseline_id, 456::bigint AS final_id
 -- No debe haber otras fuentes insertando lecturas durante la publicación.
 WITH limits AS (
     SELECT NULL::bigint AS baseline_id, NULL::bigint AS final_id

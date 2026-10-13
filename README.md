@@ -391,8 +391,44 @@ el detalle. Si hay pérdidas, anotarlas aunque el resultado no sea 100/100/100.
 ### Frontend y firmware
 
 - **Frontend:** desde `frontend/`, ejecutar `pnpm install` y `pnpm dev` (puerto 5173).
-- **Firmware:** cuando esté disponible la plantilla `config.example.h`, copiarla
-  a `config.h`, completar WiFi y MQTT y ejecutar `pio run -t upload` desde `firmware/`.
+- **Firmware:** en VS Code con PlatformIO IDE, abrir PlatformIO Home,
+   elegir **Open Project** y seleccionar la carpeta `firmware/`, donde
+   está `platformio.ini`. Abrir una terminal de PlatformIO en esa carpeta.
+
+   Crear la configuración privada copiando la plantilla (PowerShell):
+
+   ```powershell
+   Copy-Item include/config.example.h include/config.h
+   ```
+
+   Completar en `include/config.h` el SSID, la contraseña WiFi y el host,
+   puerto, usuario y contraseña del broker. Este archivo está excluido
+   por `.gitignore`. Completar también el identificador MQTT único y los
+   intervalos/timeouts de la plantilla. El firmware conecta y reconecta WiFi
+   y MQTT mientras el DHT22 continúa adquiriendo muestras; consultar el
+   [procedimiento T-1.6](firmware/docs/wifi-mqtt-reconnect.md).
+
+   Compilar desde `firmware/`:
+
+   ```bash
+   pio run
+   ```
+
+   Conectar el ESP32 por USB y cargar el firmware:
+
+   ```bash
+   pio run -t upload
+   ```
+
+   Abrir el monitor serie a 115200 baudios:
+
+   ```bash
+   pio device monitor --baud 115200
+   ```
+
+   Con el monitor abierto, pulsar **EN/RESET** en el ESP32 para observar
+   el mensaje `Firmware ESP32 iniciado`, la IP WiFi y la conexión MQTT.
+   Salir del monitor con `Ctrl+C`.
 
 ## Contrato de datos
 

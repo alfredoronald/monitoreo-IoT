@@ -1,0 +1,29 @@
+T-1.4 / CA-02 - DATOS SINTETICOS - NO SON MEDICIONES REALES
+Se comprueba la misma validacion utilizada por main.cpp.
+Limites oficiales: T=[5.0, 35.0] C; HR=[10.0, 90.0] %
+[SINTETICO] PASS | temperatura 4.9 | T=4.9 C; HR=50.0 % | pareja esperada=RECHAZADA; obtenida=RECHAZADA
+  Motivos obtenidos: NaN=0; temperatura fuera=1; humedad fuera=0
+[SINTETICO] PASS | temperatura 5.0 | T=5.0 C; HR=50.0 % | pareja esperada=ACEPTADA; obtenida=ACEPTADA
+  Motivos obtenidos: NaN=0; temperatura fuera=0; humedad fuera=0
+[SINTETICO] PASS | temperatura 35.0 | T=35.0 C; HR=50.0 % | pareja esperada=ACEPTADA; obtenida=ACEPTADA
+  Motivos obtenidos: NaN=0; temperatura fuera=0; humedad fuera=0
+[SINTETICO] PASS | temperatura 35.1 | T=35.1 C; HR=50.0 % | pareja esperada=RECHAZADA; obtenida=RECHAZADA
+  Motivos obtenidos: NaN=0; temperatura fuera=1; humedad fuera=0
+[SINTETICO] PASS | humedad 9.9 | T=20.0 C; HR=9.9 % | pareja esperada=RECHAZADA; obtenida=RECHAZADA
+  Motivos obtenidos: NaN=0; temperatura fuera=0; humedad fuera=1
+[SINTETICO] PASS | humedad 10.0 | T=20.0 C; HR=10.0 % | pareja esperada=ACEPTADA; obtenida=ACEPTADA
+  Motivos obtenidos: NaN=0; temperatura fuera=0; humedad fuera=0
+[SINTETICO] PASS | humedad 90.0 | T=20.0 C; HR=90.0 % | pareja esperada=ACEPTADA; obtenida=ACEPTADA
+  Motivos obtenidos: NaN=0; temperatura fuera=0; humedad fuera=0
+[SINTETICO] PASS | humedad 90.1 | T=20.0 C; HR=90.1 % | pareja esperada=RECHAZADA; obtenida=RECHAZADA
+  Motivos obtenidos: NaN=0; temperatura fuera=0; humedad fuera=1
+[SINTETICO] PASS | NaN en temperatura | T=nan C; HR=50.0 % | pareja esperada=RECHAZADA; obtenida=RECHAZADA
+  Motivos obtenidos: NaN=1; temperatura fuera=0; humedad fuera=0
+[SINTETICO] PASS | NaN en humedad | T=20.0 C; HR=nan % | pareja esperada=RECHAZADA; obtenida=RECHAZADA
+  Motivos obtenidos: NaN=1; temperatura fuera=0; humedad fuera=0
+[SINTETICO] PASS | ambas fuera de rango | T=35.1 C; HR=90.1 % | pareja esperada=RECHAZADA; obtenida=RECHAZADA
+  Motivos obtenidos: NaN=0; temperatura fuera=1; humedad fuera=1
+[SINTETICO] PASS | NaN en ambas | T=nan C; HR=nan % | pareja esperada=RECHAZADA; obtenida=RECHAZADA
+  Motivos obtenidos: NaN=1; temperatura fuera=0; humedad fuera=0
+RESULTADO SINTETICO: 12/12 casos correctos; 0 fallos
+Codigo de salida: 0

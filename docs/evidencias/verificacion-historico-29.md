@@ -64,10 +64,47 @@ Verificaciones ejecutadas el 12 de octubre de 2026:
 - `pnpm build`: aprobado.
 - Cambios en `schema.sql` y `esquema.sql`: solo comentarios; SQL sin cambios.
 
-La prueba MQTT y la ejecución de las consultas siguen pendientes:
-PostgreSQL está detenido y esta sesión no tiene permisos para iniciar su
-servicio. Mosquitto no se encontró en el PATH ni en su ruta habitual.
-Estas verificaciones del backend no demuestran todavía el conteo de #29.
+### Prueba real de publicación y persistencia
 
-Completar con límites inicial/final, conteos obtenidos, fecha de ejecución
-y capturas reales antes de marcar los criterios de aceptación.
+Ejecutada el 12 de octubre de 2026, aproximadamente a las 21:55:52 (UTC−04:00),
+equivalente al 13 de octubre a las 01:55:52 UTC.
+
+- PostgreSQL local: `monitoreo_ambiental`, usuario `app`, puerto **5432**.
+- Mosquitto 2.1.2: broker separado en `127.0.0.1:1884`, con autenticación
+  y el ACL del repositorio. El servicio instalado ocupaba 1883 y esta sesión
+  no podía detenerlo. Para repetir esta ejecución, usar `-p 1884` en el
+  ejemplo anterior y `MQTT_URL=mqtt://127.0.0.1:1884` en el entorno local.
+- Backend compilado: HTTP 200 en `/`, conectado al broker y a PostgreSQL.
+- Publicación mediante `mosquitto_pub`, usuario `esp32`, QoS 0, sin retain.
+- Límite inicial: **0**. Límite final: **16**. Se contaron filas, no la
+  diferencia de IDs: las secuencias pueden tener huecos y las inserciones
+  asíncronas no necesariamente siguen el orden de recepción.
+
+| Variable | Publicados válidos | Registrados | Resultado |
+|---|---:|---:|---|
+| co2 | 5 | 5 | COINCIDE |
+| humedad | 5 | 5 | COINCIDE |
+| temperatura | 5 | 5 | COINCIDE |
+| **Total** | **15** | **15** | **COINCIDE** |
+
+Se publicaron 18 mensajes: el log registró 18 recepciones y 3 descartes.
+Los contenidos `abc`, el estado numérico `1` y el topic de presión no
+generaron filas. Se compararon los 15 valores guardados con los publicados
+y coincidieron exactamente. Se ejecutaron las cinco consultas del archivo,
+sustituyendo los NULL por `0::bigint` y `16::bigint` para esta ejecución.
+
+Últimas lecturas por variable: CO2 **655.00**, humedad **55.55** y
+temperatura **25.55**. Las 15 filas permanecen en la base como datos de prueba.
+
+Las siguientes imágenes son capturas reales de PowerShell ejecutando psql,
+no representaciones generadas de los resultados:
+
+![Conteo de lecturas y comparación con publicados](conteo-lecturas-29.png)
+
+![Últimas lecturas registradas](ultimas-lecturas-29.png)
+
+### Criterios de aceptación
+
+- [x] Consultas guardadas en `database/`.
+- [x] Capturas con los resultados de las consultas.
+- [x] El conteo coincide con las lecturas válidas publicadas durante la prueba.

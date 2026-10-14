@@ -1,32 +1,59 @@
-# React + TypeScript + Vite
+# Frontend — Monitoreo ambiental
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Proyecto inicial de React + Vite + TypeScript para el dashboard del aula.
+Incluye Recharts como dependencia para las tareas de gráficos posteriores.
+La pantalla inicial de Vite permite comprobar el arranque y la interacción;
+todavía no consulta lecturas ni implementa el dashboard de HU-05.
 
-Currently, two official plugins are available:
+## Requisitos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Node.js LTS 22.12 o superior (se verificó con Node.js 24).
+- pnpm 10 para instalar las versiones de `pnpm-lock.yaml`.
 
-## React Compiler
+## Instalación y arranque
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Desde la raíz del repositorio, en Git Bash:
 
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+cd frontend
+pnpm install --frozen-lockfile
+cp -n .env.example .env
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Abrir la dirección que imprime Vite, normalmente `http://localhost:5173`.
+Detener el servidor con `Ctrl+C`.
+
+En PowerShell, para copiar la plantilla sin sobrescribir una configuración local:
+
+```powershell
+if (-not (Test-Path .env)) { Copy-Item .env.example .env }
+```
+
+## Dirección de la API
+
+Configurar en `frontend/.env`:
+
+```dotenv
+VITE_API_URL=http://localhost:3000
+```
+
+Usar la dirección real del backend de cada equipo. Vite expone las variables
+`VITE_*` al navegador: nunca colocar contraseñas ni tokens en ellas.
+La tarea #81 implementará el cliente que consume esta dirección mediante
+`import.meta.env.VITE_API_URL`. Reiniciar Vite al cambiar `.env`.
+El backend no es necesario para abrir la pantalla inicial de esta tarea.
+
+`.env` y las variantes locales están ignoradas por Git; `.env.example` sí se
+versiona y solo contiene una dirección de ejemplo.
+
+## Comprobaciones
+
+```bash
+npm run lint
+npm run build
+pnpm list recharts --depth 0
+```
+
+`build` comprueba TypeScript y genera `dist/`, excluido de Git. La evidencia de
+T-5.1 se guarda en `docs/evidencias/t5-1/` y sigue la rama de frontend.

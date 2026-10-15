@@ -1,120 +1,89 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+const variables = [
+  { id: 'temperature', name: 'Temperatura', unit: '°C', description: 'Temperatura del aula', symbol: 'T' },
+  { id: 'humidity', name: 'Humedad', unit: '% HR', description: 'Humedad relativa', symbol: 'H' },
+  { id: 'co2', name: 'CO₂ estimado', unit: 'ppm', description: 'Estimación del MQ-135', symbol: 'CO₂' },
+]
+
+function VariableIcon({ variable }: { variable: string }) {
+  if (variable === 'co2') return <>CO₂</>
 
   return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" focusable="false">
+      {variable === 'temperature'
+        ? <><path d="M9 14.5V5a3 3 0 0 1 6 0v9.5a5 5 0 1 1-6 0Z" /><path d="M12 8v10" /><circle cx="12" cy="18" r="1.5" /></>
+        : <path d="M12 3C10 6 5 11 5 15a7 7 0 0 0 14 0c0-4-5-9-7-12Z" />}
+    </svg>
+  )
+}
+
+function App() {
+  return (
     <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="Logotipo de React" />
-          <img src={viteLogo} className="vite" alt="Logotipo de Vite" />
+      <a className="skip-link" href="#contenido">Saltar al contenido</a>
+      <header className="site-header">
+        <div className="header-inner">
+          <a className="brand" href="#resumen" aria-label="Monitoreo IoT, ir al resumen">
+            <span className="brand-mark" aria-hidden="true">m</span>
+            <span>Monitoreo IoT<span className="brand-caption">Calidad ambiental del aula</span></span>
+          </a>
+          <nav aria-label="Navegación principal">
+            <a href="#resumen">Resumen</a>
+            <a href="#historico">Histórico</a>
+          </nav>
+          <span className="project-label">Proyecto IoT <span> / </span> Grupo 22</span>
         </div>
-        <div>
-          <h1>Monitoreo ambiental</h1>
-          <p>
-            Entorno inicial de React, Vite y TypeScript para el dashboard del aula.
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Contador de prueba: {count}
-        </button>
-      </section>
+      </header>
 
-      <div className="ticks"></div>
+      <main id="contenido" className="dashboard" tabIndex={-1}>
+        <section id="resumen" aria-labelledby="overview-title">
+          <div className="section-heading overview-heading">
+            <div>
+              <p className="eyebrow">CONDICIONES AMBIENTALES</p>
+              <h1 id="overview-title">El ambiente, de un vistazo.</h1>
+              <p className="section-description">Temperatura, humedad y calidad del aire en un solo lugar.</p>
+            </div>
+            <span className="connection-status"><span aria-hidden="true" />Sin lecturas disponibles</span>
+          </div>
+          <div className="metrics-grid" aria-label="Valores actuales">
+            {variables.map(variable => (
+              <article className={`metric-card ${variable.id}`} key={variable.id} aria-labelledby={`${variable.id}-title`}>
+                <div className="metric-heading">
+                  <h2 id={`${variable.id}-title`}>{variable.name}</h2>
+                  <span className="variable-symbol" aria-hidden="true"><VariableIcon variable={variable.id} /></span>
+                </div>
+                <p className="metric-value"><span aria-label="Sin valor">—</span><span className="metric-unit">{variable.unit}</span></p>
+                <p className="metric-description">{variable.description}</p>
+                <div className="metric-footer"><span>Sin datos</span><span>Última lectura: —</span></div>
+              </article>
+            ))}
+          </div>
+        </section>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentación</h2>
-          <p>Recursos para desarrollar el frontend</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Documentación de Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Documentación de React
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Comunidad</h2>
-          <p>Recursos de la comunidad de Vite</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        <section id="historico" className="history-section" aria-labelledby="history-title">
+          <div className="section-heading">
+            <div><p className="eyebrow">EVOLUCIÓN DEL AMBIENTE</p><h2 id="history-title">Histórico de lecturas</h2></div>
+            <p className="history-description">Una mirada a cada variable a lo largo del tiempo.</p>
+          </div>
+          <div className="history-grid">
+            {variables.map(variable => (
+              <article className={`history-card ${variable.id}`} key={variable.id} aria-labelledby={`${variable.id}-history`}>
+                <div className="history-card-heading"><h3 id={`${variable.id}-history`}><span className="legend-dot" aria-hidden="true" />{variable.name}</h3><span>{variable.unit}</span></div>
+                <div className="chart-placeholder">
+                  <div className="empty-chart-message"><span className="empty-chart-icon" aria-hidden="true">∿</span><p>Aún no hay lecturas</p><span>El histórico se mostrará aquí.</span></div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
+        <aside className="measurement-note" aria-label="Acerca de las mediciones">
+          <span className="note-symbol" aria-hidden="true">i</span>
+          <p><strong>Sobre el CO₂ estimado.</strong> El MQ-135 ofrece una estimación provisional de la calidad del aire. Sus valores requieren calibración.</p>
+        </aside>
+        <footer className="dashboard-footer"><span>Monitoreo ambiental del aula</span><span>Servicios Telemáticos · Grupo 22</span></footer>
+      </main>
     </>
   )
 }

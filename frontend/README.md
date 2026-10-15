@@ -57,3 +57,14 @@ pnpm list recharts --depth 0
 
 `build` comprueba TypeScript y genera `dist/`, excluido de Git. La evidencia de
 T-5.1 se guarda en `docs/evidencias/t5-1/` y sigue la rama de frontend.
+
+## Layout del dashboard (T-5.3, #82)
+
+La pantalla contiene encabezado, navegación, tres tarjetas y áreas de histórico.
+El layout usa tres columnas en laptop y una columna en móvil hasta 620 px.
+Se comprobaron diez anchos entre 320 y 2560 px sin desplazamiento horizontal,
+incluido el mínimo de 360 px requerido por la issue. La revisión final del
+dashboard completo en dos navegadores corresponde a T-5.8 (#87).
+Las tarjetas y los históricos muestran estados vacíos: la conexión a la API y
+los gráficos se implementan en #83 y #84. No se necesita backend ni ESP32 para
+comprobar esta maqueta. Evidencia: `docs/evidencias/t5-3/`.

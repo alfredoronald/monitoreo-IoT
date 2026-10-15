@@ -1,0 +1,102 @@
+[
+  {
+    "requestedWidth": 320,
+    "available": 305,
+    "documentWidth": 305,
+    "historyAreas": 3,
+    "horizontalOverflow": false,
+    "metricCards": 3,
+    "metricColumns": "264.8px",
+    "viewport": 320
+  },
+  {
+    "requestedWidth": 360,
+    "available": 345,
+    "documentWidth": 345,
+    "historyAreas": 3,
+    "horizontalOverflow": false,
+    "metricCards": 3,
+    "metricColumns": "304.8px",
+    "viewport": 360
+  },
+  {
+    "requestedWidth": 390,
+    "available": 375,
+    "documentWidth": 375,
+    "historyAreas": 3,
+    "horizontalOverflow": false,
+    "metricCards": 3,
+    "metricColumns": "335.2px",
+    "viewport": 390
+  },
+  {
+    "requestedWidth": 620,
+    "available": 605,
+    "documentWidth": 605,
+    "historyAreas": 3,
+    "horizontalOverflow": false,
+    "metricCards": 3,
+    "metricColumns": "564.8px",
+    "viewport": 620
+  },
+  {
+    "requestedWidth": 621,
+    "available": 606,
+    "documentWidth": 606,
+    "historyAreas": 3,
+    "horizontalOverflow": false,
+    "metricCards": 3,
+    "metricColumns": "178.125px 178.137px 178.137px",
+    "viewport": 622
+  },
+  {
+    "requestedWidth": 768,
+    "available": 753,
+    "documentWidth": 753,
+    "historyAreas": 3,
+    "horizontalOverflow": false,
+    "metricCards": 3,
+    "metricColumns": "226.925px 226.938px 226.925px",
+    "viewport": 768
+  },
+  {
+    "requestedWidth": 1024,
+    "available": 1009,
+    "documentWidth": 1009,
+    "historyAreas": 3,
+    "horizontalOverflow": false,
+    "metricCards": 3,
+    "metricColumns": "302.45px 302.462px 302.45px",
+    "viewport": 1024
+  },
+  {
+    "requestedWidth": 1366,
+    "available": 1351,
+    "documentWidth": 1351,
+    "historyAreas": 3,
+    "horizontalOverflow": false,
+    "metricCards": 3,
+    "metricColumns": "409.737px 409.737px 409.737px",
+    "viewport": 1366
+  },
+  {
+    "requestedWidth": 1920,
+    "available": 1905,
+    "documentWidth": 1905,
+    "historyAreas": 3,
+    "horizontalOverflow": false,
+    "metricCards": 3,
+    "metricColumns": "583.2px 583.2px 583.2px",
+    "viewport": 1920
+  },
+  {
+    "requestedWidth": 2560,
+    "available": 2545,
+    "documentWidth": 2545,
+    "historyAreas": 3,
+    "horizontalOverflow": false,
+    "metricCards": 3,
+    "metricColumns": "792.263px 792.263px 792.263px",
+    "viewport": 2560
+  }
+]

@@ -35,13 +35,14 @@ if (-not (Test-Path .env)) { Copy-Item .env.example .env }
 Configurar en `frontend/.env`:
 
 ```dotenv
-VITE_API_URL=http://localhost:3000
+VITE_API_URL=http://localhost:3000/api
 ```
 
 Usar la dirección real del backend de cada equipo. Vite expone las variables
 `VITE_*` al navegador: nunca colocar contraseñas ni tokens en ellas.
-La tarea #81 implementará el cliente que consume esta dirección mediante
-`import.meta.env.VITE_API_URL`. Reiniciar Vite al cambiar `.env`.
+El cliente consume esta dirección mediante `import.meta.env.VITE_API_URL`.
+Incluir `/api`: el cliente añade `/lecturas`, `/alertas`, etc.
+Reiniciar Vite al cambiar `.env`.
 El backend no es necesario para abrir la pantalla inicial de esta tarea.
 
 `.env` y las variantes locales están ignoradas por Git; `.env.example` sí se
@@ -57,3 +58,37 @@ pnpm list recharts --depth 0
 
 `build` comprueba TypeScript y genera `dist/`, excluido de Git. La evidencia de
 T-5.1 se guarda en `docs/evidencias/t5-1/` y sigue la rama de frontend.
+
+## Cliente de la API (T-5.2, #81)
+
+Referencia: [contrato propuesto de PR #103](https://github.com/alfredoronald/monitoreo-IoT/blob/7af6e70bc46c1af8723cf902dd3e6f0565ebccde/docs/api.md).
+El contrato sigue en revisión; comprobar cambios antes de fusionar esta tarea.
+
+```ts
+import { api, ApiError } from './api'
+
+const latest = await api.getLatestReadings()
+const history = await api.getReadings({
+  variable: 'temperatura',
+  desde: '2026-10-15T08:00:00-04:00',
+  hasta: '2026-10-15T09:00:00-04:00',
+})
+const state = await api.getAirState() // objeto o null
+const pending = await api.getAlerts(false) // sin argumento: todas
+const attended = await api.markAlertAttended('7')
+```
+
+Todas las funciones aceptan opciones `{ signal }` como último argumento para
+cancelar solicitudes. Los errores HTTP lanzan `ApiError` con `status` y el
+`mensaje` del backend (o un mensaje genérico si no hay JSON).
+Los fallos de red y la cancelación mantienen su error original.
+Se validan las respuestas antes de devolverlas al dashboard: listas vacías y
+estado `null` son válidos; NUMERIC como texto no lo es. Los IDs son strings,
+sin convertir BIGINT a Number. Las fechas de salida deben ser UTC con milisegundos.
+
+```bash
+npm test
+```
+
+Las pruebas usan respuestas controladas mediante fetch simulado, no sensores
+ni endpoints reales. La UI inicial no se modifica para consumir datos todavía.

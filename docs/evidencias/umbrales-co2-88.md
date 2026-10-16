@@ -12,10 +12,17 @@ El intervalo incluye decimales: 1199,99 todavía es moderado.
 
 ## Revisión con el PO
 
-Pendiente de confirmación. Registrar en la issue la fecha, el nombre del PO,
-los rangos revisados, etiquetas, recomendaciones y su decisión. Una ejecución
-SQL correcta no sustituye esta revisión. Si se acuerdan otros límites,
-actualizar los casos esperados de forma explícita.
+Alfredo (@alfredoronald) comunicó la aceptación provisional de los rangos
+0–<800, 800–<1200 y ≥1200 ppm para implementar y probar el Sprint 2:
+
+> Acepto provisionalmente los rangos 0–<800, 800–<1200 y ≥1200 ppm para
+> implementar y probar el Sprint 2. Su aceptación definitiva queda pendiente
+> de documentar su justificación y revisar los resultados de la calibración
+> de HU-08.
+
+Esta aceptación no constituye una validación definitiva de los límites ni
+de la precisión del sensor. Documentar su justificación y revisar los resultados
+de HU-08 antes de su aceptación definitiva.
 
 ## Procedimiento
 
@@ -34,7 +41,7 @@ actualizar los casos esperados de forma explícita.
 4. Verificar que la consulta posterior al `ROLLBACK` muestra otra vez
    `moderado = 800`. Las lecturas sintéticas y cambios de umbrales se revierten;
    el id explícito tampoco consume la secuencia de lecturas.
-5. Capturar los resultados de DBeaver y adjuntarlos a la issue/PR o guardar
+5. Capturar los resultados de DBeaver o psql y adjuntarlos a la issue/PR o guardar
    la captura en `docs/evidencias/umbrales-co2-88.png`.
 
 El ensayo bloquea escrituras en `lecturas` y `umbrales` durante su transacción
@@ -94,12 +101,24 @@ Resultado de la consulta de nueve casos (en ambas ejecuciones correctas):
 | 8 | 825,00 | 850 | bueno | bueno | PASS |
 | 9 | 850,00 | 850 | moderado | moderado | PASS |
 
-Esta transcripción documenta la salida real de `psql`; no es una captura de
-DBeaver. Falta adjuntar la captura solicitada por la issue.
+### Captura de la consulta
+
+#### Nueve casos con PASS
+
+![Nueve casos con PASS en psql](umbrales-co2-88-casos.png)
+
+#### Resultado posterior al ROLLBACK
+
+![Umbral moderado restaurado a 800 ppm](umbrales-co2-88-rollback.png)
+
+Ambas imágenes son recortes de la [captura completa de la terminal](umbrales-co2-88.png)
+tras ejecutar el script con `psql` en la instancia temporal descrita arriba.
+Muestran los nueve `PASS` y el umbral moderado restaurado a 800 ppm. No son
+capturas de DBeaver ni imágenes reconstruidas con resultados esperados.
 
 ## Criterios de aceptación
 
-- [ ] El PO revisó los rangos de `umbrales`.
+- [x] Rangos revisados y aceptados provisionalmente para el Sprint 2.
 - [x] La vista devuelve el nivel correcto en los casos de prueba.
 - [x] Cambiar el umbral modifica el resultado sin tocar código.
-- [ ] Captura de la consulta adjunta y resultados reales documentados.
+- [x] Captura de la consulta adjunta y resultados reales documentados.

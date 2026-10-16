@@ -1,0 +1,28 @@
+
+> frontend@0.0.0 test
+> node --experimental-strip-types --test tests/*.test.mjs
+
+✔ Histórico: codifica fechas con +, conserva BIGINT y no agrega limite (35.8322ms)
+✔ Últimas: array directo sin exigir id y sin inventar variables (0.7927ms)
+✔ Estado de aire: objeto singular y recomendación nullable (0.7781ms)
+✔ Listas vacías son resultados válidos en las tres consultas de listas (1.6538ms)
+✔ Alertas: false, true y filtro omitido se distinguen (3.7436ms)
+✔ PATCH: ruta, JSON true y Content-Type correctos; ID nunca convertido a Number (0.7842ms)
+✔ IDs inválidos no generan solicitudes PATCH (0.6795ms)
+✔ HTTP 400, 404, 415 y 500 conservan status y mensaje del contrato (1.1472ms)
+✔ Error HTTP sin JSON usa mensaje genérico; éxito sin JSON no se acepta (0.8519ms)
+✔ Rechaza NUMERIC textual, JSON envuelto, fechas imposibles y variables desconocidas (0.9204ms)
+✔ Rechaza alertas mal tipadas y PATCH sin confirmación atendida (0.4237ms)
+✔ URL configurable: se preserva el prefijo y se rechazan bases inseguras o inválidas (0.2584ms)
+✔ Cada operación propaga AbortSignal (0.8524ms)
+✔ Fallo de red y cancelación no se disfrazan de datos vacíos ni errores HTTP (0.321ms)
+✔ Vite carga VITE_API_URL del archivo .env y la instancia usa ese prefijo (205.0447ms)
+✔ La instancia informa configuración ausente y no usa un host por defecto (81.8822ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 880.9486

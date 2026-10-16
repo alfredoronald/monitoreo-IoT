@@ -1,9 +1,10 @@
 import './App.css'
+import { useLatestReadings } from './hooks/useLatestReadings'
 
 const variables = [
-  { id: 'temperature', name: 'Temperatura', unit: '°C', description: 'Temperatura del aula', symbol: 'T' },
-  { id: 'humidity', name: 'Humedad', unit: '% HR', description: 'Humedad relativa', symbol: 'H' },
-  { id: 'co2', name: 'CO₂ estimado', unit: 'ppm', description: 'Estimación del MQ-135', symbol: 'CO₂' },
+  { id: 'temperature', variable: 'temperatura', name: 'Temperatura', unit: '°C', description: 'Temperatura del aula' },
+  { id: 'humidity', variable: 'humedad', name: 'Humedad', unit: '% HR', description: 'Humedad relativa' },
+  { id: 'co2', variable: 'co2', name: 'CO₂ estimado', unit: 'ppm', description: 'Estimación del MQ-135' },
 ]
 
 function VariableIcon({ variable }: { variable: string }) {
@@ -19,6 +20,9 @@ function VariableIcon({ variable }: { variable: string }) {
 }
 
 function App() {
+  const { readings, loading, error } = useLatestReadings()
+  const valueFormatter = new Intl.NumberFormat('es-BO', { maximumFractionDigits: 1 })
+  const timeFormatter = new Intl.DateTimeFormat('es-BO', { hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' })
   return (
     <>
       <a className="skip-link" href="#contenido">Saltar al contenido</a>
@@ -44,20 +48,24 @@ function App() {
               <h1 id="overview-title">El ambiente, de un vistazo.</h1>
               <p className="section-description">Temperatura, humedad y calidad del aire en un solo lugar.</p>
             </div>
-            <span className="connection-status"><span aria-hidden="true" />Sin lecturas disponibles</span>
+            <span className="connection-status" role="status"><span aria-hidden="true" />{loading ? 'Cargando lecturas…' : error ? 'Actualización pendiente' : readings.length ? 'Actualización cada 15 s' : 'Sin lecturas disponibles'}</span>
           </div>
+          {error && <p className="readings-error" role="alert">{error}{readings.length > 0 && ' Se conservan los últimos valores recibidos con su hora original.'}</p>}
+          <p className="reading-time-note">Hora de lectura en la zona horaria de este dispositivo.</p>
           <div className="metrics-grid" aria-label="Valores actuales">
-            {variables.map(variable => (
+            {variables.map(variable => {
+              const reading = readings.filter(item => item.tipo_variable === variable.variable).sort((left, right) => Date.parse(right.fecha_hora) - Date.parse(left.fecha_hora))[0]
+              return (
               <article className={`metric-card ${variable.id}`} key={variable.id} aria-labelledby={`${variable.id}-title`}>
                 <div className="metric-heading">
                   <h2 id={`${variable.id}-title`}>{variable.name}</h2>
                   <span className="variable-symbol" aria-hidden="true"><VariableIcon variable={variable.id} /></span>
                 </div>
-                <p className="metric-value"><span aria-label="Sin valor">—</span><span className="metric-unit">{variable.unit}</span></p>
+                <p className="metric-value"><span aria-label={reading ? undefined : 'Sin valor'}>{reading ? valueFormatter.format(reading.valor) : '—'}</span><span className="metric-unit">{variable.unit}</span></p>
                 <p className="metric-description">{variable.description}</p>
-                <div className="metric-footer"><span>Sin datos</span><span>Última lectura: —</span></div>
+                <div className="metric-footer"><span>{reading ? (error ? 'Sin actualizar' : 'Lectura recibida') : loading ? 'Cargando…' : 'Sin datos'}</span><span>Última lectura: {reading ? <time dateTime={reading.fecha_hora} title={new Date(reading.fecha_hora).toLocaleString('es-BO')}>{timeFormatter.format(new Date(reading.fecha_hora))}</time> : '—'}</span></div>
               </article>
-            ))}
+            )})}
           </div>
         </section>
 

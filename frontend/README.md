@@ -105,3 +105,20 @@ npm test
 
 Las pruebas usan respuestas controladas mediante fetch simulado, no sensores
 ni endpoints reales. La UI inicial no se modifica para consumir datos todavía.
+
+## Tarjetas actuales (T-5.4, #83)
+
+Configurar `VITE_API_URL` en `.env` con el prefijo del backend real, por ejemplo
+`http://localhost:3000/api`, y reiniciar Vite. El backend debe permitir el origen
+exacto del frontend mediante CORS. No colocar credenciales en variables VITE_*.
+
+Las tarjetas consultan `GET /api/lecturas/ultima` al abrir y cada 15 segundos.
+Muestran valor, unidad y hora de `fecha_hora` en la zona horaria del dispositivo.
+Si falta una variable se muestra un guion; si falla una consulta se conserva el
+último valor con su hora original y se informa del fallo. Al salir se cancelan
+el temporizador y la petición activa. El cero es un valor válido.
+
+Validación: `npm test`, `npm run lint` y `npm run build`.
+Se probó contra el backend real de #76 y PostgreSQL usando lecturas sintéticas
+en un esquema transaccional aislado, sin ESP32. Procedimiento y video:
+`docs/evidencias/t5-4/README.md`. Los históricos continúan pendientes de #84.

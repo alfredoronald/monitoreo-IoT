@@ -9,7 +9,9 @@
     "build": "tsc",
     "start": "node dist/index.js",
     "typecheck": "tsc --noEmit",
-    "test": "tsx --test tests/db.test.ts tests/messageValidator.test.ts tests/mqttSubscriber.test.ts tests/messageLogger.test.ts",
+    "test": "tsx --test tests/db.test.ts tests/messageValidator.test.ts tests/mqttSubscriber.test.ts tests/messageLogger.test.ts tests/latestReadings.test.ts tests/historicalReadings.test.ts",
+    "test:integration:latest": "tsx --test tests/latestReadings.integration.test.ts",
+    "test:integration:history": "tsx --test tests/historicalReadings.integration.test.ts",
     "evidence:validation": "tsx scripts/messageValidationEvidence.ts",
     "test:load": "tsx scripts/loadTest100.ts"
   },

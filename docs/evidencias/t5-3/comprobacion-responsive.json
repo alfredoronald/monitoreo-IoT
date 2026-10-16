@@ -46,7 +46,7 @@
     "historyAreas": 3,
     "horizontalOverflow": false,
     "metricCards": 3,
-    "metricColumns": "178.125px 178.137px 178.137px",
+    "metricColumns": "558.4px",
     "viewport": 622
   },
   {
@@ -56,8 +56,28 @@
     "historyAreas": 3,
     "horizontalOverflow": false,
     "metricCards": 3,
-    "metricColumns": "226.925px 226.938px 226.925px",
+    "metricColumns": "704.8px",
     "viewport": 768
+  },
+  {
+    "requestedWidth": 900,
+    "available": 885,
+    "documentWidth": 885,
+    "historyAreas": 3,
+    "horizontalOverflow": false,
+    "metricCards": 3,
+    "metricColumns": "830.8px",
+    "viewport": 900
+  },
+  {
+    "requestedWidth": 901,
+    "available": 886,
+    "documentWidth": 886,
+    "historyAreas": 3,
+    "horizontalOverflow": false,
+    "metricCards": 3,
+    "metricColumns": "264.1px 264.112px 264.1px",
+    "viewport": 902
   },
   {
     "requestedWidth": 1024,

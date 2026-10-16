@@ -1,11 +1,7 @@
 import './App.css'
 import { useLatestReadings } from './hooks/useLatestReadings'
-
-const variables = [
-  { id: 'temperature', variable: 'temperatura', name: 'Temperatura', unit: '°C', description: 'Temperatura del aula' },
-  { id: 'humidity', variable: 'humedad', name: 'Humedad', unit: '% HR', description: 'Humedad relativa' },
-  { id: 'co2', variable: 'co2', name: 'CO₂ estimado', unit: 'ppm', description: 'Estimación del MQ-135' },
-]
+import { environmentalVariables as variables } from './environmentalVariables'
+import { HistoricalCharts } from './components/history/HistoricalCharts'
 
 function VariableIcon({ variable }: { variable: string }) {
   if (variable === 'co2') return <>CO₂</>
@@ -74,16 +70,7 @@ function App() {
             <div><p className="eyebrow">EVOLUCIÓN DEL AMBIENTE</p><h2 id="history-title">Histórico de lecturas</h2></div>
             <p className="history-description">Una mirada a cada variable a lo largo del tiempo.</p>
           </div>
-          <div className="history-grid">
-            {variables.map(variable => (
-              <article className={`history-card ${variable.id}`} key={variable.id} aria-labelledby={`${variable.id}-history`}>
-                <div className="history-card-heading"><h3 id={`${variable.id}-history`}><span className="legend-dot" aria-hidden="true" />{variable.name}</h3><span>{variable.unit}</span></div>
-                <div className="chart-placeholder">
-                  <div className="empty-chart-message"><span className="empty-chart-icon" aria-hidden="true">∿</span><p>Aún no hay lecturas</p><span>El histórico se mostrará aquí.</span></div>
-                </div>
-              </article>
-            ))}
-          </div>
+          <HistoricalCharts />
         </section>
 
         <aside className="measurement-note" aria-label="Acerca de las mediciones">

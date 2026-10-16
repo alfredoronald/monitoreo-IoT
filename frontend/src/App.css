@@ -41,11 +41,12 @@ h1 { font-size: clamp(28px, 3.1vw, 40px); line-height: 1.15; letter-spacing: -1.
 .history-card h3 { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; }
 .legend-dot { display: inline-block; width: 6px; height: 6px; background: var(--variable-color); border-radius: 50%; flex-shrink: 0; }
 .history-card-heading > span { color: var(--color-text-muted); font-size: 14px; }
-.chart-placeholder { margin-top: 24px; min-height: 180px; display: grid; place-items: center; border-bottom: 1px solid var(--color-border); background: repeating-linear-gradient(to top, transparent, transparent 44px, var(--color-grid) 44px, var(--color-grid) 45px); }
-.empty-chart-message { text-align: center; background: var(--color-surface); padding: 8px; }
-.empty-chart-icon { display: block; color: var(--color-text-muted); font-size: 28px; line-height: 1; }
-.empty-chart-message p { font-size: 14px; margin-top: 10px; color: var(--color-text-muted); }
-.empty-chart-message > span:last-child { display: block; font-size: 14px; margin-top: 6px; color: var(--color-text-muted); }
+.history-range-note { color: var(--color-text-muted); font-size: 14px; line-height: 1.7; margin-bottom: 18px; overflow-wrap: anywhere; }
+.history-chart { width: 100%; min-width: 0; height: 260px; margin-top: 20px; }
+.history-message { min-height: 260px; display: grid; place-items: center; padding: 24px 8px; text-align: center; color: var(--color-text-muted); font-size: 14px; line-height: 1.7; }
+.history-error { color: var(--color-bad); }
+.history-tooltip { max-width: 260px; padding: 10px 12px; background: var(--color-surface); color: var(--color-text); border: 1px solid var(--color-border); border-radius: 8px; box-shadow: 0 4px 12px #172b3a1a; font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
+.history-tooltip time { color: var(--color-text-muted); }
 .measurement-note { display: flex; gap: 12px; margin-top: 24px; padding: 17px 20px; background: var(--color-empty-soft); border: 1px solid var(--color-border); border-radius: 8px; }
 .note-symbol { color: var(--color-primary); width: 18px; height: 18px; flex-shrink: 0; border: 1px solid currentColor; border-radius: 50%; text-align: center; font: 14px/16px Georgia, serif; }
 .measurement-note p { font-size: 14px; line-height: 1.7; color: var(--color-text-muted); }

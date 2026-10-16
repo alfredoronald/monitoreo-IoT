@@ -2,8 +2,8 @@
 
 Proyecto inicial de React + Vite + TypeScript para el dashboard del aula.
 Incluye Recharts como dependencia para las tareas de gráficos posteriores.
-La pantalla inicial de Vite permite comprobar el arranque y la interacción;
-todavía no consulta lecturas ni implementa el dashboard de HU-05.
+Incluye el layout adaptable de HU-05 y el cliente API; las tarjetas dinámicas
+y los gráficos se incorporan en las tareas posteriores.
 
 ## Requisitos
 
@@ -58,6 +58,19 @@ pnpm list recharts --depth 0
 
 `build` comprueba TypeScript y genera `dist/`, excluido de Git. La evidencia de
 T-5.1 se guarda en `docs/evidencias/t5-1/` y sigue la rama de frontend.
+
+## Layout del dashboard (T-5.3, #82)
+
+La pantalla contiene encabezado, navegación, tres tarjetas y áreas de histórico.
+El layout usa tres columnas por encima de 900 px y una columna hasta 900 px,
+para evitar tarjetas estrechas en celulares y tablets. Usa tipografía del sistema
+(`system-ui`), sin depender de fuentes externas, y textos secundarios de 14 px.
+Se comprobaron doce anchos entre 320 y 2560 px sin desplazamiento horizontal,
+incluido el mínimo de 360 px requerido por la issue. La revisión final del
+dashboard completo en dos navegadores corresponde a T-5.8 (#87).
+Las tarjetas y los históricos muestran estados vacíos: la conexión a la API y
+los gráficos se implementan en #83 y #84. No se necesita backend ni ESP32 para
+comprobar esta maqueta. Evidencia: `docs/evidencias/t5-3/`.
 
 ## Cliente de la API (T-5.2, #81)
 

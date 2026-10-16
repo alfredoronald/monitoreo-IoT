@@ -1,6 +1,7 @@
 import { Pool } from 'pg';
 import { config } from './config.js';
 import type { Reading } from './mqtt/messageValidator.js';
+import { insertCo2Reading } from './services/co2AlertService.js';
 
 function validateDatabaseConfig() {
   const { host, port, database, user, password } = config.database;
@@ -39,6 +40,10 @@ export async function connectDatabase(): Promise<void> {
 }
 
 export async function insertReading(reading: Reading): Promise<void> {
+  if (reading.tipo_variable === 'co2') {
+    await insertCo2Reading(pool, reading);
+    return;
+  }
   await pool.query(
     `INSERT INTO lecturas (fecha_hora, tipo_variable, valor)
      VALUES ($1, $2, $3)`,

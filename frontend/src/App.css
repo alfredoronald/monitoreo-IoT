@@ -33,25 +33,6 @@ h1 { font-size: clamp(28px, 3.1vw, 40px); line-height: 1.15; letter-spacing: -1.
 .metric-description { color: var(--color-text-muted); font-size: 14px; margin-top: 4px; }
 .metric-footer { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--color-border); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; color: var(--color-text-muted); font-size: 14px; }
 .metric-footer > span:first-child { color: var(--color-text-muted); }
-.air-status-panel { margin-top: 20px; padding: 24px; background: var(--color-surface); border: 1px solid var(--color-border); border-left: 5px solid var(--air-status-color); border-radius: 12px; }
-.air-status-bueno { --air-status-color: var(--color-good); --air-status-soft: var(--color-good-soft); }
-.air-status-moderado { --air-status-color: var(--color-moderate); --air-status-soft: var(--color-moderate-soft); }
-.air-status-malo { --air-status-color: var(--color-bad); --air-status-soft: var(--color-bad-soft); }
-.air-status-empty { --air-status-color: var(--color-empty); --air-status-soft: var(--color-empty-soft); }
-.air-status-heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-.air-status-heading .eyebrow { margin-bottom: 8px; }
-.air-status-heading h2 { font-size: 22px; font-weight: 600; }
-.air-status-dot { width: 18px; height: 18px; flex-shrink: 0; background: var(--air-status-color); border: 4px solid var(--air-status-soft); border-radius: 50%; }
-.air-status-content { margin-top: 18px; }
-.air-status-level-row { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-.air-status-level-label { color: var(--color-text-muted); font-size: 14px; }
-.air-status-level { color: var(--air-status-color); font-size: 32px; font-weight: 700; text-transform: capitalize; }
-.air-status-tag { display: inline-block; margin-top: 4px; padding: 5px 10px; background: var(--air-status-soft); color: var(--air-status-color); border-radius: 999px; font-size: 14px; font-weight: 600; }
-.air-status-recommendation { margin-top: 16px; color: var(--color-text); font-size: 16px; line-height: 1.6; }
-.air-status-recommendation strong { font-weight: 650; }
-.air-status-reading, .air-status-stale, .air-status-message, .air-status-error { margin-top: 12px; color: var(--color-text-muted); font-size: 14px; line-height: 1.6; }
-.air-status-stale, .air-status-error { color: var(--color-moderate); }
-.air-status-error { padding-top: 12px; border-top: 1px solid var(--color-border); }
 .history-section { margin-top: 42px; }
 #history-title { font-size: 23px; letter-spacing: -.5px; font-weight: 600; }
 .history-description { color: var(--color-text-muted); font-size: 14px; line-height: 1.6; max-width: 250px; }

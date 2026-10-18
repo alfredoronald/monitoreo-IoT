@@ -4,6 +4,8 @@ import { environmentalVariables as variables } from './environmentalVariables'
 import { HistoricalCharts } from './components/history/HistoricalCharts'
 import { AirStatusIndicator } from './components/AirStatusIndicator'
 import { useAirState } from './hooks/useAirState'
+import { AlertBanner } from './components/AlertBanner'
+import { usePendingAlerts } from './hooks/usePendingAlerts'
 
 function VariableIcon({ variable }: { variable: string }) {
   if (variable === 'co2') return <>CO₂</>
@@ -20,6 +22,7 @@ function VariableIcon({ variable }: { variable: string }) {
 function App() {
   const { readings, loading, error } = useLatestReadings()
   const airStatus = useAirState()
+  const pendingAlerts = usePendingAlerts()
   const valueFormatter = new Intl.NumberFormat('es-BO', { maximumFractionDigits: 1 })
   const timeFormatter = new Intl.DateTimeFormat('es-BO', { hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' })
   return (
@@ -67,6 +70,7 @@ function App() {
             )})}
           </div>
           <AirStatusIndicator {...airStatus} />
+          <AlertBanner {...pendingAlerts} />
         </section>
 
         <section id="historico" className="history-section" aria-labelledby="history-title">

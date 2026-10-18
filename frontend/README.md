@@ -1,9 +1,8 @@
 # Frontend — Monitoreo ambiental
 
 Proyecto inicial de React + Vite + TypeScript para el dashboard del aula.
-Incluye Recharts como dependencia para las tareas de gráficos posteriores.
-Incluye el layout adaptable de HU-05 y el cliente API; las tarjetas dinámicas
-y los gráficos se incorporan en las tareas posteriores.
+Incluye el layout adaptable de HU-05, el cliente API, las tarjetas dinámicas
+y tres gráficos históricos de líneas con Recharts.
 
 ## Requisitos
 
@@ -68,9 +67,8 @@ para evitar tarjetas estrechas en celulares y tablets. Usa tipografía del siste
 Se comprobaron doce anchos entre 320 y 2560 px sin desplazamiento horizontal,
 incluido el mínimo de 360 px requerido por la issue. La revisión final del
 dashboard completo en dos navegadores corresponde a T-5.8 (#87).
-Las tarjetas y los históricos muestran estados vacíos: la conexión a la API y
-los gráficos se implementan en #83 y #84. No se necesita backend ni ESP32 para
-comprobar esta maqueta. Evidencia: `docs/evidencias/t5-3/`.
+Las tarjetas se conectan a la API en #83 y los históricos en #84. La evidencia
+del layout inicial está en `docs/evidencias/t5-3/`.
 
 ## Cliente de la API (T-5.2, #81)
 
@@ -103,8 +101,8 @@ sin convertir BIGINT a Number. Las fechas de salida deben ser UTC con milisegund
 npm test
 ```
 
-Las pruebas usan respuestas controladas mediante fetch simulado, no sensores
-ni endpoints reales. La UI inicial no se modifica para consumir datos todavía.
+Las pruebas del cliente usan respuestas controladas mediante fetch simulado,
+no sensores ni endpoints reales.
 
 ## Tarjetas actuales (T-5.4, #83)
 
@@ -121,4 +119,41 @@ el temporizador y la petición activa. El cero es un valor válido.
 Validación: `npm test`, `npm run lint` y `npm run build`.
 Se probó contra el backend real de #76 y PostgreSQL usando lecturas sintéticas
 en un esquema transaccional aislado, sin ESP32. Procedimiento y video:
-`docs/evidencias/t5-4/README.md`. Los históricos continúan pendientes de #84.
+`docs/evidencias/t5-4/README.md`.
+
+## Gráficos históricos (T-5.5, #84)
+
+El dashboard consulta `GET /api/lecturas` para `temperatura`, `humedad` y `co2`
+al abrir el histórico. Las tres consultas comparten un rango explícito desde
+una hora antes hasta el instante de apertura. Ese rango permanece fijo mientras
+la pantalla siga abierta; el histórico no utiliza el polling de las tarjetas.
+Se necesitan el backend histórico #74, datos en ese intervalo y CORS configurado
+para el origen de Vite. No se generan lecturas de ejemplo en la aplicación.
+
+Cada gráfico conserva los colores y el layout de #82. El eje X muestra fecha y
+hora con escala temporal numérica: la distancia entre puntos refleja el tiempo
+transcurrido. El eje Y incluye °C, % HR o ppm. El tooltip muestra el valor sin
+redondearlo a un decimal y la fecha/hora completa con milisegundos y zona horaria.
+Las horas usan la zona del dispositivo; `fecha_hora` UTC se conserva sin cambios.
+Un único punto se muestra con un marcador y el cero es un valor válido.
+
+Cada variable tiene estados independientes de carga, error y rango sin lecturas.
+Las peticiones tienen un timeout de 10 segundos. Cambiar el rango o desmontar el
+componente cancela las consultas con `AbortSignal` e ignora respuestas tardías.
+Los fallos de una variable no ocultan los resultados de las otras.
+
+Para #85, `HistoricalCharts` ya acepta un rango controlado, sin modificar el
+cliente API ni añadir todavía controles de selección:
+
+```tsx
+<HistoricalCharts range={{ desde: '2026-10-15T12:00:00.000Z', hasta: '2026-10-15T13:00:00.000Z' }} />
+```
+
+Enviar fechas ISO válidas con zona y `desde <= hasta`; la validación de los
+controles corresponde a #85. Omitir `range` utiliza la última hora inicial.
+
+Validación desde `frontend/`: `npm test`, `npm run lint` y `npm run build`.
+Las pruebas adicionales cubren las tres consultas con el cliente real y fetch
+simulado, errores parciales, listas vacías, cambios de rango, cancelación,
+timeout, intervalos irregulares, conservación de datos, formatos y renderizado
+de mensajes y tooltip. No requieren PostgreSQL ni ESP32.

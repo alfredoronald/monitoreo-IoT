@@ -1,0 +1,34 @@
+{
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/155.0.8059.84",
+    "revision": "@5869fe313571d75152b77813cf0a4ee26a4e6df0",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "jsVersion": "15.5.35.25"
+  },
+  "controlledData": true,
+  "screenshots": [
+    "ultima-hora-1366.png",
+    "ultimas-24-horas-1366.png",
+    "personalizado-1366.png",
+    "ultima-hora-360.png",
+    "ultimas-24-horas-360.png",
+    "personalizado-360.png"
+  ],
+  "cancelledObsoleteRequests": 3,
+  "checks": [
+    "periodos rápidos",
+    "tres consultas por rango",
+    "edición sin peticiones",
+    "validación",
+    "extremos iguales",
+    "cancelación",
+    "carga",
+    "vacío",
+    "error parcial",
+    "Tab y Enter",
+    "360 y 1366 px",
+    "5760 puntos por variable en 24 h"
+  ],
+  "errors": []
+}

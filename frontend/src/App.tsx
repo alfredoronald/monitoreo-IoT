@@ -1,7 +1,7 @@
 import './App.css'
 import { useLatestReadings } from './hooks/useLatestReadings'
 import { environmentalVariables as variables } from './environmentalVariables'
-import { HistoricalCharts } from './components/history/HistoricalCharts'
+import { HistoryPanel } from './components/history/HistoryPanel'
 import { AirStatusIndicator } from './components/AirStatusIndicator'
 import { useAirState } from './hooks/useAirState'
 import { AlertBanner } from './components/AlertBanner'
@@ -78,7 +78,7 @@ function App() {
             <div><p className="eyebrow">EVOLUCIÓN DEL AMBIENTE</p><h2 id="history-title">Histórico de lecturas</h2></div>
             <p className="history-description">Una mirada a cada variable a lo largo del tiempo.</p>
           </div>
-          <HistoricalCharts />
+          <HistoryPanel />
         </section>
 
         <aside className="measurement-note" aria-label="Acerca de las mediciones">

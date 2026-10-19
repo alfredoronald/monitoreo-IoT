@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "test:browser:history-range": "node tests/history-range.browser.mjs",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",

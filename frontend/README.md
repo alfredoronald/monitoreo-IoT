@@ -124,9 +124,9 @@ en un esquema transaccional aislado, sin ESP32. Procedimiento y video:
 ## Gráficos históricos (T-5.5, #84)
 
 El dashboard consulta `GET /api/lecturas` para `temperatura`, `humedad` y `co2`
-al abrir el histórico. Las tres consultas comparten un rango explícito desde
-una hora antes hasta el instante de apertura. Ese rango permanece fijo mientras
-la pantalla siga abierta; el histórico no utiliza el polling de las tarjetas.
+al abrir el histórico. Las tres consultas comparten inicialmente un rango
+explícito desde una hora antes hasta el instante de apertura. El selector de
+#85 permite cambiarlo; el histórico no utiliza el polling de las tarjetas.
 Se necesitan el backend histórico #74, datos en ese intervalo y CORS configurado
 para el origen de Vite. No se generan lecturas de ejemplo en la aplicación.
 
@@ -142,18 +142,53 @@ Las peticiones tienen un timeout de 10 segundos. Cambiar el rango o desmontar el
 componente cancela las consultas con `AbortSignal` e ignora respuestas tardías.
 Los fallos de una variable no ocultan los resultados de las otras.
 
-Para #85, `HistoricalCharts` ya acepta un rango controlado, sin modificar el
-cliente API ni añadir todavía controles de selección:
+`HistoricalCharts` acepta un rango controlado, sin modificar el cliente API:
 
 ```tsx
 <HistoricalCharts range={{ desde: '2026-10-15T12:00:00.000Z', hasta: '2026-10-15T13:00:00.000Z' }} />
 ```
 
-Enviar fechas ISO válidas con zona y `desde <= hasta`; la validación de los
-controles corresponde a #85. Omitir `range` utiliza la última hora inicial.
+Enviar fechas ISO válidas con zona y `desde <= hasta`. Omitir `range` utiliza
+la última hora inicial; el dashboard lo controla mediante `HistoryPanel`.
 
 Validación desde `frontend/`: `npm test`, `npm run lint` y `npm run build`.
 Las pruebas adicionales cubren las tres consultas con el cliente real y fetch
 simulado, errores parciales, listas vacías, cambios de rango, cancelación,
 timeout, intervalos irregulares, conservación de datos, formatos y renderizado
 de mensajes y tooltip. No requieren PostgreSQL ni ESP32.
+
+## Selector de periodo (T-5.6, #85)
+
+`HistoryPanel` conecta `HistoryRangeSelector` con los tres gráficos existentes:
+
+- **Última hora**: rango inicial; al seleccionarlo calcula los últimos 60 minutos.
+- **Últimas 24 horas**: aplica inmediatamente 24 horas transcurridas, incluso si
+  hay un cambio de horario en la zona del dispositivo.
+- **Personalizado**: permite editar Desde y Hasta, con precisión de segundos.
+  No se consulta la API hasta pulsar **Aplicar rango** o enviar el formulario
+  con el teclado y fechas válidas. El rango aplicado se sigue mostrando debajo.
+
+Ambos periodos rápidos toman una sola lectura del reloj para sus extremos.
+Las fechas personalizadas se interpretan en la zona del dispositivo y se envían
+como ISO UTC con segundos y zona explícita. Se rechazan campos vacíos, fechas
+inexistentes, horas locales inexistentes por cambio de horario y rangos
+invertidos. Se permiten extremos iguales. Los errores identifican el campo y
+el foco se mueve al primero que necesita corrección.
+
+Los cambios de rango reutilizan `useHistoricalReadings`: tres peticiones
+independientes, cancelación de las anteriores y estados por variable. El
+selector no envía peticiones ni introduce datos de demostración.
+
+Las pruebas de cálculo y validación forman parte de `npm test`. Para comprobar
+también interacción, teclado, solicitudes HTTP controladas y diseño responsive
+con Chrome, Chromium o Edge instalados, ejecutar desde `frontend/`:
+
+```powershell
+npm.cmd run test:browser:history-range
+```
+
+Si el navegador está en otra ubicación, configurar `CHROME_PATH` con su ruta.
+La prueba utiliza un perfil temporal y datos sintéticos solo dentro de la
+verificación. No necesita ni modifica un backend real. Las capturas y el informe
+se guardan en `frontend/node_modules/.tmp/t5-6/`; agregar `-- --evidence` al
+comando los guarda en `docs/evidencias/t5-6/`.

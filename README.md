@@ -197,6 +197,42 @@ Completar y guardar las variables de [`.env.example`](.env.example):
 si contienen `#`, envolver el valor en comillas dobles para evitar comentarios
 de dotenv. El código usa `PG_*`; no lee las variables `SUPABASE_*` de la plantilla.
 
+#### CORS y errores de la API (#77)
+
+`CORS_ORIGIN` admite un único origen exacto (protocolo, host y puerto),
+sin ruta ni barra final, por ejemplo `http://localhost:5173`. No usar `*`.
+`http://127.0.0.1:5173` y `http://localhost:5174` son orígenes distintos.
+Las peticiones con otro encabezado `Origin` responden 403 con
+`{"mensaje":"Origen no permitido por CORS."}`, sin habilitar su lectura
+desde ese origen. El preflight OPTIONS del dashboard admite GET y PATCH
+con Content-Type. No se habilitan credenciales de navegador.
+Los clientes sin `Origin`, como curl, siguen funcionando: CORS no reemplaza
+la autenticación prevista para Sprint 3.
+
+Los fallos inesperados de las rutas pasan al manejador central y responden
+500 con `{"mensaje":"No se pudo completar la solicitud."}`. Los errores
+de JSON responden 400; los cuerpos que superan el límite del parser, 413.
+Las respuestas no exponen detalles internos. La validación de parámetros
+y los errores esperados de cada ruta mantienen sus códigos y mensajes.
+
+Para sacar la evidencia sin crear archivos adicionales:
+
+1. Iniciar backend y frontend; abrir el dashboard en el origen configurado.
+2. En las herramientas de desarrollo del navegador, abrir la consola y ejecutar:
+
+   ```javascript
+   fetch('http://localhost:3000/api/lecturas/ultima')
+     .then(async (r) => console.log('HTTP', r.status, await r.json()));
+   ```
+
+3. En Network/Red, seleccionar la petición `ultima` y capturar la URL,
+   código 200 y encabezados `Origin` de la solicitud y
+   `Access-Control-Allow-Origin` de la respuesta. Deben coincidir con el
+   origen del dashboard. No abrir directamente la URL de la API para esta
+   evidencia: se necesita una petición hecha desde la página del dashboard.
+4. Adjuntar la captura al PR. Las pruebas de orígenes rechazados, preflight
+   y errores internos se ejecutan con `npm test` desde `backend/`.
+
 Instalar las dependencias desde `backend/`, respetando el archivo de bloqueo:
 
 ```powershell

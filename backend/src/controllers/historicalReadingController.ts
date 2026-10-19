@@ -1,7 +1,7 @@
-import type { Request, Response } from 'express';
+import type { NextFunction, Request, Response } from 'express';
 import { getHistoricalReadings } from '../services/historicalReadingService.js';
 
-export async function getHistoricalReadingsHandler(request: Request, response: Response) {
+export async function getHistoricalReadingsHandler(request: Request, response: Response, next: NextFunction) {
   if (request.headers['transfer-encoding'] !== undefined
     || Number(request.headers['content-length'] ?? 0) > 0) {
     response.status(400).json({ mensaje: 'Esta ruta no admite cuerpo en la solicitud.' });
@@ -31,7 +31,7 @@ export async function getHistoricalReadingsHandler(request: Request, response: R
   };
   try {
     response.json(await getHistoricalReadings(filters));
-  } catch {
-    response.status(500).json({ mensaje: 'No se pudo completar la solicitud.' });
+  } catch (error) {
+    next(error);
   }
 }

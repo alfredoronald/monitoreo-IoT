@@ -3,12 +3,22 @@ import express from 'express';
 import { airStatusRoutes } from './routes/airStatusRoutes.js';
 import { readingRoutes } from './routes/readingRoutes.js';
 import { historicalReadingRoutes } from './routes/historicalReadingRoutes.js';
+import { CorsOriginError, errorHandler } from './middleware/errorHandler.js';
 
 export function createApp(corsOrigin: string) {
   const app = express();
 
   app.disable('x-powered-by');
-  app.use(cors({ origin: corsOrigin }));
+  app.use(cors({
+    origin(origin, callback) {
+      // curl y otros clientes sin Origin siguen disponibles; CORS no es autenticación.
+      if (origin === undefined) callback(null, false);
+      else if (origin === corsOrigin && origin !== '*' && origin !== 'null') callback(null, origin);
+      else callback(new CorsOriginError());
+    },
+    methods: ['GET', 'PATCH', 'OPTIONS'],
+    allowedHeaders: ['Content-Type'],
+  }));
   // Estas rutas rechazan cualquier cuerpo antes de que express.json lo procese.
   app.use('/api/lecturas', readingRoutes);
   app.use('/api/lecturas', historicalReadingRoutes);
@@ -22,13 +32,7 @@ export function createApp(corsOrigin: string) {
     });
   });
 
-  app.use((error: unknown, _request: express.Request, response: express.Response, next: express.NextFunction) => {
-    if (error instanceof SyntaxError && 'body' in error) {
-      response.status(400).json({ mensaje: 'El cuerpo no contiene JSON válido.' });
-      return;
-    }
-    next(error);
-  });
+  app.use(errorHandler);
 
   return app;
 }

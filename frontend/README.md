@@ -192,3 +192,38 @@ La prueba utiliza un perfil temporal y datos sintéticos solo dentro de la
 verificación. No necesita ni modifica un backend real. Las capturas y el informe
 se guardan en `frontend/node_modules/.tmp/t5-6/`; agregar `-- --evidence` al
 comando los guarda en `docs/evidencias/t5-6/`.
+
+## Estados del dashboard (T-5.7, #86)
+
+Las tarjetas distinguen carga inicial, error sin lecturas, error conservando el
+último dato y respuesta válida vacía. La antigüedad se evalúa por variable,
+exclusivamente a partir de `fecha_hora`: hasta 60 000 ms es reciente; más de
+60 000 ms muestra **Sin datos recientes** y **Última lectura conocida**, con
+valor, unidad y fecha/hora originales. Un error de consulta también identifica
+el valor conservado como última lectura conocida, aunque aún sea reciente.
+
+`readingFreshness.ts` comparte la regla con el indicador de aire. Un único
+`useReadingClock` programa los vencimientos de las tarjetas y la clasificación,
+sin hacer consultas HTTP. Se recalcula al recuperar el foco o cambiar la
+visibilidad de la pestaña y limpia el temporizador al desmontarse. El indicador
+conserva niveles, etiquetas, recomendaciones y colores; una clasificación
+antigua o conservada tras un error deja de llamarse «Nivel actual».
+
+Se mantiene el polling de 15 segundos. El histórico conserva sus propios estados
+de carga, error y rango vacío: sus lecturas no caducan por superar un minuto.
+El selector de #85 permite cambiar el rango sin afectar la antigüedad de las
+lecturas actuales.
+
+Las pruebas de límites, reloj y clasificación forman parte de `npm test`.
+Para comprobar el dashboard completo con Chrome, Chromium o Edge instalado:
+
+```powershell
+npm.cmd run test:browser:dashboard-states
+```
+
+Configurar `CHROME_PATH` si está en otra ubicación. La prueba intercepta la API
+y utiliza respuestas sintéticas exclusivamente durante la verificación; no
+necesita backend, base de datos ni sensores. Comprueba estados, recuperación,
+polling, históricos, alertas, teclado y anchos de 360 y 1366 px. No modifica
+`.env`. Guarda capturas e informe en `frontend/node_modules/.tmp/t5-7/`.
+Añadir `-- --evidence` para guardarlos en `docs/evidencias/t5-7/`.

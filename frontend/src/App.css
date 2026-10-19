@@ -33,6 +33,12 @@ h1 { font-size: clamp(28px, 3.1vw, 40px); line-height: 1.15; letter-spacing: -1.
 .metric-description { color: var(--color-text-muted); font-size: 14px; margin-top: 4px; }
 .metric-footer { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--color-border); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; color: var(--color-text-muted); font-size: 14px; }
 .metric-footer > span:first-child { color: var(--color-text-muted); }
+.metric-value-label { margin-top: 20px; color: var(--color-text-muted); font-size: 14px; }
+.metric-value-label + .metric-value { margin-top: 6px; }
+.metric-card.metric-stale .metric-status { color: var(--color-moderate); font-weight: 600; }
+.metric-footer time { overflow-wrap: anywhere; }
+.connection-status { max-width: 100%; flex-shrink: 1; }
+.connection-status > span { flex-shrink: 0; }
 .air-status-panel { margin-top: 20px; padding: 24px; background: var(--color-surface); border: 1px solid var(--color-border); border-left: 5px solid var(--air-status-color); border-radius: 12px; }
 .air-status-bueno { --air-status-color: var(--color-good); --air-status-soft: var(--color-good-soft); }
 .air-status-moderado { --air-status-color: var(--color-moderate); --air-status-soft: var(--color-moderate-soft); }

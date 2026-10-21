@@ -1,7 +1,7 @@
-import type { Request, Response } from 'express';
+import type { NextFunction, Request, Response } from 'express';
 import { getLatestReadings } from '../services/readingService.js';
 
-export async function getLatestReadingsHandler(request: Request, response: Response) {
+export async function getLatestReadingsHandler(request: Request, response: Response, next: NextFunction) {
   if (/\?.+/.test(request.originalUrl)) {
     response.status(400).json({ mensaje: 'Esta ruta no admite parámetros de consulta.' });
     return;
@@ -15,7 +15,7 @@ export async function getLatestReadingsHandler(request: Request, response: Respo
 
   try {
     response.json(await getLatestReadings());
-  } catch {
-    response.status(500).json({ mensaje: 'No se pudo completar la solicitud.' });
+  } catch (error) {
+    next(error);
   }
 }

@@ -114,6 +114,7 @@ test('T-4.8: casos HTTP y consulta de 24 h contra PostgreSQL aislado', async (co
     init?: RequestInit,
   ) {
     let result: HttpResult | undefined;
+    await database.query('SAVEPOINT case_request');
     try {
       result = await call(path, init);
       assert.equal(result.status, expectedStatus);
@@ -123,9 +124,17 @@ test('T-4.8: casos HTTP y consulta de 24 h contra PostgreSQL aislado', async (co
         observed: `HTTP ${result.status}; ${detail}`, durationMs: result.durationMs, status: 'PASS' });
     } catch (error) {
       const detail = error instanceof Error ? error.message : String(error);
+      const response = result
+        ? `HTTP ${result.status}; ${Array.isArray(result.body)
+          ? `${result.body.length} lecturas`
+          : JSON.stringify(result.body)}; `
+        : '';
       cases.push({ id, description, expected,
-        observed: `${result ? `HTTP ${result.status}; ` : ''}${detail}`,
+        observed: `${response}${detail}`,
         durationMs: result?.durationMs ?? null, status: 'FAIL' });
+    } finally {
+      await database.query('ROLLBACK TO SAVEPOINT case_request');
+      await database.query('RELEASE SAVEPOINT case_request');
     }
   }
 

@@ -1,12 +1,12 @@
 # Pruebas de los endpoints y consulta de 24 h (T-4.8)
 
-Issue: #78. Ejecución: 2026-10-21T01:58:36.918Z (UTC). Entorno local: Node.js v24.14.0, PostgreSQL 18.3; API HTTP en `127.0.0.1` con puerto asignado durante la prueba.
+Issue: #78. Ejecución: 2026-10-21T02:08:39.785Z (UTC). Entorno local: Node.js v24.14.0, PostgreSQL 18.3; API HTTP en `127.0.0.1` con puerto asignado durante la prueba.
 
 ## Método
 
-La prueba se ejecutó sobre `feature/backend-mqtt-api` (commit `cd6885b0`) con la corrección mínima de #75 (commit `cf29d97`) aplicada temporalmente y el test de #78. No se integró `develop` para esta medición.
+La prueba se ejecutó sobre `feature/backend-mqtt-api` (commit `cd6885b0`) con el test de #78. No se aplicó ninguna corrección temporal ni se integró `develop` para esta medición.
 
-La prueba inicia la aplicación Express real y envía solicitudes HTTP con `fetch` de Node.js. Usa el esquema de `database/esquema.sql` y datos sintéticos dentro de una transacción PostgreSQL que se revierte al terminar. Así se prueba el comportamiento de los endpoints sin conservar lecturas de prueba. Se incluyen respuestas vacías, solicitudes válidas, parámetros inválidos y la política CORS.
+La prueba inicia la aplicación Express real y envía solicitudes HTTP con `fetch` de Node.js. Usa el esquema de `database/esquema.sql` y datos sintéticos dentro de una transacción PostgreSQL que se revierte al terminar. Cada solicitud usa un punto de retorno para que un error SQL no impida registrar los casos siguientes. Se incluyen respuestas vacías, solicitudes válidas, parámetros inválidos y la política CORS.
 
 Desde `backend/`, con PostgreSQL en marcha y la configuración local en `.env`:
 
@@ -14,33 +14,33 @@ Desde `backend/`, con PostgreSQL en marcha y la configuración local en `.env`:
 pnpm exec tsx --test tests/apiEndpointsEvidence.integration.test.ts
 ```
 
-La salida incluye `EVIDENCIA_T4_8=` seguido del resultado completo en JSON. El script falla si un caso no cumple lo esperado o si alguna medición de 24 h llega a 1 000 ms.
+La salida incluye `EVIDENCIA_T4_8=` seguido del resultado completo en JSON. El comando terminó con código 1 porque tres casos inválidos no obtuvieron el HTTP 400 esperado; el informe se emitió completo antes de finalizar. También fallaría si alguna medición de 24 h llegara a 1 000 ms.
 
 ## Resultados
 
 | ID | Caso | Esperado | Observado | Tiempo (ms) | Resultado |
 |---|---|---|---|---:|---|
-| H-01 | Histórico sin lecturas | 200; [] | HTTP 200; 0 lecturas | 61.033 | Aprobado |
-| U-01 | Últimas lecturas sin datos | 200; [] | HTTP 200; 0 lecturas | 4.490 | Aprobado |
-| H-02 | Histórico válido con extremos incluidos | 200; IDs 101 y 102 en orden | HTTP 200; 2 lecturas, orden y formato correctos | 4.434 | Aprobado |
-| H-03 | Rango válido sin coincidencias | 200; [] | HTTP 200; 0 lecturas | 3.700 | Aprobado |
-| H-04 | Zona horaria equivalente | 200; 2 lecturas | HTTP 200; 2 lecturas | 3.694 | Aprobado |
-| U-02 | Última lectura de cada variable | 200; co2, humedad y temperatura | HTTP 200; 3 variables, fecha y valor válidos | 3.178 | Aprobado |
-| H-05 | Variable desconocida | 400; mensaje en español | HTTP 400; mensaje: variable debe ser temperatura, humedad o co2. | 1.999 | Aprobado |
-| H-06 | Falta desde | 400; mensaje en español | HTTP 400; mensaje: El parámetro desde es obligatorio. | 2.477 | Aprobado |
-| H-07 | Fecha imposible | 400; mensaje en español | HTTP 400; mensaje: desde debe ser una fecha ISO 8601 válida con hora, segundos y zona horaria. | 2.662 | Aprobado |
-| H-08 | Rango invertido | 400; mensaje en español | HTTP 400; mensaje: desde no puede ser posterior a hasta. | 2.343 | Aprobado |
-| H-09 | Parámetro duplicado | 400; mensaje en español | HTTP 400; mensaje: El parámetro variable debe ser un texto no vacío y aparecer una sola vez. | 2.038 | Aprobado |
-| H-10 | Parámetro desconocido | 400; mensaje en español | HTTP 400; mensaje: Parámetro de consulta no permitido: limite. | 1.324 | Aprobado |
-| U-03 | Parámetros no admitidos en última | 400; mensaje en español | HTTP 400; mensaje: Esta ruta no admite parámetros de consulta. | 1.767 | Aprobado |
-| C-01 | Origen autorizado por CORS | 200; Access-Control-Allow-Origin exacto | HTTP 200; origen permitido | 3.238 | Aprobado |
-| C-02 | Origen rechazado por CORS | 403; sin cabecera de permiso | HTTP 403; mensaje: Origen no permitido por CORS. | 1.388 | Aprobado |
-| P-00 | Preparación de la consulta de 24 h | 200; 5760 lecturas | HTTP 200; 5760 lecturas de temperatura, ventana de 24 h | 42.489 | Aprobado |
-| P-01 | Consulta de 24 h, medición 1 | 200; 5760 lecturas; <1000 ms | HTTP 200; 5760 lecturas de temperatura, ventana de 24 h | 41.926 | Aprobado |
-| P-02 | Consulta de 24 h, medición 2 | 200; 5760 lecturas; <1000 ms | HTTP 200; 5760 lecturas de temperatura, ventana de 24 h | 29.022 | Aprobado |
-| P-03 | Consulta de 24 h, medición 3 | 200; 5760 lecturas; <1000 ms | HTTP 200; 5760 lecturas de temperatura, ventana de 24 h | 35.409 | Aprobado |
+| H-01 | Histórico sin lecturas | 200; [] | HTTP 200; 0 lecturas | 39.891 | Aprobado |
+| U-01 | Últimas lecturas sin datos | 200; [] | HTTP 200; 0 lecturas | 2.581 | Aprobado |
+| H-02 | Histórico válido con extremos incluidos | 200; IDs 101 y 102 en orden | HTTP 200; 2 lecturas, orden y formato correctos | 3.822 | Aprobado |
+| H-03 | Rango válido sin coincidencias | 200; [] | HTTP 200; 0 lecturas | 2.556 | Aprobado |
+| H-04 | Zona horaria equivalente | 200; 2 lecturas | HTTP 200; 2 lecturas | 3.078 | Aprobado |
+| U-02 | Última lectura de cada variable | 200; co2, humedad y temperatura | HTTP 200; 3 variables, fecha y valor válidos | 2.167 | Aprobado |
+| H-05 | Variable desconocida | 400; mensaje en español | HTTP 200; 0 lecturas | 1.915 | Falló |
+| H-06 | Falta desde | 400; mensaje en español | HTTP 400; mensaje: El parámetro desde debe ser un texto no vacío y aparecer una sola vez. | 1.512 | Aprobado |
+| H-07 | Fecha imposible | 400; mensaje en español | HTTP 500; mensaje: No se pudo completar la solicitud. | 4.375 | Falló |
+| H-08 | Rango invertido | 400; mensaje en español | HTTP 200; 0 lecturas | 2.500 | Falló |
+| H-09 | Parámetro duplicado | 400; mensaje en español | HTTP 400; mensaje: El parámetro variable debe ser un texto no vacío y aparecer una sola vez. | 1.406 | Aprobado |
+| H-10 | Parámetro desconocido | 400; mensaje en español | HTTP 400; mensaje: Parámetro de consulta no permitido: limite. | 1.292 | Aprobado |
+| U-03 | Parámetros no admitidos en última | 400; mensaje en español | HTTP 400; mensaje: Esta ruta no admite parámetros de consulta. | 0.956 | Aprobado |
+| C-01 | Origen autorizado por CORS | 200; Access-Control-Allow-Origin exacto | HTTP 200; origen permitido | 2.628 | Aprobado |
+| C-02 | Origen rechazado por CORS | 403; sin cabecera de permiso | HTTP 403; mensaje: Origen no permitido por CORS. | 1.300 | Aprobado |
+| P-00 | Preparación de la consulta de 24 h | 200; 5760 lecturas | HTTP 200; 5760 lecturas de temperatura, ventana de 24 h | 42.644 | Aprobado |
+| P-01 | Consulta de 24 h, medición 1 | 200; 5760 lecturas; <1000 ms | HTTP 200; 5760 lecturas de temperatura, ventana de 24 h | 36.623 | Aprobado |
+| P-02 | Consulta de 24 h, medición 2 | 200; 5760 lecturas; <1000 ms | HTTP 200; 5760 lecturas de temperatura, ventana de 24 h | 31.303 | Aprobado |
+| P-03 | Consulta de 24 h, medición 3 | 200; 5760 lecturas; <1000 ms | HTTP 200; 5760 lecturas de temperatura, ventana de 24 h | 29.289 | Aprobado |
 
-Total: **19 aprobados y 0 fallidos**. Casos fallidos: **ninguno**.
+Total: **16 aprobados y 3 fallidos**. Los tres fallos (H-05, H-07 y H-08) muestran que la rama backend todavía no incluye la validación semántica de #75. La implementación de #75 llegó a `develop` mediante #111, pero no a `feature/backend-mqtt-api`. Esta evidencia registra el defecto sin agregar la corrección a la PR de #78.
 
 ## Consulta de 24 h
 
@@ -48,11 +48,11 @@ Se insertaron **5760 lecturas de temperatura** separadas por 15 segundos para el
 
 | Medición | Tiempo (ms) | Límite | Resultado |
 |---|---:|---:|---|
-| 1 | 41.926 | < 1 000 ms | Aprobado |
-| 2 | 29.022 | < 1 000 ms | Aprobado |
-| 3 | 35.409 | < 1 000 ms | Aprobado |
+| 1 | 36.623 | < 1 000 ms | Aprobado |
+| 2 | 31.303 | < 1 000 ms | Aprobado |
+| 3 | 29.289 | < 1 000 ms | Aprobado |
 
-Promedio: **35.452 ms**. Máximo observado: **41.926 ms**. Los tres tiempos medidos cumplen el criterio de respuesta menor a 1 segundo. La transacción se revirtió al terminar la prueba.
+Promedio: **32.405 ms**. Máximo observado: **36.623 ms**. Los tres tiempos medidos cumplen el criterio de respuesta menor a 1 segundo. La transacción se revirtió al terminar la prueba.
 
 ## Alcance de la medición
 

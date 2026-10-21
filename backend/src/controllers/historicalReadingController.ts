@@ -1,5 +1,6 @@
 import type { NextFunction, Request, Response } from 'express';
 import { getHistoricalReadings } from '../services/historicalReadingService.js';
+import { validateReadingFilters } from './queryValidation.js';
 
 export async function getHistoricalReadingsHandler(request: Request, response: Response, next: NextFunction) {
   if (request.headers['transfer-encoding'] !== undefined
@@ -17,18 +18,26 @@ export async function getHistoricalReadingsHandler(request: Request, response: R
   }
 
   for (const key of ['variable', 'desde', 'hasta']) {
+    if (!parameters.has(key)) {
+      response.status(400).json({ mensaje: `El parámetro ${key} es obligatorio.` });
+      return;
+    }
     if (parameters.getAll(key).length !== 1 || !parameters.get(key)?.trim()) {
       response.status(400).json({ mensaje: `El parámetro ${key} debe ser un texto no vacío y aparecer una sola vez.` });
       return;
     }
   }
 
-  // La validación semántica de variable, fechas ISO 8601 y rango corresponde a #75.
   const filters = {
     variable: parameters.get('variable')!,
     from: parameters.get('desde')!,
     to: parameters.get('hasta')!,
   };
+  const validationError = validateReadingFilters(filters.variable, filters.from, filters.to);
+  if (validationError) {
+    response.status(400).json({ mensaje: validationError });
+    return;
+  }
   try {
     response.json(await getHistoricalReadings(filters));
   } catch (error) {

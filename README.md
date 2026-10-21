@@ -282,8 +282,8 @@ Debe responder HTTP 200 con:
 {"status":"ok","message":"Servidor de monitoreo ambiental activo"}
 ```
 
-Esta ruta comprueba Express; las rutas `/api/lecturas`, `/api/lecturas/ultima`
-y `/api/salud` se implementarán en sus tareas respectivas.
+Esta ruta comprueba Express. Las consultas de lecturas se explican en
+[API REST](#api-rest). `/api/salud` sigue pendiente de implementación.
 
 Publicar con la contraseña de **`esp32`**, solicitándola sin mostrarla al escribir:
 
@@ -481,9 +481,125 @@ el detalle. Si hay pérdidas, anotarlas aunque el resultado no sea 100/100/100.
 
 | Método | Ruta | Descripción |
 |---|---|---|
-| GET | `/api/lecturas?variable=&desde=&hasta=&limite=` | Lecturas por rango de fechas |
+| GET | `/api/lecturas?variable=&desde=&hasta=` | Lecturas de una variable por rango de fechas |
 | GET | `/api/lecturas/ultima` | Último valor por variable |
-| GET | `/api/salud` | Estado de la base y del broker |
+| GET | `/api/salud` | Estado de la base y del broker (pendiente) |
+
+Base local: `http://localhost:3000/api`. Las peticiones GET no llevan cuerpo.
+Las respuestas usan `Content-Type: application/json`. En Sprint 2 no se
+exige `API_KEY`. El contrato completo está en [docs/api.md](docs/api.md).
+Los valores de los ejemplos son ilustrativos y dependen de las lecturas
+que existan en la base; no son resultados de una ejecución real.
+
+#### GET /api/lecturas: histórico por variable y fechas
+
+| Parámetro | Obligatorio | Formato |
+|---|---|---|
+| `variable` | Sí | `temperatura`, `humedad` o `co2` |
+| `desde` | Sí | Fecha ISO 8601 con hora, segundos y zona horaria |
+| `hasta` | Sí | Fecha ISO 8601 con hora, segundos y zona horaria; igual o posterior a `desde` |
+
+Ejemplos de fecha: `2026-10-15T12:00:00Z` o `2026-10-15T08:00:00-04:00`.
+Se admiten fracciones de segundo. Los extremos del rango son inclusivos.
+Las lecturas se ordenan por `fecha_hora ASC, id ASC`. No se admite `limite`
+ni se truncan silenciosamente los resultados.
+
+Llamada desde Git Bash:
+
+```bash
+curl -i "http://localhost:3000/api/lecturas?variable=temperatura&desde=2026-10-15T12:00:00Z&hasta=2026-10-15T13:00:00Z"
+```
+
+Ejemplo de respuesta **HTTP 200**:
+
+```json
+[
+  { "id": "101", "tipo_variable": "temperatura", "valor": 24.5, "fecha_hora": "2026-10-15T12:00:00.000Z" },
+  { "id": "104", "tipo_variable": "temperatura", "valor": 24.7, "fecha_hora": "2026-10-15T12:00:15.000Z" }
+]
+```
+
+`id` es una cadena para conservar la precisión de BIGINT; `valor` es un
+número JSON. La unidad depende de la variable: °C, % HR o ppm estimados de
+CO₂. Las fechas de salida están en UTC. Si no hay coincidencias, devuelve
+**HTTP 200**, no 404, con una lista vacía:
+
+```json
+[]
+```
+
+#### GET /api/lecturas/ultima: últimos valores disponibles
+
+Devuelve la lectura más reciente de cada variable mediante la vista
+`v_ultima_lectura`. No admite parámetros de consulta ni cuerpo.
+
+```bash
+curl -i "http://localhost:3000/api/lecturas/ultima"
+```
+
+Ejemplo de respuesta **HTTP 200**:
+
+```json
+[
+  { "tipo_variable": "co2", "valor": 900, "fecha_hora": "2026-10-15T12:00:15.000Z" },
+  { "tipo_variable": "humedad", "valor": 55, "fecha_hora": "2026-10-15T12:00:14.000Z" },
+  { "tipo_variable": "temperatura", "valor": 24.7, "fecha_hora": "2026-10-15T12:00:15.000Z" }
+]
+```
+
+El resultado está ordenado por `tipo_variable ASC`, con hasta tres
+elementos y sin campo `id`. Si una variable no tiene lecturas, se omite;
+si no existe ninguna lectura, responde **HTTP 200** con `[]`. La fecha
+permite distinguir una lectura antigua de un valor reciente: no se
+sustituyen datos ausentes por cero.
+
+#### Errores HTTP 400
+
+Un 400 indica que la solicitud debe corregirse. La respuesta contiene un
+campo `mensaje` en español. Reglas de validación acordadas en el contrato:
+
+| Caso | Ejemplo incorrecto | Motivo |
+|---|---|---|
+| Falta un parámetro obligatorio | Omitir `hasta` | El histórico necesita variable y ambas fechas |
+| Parámetro vacío o repetido | `variable=` o dos `desde` | Cada parámetro debe ser escalar, no vacío y único |
+| Variable desconocida | `variable=ruido` | Solo temperatura, humedad y co2 |
+| Fecha mal escrita o imposible | `desde=ayer` o 30 de febrero | Se requiere una fecha ISO 8601 válida |
+| Fecha sin zona horaria | `2026-10-15T12:00:00` | Incluir `Z` o desplazamiento horario |
+| Rango invertido | `desde` posterior a `hasta` | El inicio no puede superar el final |
+| Parámetro adicional | `limite=10` | Solo se admiten los tres filtros documentados |
+| Query en últimas lecturas | `/api/lecturas/ultima?variable=co2` | Esta ruta no admite filtros |
+| Cuerpo en un GET | Enviar un objeto JSON | Estas consultas no admiten cuerpo |
+
+Ejemplo para provocar un **400** sin depender de datos en PostgreSQL:
+
+```bash
+curl -i "http://localhost:3000/api/lecturas/ultima?variable=co2"
+```
+
+Respuesta **HTTP 400 Bad Request**:
+
+```json
+{ "mensaje": "Esta ruta no admite parámetros de consulta." }
+```
+
+Ejemplo con una variable desconocida:
+
+```bash
+curl -i "http://localhost:3000/api/lecturas?variable=ruido&desde=2026-10-15T12:00:00Z&hasta=2026-10-15T13:00:00Z"
+```
+
+Respuesta **HTTP 400 Bad Request**:
+
+```json
+{ "mensaje": "variable debe ser temperatura, humedad o co2." }
+```
+
+La validación ocurre antes de consultar PostgreSQL. Por ejemplo, omitir
+`hasta` devuelve `{"mensaje":"El parámetro hasta es obligatorio."}` y un
+rango invertido devuelve `{"mensaje":"desde no puede ser posterior a hasta."}`.
+
+Un fallo inesperado del servidor no es un 400: responde **500** con
+`{"mensaje":"No se pudo completar la solicitud."}`, sin detalles internos.
 
 ### Base de datos
 

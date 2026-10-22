@@ -1,4 +1,4 @@
-import type { Request, Response } from 'express';
+import type { NextFunction, Request, Response } from 'express';
 import {
   getAirStatus,
   getAlerts,
@@ -51,7 +51,7 @@ function hasOnlyQuery(request: Request, allowed: string[]): string | undefined {
   return undefined;
 }
 
-export async function getAirStatusHandler(request: Request, response: Response) {
+export async function getAirStatusHandler(request: Request, response: Response, next: NextFunction) {
   const invalidQuery = hasOnlyQuery(request, []);
   if (invalidQuery) {
     response.status(400).json({ mensaje: `Parámetro de consulta no permitido: ${invalidQuery}.` });
@@ -64,12 +64,11 @@ export async function getAirStatusHandler(request: Request, response: Response) 
   try {
     response.json(serializeAirStatus(await getAirStatus()));
   } catch (error) {
-    console.error('GET /api/estado-aire:', error instanceof Error ? error.message : String(error));
-    response.status(500).json({ mensaje: 'No se pudo completar la solicitud.' });
+    next(error);
   }
 }
 
-export async function getAlertsHandler(request: Request, response: Response) {
+export async function getAlertsHandler(request: Request, response: Response, next: NextFunction) {
   const invalidQuery = hasOnlyQuery(request, ['atendida']);
   if (invalidQuery) {
     response.status(400).json({ mensaje: `Parámetro de consulta no permitido: ${invalidQuery}.` });
@@ -91,12 +90,11 @@ export async function getAlertsHandler(request: Request, response: Response) {
     const alerts = await getAlerts(attendedText === null ? undefined : attendedText === 'true');
     response.json(alerts.map(serializeAlert));
   } catch (error) {
-    console.error('GET /api/alertas:', error instanceof Error ? error.message : String(error));
-    response.status(500).json({ mensaje: 'No se pudo completar la solicitud.' });
+    next(error);
   }
 }
 
-export async function patchAlertHandler(request: Request, response: Response) {
+export async function patchAlertHandler(request: Request, response: Response, next: NextFunction) {
   if (!request.is('application/json')) {
     response.status(415).json({ mensaje: 'Se requiere Content-Type: application/json.' });
     return;
@@ -127,7 +125,6 @@ export async function patchAlertHandler(request: Request, response: Response) {
     }
     response.json(serializeAlert(alert));
   } catch (error) {
-    console.error('PATCH /api/alertas/:id:', error instanceof Error ? error.message : String(error));
-    response.status(500).json({ mensaje: 'No se pudo completar la solicitud.' });
+    next(error);
   }
 }

@@ -1,0 +1,2360 @@
+[
+    {
+        "path":  "capturas/chrome/1366x768/final/01-dashboard-ultima-hora.png",
+        "bytes":  139401,
+        "sha256":  "8f9721b10c9653de67478fb04bfd65076505a782a7bbbc8f92590b3a9b7c777f",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/02-tooltips-tres-graficos.png",
+        "bytes":  139325,
+        "sha256":  "91e598b9f639df0f2cf4307cd5475ae065ed7675b371efaba5de0c3954e7061b",
+        "rawRetained":  true
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/03-24-horas-5760-puntos.png",
+        "bytes":  140538,
+        "sha256":  "34dbf3e6f6bc39889d2874ba4656495c4e024d25148bda18886681e78f0f8912",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/04-personalizado-valido-teclado.png",
+        "bytes":  150320,
+        "sha256":  "a606c8d910e76cf287c3c224130779bcb4b671f267ec5f5eabfaa6bc60be2e75",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/05-fechas-vacias-invalidas.png",
+        "bytes":  152591,
+        "sha256":  "96268ab88cefa20209e6a81852d55c46db0002093d7a13b45020a8b685326fe4",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/06-fechas-invertidas.png",
+        "bytes":  153142,
+        "sha256":  "3825987677bce58d7673a71ab0cf1c82cb22d8c6e29a919b48e7e8ee7e3344af",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/07-fechas-iguales-un-punto.png",
+        "bytes":  145462,
+        "sha256":  "abd098953913168b0bc88b458f78d0aca4f82b254e5602956f9327aaab010fe9",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/08-cambio-rapido-cancelacion.png",
+        "bytes":  126555,
+        "sha256":  "f204b3584b37d2d7665d96623615dbc03ed2ab115f926c926d372c5f87cda5a2",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/09-cargando.png",
+        "bytes":  87958,
+        "sha256":  "6ddcc0c684478b2a37fad28691d750e91ae844b23abeb9929591d18980d7613a",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/10-error-inicial.png",
+        "bytes":  100321,
+        "sha256":  "f28779926f73e1234e224380a73cb41d8db41edeae3cd08ff8ac157d96bfbdd2",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/11-sin-datos.png",
+        "bytes":  86639,
+        "sha256":  "43f9bfc3df28f5294041a06fab69ca0ed6f0d700bb7193e5384d98384dc5558a",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/12-datos-antiguos.png",
+        "bytes":  147241,
+        "sha256":  "c3906868680ef52829ebbebe6c807c48cbbd72ae77a05c813edd0aa46304a599",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/13-error-parcial.png",
+        "bytes":  135683,
+        "sha256":  "dee5532c98ec66c6cc513929581373d22ddc93f15231d4f19c12aada27e988bc",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/14-aire-bueno.png",
+        "bytes":  138259,
+        "sha256":  "7bb876ef64fab0212c996232b0c5b2d50fcc0fa02c02822d3c067c4117357376",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/14-aire-malo.png",
+        "bytes":  137529,
+        "sha256":  "faeb1baefb0a613f2e8ed1f6e48c7d7d880ee285c54748003e73d8e06ee7e74b",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/14-aire-moderado.png",
+        "bytes":  139788,
+        "sha256":  "508fa1dbd723433e5ebc60c4bf110930e3a659210b7a99eb79665b1fd230e3f3",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/15-alertas-patch-fallido-reintento.png",
+        "bytes":  113270,
+        "sha256":  "a01a738cacdbe64c359b95d4a518409beeee94a25f383dbb2195e3d116e16bf9",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/15-patch-fallido.png",
+        "bytes":  141432,
+        "sha256":  "1051a6097b61d2abf173b01f32442b4903c4fff690beee0c74e2b7ab5da07136",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/16-navegacion-foco-controles.png",
+        "bytes":  150193,
+        "sha256":  "372a486474e1b618b9954bade67113218c8e82a12381311495db1043b6df23c1",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/17-valores-numericos-largos.png",
+        "bytes":  159581,
+        "sha256":  "554c499f47d90b5da944be381fcd717123ecd0896a1d2cea83f70b982b8edea8",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/18-textos-aire-sin-espacios.png",
+        "bytes":  150399,
+        "sha256":  "d840dd5c5cf78302ec5c43bb47e566a4ac79bb58777e10f11c6de82d66479622",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/19-error-conserva-valores.png",
+        "bytes":  150638,
+        "sha256":  "1aaa7515bcb8aaf47a9cb82e16244c560f97c4f9b102eb20985cb26380e6681c",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/19-polling-error-conserva-recuperacion.png",
+        "bytes":  139652,
+        "sha256":  "c4c4f3a5278c44a21770c9b504ba45eb4c799cdc82af51382e1d7da17b0489e7",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/21-sin-excepciones-javascript.png",
+        "bytes":  147819,
+        "sha256":  "4c3f52a808749181799d63d335bf844a7f87ea05f505d89342813dfe216cfc54",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/01-dashboard-ultima-hora.png",
+        "bytes":  139377,
+        "sha256":  "bd42f8ec3ad67ec8c1a4c2625810b7eb359be1826338be7c74e68e6cfa05d19f",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/02-tooltip-temperatura.png",
+        "bytes":  145577,
+        "sha256":  "403e27ec54605cb4981343d46c2a2b1079d1fc043e982b6ca034b83fe2cebcd6",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/02-tooltips-tres-graficos.png",
+        "bytes":  147666,
+        "sha256":  "5255ad9e2bdb4d277d91c6003b653e2cffc98930082814a2dcf0b1392abf3f39",
+        "rawRetained":  true
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/03-24-horas-5760-puntos.png",
+        "bytes":  149918,
+        "sha256":  "adebb79f414f5f49be566633113506290bf162a0b2a0c6ac7e3e92d293d13833",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/04-personalizado-valido-teclado.png",
+        "bytes":  150334,
+        "sha256":  "71d9ff701f5d055a8e1a2a923e0d317ba6abac38e979cb044b7d8bbac76ecc8e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/05-fechas-vacias-invalidas.png",
+        "bytes":  152576,
+        "sha256":  "4d84ed0093cf2396c085db4c54fbab829c8dffdab374db0e0f65916698d784ef",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/06-fechas-invertidas.png",
+        "bytes":  153156,
+        "sha256":  "27a72436340cc7c58c29bcd1daa9d0041c1186d3dde5694c216242cdd75ff2a9",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/07-fechas-iguales-un-punto.png",
+        "bytes":  145476,
+        "sha256":  "42971b746e1fad21061aafc0f29ba67fb41a69985f3647b94114c7fba5f07c55",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/08-cambio-rapido-cancelacion.png",
+        "bytes":  126643,
+        "sha256":  "a59768ed9f745c32517fc678195e79ef4dc08c1048dd39758a6a825f37c4d46b",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/09-cargando.png",
+        "bytes":  87972,
+        "sha256":  "edc793672479d8a73abca3c01f41b1870a0fd54c1b43d4775a01cc4bddcd2ace",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/10-error-inicial.png",
+        "bytes":  100322,
+        "sha256":  "0fa9037a3d5de1488458bbca3a6d9a09a4b476abddf532fdfa21b1e8990ee559",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/11-sin-datos.png",
+        "bytes":  86789,
+        "sha256":  "fb3ff7fd55f18a673c27ca59a8b02a6ca07e4880545be8347de1295c192b871b",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/12-datos-antiguos.png",
+        "bytes":  147429,
+        "sha256":  "6963f106c5f555fd4a4d81028f96544b7eea42471fcd01d9f0b21e0603a0a5ec",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/13-error-parcial.png",
+        "bytes":  135736,
+        "sha256":  "86fec042756250caccba5eb912eedf3a8ef23e8ac66ca0d9db3ce39c6351d871",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/14-aire-bueno.png",
+        "bytes":  138029,
+        "sha256":  "fa52fc0e664efecc2de15607c31af6b9966363e1a771ff6bf4a5026247a198f8",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/14-aire-malo.png",
+        "bytes":  137407,
+        "sha256":  "2a0329807a8409b35983bca6c69b9b0c87bc1bf8bc202b630e8a86890b118281",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/14-aire-moderado.png",
+        "bytes":  139542,
+        "sha256":  "23752d956889e90bd964eeed535f642201b390f486d7af278bf01c30e3cda2ce",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/15-alertas-patch-fallido-reintento.png",
+        "bytes":  113290,
+        "sha256":  "d9396d30030acb4f8b3b862f4d8085e454b9d6cd06462f0897ea0d2f0b13a8f6",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/15-patch-fallido.png",
+        "bytes":  141518,
+        "sha256":  "4f86832ff3ca6a8afc5707701a2cd177836e21bfe586e7871da9fcfe5b38c2c4",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/16-navegacion-foco-controles.png",
+        "bytes":  150127,
+        "sha256":  "79bab5066ee2a0994c4d0a2ac0a42ad9f344a96107de21a2334520a7ac6e501f",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/17-valores-numericos-largos.png",
+        "bytes":  159294,
+        "sha256":  "5b8f45fd7a94fd0afe12b8617653bfc5681710127f0f30bae59df51bb76eb96f",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/18-textos-aire-sin-espacios.png",
+        "bytes":  150429,
+        "sha256":  "b9ba6ea9571b7a0e0ac79b729a56cd754688a4ca6d7707e1dd9c36a313d1ddfe",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/19-error-conserva-valores.png",
+        "bytes":  150411,
+        "sha256":  "dd3e8004ac66e07766074b02569e0c4882d04afe42afdf6c13213a07dd2077d1",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/19-polling-error-conserva-recuperacion.png",
+        "bytes":  139507,
+        "sha256":  "620f3084d5f1f1ce52ac5790c73d602af80866561e5bb4009d7dc251f8a17fa2",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/21-sin-excepciones-javascript.png",
+        "bytes":  150236,
+        "sha256":  "854f58c4c375075a83a914ad2ffe89911293eae96e04745652b75e2a74c24668",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/tooltips/01-dashboard-ultima-hora.png",
+        "bytes":  139797,
+        "sha256":  "a3d69f08c7aa082bbdcca605a994dd84047e0ba41ff6830ff02f60a798035f0e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/tooltips/02-tooltip-co2.png",
+        "bytes":  146343,
+        "sha256":  "a481c25b171fc11375ec6fe2a3b12fe619e1ba42744b53dcbf17838faf7c2546",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/tooltips/02-tooltip-humedad.png",
+        "bytes":  148219,
+        "sha256":  "1a8f856a8aeeb9a042e8ad5d8e795549c99840881234adccfb3acc9562cf7852",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/tooltips/02-tooltip-temperatura.png",
+        "bytes":  147260,
+        "sha256":  "c616fbddddc0e929f626c7675f560b4921cd804e480ded4b713e2404aec1162c",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/1366x768/tooltips/02-tooltips-tres-graficos.png",
+        "bytes":  139599,
+        "sha256":  "be08cd23a71b12b4d1b0092a592beaaf796be417e003fc49a8ee6d39b559203b",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/01-dashboard-ultima-hora.png",
+        "bytes":  143008,
+        "sha256":  "97ee5e3f4e3ace71c2d9c7155beb64b57d7175aa06863fee9aff3ab8137fbb36",
+        "rawRetained":  true
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/02-tooltip-co2.png",
+        "bytes":  146124,
+        "sha256":  "9051b7b547a5eb46d8dc1e252f8e4dedae7a6ebd5914337d3840b04d83f38cad",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/02-tooltip-humedad.png",
+        "bytes":  148066,
+        "sha256":  "b2fefceebc7c42280c7a3e2cc90f7c2b0c3f906d1ea67e3694b897941748be90",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/02-tooltip-temperatura.png",
+        "bytes":  146974,
+        "sha256":  "6c9df6c86dea95b5cbfe5df593efbb8a10d89632bc4e95958aa0639ff281d730",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/02-tooltips-tres-graficos.png",
+        "bytes":  143008,
+        "sha256":  "97ee5e3f4e3ace71c2d9c7155beb64b57d7175aa06863fee9aff3ab8137fbb36",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/03-24-horas-5760-puntos.png",
+        "bytes":  144576,
+        "sha256":  "974d854c65825a377ff0f0a5303b242ac6fbf29d3d425d0e7c815bf011c22262",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/04-personalizado-valido-teclado.png",
+        "bytes":  155534,
+        "sha256":  "39fedd9addfb4caaeb5c33f7f7937de1119f08e8d93111782c34e9549fbad013",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/05-fechas-vacias-invalidas.png",
+        "bytes":  156749,
+        "sha256":  "dfdeb8e8231dd1d8a5279b4bfae1693f3f4624b85ecbed06ac0fa0b54165a7df",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/06-fechas-invertidas.png",
+        "bytes":  157922,
+        "sha256":  "225091fdaa0ef604693007313469ca0749c389887635aa844dfdedd2b4c92f7e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/07-fechas-iguales-un-punto.png",
+        "bytes":  150671,
+        "sha256":  "e33c1b36ff3f4c5ebe2561d35ec0bfee3f0429f646a99847b9d2411ee188d8bf",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/08-cambio-rapido-cancelacion.png",
+        "bytes":  128089,
+        "sha256":  "e7a32670ead56fd87cf8807586cfc0241011c672dade7123a5377a2f195d33c8",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/09-cargando.png",
+        "bytes":  88820,
+        "sha256":  "d1a5edb52b44fd46ed48a841e75db25f465722e16168037ecbf74b403a853609",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/10-error-inicial.png",
+        "bytes":  102695,
+        "sha256":  "9123a53814d73d20851a25dfe8160e2c4f111003959cd0b9c21d38a924179e86",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/11-sin-datos.png",
+        "bytes":  88217,
+        "sha256":  "88e72b6086c31786d7dc6a2c0db5929427bcf8e0a911db89dda29b652f8faccc",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/12-datos-antiguos.png",
+        "bytes":  150852,
+        "sha256":  "5a4a794eda425c100d09b466d0207ed3e00974d1fad38426c5088e2a7d9c1eed",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/13-error-parcial.png",
+        "bytes":  135372,
+        "sha256":  "e06c10ea38c247838e714d2b3eaea29929f82463dadb5a15e76c43438d9929ae",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/14-aire-bueno.png",
+        "bytes":  141336,
+        "sha256":  "da063dbcdef5198fefb5d833a13ffad4ae2d08c603188ae3f30114b534bd2467",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/14-aire-malo.png",
+        "bytes":  140883,
+        "sha256":  "b55eb0104d807cf52990564bdc39973cb6a7c4a02e54cf17ec69dc2e1a615fb7",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/14-aire-moderado.png",
+        "bytes":  142976,
+        "sha256":  "a9753a1e10165dd194a7bf7f4d7e6e817ddf46c05dc93b2ffe570a02b8b4f1f0",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/15-alertas-patch-fallido-reintento.png",
+        "bytes":  115953,
+        "sha256":  "f3ba399c25346074846c947a0a34eb4683e213f381f2b0fc3181317b2c86b4be",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/15-patch-fallido.png",
+        "bytes":  145158,
+        "sha256":  "41b557a9c88aec3c125ce51cd489bdac11615b03699609838509fc3e4c75bf00",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/16-navegacion-foco-controles.png",
+        "bytes":  144089,
+        "sha256":  "9134df5bd84186b3ebbfa631ea3ed1857d8d3f6f503fc4280fb196b33f62ea7f",
+        "rawRetained":  true
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/17-valores-numericos-largos.png",
+        "bytes":  170422,
+        "sha256":  "cd814cfcb183c39df6dc470a6e25ba9eb73e2490e1442931d9017686aa176061",
+        "rawRetained":  true
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/18-textos-aire-sin-espacios.png",
+        "bytes":  207595,
+        "sha256":  "7367f001c30e606c81082aca26f72c297c30327d1b33f86e42cf42ad0e6d7007",
+        "rawRetained":  true
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/19-error-conserva-valores.png",
+        "bytes":  153656,
+        "sha256":  "6b4b4e590af05920a2b81ae596fa377b4ffad7cf562b5824f2332cc0abaa834e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/19-polling-error-conserva-recuperacion.png",
+        "bytes":  143101,
+        "sha256":  "2dc2c5263aeb304c2765bd2e89a5dd349c57478de1f90a5c995ac2d733a62617",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/21-sin-excepciones-javascript.png",
+        "bytes":  142957,
+        "sha256":  "dd3fca54e14a7e196556d9d77d65256bbd58246434320e5079db4734959debf3",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/01-dashboard-ultima-hora.png",
+        "bytes":  143637,
+        "sha256":  "d15a049da9bebb9a9bcd255f0e7fc8bf3d54b500d3f3da5075d6422819863bb7",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/02-tooltip-co2.png",
+        "bytes":  146864,
+        "sha256":  "2dcfe4c4d7e90b91252ba753858c39079b18c2459a9135a904eab90935abd599",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/02-tooltip-humedad.png",
+        "bytes":  147332,
+        "sha256":  "f6de509d7db905150b496ed876f9a3254ae9bfcb1e908da37eab0606213fb1df",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/02-tooltip-temperatura.png",
+        "bytes":  149017,
+        "sha256":  "5077a402bfa0aa9aefa63fe61536bbdd3f54890220efaa16d8a0e11bcf7c7b41",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/02-tooltips-tres-graficos.png",
+        "bytes":  143637,
+        "sha256":  "d15a049da9bebb9a9bcd255f0e7fc8bf3d54b500d3f3da5075d6422819863bb7",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/03-24-horas-5760-puntos.png",
+        "bytes":  143527,
+        "sha256":  "564787d35829b8e17d390f9ac4c31e956de065fab214b72ba5661ecc71535fe9",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/04-personalizado-valido-teclado.png",
+        "bytes":  156156,
+        "sha256":  "8a59d30ab1d53f0fa54a0e5295c83e3b31a163cd2449ca92156940bb21041844",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/05-fechas-vacias-invalidas.png",
+        "bytes":  157361,
+        "sha256":  "74cbf4ec68555837cef5a81948af5c1915b1aeb4251a05e4c2eac0dbc65caeb4",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/06-fechas-invertidas.png",
+        "bytes":  158523,
+        "sha256":  "7c0d07968deb9655ff425dc9542ca1e65a60c4e5c6f4a2cab080569e0cf005a9",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/07-fechas-iguales-un-punto.png",
+        "bytes":  151284,
+        "sha256":  "33fc4db0a76d1885cea40ab075768d4316b68a3dde207d9b722d863f718d1d0f",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/08-cambio-rapido-cancelacion.png",
+        "bytes":  128718,
+        "sha256":  "fc7404107f2e4b9809ff9b7b74921b1c544328c04ec1c645677cb5cc9bb2d443",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/09-cargando.png",
+        "bytes":  88870,
+        "sha256":  "26073025f76e82190c62e33653a0b3919146e98af5cc61e3106c5cd19e3484fd",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/10-error-inicial.png",
+        "bytes":  102813,
+        "sha256":  "e54bfc34da47c8ad0ed8c1ae09ef1a2b06562342094d12065e59535a6cdaf2f5",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/11-sin-datos.png",
+        "bytes":  88298,
+        "sha256":  "2b5b2ec87edaf7093a5549b0a3a23045ae8d12563b7d24a1fb96c2d7c9e0288b",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/12-datos-antiguos.png",
+        "bytes":  151226,
+        "sha256":  "797a61663e619487453907b1cc8e8025badd89ddcf1d0f4aeb5efabaa77d7fa0",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/13-error-parcial.png",
+        "bytes":  136022,
+        "sha256":  "cf45191db5d9cc6b39111a657b2ad85ba60d58abe7343e3ea8bf8ea4fa363847",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/14-aire-bueno.png",
+        "bytes":  141995,
+        "sha256":  "ec953d649114f6b0b0075f0feee5bf607ce55365715818321d4869ee5cf39758",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/14-aire-malo.png",
+        "bytes":  141406,
+        "sha256":  "606311fddd052cee6cf5181a2fcecaaaf25e99ccabec3c7d9e4ba117a191bead",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/14-aire-moderado.png",
+        "bytes":  143621,
+        "sha256":  "42b68ef180b063154c54dea4216d862b5d0ed550caa7bfad4e3567a91827a588",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/15-alertas-patch-fallido-reintento.png",
+        "bytes":  116163,
+        "sha256":  "9c459eb3dc02cca96f1df93fe3484bb84c05fa1bda4ca272336df71131a032aa",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/15-patch-fallido.png",
+        "bytes":  145400,
+        "sha256":  "29ef07b1b4feb0461fc37caf5bd9e9fd6b379b138baf94aa53a75799dbd2d0fc",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/16-navegacion-foco-controles.png",
+        "bytes":  155916,
+        "sha256":  "aed2df3c2b13d3766a7971608d313d0a84958a4f67889b2e7489d1291061f985",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/17-valores-numericos-largos.png",
+        "bytes":  165237,
+        "sha256":  "adc2937c701da804aa4c4d0a63355f846dfdc9e0fb55b4906a4441beb5d300f2",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/18-textos-aire-sin-espacios.png",
+        "bytes":  155250,
+        "sha256":  "a3c3f3d6c22ad8bf33c6e25a038a40e947fd9b149e5babf61c1d5168998dd59f",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/19-error-conserva-valores.png",
+        "bytes":  154227,
+        "sha256":  "5970c553e40feffda3fff33535c31fbe61407270e77851864204fdcd319244a9",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/final/19-polling-error-conserva-recuperacion.png",
+        "bytes":  143285,
+        "sha256":  "99928e65ff7b6d2a3f9826f8769dc8461d0871ddc9a90a1439c4472f1a6a78c3",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/01-dashboard-ultima-hora.png",
+        "bytes":  143476,
+        "sha256":  "2067a2b7c0ceca5e7c071eb17f86ea8aeabc8ea8737403a5be5e3d28a645b4a3",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/02-tooltips-tres-graficos.png",
+        "bytes":  149707,
+        "sha256":  "11266e0616d0c55518a96d40a769081cc2b12e176279b3b7a7052b6f45c8780b",
+        "rawRetained":  true
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/03-24-horas-5760-puntos.png",
+        "bytes":  145085,
+        "sha256":  "40881d3891a6d7bcd629583ea82fe47dcde6e0b7e5b38fe4c3ce37e228ec6f77",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/04-personalizado-valido-teclado.png",
+        "bytes":  156283,
+        "sha256":  "97b29cddca8f806ee7fccc0f65130ff6a16bfec10d91b0faf6490461c19a583e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/05-fechas-vacias-invalidas.png",
+        "bytes":  157535,
+        "sha256":  "6d0364c77263a2222f93dc93c9106f3c837600de27e1f68699401fa4f7fc22ab",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/06-fechas-invertidas.png",
+        "bytes":  158757,
+        "sha256":  "e98e72e6f114a99c003da4f7de5e5a6c2ba5b23a140a25ae73607c182b4d6f4f",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/07-fechas-iguales-un-punto.png",
+        "bytes":  151162,
+        "sha256":  "521eb0aef237c03318afea1e2b97af323df5f26d093c73ce44d7342b502086f1",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/08-cambio-rapido-cancelacion.png",
+        "bytes":  128634,
+        "sha256":  "fdeb1fbd99576b2dbb43834e7b50c6edddfe4a4b3cdcad524b479b1c1ae8289f",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/09-cargando.png",
+        "bytes":  88995,
+        "sha256":  "e2c7310e7b4010ec0acb2cc85e371ad4bfcbfbe301114a19b1201e24f386dbd5",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/10-error-inicial.png",
+        "bytes":  102865,
+        "sha256":  "6ccbe765e2f0d01b6e764760079ed5fa935eabb0cd060419e48f6a77ffc8eaef",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/11-sin-datos.png",
+        "bytes":  88362,
+        "sha256":  "34c853229c6656f1028f81ab1b079474791e1e1ad7b96c5751fc6d2a408bc5fa",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/12-datos-antiguos.png",
+        "bytes":  151299,
+        "sha256":  "539daa26cada29ce4616be48cc30e048fff8cc52a6814010c900604649427f6f",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/13-error-parcial.png",
+        "bytes":  136058,
+        "sha256":  "9159e06eef600d4b9d632dc89d660e42654def506ccab1cc511e3b6d77b53e6e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/14-aire-bueno.png",
+        "bytes":  142174,
+        "sha256":  "e3f04a9ce2726cfd4c4f5f1b96ab624b2f310b9819792bb8a87f4cba3762c84a",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/14-aire-malo.png",
+        "bytes":  140849,
+        "sha256":  "bba15565e6b464f38225b7b63dd9507dd21f4906b2b1a7f02ca9f4bab49967d9",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/14-aire-moderado.png",
+        "bytes":  143390,
+        "sha256":  "c5618dc87241f755552b8c011b60e6f5b0a72fa7d7722b5eb08a6973cf61f06a",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/15-alertas-patch-fallido-reintento.png",
+        "bytes":  115802,
+        "sha256":  "7922a75c82825cb9858abc91d0c4070a54297871af8664d0da2a41af26528863",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/15-patch-fallido.png",
+        "bytes":  144839,
+        "sha256":  "93385cfbf2fd5e68004e6783d27e82896acb7aff3783ba810d9687de47b96250",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/16-navegacion-foco-controles.png",
+        "bytes":  155316,
+        "sha256":  "37cb92515dbb857fb9802c550e6604aa1ccaaff06567b09b9f033e12fc3526fe",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/17-valores-numericos-largos.png",
+        "bytes":  165232,
+        "sha256":  "85695e4c311ca69543bd4a2b4564e20554f7124149a6ac22dfb4549e8a09b7d7",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/18-textos-aire-sin-espacios.png",
+        "bytes":  155043,
+        "sha256":  "edc298733cf919649843556fecb1b964032ac5122430bb420a4dc4e41ba6a228",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/19-error-conserva-valores.png",
+        "bytes":  154058,
+        "sha256":  "8ffbb80a3356fd864df432cb456847480d30fa04ecb15395aa6ccc1eaf131438",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/19-polling-error-conserva-recuperacion.png",
+        "bytes":  143607,
+        "sha256":  "8ecb65a21a373c086f7ac9aa4026ecf58714aed78db64de85b86ccf6a6c034cb",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/tooltips/01-dashboard-ultima-hora.png",
+        "bytes":  143388,
+        "sha256":  "15201c4e029492c3190954afe072a7cb845bf84e950ab8c2de9eb1ad613fee65",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/tooltips/02-tooltip-co2.png",
+        "bytes":  148866,
+        "sha256":  "a5990e1a8be29300a91278eecfd0ca9dbc67962467dd5b3914587b9904ed9888",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/tooltips/02-tooltip-humedad.png",
+        "bytes":  149099,
+        "sha256":  "42c4414d3cae2e02d0a7f4b5ec98016b4ee573c26f0790718224405e184d12d5",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/tooltips/02-tooltip-temperatura.png",
+        "bytes":  148693,
+        "sha256":  "7dcf369c7d11b74b6bdef2fa8e14d563178ae33b99e3bfc002070e1f46fa71d7",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/360x800/tooltips/02-tooltips-tres-graficos.png",
+        "bytes":  143388,
+        "sha256":  "15201c4e029492c3190954afe072a7cb845bf84e950ab8c2de9eb1ad613fee65",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/599x900/final/20-breakpoint.png",
+        "bytes":  162091,
+        "sha256":  "2d0015ceb70286242b940a258ecabbcbe90e8558471b83d1bae7f6c5ee50a02e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/599x900/regresion/20-breakpoint.png",
+        "bytes":  162161,
+        "sha256":  "6cc331f5dc5f83098c5a0e065e9258817144cfb4859f4b98fb3acff5af448c1e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/600x900/final/20-breakpoint.png",
+        "bytes":  162912,
+        "sha256":  "2576f5cc719c4528fcd04ab53b5062c6087bffbba38b171b45400ea4e3b491f9",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/600x900/regresion/20-breakpoint.png",
+        "bytes":  162911,
+        "sha256":  "a2746821f28c2ec7860f2f0418cbbfa0116dac01fcd7f3dde033d52c521a6846",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/601x900/final/20-breakpoint.png",
+        "bytes":  166612,
+        "sha256":  "ccfa5b18d4f36f5f6fa796247cd596ba47e3daa8350f01b02f8aec3383a2aeb2",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/601x900/regresion/20-breakpoint.png",
+        "bytes":  166927,
+        "sha256":  "ba99efead4c31b81455eee8e9567d0eaefc775e4d9c787eb5c3ebab89a361016",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/619x900/final/20-breakpoint.png",
+        "bytes":  168089,
+        "sha256":  "d6626261c976692dab22e067526a2151b852d8a22ec6009e83070403cf4366b4",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/619x900/regresion/20-breakpoint.png",
+        "bytes":  166456,
+        "sha256":  "1fe6fb0016659a586e6f644a2c5f40565777c219bb3544e2db05d58b25469d96",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/620x900/final/20-breakpoint.png",
+        "bytes":  167487,
+        "sha256":  "46c4ea35b5b3fd8409b0cadf25b6beb8abeedd4d4d986ebe735973660bb3cf53",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/620x900/regresion/20-breakpoint.png",
+        "bytes":  167765,
+        "sha256":  "69cc21c575d45d59de357cb4a3ba7b7b2481ddc98c8eb262b4d182ce014412ed",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/621x900/final/20-breakpoint.png",
+        "bytes":  168470,
+        "sha256":  "394fdc2ec187c6f456042c2a8b0b62e123dc755e578804179a3c5ca662a88419",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/621x900/regresion/20-breakpoint.png",
+        "bytes":  168916,
+        "sha256":  "53539e456c92b6f526ad2ab72ba930d69ec01c2524b50fa6a640c992e39bf278",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/01-dashboard-ultima-hora.png",
+        "bytes":  154871,
+        "sha256":  "1997fe80608e8fd0db1d02cc80ae9d73edb08758dceee180d6680b182187f78f",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/02-tooltip-co2.png",
+        "bytes":  158804,
+        "sha256":  "12f33cdede7da3d07bda6c67c8280618247269ca4c924de0625721f34979d106",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/02-tooltip-humedad.png",
+        "bytes":  160103,
+        "sha256":  "16819f8dd096bf64e4691ebb6b542143d955c43bbd462d0029692434c4c89ef3",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/02-tooltip-temperatura.png",
+        "bytes":  159899,
+        "sha256":  "c732a1c71ae162d0844453699a443a48f2417504343bde8c8096f4af3793f150",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/02-tooltips-tres-graficos.png",
+        "bytes":  155307,
+        "sha256":  "eb266391a951d9d55e244663d7cf48d17739040ae8b594bc473a4de0ba0db5a6",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/03-24-horas-5760-puntos.png",
+        "bytes":  162473,
+        "sha256":  "6089b253b400f99a49f399c7688a6db43436017f8dd568152a8a21ed7369a0da",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/04-personalizado-valido-teclado.png",
+        "bytes":  168035,
+        "sha256":  "d85c5218420f56476c8d89d6c4655a4f0ea91c4eb21344d5673d11d77b79d4cc",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/05-fechas-vacias-invalidas.png",
+        "bytes":  150834,
+        "sha256":  "9916c979276f4c73f6a96c8825ea875c74e8518482680916c8b8e93a3a851e1d",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/06-fechas-invertidas.png",
+        "bytes":  170540,
+        "sha256":  "54281be31acf808873c2ff133d1895319ad7097ab422a78ced037fe39aee694f",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/07-fechas-iguales-un-punto.png",
+        "bytes":  160195,
+        "sha256":  "144df485ffee6f451b022e5d2929b81273a92997f0f4e8ffcb2bcfca63a1abba",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/08-cambio-rapido-cancelacion.png",
+        "bytes":  136581,
+        "sha256":  "8b316dc45a038471283b95dde90e659424784e22bad50a09a48ba1ed40ed6482",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/09-cargando.png",
+        "bytes":  94971,
+        "sha256":  "6149c6aca293eaa49fbdd76fa25484ffe70739d04314ce37e620e32c08fd8927",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/10-error-inicial.png",
+        "bytes":  107318,
+        "sha256":  "5055f9e8762eecc9d6388ee04e16bc53bc619d98fa290b06558199719f25a642",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/11-sin-datos.png",
+        "bytes":  94260,
+        "sha256":  "863d0c0048a9823428b3580ebd85f9c31f5dc53bdea4d1915cbf4449c2c260b5",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/12-datos-antiguos.png",
+        "bytes":  164298,
+        "sha256":  "a5a5eb847aeee8b81fc0b3b7ec250f69902a207f1514c7ceaa18055ab784c71e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/13-error-parcial.png",
+        "bytes":  144998,
+        "sha256":  "24acff95527823433c4248bcf9fce25ab8d2b730f8c83b58bbde709ebaab055e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/14-aire-bueno.png",
+        "bytes":  154082,
+        "sha256":  "aa37aa87ad595ab725d354652e156b7348f8011cc7740e2620e4f253bf8ac73c",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/14-aire-malo.png",
+        "bytes":  153400,
+        "sha256":  "23c025ec80de06148a4f3615aa1599ccb2fa3b29f1e2fe5343e70351c09a0b99",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/14-aire-moderado.png",
+        "bytes":  155762,
+        "sha256":  "52418a41ca524fdbbaab72d301264d374e2f7efa265da4df212db47ad1d5374f",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/15-alertas-patch-fallido-reintento.png",
+        "bytes":  126124,
+        "sha256":  "235c6737544db2b23c91573c60e49a8554d374790282e80919bbd321cd7ed825",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/15-patch-fallido.png",
+        "bytes":  157895,
+        "sha256":  "5b9ab89c6b3004b5c4b2218028283f22c7f039ade0db4f933c212f0e3d21f12a",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/16-navegacion-foco-controles.png",
+        "bytes":  168563,
+        "sha256":  "4913bb1c31a1733dfd79c3a88320aeac311913ca21b2dc3ea3b75845cd946118",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/17-valores-numericos-largos.png",
+        "bytes":  173374,
+        "sha256":  "ef4198582f31785b571c22efb408d5e311d06fb526e44ceda925dcb835d80ce1",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/18-textos-aire-sin-espacios.png",
+        "bytes":  171195,
+        "sha256":  "c08215a9fbc31ea5b41c95644709363983d287b4e90c8b3f6bd4888287ad5d90",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/19-error-conserva-valores.png",
+        "bytes":  166908,
+        "sha256":  "3c3ef7827ccb7a5270d18fc813270e7848a1a31b3088ef624a660f7b8554761b",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/final/19-polling-error-conserva-recuperacion.png",
+        "bytes":  156259,
+        "sha256":  "0c712b936e0fa3c7f6de8ea2579c7a3610b3a2f4357caa1d7b50628a82d459e3",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/01-dashboard-ultima-hora.png",
+        "bytes":  154478,
+        "sha256":  "1ab2d657a3a08abf8a81a4cca6fce4dcc8eb606a4709d1d3213ca3e551212162",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/02-tooltip-co2.png",
+        "bytes":  160744,
+        "sha256":  "ef8802b17376d830df2ff39a225d00e96aaaa757b410c56df6f7b9bdb0fc9dac",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/02-tooltip-humedad.png",
+        "bytes":  161174,
+        "sha256":  "1e529443c548cfea35f2392500c70f94d3b1e84b9302a3096c831be6cdfcc652",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/02-tooltip-temperatura.png",
+        "bytes":  161571,
+        "sha256":  "64bcbb55ac3702591ea845e933bb7884eb7f135d97c3a2e415c1d6dd6bf714d1",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/02-tooltips-tres-graficos.png",
+        "bytes":  155823,
+        "sha256":  "2935bf3bd3ecd1468db3f08dd64195b9cc88a2e8f079a51c2c65c540481790f8",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/03-24-horas-5760-puntos.png",
+        "bytes":  163588,
+        "sha256":  "95c268ed7229adc9edbb04b950d0d20812f6617273fb520e9a3667c224a6dc04",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/04-personalizado-valido-teclado.png",
+        "bytes":  168559,
+        "sha256":  "eb371481a9f3f33adab812e0aafb17edb716a10c9525caf29431ffe3c5c1e7f7",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/05-fechas-vacias-invalidas.png",
+        "bytes":  170030,
+        "sha256":  "a426b7c137b08eaac303edbe6f8f46e7cec2d6cb8eedd557024d0c2982d58a65",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/06-fechas-invertidas.png",
+        "bytes":  152431,
+        "sha256":  "59f3c0e24a430b4b4480d9f9cd84714f12d1ac5d3b1b8d8ac6924a2a1d774a93",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/07-fechas-iguales-un-punto.png",
+        "bytes":  160750,
+        "sha256":  "4ff95b72dcecb3108d67102ff8b6c4cdce43dac7c540776f48c1680e6cb3d26a",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/08-cambio-rapido-cancelacion.png",
+        "bytes":  137201,
+        "sha256":  "79704fd5928cbbebae31a2e21273d8f019bf8ba3822d72a128622e00698c3e93",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/09-cargando.png",
+        "bytes":  95033,
+        "sha256":  "e71b2a3adde4c877837fda93425dd81fa4a8ddfb59ac65a412ba1e62d8254753",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/10-error-inicial.png",
+        "bytes":  107455,
+        "sha256":  "6d8d04e7ee976505a277751cd2a3b40f1cd8756c5a378ce0e73b71925fb1680f",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/11-sin-datos.png",
+        "bytes":  94292,
+        "sha256":  "abd88fe28413576aef22761f3624558f06196c82a5a9718ae2dae9e6355505d9",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/12-datos-antiguos.png",
+        "bytes":  164267,
+        "sha256":  "04f3c6535119eae6e069b26c47416e1faf5b91accfd55c2ab3cdfe516dfdb662",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/13-error-parcial.png",
+        "bytes":  145076,
+        "sha256":  "073ac7c8332c95310e788199e7ca4d35075b0324b846d7b837ea4527778a68b5",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/14-aire-bueno.png",
+        "bytes":  154175,
+        "sha256":  "e96551143d1c64a48ede8b0bad9d0dc96bb1f1edd53e310425b088155336606b",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/14-aire-malo.png",
+        "bytes":  153124,
+        "sha256":  "2dd6950c3a8e86ba27a3ead0bc98d2c079c3d684203cb5c5b42dbcfb54a0ae83",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/14-aire-moderado.png",
+        "bytes":  155789,
+        "sha256":  "c399423e1e96f48496a191cbf6d3062626b1be8a47eec59c69b9bcda9b156a39",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/15-alertas-patch-fallido-reintento.png",
+        "bytes":  125742,
+        "sha256":  "5eea12c6107670a1b01ff75eedc2248de8d52967aa79e45f9cdd91b350fabdf7",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/15-patch-fallido.png",
+        "bytes":  157367,
+        "sha256":  "b560190c0d062ffff5e403951fca97d343a7463d4c44ba533c7440650df3397e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/16-navegacion-foco-controles.png",
+        "bytes":  168403,
+        "sha256":  "11eae68ec5f5bd96de421c9cb79fe73418bc04450ce455d3ddb3f0e900053bd9",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/17-valores-numericos-largos.png",
+        "bytes":  172726,
+        "sha256":  "c62feb2dbe8732eb1a785307fee964ce863c459de578f722a80354b670273a3e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/18-textos-aire-sin-espacios.png",
+        "bytes":  170969,
+        "sha256":  "c1a8f08d3ba3808386115650561a1577ae49fc75e5419bae8d9e9fda2edfd3ed",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/19-error-conserva-valores.png",
+        "bytes":  166776,
+        "sha256":  "3e4bf4a80fce4d193a5905752c1dec392811e6c84dd28f5b963601ac9e51def0",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/regresion/19-polling-error-conserva-recuperacion.png",
+        "bytes":  155956,
+        "sha256":  "bc16ff1ae43cce8ef7d15e6e19df09b37767089e6833a902106388798198111a",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/tooltips/01-dashboard-ultima-hora.png",
+        "bytes":  155507,
+        "sha256":  "d49579cfac2c77d3649c94e1f1f895283088f088749eb1b4525853818c502eec",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/tooltips/02-tooltip-co2.png",
+        "bytes":  162175,
+        "sha256":  "06efc74957a4b608f7b65ee853d8416cb896b2d1ec9350f3ee841f843f875d72",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/tooltips/02-tooltip-humedad.png",
+        "bytes":  162522,
+        "sha256":  "36076c8e777b909d62e3c7b5625be15b135e77573679d96c36fba90239e6d5e8",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/tooltips/02-tooltip-temperatura.png",
+        "bytes":  162139,
+        "sha256":  "6457cbb52498e864325d6aaed5996f76cd14b925dee1980411ca3b738ad25843",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/768x1024/tooltips/02-tooltips-tres-graficos.png",
+        "bytes":  155507,
+        "sha256":  "d49579cfac2c77d3649c94e1f1f895283088f088749eb1b4525853818c502eec",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/899x900/final/20-breakpoint.png",
+        "bytes":  168015,
+        "sha256":  "98c1a8d74cc208822f21040b0e81d1d4b113fdf10b2a1dcbb57548767ec9d5bf",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/899x900/regresion/20-breakpoint.png",
+        "bytes":  168122,
+        "sha256":  "5f4395699cc2610d453079a61e8c2c710c8a9505a01a32768206944b3d0fba2c",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/900x900/final/20-breakpoint.png",
+        "bytes":  168531,
+        "sha256":  "d1a243bbc92be6c862a747f1b52560b547019ce1b2ca145e2b17675171b598ce",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/900x900/regresion/20-breakpoint.png",
+        "bytes":  168581,
+        "sha256":  "59515fb3d11d1a6bcc2a478015f232b9776e3531cfaf5c21cba2ac421d97a70a",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/901x900/final/20-breakpoint.png",
+        "bytes":  141375,
+        "sha256":  "0e857ecb7e0caf60721e15de406e147f56f4cf09b92dee69fa65b0c61984aa25",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/chrome/901x900/regresion/20-breakpoint.png",
+        "bytes":  141433,
+        "sha256":  "766bcdae1f83aeb20f09f2817c08c542eb4c2934e65bfc5011a8bfa13470319f",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/01-dashboard-ultima-hora.png",
+        "bytes":  139644,
+        "sha256":  "bb803423c65befc2a4b6ebb3c5eca6396bbad85ef77ae1d2d95db5021b2a0312",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/02-tooltips-tres-graficos.png",
+        "bytes":  139721,
+        "sha256":  "fabdd99bb87b83d4fd1ea9a50f436af2e66bd0072216ea8d0fd091b33e4f1de3",
+        "rawRetained":  true
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/03-24-horas-5760-puntos.png",
+        "bytes":  141065,
+        "sha256":  "15e56a1f5dc7b1941c0411220e80945a420761f5a1d44cb721873f77fdab59dc",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/04-personalizado-valido-teclado.png",
+        "bytes":  150786,
+        "sha256":  "69da62217c84f6cc9801c130aaf15af48daa1b0c0edf57f3c6909212f46941da",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/05-fechas-vacias-invalidas.png",
+        "bytes":  152899,
+        "sha256":  "fe5089f2701f71bae97accffa991ed82eb719ed8aad8ea34b1832cc379fdef80",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/06-fechas-invertidas.png",
+        "bytes":  153634,
+        "sha256":  "fc4d5fd8fb2c5bb401dcc18dfa6f7eb15030233198d9936edc6a1beb5d6a276a",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/07-fechas-iguales-un-punto.png",
+        "bytes":  145902,
+        "sha256":  "f2503f4f3a16149fb08e3b475063349cdf9acef6d5aa7ef256b53694cdcf4ac5",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/08-cambio-rapido-cancelacion.png",
+        "bytes":  126767,
+        "sha256":  "6694cc6589fdcfe98a2b9dd705528370408f873ec0a567ed496c197ee0dc2671",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/09-cargando.png",
+        "bytes":  87918,
+        "sha256":  "f6b334307b88c7188323118df1b7a2846b940f44bd7bb4b6003b894eaf60826e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/10-error-inicial.png",
+        "bytes":  100177,
+        "sha256":  "c19fae4b2e70d2e2e48df4f6d1ac14e40a1aeb3582dadb54f44344cbf8ba58da",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/11-sin-datos.png",
+        "bytes":  86598,
+        "sha256":  "5fc4732e5dfc3b917f8a6dfbf54cb49a41923e4facb7d23db982720245d8cc62",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/12-datos-antiguos.png",
+        "bytes":  147073,
+        "sha256":  "21641e5bde6683ec3aa535ceeaceda7bebe990d0e14742e40512a010e4d4cbcd",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/13-error-parcial.png",
+        "bytes":  135315,
+        "sha256":  "3b79dd2bcf3892c269b902f5327503391c7c30f335ddd045a3f2b9a2159bb535",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/14-aire-bueno.png",
+        "bytes":  138013,
+        "sha256":  "31518fad8d5a40c0349bc5abe630f37da3e7c61c83cf17d2e3cc703197629d18",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/14-aire-malo.png",
+        "bytes":  137259,
+        "sha256":  "b260a78a366e640af363a85c030488ae598f09292a1670638b8608904c6f239a",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/14-aire-moderado.png",
+        "bytes":  139460,
+        "sha256":  "8fc5c17e03d702314749d9a2abdf86fd3f09b1cc4a0ba511823ef62546ca44e6",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/15-alertas-patch-fallido-reintento.png",
+        "bytes":  113268,
+        "sha256":  "8085ac4c324ccb9922f78a80f0df0d043a91b19d80419d4affe6a10e6c9c46d4",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/15-patch-fallido.png",
+        "bytes":  141501,
+        "sha256":  "a803243163e4fdcc445014157d7ee9614f81f74523597441173b816233032e30",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/16-navegacion-foco-controles.png",
+        "bytes":  149736,
+        "sha256":  "ef2120f383beb547db03e6f5afce7e11dd5fc998369b8356bb5bde68bccbd7ca",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/17-valores-numericos-largos.png",
+        "bytes":  159045,
+        "sha256":  "7ed8e567bb6383bf3f9e67f0d914436cc550f1c245e108ce94b13a3f9786e0d5",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/18-textos-aire-sin-espacios.png",
+        "bytes":  149510,
+        "sha256":  "7b8691ea7ecee7adfe9fa186b0d242112f19c5ae10521791083a1a1bc8ce1ebf",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/19-error-conserva-valores.png",
+        "bytes":  149643,
+        "sha256":  "d818615087f9276038e35280235671f665f38c079db8e9717ccc12ba9fb6b3ff",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/19-polling-error-conserva-recuperacion.png",
+        "bytes":  139226,
+        "sha256":  "1e0d1f5045d0bf0999284e6ce57426b8e81f36f234273d619d7db280343b0038",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/21-sin-excepciones-javascript.png",
+        "bytes":  147787,
+        "sha256":  "f151045ee03c253dfe24cdbce0e33d70123395238e5a85d189db04e979728d75",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/01-dashboard-ultima-hora.png",
+        "bytes":  139911,
+        "sha256":  "95fdebb10d83cbef8bdc29498ad95f22c6b3022eb24140e395ade58caa850674",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/02-tooltip-temperatura.png",
+        "bytes":  146132,
+        "sha256":  "7b94d92f715941514ad3e948f9723806a36b5ca2cb66500f2e3530ca0462d827",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/02-tooltips-tres-graficos.png",
+        "bytes":  148481,
+        "sha256":  "b23f6663616402bbf6133e83ced878db72ab3e965242dbe90f309b8ab277b8d6",
+        "rawRetained":  true
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/03-24-horas-5760-puntos.png",
+        "bytes":  140862,
+        "sha256":  "2db7e0f14cc0b121aff3b911da75cf5ac73c66fc04808a7fbe8b430aa2919bd0",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/04-personalizado-valido-teclado.png",
+        "bytes":  151090,
+        "sha256":  "66f212ac45b735b06a6b8adda8345917a2e28aecca50696f22f6509d2dad8eed",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/05-fechas-vacias-invalidas.png",
+        "bytes":  153061,
+        "sha256":  "13ee27e55e2eb1dd48e69adaf177c5786ecde38bbfbc3e49f5e4b64790b7ffca",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/06-fechas-invertidas.png",
+        "bytes":  140516,
+        "sha256":  "250fb24e2c25b6fa8e861f3d2a49e090ea5c22047fee87f2f1e761644c3a62db",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/07-fechas-iguales-un-punto.png",
+        "bytes":  146059,
+        "sha256":  "71bd7e832bb52c34991b45fdd65a8b5183e943489fc2836769c7ff5e87004d52",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/08-cambio-rapido-cancelacion.png",
+        "bytes":  146077,
+        "sha256":  "16c2f1450d26eb028c7027e5f76dae7d80cbf115e87cc871669bbee3387bf820",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/09-cargando.png",
+        "bytes":  87956,
+        "sha256":  "6eee15b279c581315f7e2f620a59360cef539a82bb4abd45df865573279c103c",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/10-error-inicial.png",
+        "bytes":  100308,
+        "sha256":  "a1e041c4e2912164f9ab065a2d7cbb8998504fc199fdd864f9dddf93d604fdd6",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/11-sin-datos.png",
+        "bytes":  86820,
+        "sha256":  "85337293fa2651760a77ea08fe3e6dfab723e0715ce343c8d43a4888a932a680",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/12-datos-antiguos.png",
+        "bytes":  147523,
+        "sha256":  "b38278412d0b7d482b826b80a0464fa7b89358faa84fb835ed9406c09f518be8",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/13-error-parcial.png",
+        "bytes":  135694,
+        "sha256":  "bb0e57457837e28faafe398e0e701459d524949a1e2e224081f71e643224a5e8",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/14-aire-bueno.png",
+        "bytes":  138183,
+        "sha256":  "0549db7bdd9bb162982b1c3a54c5dae6178a6f0b9879f1296c43c1e22cff1a4c",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/14-aire-malo.png",
+        "bytes":  137526,
+        "sha256":  "493206ea54c9df39a6444cf9a6e79a6940d7af75b5d65199b9bd4f7844d96a39",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/14-aire-moderado.png",
+        "bytes":  139861,
+        "sha256":  "f854b4a1bde931dd94d871be4149ab3c4c8b3c6aafcdb9c07acab5ae5a39d220",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/15-alertas-patch-fallido-reintento.png",
+        "bytes":  113484,
+        "sha256":  "6e702a4a8b0ccb760e978421136782c71ae46a229c975a194c920b311861c079",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/15-patch-fallido.png",
+        "bytes":  141676,
+        "sha256":  "2693255f423e63e077e43a2f880c42e8368eb3763576689bd2103a7574a341d0",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/16-navegacion-foco-controles.png",
+        "bytes":  150792,
+        "sha256":  "246945c99751de31c47035548ec098577e7cedb8cfb280f60e9795857d365fee",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/17-valores-numericos-largos.png",
+        "bytes":  160127,
+        "sha256":  "01282784dc71b3372a4444c8831e2ae4677f449fd3af4e9bca14aaee2729bf5a",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/18-textos-aire-sin-espacios.png",
+        "bytes":  150441,
+        "sha256":  "a78d75301032f27a0698c1169f10d40230048a9bfb44ab6fe14b9bf29ba57a07",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/19-error-conserva-valores.png",
+        "bytes":  150606,
+        "sha256":  "de0f6e95af840bfb1b38bbe2c952319bc87b0285833254dd09ca049eb03fa841",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/19-polling-error-conserva-recuperacion.png",
+        "bytes":  139922,
+        "sha256":  "4e93df7d3cfd2a66cac50b94d91e641fa7fed3d20fd86217811576a237758225",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/21-sin-excepciones-javascript.png",
+        "bytes":  150450,
+        "sha256":  "254b761bff396d41b493e6949f997e05ca6a044028a4b2d082c21647593147ef",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/tooltips/01-dashboard-ultima-hora.png",
+        "bytes":  139080,
+        "sha256":  "2be0e9512de0643eacc0cfc75987628afd01055f55a70ac6a4712a82ee469810",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/tooltips/02-tooltip-co2.png",
+        "bytes":  145525,
+        "sha256":  "f2454067f176e8f9a0374ec8989be15ade7cdb170dd6c1f91c6691a359670115",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/tooltips/02-tooltip-humedad.png",
+        "bytes":  147656,
+        "sha256":  "1cfb0666b8cf335310a7ad313721f7e8f55b557ef60b36f197b9c81f70c1f395",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/tooltips/02-tooltip-temperatura.png",
+        "bytes":  145917,
+        "sha256":  "0a38da76a119bea8b9a78dc00c98c297dfd4daa612bd099ff8e9e486ababbe11",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/1366x768/tooltips/02-tooltips-tres-graficos.png",
+        "bytes":  139080,
+        "sha256":  "2be0e9512de0643eacc0cfc75987628afd01055f55a70ac6a4712a82ee469810",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/01-dashboard-ultima-hora.png",
+        "bytes":  143278,
+        "sha256":  "59575ac842d9e65a1abba9802ef9f23ca2edd4e1017ccaa6fe0752ed7c98efe2",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/02-tooltip-co2.png",
+        "bytes":  147778,
+        "sha256":  "1b95cc40019c3d1a8f7da4e4982285b70f0e412cf7c98cf5da38f843df4c7fb6",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/02-tooltip-humedad.png",
+        "bytes":  148291,
+        "sha256":  "3945884d423c50a3c6a465af032df01adff24b5029f2c300275226cbcee66b41",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/02-tooltip-temperatura.png",
+        "bytes":  148315,
+        "sha256":  "b42fc169611964caa28026b4ee5d7f74273af86a2669fdb1a6cad04f71084ac9",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/02-tooltips-tres-graficos.png",
+        "bytes":  143278,
+        "sha256":  "59575ac842d9e65a1abba9802ef9f23ca2edd4e1017ccaa6fe0752ed7c98efe2",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/03-24-horas-5760-puntos.png",
+        "bytes":  143284,
+        "sha256":  "5849d1e24e0b35d99a904d1c225fd58fc003aa7bcb3ea6814d46ae5e5f8fe095",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/04-personalizado-valido-teclado.png",
+        "bytes":  156163,
+        "sha256":  "ac981f50b7d8cff4063636903df894faa0640339050cab11907e3da5794bb582",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/05-fechas-vacias-invalidas.png",
+        "bytes":  157227,
+        "sha256":  "06c678a016c6f34dd837d717b7a3e38c65dfa8f51cb91f7691812a3236517670",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/06-fechas-invertidas.png",
+        "bytes":  158560,
+        "sha256":  "e4d201b85cc5fec3cacdb6905a6dd1eb7d9e13a859931000d1bc5362dc51747f",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/07-fechas-iguales-un-punto.png",
+        "bytes":  151288,
+        "sha256":  "57452ca644070d0814ec7bf19672b8366f5cfd8630043d333a2472d7f77ed898",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/08-cambio-rapido-cancelacion.png",
+        "bytes":  128403,
+        "sha256":  "4851c28bf60af49c6b9b0ef4bfabb21694b602a1d9ed3310bda33135050e9549",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/09-cargando.png",
+        "bytes":  88858,
+        "sha256":  "581ce43314e0ef6b79f80bf4ce2716c9cd369ef43b2f1b5fafa89a63db5f50ea",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/10-error-inicial.png",
+        "bytes":  102671,
+        "sha256":  "41325f1b32a73d921725d092dc8dd6bebd5a41aacd42bcbbaf072fdcfd46b707",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/11-sin-datos.png",
+        "bytes":  88346,
+        "sha256":  "4dc7df3b728756b9aabce16a919e97a3a12c3698afb8a81ab49d92f5b59e9970",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/12-datos-antiguos.png",
+        "bytes":  150960,
+        "sha256":  "908bfebaf54351fb0cf4277c9b2125c587a006cdebad52dd946ad1f0d65f8a6d",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/13-error-parcial.png",
+        "bytes":  135587,
+        "sha256":  "34113814b23fe24efb4897208e9af181a928624e65db031e19190738a4532f95",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/14-aire-bueno.png",
+        "bytes":  141609,
+        "sha256":  "e8bc8317e660e83079cf48514aa73522688c6861a625325068fbba1d9bf15c7e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/14-aire-malo.png",
+        "bytes":  141178,
+        "sha256":  "5bd30fa166e591c3a55bfeb086c68d758e9b981727acbdbc45f8e4446855964b",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/14-aire-moderado.png",
+        "bytes":  143273,
+        "sha256":  "b5a39fd5cbe1439881c59c3030421ed30ac5e5a593116b3c0317b7ede8db0b38",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/15-alertas-patch-fallido-reintento.png",
+        "bytes":  116177,
+        "sha256":  "68e9cf4234089539510e1474567b5d8f13f286f45bf50f1861e713c09dd6d75b",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/15-patch-fallido.png",
+        "bytes":  145291,
+        "sha256":  "14b63ce895afa0bf64f10f13243367b4f0c52042800a8de11e3e977fc2fc5fce",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/16-navegacion-foco-controles.png",
+        "bytes":  156029,
+        "sha256":  "7b4b65081c11a911ccf99336f1d3f5ed81efb4bd4c3e6fdab39010e4734ffaca",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/17-valores-numericos-largos.png",
+        "bytes":  165221,
+        "sha256":  "cd8e3e45df13acaf153cd55bcb31bf0254717054252f3cbec2427c4843451c24",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/18-textos-aire-sin-espacios.png",
+        "bytes":  155102,
+        "sha256":  "62ab3ea9b746791afe5b48a7eec0502cb04496232fccdb6eb851095b88baa484",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/19-error-conserva-valores.png",
+        "bytes":  154386,
+        "sha256":  "dcb06ab9004ba9ffebd90f2cc076b035bf86c2db5dcc34fcb62c31823530017d",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/final/19-polling-error-conserva-recuperacion.png",
+        "bytes":  143696,
+        "sha256":  "56c024600ba4a634b9a91d22d4be3f14efd72d388830e12dc5156c081fdb9c22",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/01-dashboard-ultima-hora.png",
+        "bytes":  143533,
+        "sha256":  "d80a61e5eb3e6d4e6bb2e02a3e2b967bdeb748ff59c43ee525e777082a31ce4d",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/02-tooltips-tres-graficos.png",
+        "bytes":  149945,
+        "sha256":  "fc84115d9f27f0126e322bc03483ebb15b4237486729e2b5cbbf2715e28c0f3e",
+        "rawRetained":  true
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/03-24-horas-5760-puntos.png",
+        "bytes":  144623,
+        "sha256":  "ebebbf4dedc490660584e4e2ce6d52221450e13447f2229a571b6374889663d1",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/04-personalizado-valido-teclado.png",
+        "bytes":  156201,
+        "sha256":  "5c4b73972c7760341e6bff5603fe984fdd8e3335031fbe8f06f4c57ff9274b2c",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/05-fechas-vacias-invalidas.png",
+        "bytes":  157254,
+        "sha256":  "246941ae25ade0eaceb20c14a33c6aaeb6e36c36669e1283a04fec05fbc221fe",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/06-fechas-invertidas.png",
+        "bytes":  158587,
+        "sha256":  "6b03fdeb4db6aa8c0461d614442ceea74b8823c7c9f910945b61d574d4285b06",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/07-fechas-iguales-un-punto.png",
+        "bytes":  151315,
+        "sha256":  "c9c4d0443c1c30761a5606fbd9f6b072e5206a4112b606e33e400230ee0d3279",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/08-cambio-rapido-cancelacion.png",
+        "bytes":  144788,
+        "sha256":  "dda2f9ca7f9b3dca9fbdc9ae66646d8385120f1a7c210f8e59c6493737bca696",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/09-cargando.png",
+        "bytes":  88992,
+        "sha256":  "e517fdf376c35447369f9fc4501a25981e9e232686df65355b12f774796f1392",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/10-error-inicial.png",
+        "bytes":  102858,
+        "sha256":  "6ba5ae62197e384b8b5151095d40674f472c35a72c8e3c9a066aa3d6f6570971",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/11-sin-datos.png",
+        "bytes":  88268,
+        "sha256":  "3d55cf7e339779ec7313cf118e68ce7c6e7c49e5eb831e87fd5325f51c848779",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/12-datos-antiguos.png",
+        "bytes":  151444,
+        "sha256":  "54a5b952e2b6501254f1245bfeef0094a84c9353828b5b700bd548a618a053ad",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/13-error-parcial.png",
+        "bytes":  136203,
+        "sha256":  "621c44c5416be1834bc113b064a91af86acdc0be00c812215831a48a607f9b4b",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/14-aire-bueno.png",
+        "bytes":  142255,
+        "sha256":  "9b8e032731f70549afb3ea1c04c1118a7d20e14739a7eec6287a562ba8f3af10",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/14-aire-malo.png",
+        "bytes":  141718,
+        "sha256":  "bf105aca1fb2d5cdf0959ecd86502832c15a250442418d2ffd0ec14e865e1500",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/14-aire-moderado.png",
+        "bytes":  143916,
+        "sha256":  "062c22d19451bac8b8b5228d02e8737f7fdf7e98ed6001df443ad20bbd2162de",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/15-alertas-patch-fallido-reintento.png",
+        "bytes":  116473,
+        "sha256":  "f57d10680c07747051fac36bdce7de480aa8ead91b534f7b5e16cd1be189b1a4",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/15-patch-fallido.png",
+        "bytes":  145752,
+        "sha256":  "f66ddb420f35f96f29eebab2253c6926c96d8a61f7c421d7c65aa44195114631",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/16-navegacion-foco-controles.png",
+        "bytes":  156109,
+        "sha256":  "0d62338504be1275a032238cf9fd912c1ab7c15746b46dfd7dbd3e96dbfcb40f",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/17-valores-numericos-largos.png",
+        "bytes":  165550,
+        "sha256":  "f09d25f23eb8ff0c84da16f1055eed6c65dc799877daa56a4a6aa9165cf9df35",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/18-textos-aire-sin-espacios.png",
+        "bytes":  155358,
+        "sha256":  "14e366e41d49ab6817ef8365a1313dc370e6e26bcedb79da659e09546f16ec9d",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/19-error-conserva-valores.png",
+        "bytes":  154556,
+        "sha256":  "08d77df168230bffde9ffe63da7cd63799b94b6fb6a35358cae2433aa5bb0e88",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/19-polling-error-conserva-recuperacion.png",
+        "bytes":  143915,
+        "sha256":  "12d2aeb2b0f8067dc6676b5aa93771727f8b71d84a987a1756b0f9dae60a5a55",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/tooltips/01-dashboard-ultima-hora.png",
+        "bytes":  128260,
+        "sha256":  "e6348f74d18cae1a743ed013530f52ae2df74d3008a4b5b37bfcf1a16fd28642",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/tooltips/02-tooltip-co2.png",
+        "bytes":  149213,
+        "sha256":  "560d4f3c4b6987a206639636cd2129758942e89647b82cb9b46472bb6a46d0a1",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/tooltips/02-tooltip-humedad.png",
+        "bytes":  149420,
+        "sha256":  "6d6a8c26762f57b7ac74f261a660b6755ed8e380b40986543714e1f71aca3e28",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/tooltips/02-tooltip-temperatura.png",
+        "bytes":  149351,
+        "sha256":  "53eadecbf90a79655a4bc75abc6742a492384cadb4f0958a70fdfc3e9b3a6072",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/360x800/tooltips/02-tooltips-tres-graficos.png",
+        "bytes":  143511,
+        "sha256":  "7f7d63e6b7c76a053e12f84001e48cf212ffbd1e9ec706b636b89e6d6258972e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/599x900/final/20-breakpoint.png",
+        "bytes":  162058,
+        "sha256":  "556e6bdeda0647defe79c2e3e38be38a6ebd605e520e1cc60513d40a3f977c2d",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/599x900/regresion/20-breakpoint.png",
+        "bytes":  162661,
+        "sha256":  "e3f2cb08ec4486461824ee3d75f8e6750fc383a259b7a7cb4b4ada862c4d1f22",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/600x900/final/20-breakpoint.png",
+        "bytes":  163262,
+        "sha256":  "ed77b205b42998ae5de0145cc1b6b1ad11a0778c3c361ef0b014bfc7086e3e78",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/600x900/regresion/20-breakpoint.png",
+        "bytes":  163172,
+        "sha256":  "902a8b7afd90d5b60cfecfc6d768056884f3f0baf368df837594f9a53f402228",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/601x900/final/20-breakpoint.png",
+        "bytes":  167525,
+        "sha256":  "ff800106502b63a18cf002829dd31dece979c199944aa77d71eb42dfab01dd13",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/601x900/regresion/20-breakpoint.png",
+        "bytes":  166957,
+        "sha256":  "0023f4eabe2a66651b441aa5c85899ac14654f640344f8e648435aae7fd3b42d",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/619x900/final/20-breakpoint.png",
+        "bytes":  168662,
+        "sha256":  "c8ba07823dbcdcb2a3fee98fff9c201e084486f5b67b92df367c33bf2b390675",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/619x900/regresion/20-breakpoint.png",
+        "bytes":  168234,
+        "sha256":  "61faf57b9e3d9d0e4237fcbe6bf928892d18f0c7cd909386f79456b9f48235db",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/620x900/final/20-breakpoint.png",
+        "bytes":  167842,
+        "sha256":  "76bc0e83da0175e4a9f595b070ec2d5782eb44e5483ae05d05e9877978c2ab7d",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/620x900/regresion/20-breakpoint.png",
+        "bytes":  167658,
+        "sha256":  "927274079232132706251d2e748ed73835063b8e77d8e6ffefcbb9e783685a8e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/621x900/final/20-breakpoint.png",
+        "bytes":  169305,
+        "sha256":  "3af9055c4015c4de7b141c642959a4b86180a67eb980186646766bc33ca849ec",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/621x900/regresion/20-breakpoint.png",
+        "bytes":  169098,
+        "sha256":  "2496efe57f6f2ccf26b10a41c35f35bfeb0be925dbcfbf46fa1cd3c398063038",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/01-dashboard-ultima-hora.png",
+        "bytes":  156182,
+        "sha256":  "2622c2bdabd7d9458f6d3c995c305293a0e7b6421b005abd48f2fefcddf30f69",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/02-tooltip-co2.png",
+        "bytes":  159849,
+        "sha256":  "fd187aeb602b50f096872772414a7d8e671b598f6cf49c6a6061c286d854a740",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/02-tooltip-humedad.png",
+        "bytes":  161015,
+        "sha256":  "58576b4e7a9ef4eb96b59aff1900d2cfac9f532e25aab48eb0d7a9adc0b5f256",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/02-tooltip-temperatura.png",
+        "bytes":  160688,
+        "sha256":  "ccba446a970ac59f3d796c64d6b31752e0193e535d8d963c5ad111aa8f96102e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/02-tooltips-tres-graficos.png",
+        "bytes":  156182,
+        "sha256":  "2622c2bdabd7d9458f6d3c995c305293a0e7b6421b005abd48f2fefcddf30f69",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/03-24-horas-5760-puntos.png",
+        "bytes":  163287,
+        "sha256":  "b31bff83cbf92dcf626c0d0ce5befca506cffbfbc3dcaadf621fa91a4ec0063e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/04-personalizado-valido-teclado.png",
+        "bytes":  169078,
+        "sha256":  "e247d9c6c4e5e6196620b9a80a540873f6716f7239ce4af4a1c4a8472dd42b4e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/05-fechas-vacias-invalidas.png",
+        "bytes":  170427,
+        "sha256":  "971caf17a63fbea597cda334d4741bfe508dc0f5b7be9ba0ac383979c2b391ce",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/06-fechas-invertidas.png",
+        "bytes":  171587,
+        "sha256":  "c974866018bc9077df65a27fabb8c57407d5e0aeaaad3cc0d54adf5160abd6be",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/07-fechas-iguales-un-punto.png",
+        "bytes":  161249,
+        "sha256":  "abd9c8fbf36d8d798abfe859c4fe5956de985e35420147ff19fc651d098481c0",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/08-cambio-rapido-cancelacion.png",
+        "bytes":  166232,
+        "sha256":  "d4721c2c2bdeb6144456eea7eee098dc415ec515d29b9b1a49ba066a13a12ce3",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/09-cargando.png",
+        "bytes":  95052,
+        "sha256":  "730221777cbec983f01e938f26b704caf800293f32eb8fdb85a76dcb9eca3c51",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/10-error-inicial.png",
+        "bytes":  107465,
+        "sha256":  "8493c2381aa89d55fce4218bf4de93a13b5f1e181105bb35bdf21df87fac2856",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/11-sin-datos.png",
+        "bytes":  94226,
+        "sha256":  "685c2128b041125d39d53e867b0563419ccd00b0618566948027bba21d7b3ec5",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/12-datos-antiguos.png",
+        "bytes":  164266,
+        "sha256":  "6b1f7e677cb5f60f9e4b2fb083261e2ea4f0db1088a27b066dd82b20e1e01b14",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/13-error-parcial.png",
+        "bytes":  144957,
+        "sha256":  "8632dd2aa26f1bcf85ab7f6ade8dbab805faa9832992398dce17ca7572637b58",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/14-aire-bueno.png",
+        "bytes":  154015,
+        "sha256":  "2777b373e539b0a51ea2484d7eaf055c5e2e7752ace803119e9cf3a75a85ffd0",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/14-aire-malo.png",
+        "bytes":  153129,
+        "sha256":  "ca6074a6f4def05bf5f9ea1855b3997b5662f8f4c3b511db62c5a9a82bf77c6b",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/14-aire-moderado.png",
+        "bytes":  155814,
+        "sha256":  "87b86ef30aaf23714651c3f9e5c7aefcc228fde420a3165d3a607ec275a2e01c",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/15-alertas-patch-fallido-reintento.png",
+        "bytes":  125976,
+        "sha256":  "4212af95aee43d33d24c0a4bd0a3fc21e427c0d5700c2604ca2f6fb00fd7b535",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/15-patch-fallido.png",
+        "bytes":  157580,
+        "sha256":  "0eac7e774ded6500ef11bf82c2570200bc5026bac32cb691e7f5dc51cb252010",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/16-navegacion-foco-controles.png",
+        "bytes":  168166,
+        "sha256":  "5f70279a15a7b288ce8040b85e4e6be685b4c6fd9627fc12b62095dff9551eac",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/17-valores-numericos-largos.png",
+        "bytes":  172792,
+        "sha256":  "b54d02dd8033c769282400bcce542ba40da314074682fb34d434cf827d878402",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/18-textos-aire-sin-espacios.png",
+        "bytes":  170110,
+        "sha256":  "f8ff239e4cf934be87be863f7c5ab72d364f0d5b13316b2578a730ffbc505a50",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/19-error-conserva-valores.png",
+        "bytes":  166823,
+        "sha256":  "df0a2675228733c0248c575daa17d8bdc2fc2af8642d09ca3cd0bd1e55c65614",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/final/19-polling-error-conserva-recuperacion.png",
+        "bytes":  155929,
+        "sha256":  "e7d5c79c90e22ee973de04c4185ec1511bfe878dda2df5f35f6bb6ae93b2d4c0",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/01-dashboard-ultima-hora.png",
+        "bytes":  154967,
+        "sha256":  "974593e3e4472f76c6d8cb33b419531f99ce29eafac391f300ee9cf841b0f162",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/02-tooltip-co2.png",
+        "bytes":  160742,
+        "sha256":  "29e6d63c14049898318391a1fd79dddc287f7e6d6b0389569f21b5a2ff145f2f",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/02-tooltip-humedad.png",
+        "bytes":  160743,
+        "sha256":  "ceb1e756c9f7ba1e1b6fc3e44eece1bdaac593318b328d2c348efdf60c2e7d3a",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/02-tooltip-temperatura.png",
+        "bytes":  161229,
+        "sha256":  "ff2e95fe337dfece7210bc7fd60afc0377275efd1d00017e8cc3828ba3266f54",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/02-tooltips-tres-graficos.png",
+        "bytes":  156351,
+        "sha256":  "c66c6c2a5436e475ab8f9e0a6b350a402b7e2c0807cf92d4724645f853de8c7a",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/03-24-horas-5760-puntos.png",
+        "bytes":  166285,
+        "sha256":  "a8b8a9eb47cfec53b9559c49466f9f87598905cba6e3d4d9d3b13f63072f1991",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/04-personalizado-valido-teclado.png",
+        "bytes":  169070,
+        "sha256":  "2f19bc019c4e2d01286190d4594f70bf2cacb4bd5afc95ab5ef61444c03f1a4b",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/05-fechas-vacias-invalidas.png",
+        "bytes":  170414,
+        "sha256":  "3c40b8408845906052c2e1c6addb437cc648038872328e349d03a3acfbef2b79",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/06-fechas-invertidas.png",
+        "bytes":  152907,
+        "sha256":  "a9e7320e15a54da5b4e869c006e0f110a78e53a60a4ca8f3b12802c04c90092e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/07-fechas-iguales-un-punto.png",
+        "bytes":  161242,
+        "sha256":  "faeb0b9ea75e3e77d92ff404e09cf819e355c2359f1e58b83d73729fe65ccf4c",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/08-cambio-rapido-cancelacion.png",
+        "bytes":  166314,
+        "sha256":  "48008944e3875aac50f153cb8bef85cf3fc19bf734afd9e71312e0badac6af4e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/09-cargando.png",
+        "bytes":  94914,
+        "sha256":  "3a9a1325db7a830a5a7bba16203d1d929fd59f2cdde513b0bf4462085846cf96",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/10-error-inicial.png",
+        "bytes":  107420,
+        "sha256":  "8f75dab8ade29884ee996fd76ac1e3d34f88df726fdc5666be919f2f306699f4",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/11-sin-datos.png",
+        "bytes":  94085,
+        "sha256":  "d056c9b67d8e0247527af956bab27401a4a09de97345c9879d5427c1a09b3ec1",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/12-datos-antiguos.png",
+        "bytes":  163794,
+        "sha256":  "fe54eca6b7da06189f4e5974394df970ba776fcce55e370e29ca45de8993db83",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/13-error-parcial.png",
+        "bytes":  145109,
+        "sha256":  "00789b615e7d40fff76616274aaca86477ba8398faf2a323869973ae2963ca58",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/14-aire-bueno.png",
+        "bytes":  154374,
+        "sha256":  "0c205b41f779a6b72e39e9f200940ce472a004611abebdf9df63555f6f5309c9",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/14-aire-malo.png",
+        "bytes":  153854,
+        "sha256":  "3bf261b21b656e14ee2bf4929a480f65e585a5165a3d638b82ec876d393f405b",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/14-aire-moderado.png",
+        "bytes":  156100,
+        "sha256":  "d643f254d180562690166cd3964b0b1d8a619485339421b9eb93f33d663adfca",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/15-alertas-patch-fallido-reintento.png",
+        "bytes":  126338,
+        "sha256":  "0291ba1798e84ce316364fcd4a06d5543e9f741774aa9a31cdbaee8b1c2ae7fb",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/15-patch-fallido.png",
+        "bytes":  157922,
+        "sha256":  "482ff0ac5bcbe8286c274d5310a9fe0c06dece02c82d82b278f7e62beb3870bc",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/16-navegacion-foco-controles.png",
+        "bytes":  168736,
+        "sha256":  "ff419a7e869d63166a68b4ac5b1adc54a1c79b29d2c4f28013d709f48887678f",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/17-valores-numericos-largos.png",
+        "bytes":  173348,
+        "sha256":  "1c9aad7f321ad6a6b6f9763b0f7ffb64f890d65b649c1f1cc2e25b4e338c5441",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/18-textos-aire-sin-espacios.png",
+        "bytes":  171542,
+        "sha256":  "c86909dd6b144ba76fee9bed3f2a7b5f379ced1c1fb17226aa07b431f2346a89",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/19-error-conserva-valores.png",
+        "bytes":  166703,
+        "sha256":  "45c46e695389d42837c00ad8cc50a1ab1f7cb78936a961c585d06a14ad5f6df0",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/regresion/19-polling-error-conserva-recuperacion.png",
+        "bytes":  156423,
+        "sha256":  "75253805fbbf612313ea46f320f32f515fe011ecb66972626b47e6d59579f33f",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/tooltips/01-dashboard-ultima-hora.png",
+        "bytes":  155478,
+        "sha256":  "f9526c3b2182cbcb6999db2e3fa4c37f1b5b4f6adee2a1fb07850e2fff1bd8b5",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/tooltips/02-tooltip-co2.png",
+        "bytes":  162638,
+        "sha256":  "c4a4aacca339bb036482114645e84cdfeeafa07546d4a5ce0949f2d207d04eb2",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/tooltips/02-tooltip-humedad.png",
+        "bytes":  163268,
+        "sha256":  "b80b3824bf3c9c5001a1b2ce3f6ed75514e3a4e793794fac8099d004df9a432c",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/tooltips/02-tooltip-temperatura.png",
+        "bytes":  162875,
+        "sha256":  "eef757c582b83ed078c5a761a69a6a5dcf7bb505f2fb2c305661038cacb78394",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/768x1024/tooltips/02-tooltips-tres-graficos.png",
+        "bytes":  155949,
+        "sha256":  "c5c7d28c77e81d9bcb85c5a7ce05eee240becd1a2383c6d38b9b14e6750e6fd8",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/899x900/final/20-breakpoint.png",
+        "bytes":  168993,
+        "sha256":  "393fc0bea649e9aba3829e9dffaa02a985583d1d992d8b9b99c5cfaca891135c",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/899x900/regresion/20-breakpoint.png",
+        "bytes":  168882,
+        "sha256":  "fca35709a84aca9cd2d54a5f7cd8fb0d1340908be0932f2a2c9cf621b1692041",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/900x900/final/20-breakpoint.png",
+        "bytes":  168688,
+        "sha256":  "b50007b53e76d77cd373abe6368234f15ff77fd85799ce33588819d1413cc46e",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/900x900/regresion/20-breakpoint.png",
+        "bytes":  169388,
+        "sha256":  "4376a85390be08449df75b9cd449470c0a785cad39473003f71d71121214b7b3",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/901x900/final/20-breakpoint.png",
+        "bytes":  141321,
+        "sha256":  "7c6c6cdcd494f985cccaf3737b660b7fc491e5343c0176befa70ea53c7b521bb",
+        "rawRetained":  false
+    },
+    {
+        "path":  "capturas/edge/901x900/regresion/20-breakpoint.png",
+        "bytes":  141856,
+        "sha256":  "343e4abb6daead8bac82c3c3743311276fae7a1456e3a5e41519e95fe48859de",
+        "rawRetained":  false
+    }
+]

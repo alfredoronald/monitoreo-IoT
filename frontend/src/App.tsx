@@ -1,5 +1,7 @@
 import './App.css'
 import { useLatestReadings } from './hooks/useLatestReadings'
+import { useAirState } from './hooks/useAirState'
+import { AirStatusIndicator } from './components/AirStatusIndicator'
 
 const variables = [
   { id: 'temperature', variable: 'temperatura', name: 'Temperatura', unit: '°C', description: 'Temperatura del aula' },
@@ -21,6 +23,7 @@ function VariableIcon({ variable }: { variable: string }) {
 
 function App() {
   const { readings, loading, error } = useLatestReadings()
+  const airStatus = useAirState()
   const valueFormatter = new Intl.NumberFormat('es-BO', { maximumFractionDigits: 1 })
   const timeFormatter = new Intl.DateTimeFormat('es-BO', { hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' })
   return (
@@ -67,6 +70,7 @@ function App() {
               </article>
             )})}
           </div>
+          <AirStatusIndicator {...airStatus} />
         </section>
 
         <section id="historico" className="history-section" aria-labelledby="history-title">

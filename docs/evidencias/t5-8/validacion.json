@@ -1,0 +1,53 @@
+[
+    {
+        "value":  [
+                      {
+                          "value":  [
+                                        {
+                                            "command":  "npm.cmd test",
+                                            "exitCode":  0,
+                                            "startedAt":  "2026-10-22T03:22:57.5619166Z",
+                                            "finishedAt":  "2026-10-22T03:23:13.5949934Z",
+                                            "log":  "test.txt"
+                                        },
+                                        {
+                                            "command":  "npm.cmd run lint",
+                                            "exitCode":  0,
+                                            "startedAt":  "2026-10-22T03:23:13.6099953Z",
+                                            "finishedAt":  "2026-10-22T03:23:14.8321459Z",
+                                            "log":  "lint.txt"
+                                        },
+                                        {
+                                            "command":  "npm.cmd run build",
+                                            "exitCode":  0,
+                                            "startedAt":  "2026-10-22T03:23:14.8331456Z",
+                                            "finishedAt":  "2026-10-22T03:23:24.2398962Z",
+                                            "log":  "build.txt"
+                                        }
+                                    ],
+                          "Count":  3
+                      },
+                      {
+                          "command":  "npm.cmd run lint",
+                          "exitCode":  0,
+                          "startedAt":  "2026-10-22T03:27:56.9872455Z",
+                          "finishedAt":  "2026-10-22T03:27:57.4099171Z",
+                          "log":  "lint-cierre.txt"
+                      }
+                  ],
+        "Count":  2
+    },
+    {
+        "command":  "npm.cmd run test:browser:responsive -- --phase=cierre",
+        "exitCode":  0,
+        "startedAt":  "2026-10-22T03:27:27.706Z",
+        "finishedAt":  "2026-10-22T03:31:59.293Z",
+        "reports":  [
+                        "resultados-chrome-cierre.json",
+                        "resultados-edge-cierre.json"
+                    ],
+        "executed":  146,
+        "pass":  146,
+        "fail":  0
+    }
+]

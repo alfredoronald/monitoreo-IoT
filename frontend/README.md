@@ -1,9 +1,8 @@
 # Frontend — Monitoreo ambiental
 
 Proyecto inicial de React + Vite + TypeScript para el dashboard del aula.
-Incluye Recharts como dependencia para las tareas de gráficos posteriores.
-Incluye el layout adaptable de HU-05 y el cliente API; las tarjetas dinámicas
-y los gráficos se incorporan en las tareas posteriores.
+Incluye el layout adaptable de HU-05, el cliente API, las tarjetas dinámicas
+y tres gráficos históricos de líneas con Recharts.
 
 ## Requisitos
 
@@ -68,9 +67,8 @@ para evitar tarjetas estrechas en celulares y tablets. Usa tipografía del siste
 Se comprobaron doce anchos entre 320 y 2560 px sin desplazamiento horizontal,
 incluido el mínimo de 360 px requerido por la issue. La revisión final del
 dashboard completo en dos navegadores corresponde a T-5.8 (#87).
-Las tarjetas y los históricos muestran estados vacíos: la conexión a la API y
-los gráficos se implementan en #83 y #84. No se necesita backend ni ESP32 para
-comprobar esta maqueta. Evidencia: `docs/evidencias/t5-3/`.
+Las tarjetas se conectan a la API en #83 y los históricos en #84. La evidencia
+del layout inicial está en `docs/evidencias/t5-3/`.
 
 ## Cliente de la API (T-5.2, #81)
 
@@ -103,8 +101,8 @@ sin convertir BIGINT a Number. Las fechas de salida deben ser UTC con milisegund
 npm test
 ```
 
-Las pruebas usan respuestas controladas mediante fetch simulado, no sensores
-ni endpoints reales. La UI inicial no se modifica para consumir datos todavía.
+Las pruebas del cliente usan respuestas controladas mediante fetch simulado,
+no sensores ni endpoints reales.
 
 ## Tarjetas actuales (T-5.4, #83)
 
@@ -121,4 +119,111 @@ el temporizador y la petición activa. El cero es un valor válido.
 Validación: `npm test`, `npm run lint` y `npm run build`.
 Se probó contra el backend real de #76 y PostgreSQL usando lecturas sintéticas
 en un esquema transaccional aislado, sin ESP32. Procedimiento y video:
-`docs/evidencias/t5-4/README.md`. Los históricos continúan pendientes de #84.
+`docs/evidencias/t5-4/README.md`.
+
+## Gráficos históricos (T-5.5, #84)
+
+El dashboard consulta `GET /api/lecturas` para `temperatura`, `humedad` y `co2`
+al abrir el histórico. Las tres consultas comparten inicialmente un rango
+explícito desde una hora antes hasta el instante de apertura. El selector de
+#85 permite cambiarlo; el histórico no utiliza el polling de las tarjetas.
+Se necesitan el backend histórico #74, datos en ese intervalo y CORS configurado
+para el origen de Vite. No se generan lecturas de ejemplo en la aplicación.
+
+Cada gráfico conserva los colores y el layout de #82. El eje X muestra fecha y
+hora con escala temporal numérica: la distancia entre puntos refleja el tiempo
+transcurrido. El eje Y incluye °C, % HR o ppm. El tooltip muestra el valor sin
+redondearlo a un decimal y la fecha/hora completa con milisegundos y zona horaria.
+Las horas usan la zona del dispositivo; `fecha_hora` UTC se conserva sin cambios.
+Un único punto se muestra con un marcador y el cero es un valor válido.
+
+Cada variable tiene estados independientes de carga, error y rango sin lecturas.
+Las peticiones tienen un timeout de 10 segundos. Cambiar el rango o desmontar el
+componente cancela las consultas con `AbortSignal` e ignora respuestas tardías.
+Los fallos de una variable no ocultan los resultados de las otras.
+
+`HistoricalCharts` acepta un rango controlado, sin modificar el cliente API:
+
+```tsx
+<HistoricalCharts range={{ desde: '2026-10-15T12:00:00.000Z', hasta: '2026-10-15T13:00:00.000Z' }} />
+```
+
+Enviar fechas ISO válidas con zona y `desde <= hasta`. Omitir `range` utiliza
+la última hora inicial; el dashboard lo controla mediante `HistoryPanel`.
+
+Validación desde `frontend/`: `npm test`, `npm run lint` y `npm run build`.
+Las pruebas adicionales cubren las tres consultas con el cliente real y fetch
+simulado, errores parciales, listas vacías, cambios de rango, cancelación,
+timeout, intervalos irregulares, conservación de datos, formatos y renderizado
+de mensajes y tooltip. No requieren PostgreSQL ni ESP32.
+
+## Selector de periodo (T-5.6, #85)
+
+`HistoryPanel` conecta `HistoryRangeSelector` con los tres gráficos existentes:
+
+- **Última hora**: rango inicial; al seleccionarlo calcula los últimos 60 minutos.
+- **Últimas 24 horas**: aplica inmediatamente 24 horas transcurridas, incluso si
+  hay un cambio de horario en la zona del dispositivo.
+- **Personalizado**: permite editar Desde y Hasta, con precisión de segundos.
+  No se consulta la API hasta pulsar **Aplicar rango** o enviar el formulario
+  con el teclado y fechas válidas. El rango aplicado se sigue mostrando debajo.
+
+Ambos periodos rápidos toman una sola lectura del reloj para sus extremos.
+Las fechas personalizadas se interpretan en la zona del dispositivo y se envían
+como ISO UTC con segundos y zona explícita. Se rechazan campos vacíos, fechas
+inexistentes, horas locales inexistentes por cambio de horario y rangos
+invertidos. Se permiten extremos iguales. Los errores identifican el campo y
+el foco se mueve al primero que necesita corrección.
+
+Los cambios de rango reutilizan `useHistoricalReadings`: tres peticiones
+independientes, cancelación de las anteriores y estados por variable. El
+selector no envía peticiones ni introduce datos de demostración.
+
+Las pruebas de cálculo y validación forman parte de `npm test`. Para comprobar
+también interacción, teclado, solicitudes HTTP controladas y diseño responsive
+con Chrome, Chromium o Edge instalados, ejecutar desde `frontend/`:
+
+```powershell
+npm.cmd run test:browser:history-range
+```
+
+Si el navegador está en otra ubicación, configurar `CHROME_PATH` con su ruta.
+La prueba utiliza un perfil temporal y datos sintéticos solo dentro de la
+verificación. No necesita ni modifica un backend real. Las capturas y el informe
+se guardan en `frontend/node_modules/.tmp/t5-6/`; agregar `-- --evidence` al
+comando los guarda en `docs/evidencias/t5-6/`.
+
+## Estados del dashboard (T-5.7, #86)
+
+Las tarjetas distinguen carga inicial, error sin lecturas, error conservando el
+último dato y respuesta válida vacía. La antigüedad se evalúa por variable,
+exclusivamente a partir de `fecha_hora`: hasta 60 000 ms es reciente; más de
+60 000 ms muestra **Sin datos recientes** y **Última lectura conocida**, con
+valor, unidad y fecha/hora originales. Un error de consulta también identifica
+el valor conservado como última lectura conocida, aunque aún sea reciente.
+
+`readingFreshness.ts` comparte la regla con el indicador de aire. Un único
+`useReadingClock` programa los vencimientos de las tarjetas y la clasificación,
+sin hacer consultas HTTP. Se recalcula al recuperar el foco o cambiar la
+visibilidad de la pestaña y limpia el temporizador al desmontarse. El indicador
+conserva niveles, etiquetas, recomendaciones y colores; una clasificación
+antigua o conservada tras un error deja de llamarse «Nivel actual».
+
+Se mantiene el polling de 15 segundos. El histórico conserva sus propios estados
+de carga, error y rango vacío: sus lecturas no caducan por superar un minuto.
+El selector de #85 permite cambiar el rango sin afectar la antigüedad de las
+lecturas actuales.
+
+Las pruebas de límites, reloj y clasificación forman parte de `npm test`.
+Para comprobar el dashboard completo con Chrome, Chromium o Edge instalado:
+
+```powershell
+npm.cmd run test:browser:dashboard-states
+```
+
+Configurar `CHROME_PATH` si está en otra ubicación. La prueba intercepta la API
+y utiliza respuestas sintéticas exclusivamente durante la verificación; no
+necesita backend, base de datos ni sensores. Comprueba estados, recuperación,
+polling, históricos, alertas, teclado y anchos de 360 y 1366 px. No modifica
+`.env`. Guarda capturas e informe en `frontend/node_modules/.tmp/t5-7/`.
+Añadir `-- --evidence` para guardarlos en `docs/evidencias/t5-7/`.

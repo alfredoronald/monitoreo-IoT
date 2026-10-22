@@ -1,0 +1,167 @@
+﻿{
+    "auditDate":  "2026-10-22",
+    "timezone":  "America/La_Paz",
+    "originalFiles":  209,
+    "originalBytes":  87282391,
+    "selectedPng":  45,
+    "keepOriginalFiles":  67,
+    "keepOriginalBytes":  14429630,
+    "archiveOriginalFiles":  142,
+    "archiveOriginalBytes":  72852761,
+    "duplicateGroups":  9,
+    "duplicateBytes":  2745868,
+    "zipEntries":  393,
+    "zipEntriesBytes":  57236669,
+    "zipDuplicatesOfLoose":  10,
+    "zipDuplicateLooseBytes":  1539959,
+    "uniqueReferencedCaptures":  569,
+    "proposedArchivedReferences":  524,
+    "categories":  [
+                       {
+                           "category":  "Logs",
+                           "files":  4,
+                           "bytes":  5031,
+                           "MiB":  0.004798
+                       },
+                       {
+                           "category":  "Metadatos y manifiestos",
+                           "files":  4,
+                           "bytes":  103227,
+                           "MiB":  0.098445
+                       },
+                       {
+                           "category":  "ZIP diagnóstico",
+                           "files":  1,
+                           "bytes":  52031383,
+                           "MiB":  49.620994
+                       },
+                       {
+                           "category":  "Documentación",
+                           "files":  3,
+                           "bytes":  28851,
+                           "MiB":  0.027514
+                       },
+                       {
+                           "category":  "Informes resultados",
+                           "files":  11,
+                           "bytes":  7885496,
+                           "MiB":  7.520195
+                       },
+                       {
+                           "category":  "PNG cierre",
+                           "files":  176,
+                           "bytes":  25688444,
+                           "MiB":  24.498409
+                       },
+                       {
+                           "category":  "PNG FAIL históricos",
+                           "files":  10,
+                           "bytes":  1539959,
+                           "MiB":  1.468619
+                       }
+                   ],
+    "reportTotals":  [
+                         {
+                             "file":  "resultados-chrome-antes.json",
+                             "phase":  "antes",
+                             "browser":  "chrome",
+                             "executed":  22,
+                             "pass":  18,
+                             "fail":  4,
+                             "sha256":  "53a5c50d679c0d109f017149045c1a41039120457fd0db50b894688a955c2ac6"
+                         },
+                         {
+                             "file":  "resultados-chrome-cierre.json",
+                             "phase":  "cierre",
+                             "browser":  "chrome",
+                             "executed":  73,
+                             "pass":  73,
+                             "fail":  0,
+                             "sha256":  "608d08a8d38a36f9e4a38cfb3fe4a1ded493b34b5a141ba84bda25fde27a86b0"
+                         },
+                         {
+                             "file":  "resultados-chrome-integracion-inicial.json",
+                             "phase":  "final",
+                             "browser":  "chrome",
+                             "executed":  73,
+                             "pass":  72,
+                             "fail":  1,
+                             "sha256":  "0ba4dde595d86020c78a5fa52c28371905eb435d0ab19ddb5297b096c697fb5b"
+                         },
+                         {
+                             "file":  "resultados-chrome-regresion.json",
+                             "phase":  "regresion",
+                             "browser":  "chrome",
+                             "executed":  73,
+                             "pass":  71,
+                             "fail":  2,
+                             "sha256":  "57b5fd90f98751ce3102696f2858761390f5ed5ce2029e591d137eb3f5268615"
+                         },
+                         {
+                             "file":  "resultados-chrome-tooltips.json",
+                             "phase":  "tooltips",
+                             "browser":  "chrome",
+                             "executed":  6,
+                             "pass":  6,
+                             "fail":  0,
+                             "sha256":  "9a0701aba92a71670cccb347216a3398aaee02affd2aab8ec3c4391455a7fe6c"
+                         },
+                         {
+                             "file":  "resultados-chrome.json",
+                             "phase":  "cierre",
+                             "browser":  "chrome",
+                             "executed":  73,
+                             "pass":  73,
+                             "fail":  0,
+                             "sha256":  "608d08a8d38a36f9e4a38cfb3fe4a1ded493b34b5a141ba84bda25fde27a86b0"
+                         },
+                         {
+                             "file":  "resultados-edge-cierre.json",
+                             "phase":  "cierre",
+                             "browser":  "edge",
+                             "executed":  73,
+                             "pass":  73,
+                             "fail":  0,
+                             "sha256":  "6093f177a4c8ce473a8d65c628c7c0ee724cc2120a0f614716a2f3f6a8f58b27"
+                         },
+                         {
+                             "file":  "resultados-edge-integracion-inicial.json",
+                             "phase":  "final",
+                             "browser":  "edge",
+                             "executed":  73,
+                             "pass":  72,
+                             "fail":  1,
+                             "sha256":  "45f5046b5ae3fd60867adbaead5610979ca33214d0815bf6914e5a71418efdea"
+                         },
+                         {
+                             "file":  "resultados-edge-regresion.json",
+                             "phase":  "regresion",
+                             "browser":  "edge",
+                             "executed":  73,
+                             "pass":  71,
+                             "fail":  2,
+                             "sha256":  "5aa66479897c9983ef83264fd15b645ff97cea018a0f36d3491a8cca20093c58"
+                         },
+                         {
+                             "file":  "resultados-edge-tooltips.json",
+                             "phase":  "tooltips",
+                             "browser":  "edge",
+                             "executed":  6,
+                             "pass":  6,
+                             "fail":  0,
+                             "sha256":  "c5d3d91c799d60711d7a66e18218844be38dfe3f269d707a1de9facfbe9660e4"
+                         },
+                         {
+                             "file":  "resultados-edge.json",
+                             "phase":  "cierre",
+                             "browser":  "edge",
+                             "executed":  73,
+                             "pass":  73,
+                             "fail":  0,
+                             "sha256":  "6093f177a4c8ce473a8d65c628c7c0ee724cc2120a0f614716a2f3f6a8f58b27"
+                         }
+                     ],
+    "originalsDeleted":  false,
+    "originalsModified":  false,
+    "reductionExecuted":  false
+}

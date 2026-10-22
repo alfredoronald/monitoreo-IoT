@@ -1,0 +1,177 @@
+{
+  "issue": 78,
+  "timestampUtc": "2026-10-22T05:11:43.504Z",
+  "environment": {
+    "node": "v20.19.0",
+    "postgres": "15.19"
+  },
+  "dataset": {
+    "variable": "temperatura",
+    "from": "2026-10-19T00:00:00Z",
+    "to": "2026-10-20T00:00:00Z",
+    "intervalSeconds": 15,
+    "count": 5760,
+    "rolledBackAfterTest": true
+  },
+  "dailyQueryTimesMs": [
+    72.746,
+    70.496,
+    74.189
+  ],
+  "cases": [
+    {
+      "id": "H-01",
+      "description": "Histórico sin lecturas",
+      "expected": "200; []",
+      "observed": "HTTP 200; 0 lecturas",
+      "durationMs": 72.879,
+      "status": "PASS"
+    },
+    {
+      "id": "U-01",
+      "description": "Últimas lecturas sin datos",
+      "expected": "200; []",
+      "observed": "HTTP 200; 0 lecturas",
+      "durationMs": 5.093,
+      "status": "PASS"
+    },
+    {
+      "id": "H-02",
+      "description": "Histórico válido con extremos incluidos",
+      "expected": "200; IDs 101 y 102 en orden",
+      "observed": "HTTP 200; 2 lecturas, orden y formato correctos",
+      "durationMs": 6.242,
+      "status": "PASS"
+    },
+    {
+      "id": "H-03",
+      "description": "Rango válido sin coincidencias",
+      "expected": "200; []",
+      "observed": "HTTP 200; 0 lecturas",
+      "durationMs": 4.876,
+      "status": "PASS"
+    },
+    {
+      "id": "H-04",
+      "description": "Zona horaria equivalente",
+      "expected": "200; 2 lecturas",
+      "observed": "HTTP 200; 2 lecturas",
+      "durationMs": 5.436,
+      "status": "PASS"
+    },
+    {
+      "id": "U-02",
+      "description": "Última lectura de cada variable",
+      "expected": "200; co2, humedad y temperatura",
+      "observed": "HTTP 200; 3 variables, fecha y valor válidos",
+      "durationMs": 5.259,
+      "status": "PASS"
+    },
+    {
+      "id": "H-05",
+      "description": "Variable desconocida",
+      "expected": "400; mensaje en español",
+      "observed": "HTTP 400; mensaje: variable debe ser temperatura, humedad o co2.",
+      "durationMs": 4.292,
+      "status": "PASS"
+    },
+    {
+      "id": "H-06",
+      "description": "Falta desde",
+      "expected": "400; mensaje en español",
+      "observed": "HTTP 400; mensaje: El parámetro desde es obligatorio.",
+      "durationMs": 3.941,
+      "status": "PASS"
+    },
+    {
+      "id": "H-07",
+      "description": "Fecha imposible",
+      "expected": "400; mensaje en español",
+      "observed": "HTTP 400; mensaje: desde debe ser una fecha ISO 8601 válida con hora, segundos y zona horaria.",
+      "durationMs": 4.257,
+      "status": "PASS"
+    },
+    {
+      "id": "H-08",
+      "description": "Rango invertido",
+      "expected": "400; mensaje en español",
+      "observed": "HTTP 400; mensaje: desde no puede ser posterior a hasta.",
+      "durationMs": 4.842,
+      "status": "PASS"
+    },
+    {
+      "id": "H-09",
+      "description": "Parámetro duplicado",
+      "expected": "400; mensaje en español",
+      "observed": "HTTP 400; mensaje: El parámetro variable debe ser un texto no vacío y aparecer una sola vez.",
+      "durationMs": 5.188,
+      "status": "PASS"
+    },
+    {
+      "id": "H-10",
+      "description": "Parámetro desconocido",
+      "expected": "400; mensaje en español",
+      "observed": "HTTP 400; mensaje: Parámetro de consulta no permitido: limite.",
+      "durationMs": 3.384,
+      "status": "PASS"
+    },
+    {
+      "id": "U-03",
+      "description": "Parámetros no admitidos en última",
+      "expected": "400; mensaje en español",
+      "observed": "HTTP 400; mensaje: Esta ruta no admite parámetros de consulta.",
+      "durationMs": 2.997,
+      "status": "PASS"
+    },
+    {
+      "id": "C-01",
+      "description": "Origen autorizado por CORS",
+      "expected": "200; Access-Control-Allow-Origin exacto",
+      "observed": "HTTP 200; origen permitido",
+      "durationMs": 7.235,
+      "status": "PASS"
+    },
+    {
+      "id": "C-02",
+      "description": "Origen rechazado por CORS",
+      "expected": "403; sin cabecera de permiso",
+      "observed": "HTTP 403; mensaje: Origen no permitido por CORS.",
+      "durationMs": 4.876,
+      "status": "PASS"
+    },
+    {
+      "id": "P-00",
+      "description": "Preparación de la consulta de 24 h",
+      "expected": "200; 5760 lecturas",
+      "observed": "HTTP 200; 5760 lecturas de temperatura, ventana de 24 h",
+      "durationMs": 113.276,
+      "status": "PASS"
+    },
+    {
+      "id": "P-01",
+      "description": "Consulta de 24 h, medición 1",
+      "expected": "200; 5760 lecturas; <1000 ms",
+      "observed": "HTTP 200; 5760 lecturas de temperatura, ventana de 24 h",
+      "durationMs": 72.746,
+      "status": "PASS"
+    },
+    {
+      "id": "P-02",
+      "description": "Consulta de 24 h, medición 2",
+      "expected": "200; 5760 lecturas; <1000 ms",
+      "observed": "HTTP 200; 5760 lecturas de temperatura, ventana de 24 h",
+      "durationMs": 70.496,
+      "status": "PASS"
+    },
+    {
+      "id": "P-03",
+      "description": "Consulta de 24 h, medición 3",
+      "expected": "200; 5760 lecturas; <1000 ms",
+      "observed": "HTTP 200; 5760 lecturas de temperatura, ventana de 24 h",
+      "durationMs": 74.189,
+      "status": "PASS"
+    }
+  ],
+  "passed": 19,
+  "failed": 0
+}

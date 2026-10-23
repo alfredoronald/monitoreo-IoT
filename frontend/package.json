@@ -5,6 +5,9 @@
   "type": "module",
   "scripts": {
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "test:browser:history-range": "node tests/history-range.browser.mjs",
+    "test:browser:dashboard-states": "node tests/dashboard-states.browser.mjs",
+    "test:browser:responsive": "node tests/responsive-dashboard.browser.mjs",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",

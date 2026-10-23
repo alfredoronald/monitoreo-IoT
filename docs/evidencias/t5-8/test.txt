@@ -1,0 +1,58 @@
+
+> frontend@0.0.0 test
+> node --experimental-strip-types --test tests/*.test.mjs
+
+✔ Indicador: conserva los tres niveles, textos y colores; una clasificación antigua no es actual (228.8515ms)
+✔ Histórico: codifica fechas con +, conserva BIGINT y no agrega limite (41.8687ms)
+✔ Últimas: array directo sin exigir id y sin inventar variables (0.6718ms)
+✔ Estado de aire: objeto singular y recomendación nullable (0.7209ms)
+✔ Listas vacías son resultados válidos en las tres consultas de listas (1.8185ms)
+✔ Alertas: false, true y filtro omitido se distinguen (1.3199ms)
+✔ PATCH: ruta, JSON true y Content-Type correctos; ID nunca convertido a Number (0.578ms)
+✔ IDs inválidos no generan solicitudes PATCH (0.5053ms)
+✔ HTTP 400, 404, 415 y 500 conservan status y mensaje del contrato (1.0186ms)
+✔ Error HTTP sin JSON usa mensaje genérico; éxito sin JSON no se acepta (0.6454ms)
+✔ Rechaza NUMERIC textual, JSON envuelto, fechas imposibles y variables desconocidas (0.8163ms)
+✔ Rechaza alertas mal tipadas y PATCH sin confirmación atendida (0.371ms)
+✔ URL configurable: se preserva el prefijo y se rechazan bases inseguras o inválidas (0.2474ms)
+✔ Cada operación propaga AbortSignal (0.7812ms)
+✔ Fallo de red y cancelación no se disfrazan de datos vacíos ni errores HTTP (0.3393ms)
+✔ Vite carga VITE_API_URL del archivo .env y la instancia usa ese prefijo (810.9537ms)
+✔ La instancia informa configuración ausente y no usa un host por defecto (79.5312ms)
+✔ Última hora: extremos ISO explícitos y una duración exacta incluso al cambiar de día (1.8654ms)
+✔ Carga tres históricos mediante el cliente real, con el mismo rango, sin limite y sin fabricar lecturas (38.8595ms)
+✔ Un fallo parcial no oculta los otros gráficos ni confunde un error con una respuesta vacía (1.0213ms)
+✔ Desmontar aborta las tres solicitudes y descarta respuestas tardías aunque fetch ignore la cancelación (0.5819ms)
+✔ Cambiar de rango permite resultados nuevos sin sobrescribirlos con los del rango anterior (1.1088ms)
+✔ Una solicitud bloqueada termina en error y no puede publicar datos después del timeout (1.4852ms)
+✔ La cancelación elimina los timeouts pendientes sin emitir errores posteriores (0.35ms)
+✔ Los puntos conservan ceros, decimales, BIGINT y timestamps repetidos con distancias temporales reales (0.2414ms)
+✔ Los formatos muestran fecha y hora en el eje, hora completa con milisegundos y zona en tooltip, y unidades (1.9385ms)
+✔ Componentes históricos: estados accesibles y tooltip sin perder valor ni fecha original (11685.5942ms)
+✔ Los periodos rápidos duran exactamente 60 minutos o 24 horas y comparten un único instante actual (2.8083ms)
+✔ El rango personalizado convierte fechas del dispositivo a ISO UTC con segundos (1.5193ms)
+✔ Ambas fechas son obligatorias y los errores identifican cada campo (0.3463ms)
+✔ Rechaza calendarios imposibles, horas inválidas y formatos ajenos a datetime-local (0.6182ms)
+✔ Rechaza fechas invertidas y permite exactamente el mismo instante en ambos extremos (0.2673ms)
+✔ La conversión respeta distintas zonas y rechaza horas inexistentes por cambio de horario (336.164ms)
+✔ Consulta inmediatamente y a los 15 segundos, sin recargar y conservando el timestamp recibido (5.8973ms)
+✔ Un fallo no reemplaza los datos con ceros y la próxima consulta se recupera (1.0192ms)
+✔ Cancela peticiones lentas, evita superposiciones e ignora respuestas después de salir (0.7017ms)
+✔ Al desmontar cancela también una petición que aún está activa (1.2884ms)
+✔ Consulta pendientes al inicio y cada 15 s; atender todas deja la lista vacía (4.9033ms)
+✔ Un PATCH fallido conserva la alerta y permite reintentar; evita doble clic (1.0257ms)
+✔ Una consulta antigua no vuelve a insertar una alerta atendida (1.0401ms)
+✔ Un fallo de consulta mantiene los avisos y desmontar cancela acciones sin notificar (1.2284ms)
+✔ Antigüedad: 59999 y 60000 ms son recientes; 60001 ms es antiguo (1.1467ms)
+✔ La antigüedad depende solo de fecha_hora y es independiente por variable (2.1601ms)
+✔ El reloj vence cada lectura al superar el minuto sin respuestas HTTP nuevas (2.5615ms)
+✔ Reemplazar una muestra recupera la vigencia y desmontar cancela el reloj (0.4521ms)
+✔ Sin muestras o con muestras antiguas el reloj no mantiene temporizadores (0.9522ms)
+ℹ tests 46
+ℹ suites 0
+ℹ pass 46
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15560.0793

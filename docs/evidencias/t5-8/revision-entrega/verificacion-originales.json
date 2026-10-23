@@ -1,0 +1,26 @@
+﻿{
+    "auditDate":  "2026-10-22",
+    "timezone":  "America/La_Paz",
+    "checkedOriginalFiles":  209,
+    "allOriginalSizesAndSha256Unchanged":  true,
+    "missingOriginals":  0,
+    "modifiedOriginals":  0,
+    "deletedOriginals":  0,
+    "codeMatchesRecordedClosureHashes":  true,
+    "finalPass":  146,
+    "finalFail":  0,
+    "historicalFail":  10,
+    "originalDocsUnchanged":  [
+                                  "README.md",
+                                  "matriz-pruebas.md",
+                                  "defectos.md"
+                              ],
+    "originalReportsUnchanged":  11,
+    "onlyCreatedUnder":  "docs/evidencias/t5-8/revision-entrega/",
+    "proposalExecuted":  false,
+    "codeChecks":  [
+                       "frontend/package.json",
+                       "frontend/src/App.css"
+                   ],
+    "gitStagedChanged":  false
+}

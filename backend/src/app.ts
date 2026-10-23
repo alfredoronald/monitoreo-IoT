@@ -32,6 +32,13 @@ export function createApp(corsOrigin: string) {
     });
   });
 
+  app.use((error: unknown, _request: express.Request, response: express.Response, next: express.NextFunction) => {
+    if (error instanceof SyntaxError && 'body' in error) {
+      response.status(400).json({ mensaje: 'El cuerpo no contiene JSON válido.' });
+      return;
+    }
+    next(error);
+  });
   app.use(errorHandler);
 
   return app;

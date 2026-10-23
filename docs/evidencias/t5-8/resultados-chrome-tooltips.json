@@ -1,0 +1,2696 @@
+{
+  "browserName": "chrome",
+  "phase": "tooltips",
+  "startedAt": "2026-10-22T03:26:49.050Z",
+  "timezone": "America/La_Paz",
+  "commit": "9913129e2cd9a05b7858420825ea3c2b39d55d67",
+  "gitStatus": "M frontend/package.json\n M frontend/src/App.css\n?? docs/evidencias/t5-8/\n?? frontend/tests/responsive-dashboard.browser.mjs",
+  "sourceSha256": {
+    "src/App.tsx": "5213de6cd86c6de26f923d479013c5e561a89cf4cabce4ca7406fb24be76dd23",
+    "src/App.css": "6d5174178e7f204aa489bc70cdab2a42eda59c8c9c086fb187e348cfcdf664ac",
+    "src/index.css": "80d27d15bcb2b9b160e56fb00b426e7644a8e002f7e55e508e4f5b7fa90e3f56",
+    "src/components/history/HistoricalChart.tsx": "21c66e6a6ab0683ea5ac8d5e3b6a27ccff5f9f063a2e0cebecd62ee045a3ddfa",
+    "tests/responsive-dashboard.browser.mjs": "e5203ec3f1441c194ef0f029f4a81bf15874c4a14323dd8d3b1ef2f2c52d2f75"
+  },
+  "platform": "win32",
+  "node": "v24.22.0",
+  "executable": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+  "controlledResponsesOnly": true,
+  "physicalPhone": false,
+  "emulation": "CSS viewport + touch emulation at 360px; mobile:false; DPR=1",
+  "cases": [
+    {
+      "id": "01-dashboard-ultima-hora",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "startedAt": "2026-10-22T03:26:49.688Z",
+      "details": {
+        "initialRequestCount": 6,
+        "calls": [
+          {
+            "path": "/api/lecturas",
+            "query": {
+              "variable": "temperatura",
+              "desde": "2026-10-22T02:26:51.221Z",
+              "hasta": "2026-10-22T03:26:51.221Z"
+            },
+            "method": "GET",
+            "mode": "data",
+            "at": 1792639611276,
+            "points": 4,
+            "duration": 3600000,
+            "status": 200
+          },
+          {
+            "path": "/api/lecturas",
+            "query": {
+              "variable": "humedad",
+              "desde": "2026-10-22T02:26:51.221Z",
+              "hasta": "2026-10-22T03:26:51.221Z"
+            },
+            "method": "GET",
+            "mode": "data",
+            "at": 1792639611276,
+            "points": 4,
+            "duration": 3600000,
+            "status": 200
+          },
+          {
+            "path": "/api/lecturas",
+            "query": {
+              "variable": "co2",
+              "desde": "2026-10-22T02:26:51.221Z",
+              "hasta": "2026-10-22T03:26:51.221Z"
+            },
+            "method": "GET",
+            "mode": "data",
+            "at": 1792639611276,
+            "points": 4,
+            "duration": 3600000,
+            "status": 200
+          }
+        ],
+        "gridColumns": "305px"
+      },
+      "geometry": {
+        "innerWidth": 360,
+        "innerHeight": 800,
+        "scrollWidth": 345,
+        "elements": [
+          {
+            "tag": "ARTICLE",
+            "class": "metric-card temperature",
+            "text": "TemperaturaLectura actual24,5°CTemperatura del aulaLectura recienteÚltima lectura: 21/10/2026, 23:26",
+            "rect": {
+              "x": 20,
+              "y": 457.15625,
+              "width": 305,
+              "height": 273,
+              "right": 325,
+              "bottom": 730.15625
+            },
+            "scrollWidth": 303,
+            "clientWidth": 303
+          },
+          {
+            "tag": "P",
+            "class": "metric-value",
+            "text": "24,5°C",
+            "rect": {
+              "x": 41,
+              "y": 557.15625,
+              "width": 263,
+              "height": 48,
+              "right": 304,
+              "bottom": 605.15625
+            },
+            "scrollWidth": 263,
+            "clientWidth": 263
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "metric-card humidity",
+            "text": "HumedadLectura actual0% HRHumedad relativaLectura recienteÚltima lectura: 21/10/2026, 23:26:51",
+            "rect": {
+              "x": 20,
+              "y": 744.15625,
+              "width": 305,
+              "height": 273,
+              "right": 325,
+              "bottom": 1017.15625
+            },
+            "scrollWidth": 303,
+            "clientWidth": 303
+          },
+          {
+            "tag": "P",
+            "class": "metric-value",
+            "text": "0% HR",
+            "rect": {
+              "x": 41,
+              "y": 844.15625,
+              "width": 263,
+              "height": 48,
+              "right": 304,
+              "bottom": 892.15625
+            },
+            "scrollWidth": 263,
+            "clientWidth": 263
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "metric-card co2",
+            "text": "CO₂ estimadoCO₂Lectura actual850ppmEstimación del MQ-135Lectura recienteÚltima lectura: 21/10/2026, ",
+            "rect": {
+              "x": 20,
+              "y": 1031.15625,
+              "width": 305,
+              "height": 273,
+              "right": 325,
+              "bottom": 1304.15625
+            },
+            "scrollWidth": 303,
+            "clientWidth": 303
+          },
+          {
+            "tag": "P",
+            "class": "metric-value",
+            "text": "850ppm",
+            "rect": {
+              "x": 41,
+              "y": 1131.15625,
+              "width": 263,
+              "height": 48,
+              "right": 304,
+              "bottom": 1179.15625
+            },
+            "scrollWidth": 263,
+            "clientWidth": 263
+          },
+          {
+            "tag": "SECTION",
+            "class": "air-status-panel air-status-moderado",
+            "text": "INDICADOR DE CALIDADEstado del aireNivel actualmoderadoCalidad moderadoRecomendación: Ventilar el au",
+            "rect": {
+              "x": 20,
+              "y": 1324.15625,
+              "width": 305,
+              "height": 324.96875,
+              "right": 325,
+              "bottom": 1649.125
+            },
+            "scrollWidth": 299,
+            "clientWidth": 299
+          },
+          {
+            "tag": "P",
+            "class": "air-status-tag",
+            "text": "Calidad moderado",
+            "rect": {
+              "x": 49,
+              "y": 1471.15625,
+              "width": 137.265625,
+              "height": 29,
+              "right": 186.265625,
+              "bottom": 1500.15625
+            },
+            "scrollWidth": 137,
+            "clientWidth": 137
+          },
+          {
+            "tag": "P",
+            "class": "air-status-recommendation",
+            "text": "Recomendación: Ventilar el aula según la clasificación recibida.",
+            "rect": {
+              "x": 49,
+              "y": 1516.15625,
+              "width": 251,
+              "height": 51.1875,
+              "right": 300,
+              "bottom": 1567.34375
+            },
+            "scrollWidth": 251,
+            "clientWidth": 251
+          },
+          {
+            "tag": "SECTION",
+            "class": "pending-alerts",
+            "text": "!Alertas pendientes · 2Revisa los avisos registrados de calidad del aire. Atenderlos no cambia el ni",
+            "rect": {
+              "x": 20,
+              "y": 1673.125,
+              "width": 305,
+              "height": 741.515625,
+              "right": 325,
+              "bottom": 2414.640625
+            },
+            "scrollWidth": 300,
+            "clientWidth": 300
+          },
+          {
+            "tag": "BUTTON",
+            "class": "",
+            "text": "Marcar como atendida",
+            "rect": {
+              "x": 40,
+              "y": 2196.296875,
+              "width": 268,
+              "height": 44.375,
+              "right": 308,
+              "bottom": 2240.671875
+            },
+            "scrollWidth": 266,
+            "clientWidth": 266
+          },
+          {
+            "tag": "BUTTON",
+            "class": "",
+            "text": "Marcar como atendida",
+            "rect": {
+              "x": 40,
+              "y": 2337.265625,
+              "width": 268,
+              "height": 44.375,
+              "right": 308,
+              "bottom": 2381.640625
+            },
+            "scrollWidth": 266,
+            "clientWidth": 266
+          },
+          {
+            "tag": "FORM",
+            "class": "history-range-selector",
+            "text": "PeriodoÚltima horaÚltimas 24 horasPersonalizado",
+            "rect": {
+              "x": 20,
+              "y": 2567.03125,
+              "width": 305,
+              "height": 103,
+              "right": 325,
+              "bottom": 2670.03125
+            },
+            "scrollWidth": 303,
+            "clientWidth": 303
+          },
+          {
+            "tag": "SELECT",
+            "class": "",
+            "text": "Última horaÚltimas 24 horasPersonalizado",
+            "rect": {
+              "x": 37,
+              "y": 2609.03125,
+              "width": 271,
+              "height": 44,
+              "right": 308,
+              "bottom": 2653.03125
+            },
+            "scrollWidth": 269,
+            "clientWidth": 269
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "history-card temperature",
+            "text": "Temperatura°C21/10, 22:4121/10, 23:260 °C7 °C14 °C21 °C28 °C",
+            "rect": {
+              "x": 20,
+              "y": 2777.421875,
+              "width": 305,
+              "height": 341,
+              "right": 325,
+              "bottom": 3118.421875
+            },
+            "scrollWidth": 303,
+            "clientWidth": 303
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "history-card humidity",
+            "text": "Humedad% HR21/10, 22:4121/10, 23:260 % HR15 % HR30 % HR45 % HR60 % HR",
+            "rect": {
+              "x": 20,
+              "y": 3132.421875,
+              "width": 305,
+              "height": 341,
+              "right": 325,
+              "bottom": 3473.421875
+            },
+            "scrollWidth": 303,
+            "clientWidth": 303
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "history-card co2",
+            "text": "CO₂ estimadoppm21/10, 22:4121/10, 23:260 ppm250 ppm500 ppm750 ppm1.000 ppm",
+            "rect": {
+              "x": 20,
+              "y": 3487.421875,
+              "width": 305,
+              "height": 341,
+              "right": 325,
+              "bottom": 3828.421875
+            },
+            "scrollWidth": 303,
+            "clientWidth": 303
+          }
+        ],
+        "outside": [],
+        "overlaps": [],
+        "charts": [
+          {
+            "rect": {
+              "x": 41,
+              "y": 2837.421875,
+              "width": 263,
+              "height": 260,
+              "right": 304,
+              "bottom": 3097.421875
+            },
+            "svg": {
+              "x": 41,
+              "y": 2837.421875,
+              "width": 263,
+              "height": 260,
+              "right": 304,
+              "bottom": 3097.421875
+            },
+            "invalidPath": false
+          },
+          {
+            "rect": {
+              "x": 41,
+              "y": 3192.421875,
+              "width": 263,
+              "height": 260,
+              "right": 304,
+              "bottom": 3452.421875
+            },
+            "svg": {
+              "x": 41,
+              "y": 3192.421875,
+              "width": 263,
+              "height": 260,
+              "right": 304,
+              "bottom": 3452.421875
+            },
+            "invalidPath": false
+          },
+          {
+            "rect": {
+              "x": 41,
+              "y": 3547.421875,
+              "width": 263,
+              "height": 260,
+              "right": 304,
+              "bottom": 3807.421875
+            },
+            "svg": {
+              "x": 41,
+              "y": 3547.421875,
+              "width": 263,
+              "height": 260,
+              "right": 304,
+              "bottom": 3807.421875
+            },
+            "invalidPath": false
+          }
+        ]
+      },
+      "status": "PASS",
+      "screenshot": "capturas/chrome/360x800/tooltips/01-dashboard-ultima-hora.png",
+      "finishedAt": "2026-10-22T03:26:51.629Z"
+    },
+    {
+      "id": "02-tooltips-tres-graficos",
+      "viewport": {
+        "width": 360,
+        "height": 800
+      },
+      "startedAt": "2026-10-22T03:26:51.630Z",
+      "details": [
+        {
+          "text": "25,82 °C\n\n21/10/2026, 22:41:51,221 GMT-4",
+          "date": "2026-10-22T02:41:51.221Z",
+          "left": 41,
+          "right": 268.6875,
+          "cardLeft": 20,
+          "cardRight": 325
+        },
+        {
+          "text": "56,82 % HR\n\n21/10/2026, 22:41:51,221 GMT-4",
+          "date": "2026-10-22T02:41:51.221Z",
+          "left": 41,
+          "right": 268.6875,
+          "cardLeft": 20,
+          "cardRight": 325
+        },
+        {
+          "text": "851,82 ppm\n\n21/10/2026, 22:41:51,221 GMT-4",
+          "date": "2026-10-22T02:41:51.221Z",
+          "left": 41,
+          "right": 268.6875,
+          "cardLeft": 20,
+          "cardRight": 325
+        }
+      ],
+      "geometry": {
+        "innerWidth": 360,
+        "innerHeight": 800,
+        "scrollWidth": 345,
+        "elements": [
+          {
+            "tag": "ARTICLE",
+            "class": "metric-card temperature",
+            "text": "TemperaturaLectura actual24,5°CTemperatura del aulaLectura recienteÚltima lectura: 21/10/2026, 23:26",
+            "rect": {
+              "x": 20,
+              "y": -2845.84375,
+              "width": 305,
+              "height": 273,
+              "right": 325,
+              "bottom": -2572.84375
+            },
+            "scrollWidth": 303,
+            "clientWidth": 303
+          },
+          {
+            "tag": "P",
+            "class": "metric-value",
+            "text": "24,5°C",
+            "rect": {
+              "x": 41,
+              "y": -2745.84375,
+              "width": 263,
+              "height": 48,
+              "right": 304,
+              "bottom": -2697.84375
+            },
+            "scrollWidth": 263,
+            "clientWidth": 263
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "metric-card humidity",
+            "text": "HumedadLectura actual0% HRHumedad relativaLectura recienteÚltima lectura: 21/10/2026, 23:26:51",
+            "rect": {
+              "x": 20,
+              "y": -2558.84375,
+              "width": 305,
+              "height": 273,
+              "right": 325,
+              "bottom": -2285.84375
+            },
+            "scrollWidth": 303,
+            "clientWidth": 303
+          },
+          {
+            "tag": "P",
+            "class": "metric-value",
+            "text": "0% HR",
+            "rect": {
+              "x": 41,
+              "y": -2458.84375,
+              "width": 263,
+              "height": 48,
+              "right": 304,
+              "bottom": -2410.84375
+            },
+            "scrollWidth": 263,
+            "clientWidth": 263
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "metric-card co2",
+            "text": "CO₂ estimadoCO₂Lectura actual850ppmEstimación del MQ-135Lectura recienteÚltima lectura: 21/10/2026, ",
+            "rect": {
+              "x": 20,
+              "y": -2271.84375,
+              "width": 305,
+              "height": 273,
+              "right": 325,
+              "bottom": -1998.84375
+            },
+            "scrollWidth": 303,
+            "clientWidth": 303
+          },
+          {
+            "tag": "P",
+            "class": "metric-value",
+            "text": "850ppm",
+            "rect": {
+              "x": 41,
+              "y": -2171.84375,
+              "width": 263,
+              "height": 48,
+              "right": 304,
+              "bottom": -2123.84375
+            },
+            "scrollWidth": 263,
+            "clientWidth": 263
+          },
+          {
+            "tag": "SECTION",
+            "class": "air-status-panel air-status-moderado",
+            "text": "INDICADOR DE CALIDADEstado del aireNivel actualmoderadoCalidad moderadoRecomendación: Ventilar el au",
+            "rect": {
+              "x": 20,
+              "y": -1978.84375,
+              "width": 305,
+              "height": 324.96875,
+              "right": 325,
+              "bottom": -1653.875
+            },
+            "scrollWidth": 299,
+            "clientWidth": 299
+          },
+          {
+            "tag": "P",
+            "class": "air-status-tag",
+            "text": "Calidad moderado",
+            "rect": {
+              "x": 49,
+              "y": -1831.84375,
+              "width": 137.265625,
+              "height": 29,
+              "right": 186.265625,
+              "bottom": -1802.84375
+            },
+            "scrollWidth": 137,
+            "clientWidth": 137
+          },
+          {
+            "tag": "P",
+            "class": "air-status-recommendation",
+            "text": "Recomendación: Ventilar el aula según la clasificación recibida.",
+            "rect": {
+              "x": 49,
+              "y": -1786.84375,
+              "width": 251,
+              "height": 51.1875,
+              "right": 300,
+              "bottom": -1735.65625
+            },
+            "scrollWidth": 251,
+            "clientWidth": 251
+          },
+          {
+            "tag": "SECTION",
+            "class": "pending-alerts",
+            "text": "!Alertas pendientes · 2Revisa los avisos registrados de calidad del aire. Atenderlos no cambia el ni",
+            "rect": {
+              "x": 20,
+              "y": -1629.875,
+              "width": 305,
+              "height": 741.515625,
+              "right": 325,
+              "bottom": -888.359375
+            },
+            "scrollWidth": 300,
+            "clientWidth": 300
+          },
+          {
+            "tag": "BUTTON",
+            "class": "",
+            "text": "Marcar como atendida",
+            "rect": {
+              "x": 40,
+              "y": -1106.703125,
+              "width": 268,
+              "height": 44.375,
+              "right": 308,
+              "bottom": -1062.328125
+            },
+            "scrollWidth": 266,
+            "clientWidth": 266
+          },
+          {
+            "tag": "BUTTON",
+            "class": "",
+            "text": "Marcar como atendida",
+            "rect": {
+              "x": 40,
+              "y": -965.734375,
+              "width": 268,
+              "height": 44.375,
+              "right": 308,
+              "bottom": -921.359375
+            },
+            "scrollWidth": 266,
+            "clientWidth": 266
+          },
+          {
+            "tag": "FORM",
+            "class": "history-range-selector",
+            "text": "PeriodoÚltima horaÚltimas 24 horasPersonalizado",
+            "rect": {
+              "x": 20,
+              "y": -735.96875,
+              "width": 305,
+              "height": 103,
+              "right": 325,
+              "bottom": -632.96875
+            },
+            "scrollWidth": 303,
+            "clientWidth": 303
+          },
+          {
+            "tag": "SELECT",
+            "class": "",
+            "text": "Última horaÚltimas 24 horasPersonalizado",
+            "rect": {
+              "x": 37,
+              "y": -693.96875,
+              "width": 271,
+              "height": 44,
+              "right": 308,
+              "bottom": -649.96875
+            },
+            "scrollWidth": 269,
+            "clientWidth": 269
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "history-card temperature",
+            "text": "Temperatura°C21/10, 22:4121/10, 23:260 °C7 °C14 °C21 °C28 °C",
+            "rect": {
+              "x": 20,
+              "y": -525.578125,
+              "width": 305,
+              "height": 341,
+              "right": 325,
+              "bottom": -184.578125
+            },
+            "scrollWidth": 303,
+            "clientWidth": 303
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "history-card humidity",
+            "text": "Humedad% HR21/10, 22:4121/10, 23:260 % HR15 % HR30 % HR45 % HR60 % HR",
+            "rect": {
+              "x": 20,
+              "y": -170.578125,
+              "width": 305,
+              "height": 341,
+              "right": 325,
+              "bottom": 170.421875
+            },
+            "scrollWidth": 303,
+            "clientWidth": 303
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "history-card co2",
+            "text": "CO₂ estimadoppm21/10, 22:4121/10, 23:260 ppm250 ppm500 ppm750 ppm1.000 ppm",
+            "rect": {
+              "x": 20,
+              "y": 184.421875,
+              "width": 305,
+              "height": 341,
+              "right": 325,
+              "bottom": 525.421875
+            },
+            "scrollWidth": 303,
+            "clientWidth": 303
+          }
+        ],
+        "outside": [],
+        "overlaps": [],
+        "charts": [
+          {
+            "rect": {
+              "x": 41,
+              "y": -465.578125,
+              "width": 263,
+              "height": 260,
+              "right": 304,
+              "bottom": -205.578125
+            },
+            "svg": {
+              "x": 41,
+              "y": -465.578125,
+              "width": 263,
+              "height": 260,
+              "right": 304,
+              "bottom": -205.578125
+            },
+            "invalidPath": false
+          },
+          {
+            "rect": {
+              "x": 41,
+              "y": -110.578125,
+              "width": 263,
+              "height": 260,
+              "right": 304,
+              "bottom": 149.421875
+            },
+            "svg": {
+              "x": 41,
+              "y": -110.578125,
+              "width": 263,
+              "height": 260,
+              "right": 304,
+              "bottom": 149.421875
+            },
+            "invalidPath": false
+          },
+          {
+            "rect": {
+              "x": 41,
+              "y": 244.421875,
+              "width": 263,
+              "height": 260,
+              "right": 304,
+              "bottom": 504.421875
+            },
+            "svg": {
+              "x": 41,
+              "y": 244.421875,
+              "width": 263,
+              "height": 260,
+              "right": 304,
+              "bottom": 504.421875
+            },
+            "invalidPath": false
+          }
+        ]
+      },
+      "status": "PASS",
+      "screenshot": "capturas/chrome/360x800/tooltips/02-tooltips-tres-graficos.png",
+      "finishedAt": "2026-10-22T03:26:52.440Z"
+    },
+    {
+      "id": "01-dashboard-ultima-hora",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "startedAt": "2026-10-22T03:26:52.575Z",
+      "details": {
+        "initialRequestCount": 6,
+        "calls": [
+          {
+            "path": "/api/lecturas",
+            "query": {
+              "variable": "temperatura",
+              "desde": "2026-10-22T02:26:52.708Z",
+              "hasta": "2026-10-22T03:26:52.708Z"
+            },
+            "method": "GET",
+            "mode": "data",
+            "at": 1792639612718,
+            "points": 4,
+            "duration": 3600000,
+            "status": 200
+          },
+          {
+            "path": "/api/lecturas",
+            "query": {
+              "variable": "humedad",
+              "desde": "2026-10-22T02:26:52.708Z",
+              "hasta": "2026-10-22T03:26:52.708Z"
+            },
+            "method": "GET",
+            "mode": "data",
+            "at": 1792639612718,
+            "points": 4,
+            "duration": 3600000,
+            "status": 200
+          },
+          {
+            "path": "/api/lecturas",
+            "query": {
+              "variable": "co2",
+              "desde": "2026-10-22T02:26:52.708Z",
+              "hasta": "2026-10-22T03:26:52.708Z"
+            },
+            "method": "GET",
+            "mode": "data",
+            "at": 1792639612718,
+            "points": 4,
+            "duration": 3600000,
+            "status": 200
+          }
+        ],
+        "gridColumns": "705px"
+      },
+      "geometry": {
+        "innerWidth": 768,
+        "innerHeight": 1024,
+        "scrollWidth": 753,
+        "elements": [
+          {
+            "tag": "ARTICLE",
+            "class": "metric-card temperature",
+            "text": "TemperaturaLectura actual24,5°CTemperatura del aulaLectura recienteÚltima lectura: 21/10/2026, 23:26",
+            "rect": {
+              "x": 24,
+              "y": 350.578125,
+              "width": 705,
+              "height": 249.1875,
+              "right": 729,
+              "bottom": 599.765625
+            },
+            "scrollWidth": 703,
+            "clientWidth": 703
+          },
+          {
+            "tag": "P",
+            "class": "metric-value",
+            "text": "24,5°C",
+            "rect": {
+              "x": 41,
+              "y": 446.578125,
+              "width": 671,
+              "height": 55.1875,
+              "right": 712,
+              "bottom": 501.765625
+            },
+            "scrollWidth": 671,
+            "clientWidth": 671
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "metric-card humidity",
+            "text": "HumedadLectura actual0% HRHumedad relativaLectura recienteÚltima lectura: 21/10/2026, 23:26:52",
+            "rect": {
+              "x": 24,
+              "y": 613.765625,
+              "width": 705,
+              "height": 249.1875,
+              "right": 729,
+              "bottom": 862.953125
+            },
+            "scrollWidth": 703,
+            "clientWidth": 703
+          },
+          {
+            "tag": "P",
+            "class": "metric-value",
+            "text": "0% HR",
+            "rect": {
+              "x": 41,
+              "y": 709.765625,
+              "width": 671,
+              "height": 55.1875,
+              "right": 712,
+              "bottom": 764.953125
+            },
+            "scrollWidth": 671,
+            "clientWidth": 671
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "metric-card co2",
+            "text": "CO₂ estimadoCO₂Lectura actual850ppmEstimación del MQ-135Lectura recienteÚltima lectura: 21/10/2026, ",
+            "rect": {
+              "x": 24,
+              "y": 876.953125,
+              "width": 705,
+              "height": 249.1875,
+              "right": 729,
+              "bottom": 1126.140625
+            },
+            "scrollWidth": 703,
+            "clientWidth": 703
+          },
+          {
+            "tag": "P",
+            "class": "metric-value",
+            "text": "850ppm",
+            "rect": {
+              "x": 41,
+              "y": 972.953125,
+              "width": 671,
+              "height": 55.1875,
+              "right": 712,
+              "bottom": 1028.140625
+            },
+            "scrollWidth": 671,
+            "clientWidth": 671
+          },
+          {
+            "tag": "SECTION",
+            "class": "air-status-panel air-status-moderado",
+            "text": "INDICADOR DE CALIDADEstado del aireNivel actualmoderadoCalidad moderadoRecomendación: Ventilar el au",
+            "rect": {
+              "x": 24,
+              "y": 1146.140625,
+              "width": 705,
+              "height": 276.984375,
+              "right": 729,
+              "bottom": 1423.125
+            },
+            "scrollWidth": 699,
+            "clientWidth": 699
+          },
+          {
+            "tag": "P",
+            "class": "air-status-tag",
+            "text": "Calidad moderado",
+            "rect": {
+              "x": 53,
+              "y": 1293.140625,
+              "width": 137.265625,
+              "height": 29,
+              "right": 190.265625,
+              "bottom": 1322.140625
+            },
+            "scrollWidth": 137,
+            "clientWidth": 137
+          },
+          {
+            "tag": "P",
+            "class": "air-status-recommendation",
+            "text": "Recomendación: Ventilar el aula según la clasificación recibida.",
+            "rect": {
+              "x": 53,
+              "y": 1338.140625,
+              "width": 651,
+              "height": 25.59375,
+              "right": 704,
+              "bottom": 1363.734375
+            },
+            "scrollWidth": 651,
+            "clientWidth": 651
+          },
+          {
+            "tag": "SECTION",
+            "class": "pending-alerts",
+            "text": "!Alertas pendientes · 2Revisa los avisos registrados de calidad del aire. Atenderlos no cambia el ni",
+            "rect": {
+              "x": 24,
+              "y": 1447.125,
+              "width": 705,
+              "height": 428.765625,
+              "right": 729,
+              "bottom": 1875.890625
+            },
+            "scrollWidth": 700,
+            "clientWidth": 700
+          },
+          {
+            "tag": "BUTTON",
+            "class": "",
+            "text": "Marcar como atendida",
+            "rect": {
+              "x": 526.265625,
+              "y": 1634.8125,
+              "width": 177.734375,
+              "height": 44.375,
+              "right": 704,
+              "bottom": 1679.1875
+            },
+            "scrollWidth": 176,
+            "clientWidth": 176
+          },
+          {
+            "tag": "BUTTON",
+            "class": "",
+            "text": "Marcar como atendida",
+            "rect": {
+              "x": 526.265625,
+              "y": 1788.90625,
+              "width": 177.734375,
+              "height": 44.375,
+              "right": 704,
+              "bottom": 1833.28125
+            },
+            "scrollWidth": 176,
+            "clientWidth": 176
+          },
+          {
+            "tag": "FORM",
+            "class": "history-range-selector",
+            "text": "PeriodoÚltima horaÚltimas 24 horasPersonalizado",
+            "rect": {
+              "x": 24,
+              "y": 2003.890625,
+              "width": 705,
+              "height": 107,
+              "right": 729,
+              "bottom": 2110.890625
+            },
+            "scrollWidth": 703,
+            "clientWidth": 703
+          },
+          {
+            "tag": "SELECT",
+            "class": "",
+            "text": "Última horaÚltimas 24 horasPersonalizado",
+            "rect": {
+              "x": 45,
+              "y": 2047.890625,
+              "width": 260,
+              "height": 44,
+              "right": 305,
+              "bottom": 2091.890625
+            },
+            "scrollWidth": 258,
+            "clientWidth": 258
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "history-card temperature",
+            "text": "Temperatura°C21/10, 22:2721/10, 22:4121/10, 23:260 °C7 °C14 °C21 °C28 °C",
+            "rect": {
+              "x": 24,
+              "y": 2194.484375,
+              "width": 705,
+              "height": 341,
+              "right": 729,
+              "bottom": 2535.484375
+            },
+            "scrollWidth": 703,
+            "clientWidth": 703
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "history-card humidity",
+            "text": "Humedad% HR21/10, 22:2721/10, 22:4121/10, 23:260 % HR15 % HR30 % HR45 % HR60 % HR",
+            "rect": {
+              "x": 24,
+              "y": 2549.484375,
+              "width": 705,
+              "height": 341,
+              "right": 729,
+              "bottom": 2890.484375
+            },
+            "scrollWidth": 703,
+            "clientWidth": 703
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "history-card co2",
+            "text": "CO₂ estimadoppm21/10, 22:2721/10, 22:4121/10, 23:260 ppm250 ppm500 ppm750 ppm1.000 ppm",
+            "rect": {
+              "x": 24,
+              "y": 2904.484375,
+              "width": 705,
+              "height": 341,
+              "right": 729,
+              "bottom": 3245.484375
+            },
+            "scrollWidth": 703,
+            "clientWidth": 703
+          }
+        ],
+        "outside": [],
+        "overlaps": [],
+        "charts": [
+          {
+            "rect": {
+              "x": 45,
+              "y": 2254.484375,
+              "width": 663,
+              "height": 260,
+              "right": 708,
+              "bottom": 2514.484375
+            },
+            "svg": {
+              "x": 45,
+              "y": 2254.484375,
+              "width": 663,
+              "height": 260,
+              "right": 708,
+              "bottom": 2514.484375
+            },
+            "invalidPath": false
+          },
+          {
+            "rect": {
+              "x": 45,
+              "y": 2609.484375,
+              "width": 663,
+              "height": 260,
+              "right": 708,
+              "bottom": 2869.484375
+            },
+            "svg": {
+              "x": 45,
+              "y": 2609.484375,
+              "width": 663,
+              "height": 260,
+              "right": 708,
+              "bottom": 2869.484375
+            },
+            "invalidPath": false
+          },
+          {
+            "rect": {
+              "x": 45,
+              "y": 2964.484375,
+              "width": 663,
+              "height": 260,
+              "right": 708,
+              "bottom": 3224.484375
+            },
+            "svg": {
+              "x": 45,
+              "y": 2964.484375,
+              "width": 663,
+              "height": 260,
+              "right": 708,
+              "bottom": 3224.484375
+            },
+            "invalidPath": false
+          }
+        ]
+      },
+      "status": "PASS",
+      "screenshot": "capturas/chrome/768x1024/tooltips/01-dashboard-ultima-hora.png",
+      "finishedAt": "2026-10-22T03:26:53.120Z"
+    },
+    {
+      "id": "02-tooltips-tres-graficos",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "startedAt": "2026-10-22T03:26:53.121Z",
+      "details": [
+        {
+          "text": "25,82 °C\n\n21/10/2026, 22:41:52,708 GMT-4",
+          "date": "2026-10-22T02:41:52.708Z",
+          "left": 45,
+          "right": 272.6875,
+          "cardLeft": 24,
+          "cardRight": 729
+        },
+        {
+          "text": "56,82 % HR\n\n21/10/2026, 22:41:52,708 GMT-4",
+          "date": "2026-10-22T02:41:52.708Z",
+          "left": 45,
+          "right": 272.6875,
+          "cardLeft": 24,
+          "cardRight": 729
+        },
+        {
+          "text": "851,82 ppm\n\n21/10/2026, 22:41:52,708 GMT-4",
+          "date": "2026-10-22T02:41:52.708Z",
+          "left": 45,
+          "right": 272.6875,
+          "cardLeft": 24,
+          "cardRight": 729
+        }
+      ],
+      "geometry": {
+        "innerWidth": 768,
+        "innerHeight": 1024,
+        "scrollWidth": 753,
+        "elements": [
+          {
+            "tag": "ARTICLE",
+            "class": "metric-card temperature",
+            "text": "TemperaturaLectura actual24,5°CTemperatura del aulaLectura recienteÚltima lectura: 21/10/2026, 23:26",
+            "rect": {
+              "x": 24,
+              "y": -2070.421875,
+              "width": 705,
+              "height": 249.1875,
+              "right": 729,
+              "bottom": -1821.234375
+            },
+            "scrollWidth": 703,
+            "clientWidth": 703
+          },
+          {
+            "tag": "P",
+            "class": "metric-value",
+            "text": "24,5°C",
+            "rect": {
+              "x": 41,
+              "y": -1974.421875,
+              "width": 671,
+              "height": 55.1875,
+              "right": 712,
+              "bottom": -1919.234375
+            },
+            "scrollWidth": 671,
+            "clientWidth": 671
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "metric-card humidity",
+            "text": "HumedadLectura actual0% HRHumedad relativaLectura recienteÚltima lectura: 21/10/2026, 23:26:52",
+            "rect": {
+              "x": 24,
+              "y": -1807.234375,
+              "width": 705,
+              "height": 249.1875,
+              "right": 729,
+              "bottom": -1558.046875
+            },
+            "scrollWidth": 703,
+            "clientWidth": 703
+          },
+          {
+            "tag": "P",
+            "class": "metric-value",
+            "text": "0% HR",
+            "rect": {
+              "x": 41,
+              "y": -1711.234375,
+              "width": 671,
+              "height": 55.1875,
+              "right": 712,
+              "bottom": -1656.046875
+            },
+            "scrollWidth": 671,
+            "clientWidth": 671
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "metric-card co2",
+            "text": "CO₂ estimadoCO₂Lectura actual850ppmEstimación del MQ-135Lectura recienteÚltima lectura: 21/10/2026, ",
+            "rect": {
+              "x": 24,
+              "y": -1544.046875,
+              "width": 705,
+              "height": 249.1875,
+              "right": 729,
+              "bottom": -1294.859375
+            },
+            "scrollWidth": 703,
+            "clientWidth": 703
+          },
+          {
+            "tag": "P",
+            "class": "metric-value",
+            "text": "850ppm",
+            "rect": {
+              "x": 41,
+              "y": -1448.046875,
+              "width": 671,
+              "height": 55.1875,
+              "right": 712,
+              "bottom": -1392.859375
+            },
+            "scrollWidth": 671,
+            "clientWidth": 671
+          },
+          {
+            "tag": "SECTION",
+            "class": "air-status-panel air-status-moderado",
+            "text": "INDICADOR DE CALIDADEstado del aireNivel actualmoderadoCalidad moderadoRecomendación: Ventilar el au",
+            "rect": {
+              "x": 24,
+              "y": -1274.859375,
+              "width": 705,
+              "height": 276.984375,
+              "right": 729,
+              "bottom": -997.875
+            },
+            "scrollWidth": 699,
+            "clientWidth": 699
+          },
+          {
+            "tag": "P",
+            "class": "air-status-tag",
+            "text": "Calidad moderado",
+            "rect": {
+              "x": 53,
+              "y": -1127.859375,
+              "width": 137.265625,
+              "height": 29,
+              "right": 190.265625,
+              "bottom": -1098.859375
+            },
+            "scrollWidth": 137,
+            "clientWidth": 137
+          },
+          {
+            "tag": "P",
+            "class": "air-status-recommendation",
+            "text": "Recomendación: Ventilar el aula según la clasificación recibida.",
+            "rect": {
+              "x": 53,
+              "y": -1082.859375,
+              "width": 651,
+              "height": 25.59375,
+              "right": 704,
+              "bottom": -1057.265625
+            },
+            "scrollWidth": 651,
+            "clientWidth": 651
+          },
+          {
+            "tag": "SECTION",
+            "class": "pending-alerts",
+            "text": "!Alertas pendientes · 2Revisa los avisos registrados de calidad del aire. Atenderlos no cambia el ni",
+            "rect": {
+              "x": 24,
+              "y": -973.875,
+              "width": 705,
+              "height": 428.765625,
+              "right": 729,
+              "bottom": -545.109375
+            },
+            "scrollWidth": 700,
+            "clientWidth": 700
+          },
+          {
+            "tag": "BUTTON",
+            "class": "",
+            "text": "Marcar como atendida",
+            "rect": {
+              "x": 526.265625,
+              "y": -786.1875,
+              "width": 177.734375,
+              "height": 44.375,
+              "right": 704,
+              "bottom": -741.8125
+            },
+            "scrollWidth": 176,
+            "clientWidth": 176
+          },
+          {
+            "tag": "BUTTON",
+            "class": "",
+            "text": "Marcar como atendida",
+            "rect": {
+              "x": 526.265625,
+              "y": -632.09375,
+              "width": 177.734375,
+              "height": 44.375,
+              "right": 704,
+              "bottom": -587.71875
+            },
+            "scrollWidth": 176,
+            "clientWidth": 176
+          },
+          {
+            "tag": "FORM",
+            "class": "history-range-selector",
+            "text": "PeriodoÚltima horaÚltimas 24 horasPersonalizado",
+            "rect": {
+              "x": 24,
+              "y": -417.109375,
+              "width": 705,
+              "height": 107,
+              "right": 729,
+              "bottom": -310.109375
+            },
+            "scrollWidth": 703,
+            "clientWidth": 703
+          },
+          {
+            "tag": "SELECT",
+            "class": "",
+            "text": "Última horaÚltimas 24 horasPersonalizado",
+            "rect": {
+              "x": 45,
+              "y": -373.109375,
+              "width": 260,
+              "height": 44,
+              "right": 305,
+              "bottom": -329.109375
+            },
+            "scrollWidth": 258,
+            "clientWidth": 258
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "history-card temperature",
+            "text": "Temperatura°C21/10, 22:2721/10, 22:4121/10, 23:260 °C7 °C14 °C21 °C28 °C",
+            "rect": {
+              "x": 24,
+              "y": -226.515625,
+              "width": 705,
+              "height": 341,
+              "right": 729,
+              "bottom": 114.484375
+            },
+            "scrollWidth": 703,
+            "clientWidth": 703
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "history-card humidity",
+            "text": "Humedad% HR21/10, 22:2721/10, 22:4121/10, 23:260 % HR15 % HR30 % HR45 % HR60 % HR",
+            "rect": {
+              "x": 24,
+              "y": 128.484375,
+              "width": 705,
+              "height": 341,
+              "right": 729,
+              "bottom": 469.484375
+            },
+            "scrollWidth": 703,
+            "clientWidth": 703
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "history-card co2",
+            "text": "CO₂ estimadoppm21/10, 22:2721/10, 22:4121/10, 23:260 ppm250 ppm500 ppm750 ppm1.000 ppm",
+            "rect": {
+              "x": 24,
+              "y": 483.484375,
+              "width": 705,
+              "height": 341,
+              "right": 729,
+              "bottom": 824.484375
+            },
+            "scrollWidth": 703,
+            "clientWidth": 703
+          }
+        ],
+        "outside": [],
+        "overlaps": [],
+        "charts": [
+          {
+            "rect": {
+              "x": 45,
+              "y": -166.515625,
+              "width": 663,
+              "height": 260,
+              "right": 708,
+              "bottom": 93.484375
+            },
+            "svg": {
+              "x": 45,
+              "y": -166.515625,
+              "width": 663,
+              "height": 260,
+              "right": 708,
+              "bottom": 93.484375
+            },
+            "invalidPath": false
+          },
+          {
+            "rect": {
+              "x": 45,
+              "y": 188.484375,
+              "width": 663,
+              "height": 260,
+              "right": 708,
+              "bottom": 448.484375
+            },
+            "svg": {
+              "x": 45,
+              "y": 188.484375,
+              "width": 663,
+              "height": 260,
+              "right": 708,
+              "bottom": 448.484375
+            },
+            "invalidPath": false
+          },
+          {
+            "rect": {
+              "x": 45,
+              "y": 543.484375,
+              "width": 663,
+              "height": 260,
+              "right": 708,
+              "bottom": 803.484375
+            },
+            "svg": {
+              "x": 45,
+              "y": 543.484375,
+              "width": 663,
+              "height": 260,
+              "right": 708,
+              "bottom": 803.484375
+            },
+            "invalidPath": false
+          }
+        ]
+      },
+      "status": "PASS",
+      "screenshot": "capturas/chrome/768x1024/tooltips/02-tooltips-tres-graficos.png",
+      "finishedAt": "2026-10-22T03:26:54.032Z"
+    },
+    {
+      "id": "01-dashboard-ultima-hora",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "startedAt": "2026-10-22T03:26:54.171Z",
+      "details": {
+        "initialRequestCount": 6,
+        "calls": [
+          {
+            "path": "/api/lecturas",
+            "query": {
+              "variable": "temperatura",
+              "desde": "2026-10-22T02:26:54.247Z",
+              "hasta": "2026-10-22T03:26:54.247Z"
+            },
+            "method": "GET",
+            "mode": "data",
+            "at": 1792639614256,
+            "points": 4,
+            "duration": 3600000,
+            "status": 200
+          },
+          {
+            "path": "/api/lecturas",
+            "query": {
+              "variable": "humedad",
+              "desde": "2026-10-22T02:26:54.247Z",
+              "hasta": "2026-10-22T03:26:54.247Z"
+            },
+            "method": "GET",
+            "mode": "data",
+            "at": 1792639614256,
+            "points": 4,
+            "duration": 3600000,
+            "status": 200
+          },
+          {
+            "path": "/api/lecturas",
+            "query": {
+              "variable": "co2",
+              "desde": "2026-10-22T02:26:54.247Z",
+              "hasta": "2026-10-22T03:26:54.247Z"
+            },
+            "method": "GET",
+            "mode": "data",
+            "at": 1792639614256,
+            "points": 4,
+            "duration": 3600000,
+            "status": 200
+          }
+        ],
+        "gridColumns": "409.688px 409.688px 409.688px"
+      },
+      "geometry": {
+        "innerWidth": 1366,
+        "innerHeight": 768,
+        "scrollWidth": 1351,
+        "elements": [
+          {
+            "tag": "ARTICLE",
+            "class": "metric-card temperature",
+            "text": "TemperaturaLectura actual24,5°CTemperatura del aulaLectura recienteÚltima lectura: 21/10/2026, 23:26",
+            "rect": {
+              "x": 40.96875,
+              "y": 307.390625,
+              "width": 409.6875,
+              "height": 261.1875,
+              "right": 450.65625,
+              "bottom": 568.578125
+            },
+            "scrollWidth": 408,
+            "clientWidth": 408
+          },
+          {
+            "tag": "P",
+            "class": "metric-value",
+            "text": "24,5°C",
+            "rect": {
+              "x": 63.96875,
+              "y": 409.390625,
+              "width": 363.6875,
+              "height": 55.1875,
+              "right": 427.65625,
+              "bottom": 464.578125
+            },
+            "scrollWidth": 364,
+            "clientWidth": 364
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "metric-card humidity",
+            "text": "HumedadLectura actual0% HRHumedad relativaLectura recienteÚltima lectura: 21/10/2026, 23:26:54",
+            "rect": {
+              "x": 470.65625,
+              "y": 307.390625,
+              "width": 409.6875,
+              "height": 261.1875,
+              "right": 880.34375,
+              "bottom": 568.578125
+            },
+            "scrollWidth": 408,
+            "clientWidth": 408
+          },
+          {
+            "tag": "P",
+            "class": "metric-value",
+            "text": "0% HR",
+            "rect": {
+              "x": 493.65625,
+              "y": 409.390625,
+              "width": 363.6875,
+              "height": 55.1875,
+              "right": 857.34375,
+              "bottom": 464.578125
+            },
+            "scrollWidth": 364,
+            "clientWidth": 364
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "metric-card co2",
+            "text": "CO₂ estimadoCO₂Lectura actual850ppmEstimación del MQ-135Lectura recienteÚltima lectura: 21/10/2026, ",
+            "rect": {
+              "x": 900.34375,
+              "y": 307.390625,
+              "width": 409.6875,
+              "height": 261.1875,
+              "right": 1310.03125,
+              "bottom": 568.578125
+            },
+            "scrollWidth": 408,
+            "clientWidth": 408
+          },
+          {
+            "tag": "P",
+            "class": "metric-value",
+            "text": "850ppm",
+            "rect": {
+              "x": 923.34375,
+              "y": 409.390625,
+              "width": 363.6875,
+              "height": 55.1875,
+              "right": 1287.03125,
+              "bottom": 464.578125
+            },
+            "scrollWidth": 364,
+            "clientWidth": 364
+          },
+          {
+            "tag": "SECTION",
+            "class": "air-status-panel air-status-moderado",
+            "text": "INDICADOR DE CALIDADEstado del aireNivel actualmoderadoCalidad moderadoRecomendación: Ventilar el au",
+            "rect": {
+              "x": 40.96875,
+              "y": 588.578125,
+              "width": 1269.0625,
+              "height": 276.984375,
+              "right": 1310.03125,
+              "bottom": 865.5625
+            },
+            "scrollWidth": 1263,
+            "clientWidth": 1263
+          },
+          {
+            "tag": "P",
+            "class": "air-status-tag",
+            "text": "Calidad moderado",
+            "rect": {
+              "x": 69.96875,
+              "y": 735.578125,
+              "width": 137.265625,
+              "height": 29,
+              "right": 207.234375,
+              "bottom": 764.578125
+            },
+            "scrollWidth": 137,
+            "clientWidth": 137
+          },
+          {
+            "tag": "P",
+            "class": "air-status-recommendation",
+            "text": "Recomendación: Ventilar el aula según la clasificación recibida.",
+            "rect": {
+              "x": 69.96875,
+              "y": 780.578125,
+              "width": 1215.0625,
+              "height": 25.59375,
+              "right": 1285.03125,
+              "bottom": 806.171875
+            },
+            "scrollWidth": 1215,
+            "clientWidth": 1215
+          },
+          {
+            "tag": "SECTION",
+            "class": "pending-alerts",
+            "text": "!Alertas pendientes · 2Revisa los avisos registrados de calidad del aire. Atenderlos no cambia el ni",
+            "rect": {
+              "x": 40.96875,
+              "y": 889.5625,
+              "width": 1269.0625,
+              "height": 344.765625,
+              "right": 1310.03125,
+              "bottom": 1234.328125
+            },
+            "scrollWidth": 1264,
+            "clientWidth": 1264
+          },
+          {
+            "tag": "BUTTON",
+            "class": "",
+            "text": "Marcar como atendida",
+            "rect": {
+              "x": 1107.296875,
+              "y": 1035.25,
+              "width": 177.734375,
+              "height": 44.375,
+              "right": 1285.03125,
+              "bottom": 1079.625
+            },
+            "scrollWidth": 176,
+            "clientWidth": 176
+          },
+          {
+            "tag": "BUTTON",
+            "class": "",
+            "text": "Marcar como atendida",
+            "rect": {
+              "x": 1107.296875,
+              "y": 1147.34375,
+              "width": 177.734375,
+              "height": 44.375,
+              "right": 1285.03125,
+              "bottom": 1191.71875
+            },
+            "scrollWidth": 176,
+            "clientWidth": 176
+          },
+          {
+            "tag": "FORM",
+            "class": "history-range-selector",
+            "text": "PeriodoÚltima horaÚltimas 24 horasPersonalizado",
+            "rect": {
+              "x": 40.96875,
+              "y": 1362.328125,
+              "width": 1269.0625,
+              "height": 107,
+              "right": 1310.03125,
+              "bottom": 1469.328125
+            },
+            "scrollWidth": 1267,
+            "clientWidth": 1267
+          },
+          {
+            "tag": "SELECT",
+            "class": "",
+            "text": "Última horaÚltimas 24 horasPersonalizado",
+            "rect": {
+              "x": 61.96875,
+              "y": 1406.328125,
+              "width": 260,
+              "height": 44,
+              "right": 321.96875,
+              "bottom": 1450.328125
+            },
+            "scrollWidth": 258,
+            "clientWidth": 258
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "history-card temperature",
+            "text": "Temperatura°C21/10, 22:4121/10, 23:260 °C7 °C14 °C21 °C28 °C",
+            "rect": {
+              "x": 40.96875,
+              "y": 1529.125,
+              "width": 409.6875,
+              "height": 341,
+              "right": 450.65625,
+              "bottom": 1870.125
+            },
+            "scrollWidth": 408,
+            "clientWidth": 408
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "history-card humidity",
+            "text": "Humedad% HR21/10, 22:4121/10, 23:260 % HR15 % HR30 % HR45 % HR60 % HR",
+            "rect": {
+              "x": 470.65625,
+              "y": 1529.125,
+              "width": 409.6875,
+              "height": 341,
+              "right": 880.34375,
+              "bottom": 1870.125
+            },
+            "scrollWidth": 408,
+            "clientWidth": 408
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "history-card co2",
+            "text": "CO₂ estimadoppm21/10, 22:4121/10, 23:260 ppm250 ppm500 ppm750 ppm1.000 ppm",
+            "rect": {
+              "x": 900.34375,
+              "y": 1529.125,
+              "width": 409.6875,
+              "height": 341,
+              "right": 1310.03125,
+              "bottom": 1870.125
+            },
+            "scrollWidth": 408,
+            "clientWidth": 408
+          }
+        ],
+        "outside": [],
+        "overlaps": [],
+        "charts": [
+          {
+            "rect": {
+              "x": 61.96875,
+              "y": 1589.125,
+              "width": 367.6875,
+              "height": 260,
+              "right": 429.65625,
+              "bottom": 1849.125
+            },
+            "svg": {
+              "x": 61.96875,
+              "y": 1589.125,
+              "width": 368,
+              "height": 260,
+              "right": 429.96875,
+              "bottom": 1849.125
+            },
+            "invalidPath": false
+          },
+          {
+            "rect": {
+              "x": 491.65625,
+              "y": 1589.125,
+              "width": 367.6875,
+              "height": 260,
+              "right": 859.34375,
+              "bottom": 1849.125
+            },
+            "svg": {
+              "x": 491.65625,
+              "y": 1589.125,
+              "width": 368,
+              "height": 260,
+              "right": 859.65625,
+              "bottom": 1849.125
+            },
+            "invalidPath": false
+          },
+          {
+            "rect": {
+              "x": 921.34375,
+              "y": 1589.125,
+              "width": 367.6875,
+              "height": 260,
+              "right": 1289.03125,
+              "bottom": 1849.125
+            },
+            "svg": {
+              "x": 921.34375,
+              "y": 1589.125,
+              "width": 368,
+              "height": 260,
+              "right": 1289.34375,
+              "bottom": 1849.125
+            },
+            "invalidPath": false
+          }
+        ]
+      },
+      "status": "PASS",
+      "screenshot": "capturas/chrome/1366x768/tooltips/01-dashboard-ultima-hora.png",
+      "finishedAt": "2026-10-22T03:26:54.609Z"
+    },
+    {
+      "id": "02-tooltips-tres-graficos",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "startedAt": "2026-10-22T03:26:54.610Z",
+      "details": [
+        {
+          "text": "25,82 °C\n\n21/10/2026, 22:41:54,247 GMT-4",
+          "date": "2026-10-22T02:41:54.247Z",
+          "left": 61.96875,
+          "right": 289.65625,
+          "cardLeft": 40.96875,
+          "cardRight": 450.65625
+        },
+        {
+          "text": "56,82 % HR\n\n21/10/2026, 22:41:54,247 GMT-4",
+          "date": "2026-10-22T02:41:54.247Z",
+          "left": 491.65625,
+          "right": 719.34375,
+          "cardLeft": 470.65625,
+          "cardRight": 880.34375
+        },
+        {
+          "text": "851,82 ppm\n\n21/10/2026, 22:41:54,247 GMT-4",
+          "date": "2026-10-22T02:41:54.247Z",
+          "left": 921.34375,
+          "right": 1149.03125,
+          "cardLeft": 900.34375,
+          "cardRight": 1310.03125
+        }
+      ],
+      "geometry": {
+        "innerWidth": 1366,
+        "innerHeight": 768,
+        "scrollWidth": 1351,
+        "elements": [
+          {
+            "tag": "ARTICLE",
+            "class": "metric-card temperature",
+            "text": "TemperaturaLectura actual24,5°CTemperatura del aulaLectura recienteÚltima lectura: 21/10/2026, 23:26",
+            "rect": {
+              "x": 40.96875,
+              "y": -970.609375,
+              "width": 409.6875,
+              "height": 261.1875,
+              "right": 450.65625,
+              "bottom": -709.421875
+            },
+            "scrollWidth": 408,
+            "clientWidth": 408
+          },
+          {
+            "tag": "P",
+            "class": "metric-value",
+            "text": "24,5°C",
+            "rect": {
+              "x": 63.96875,
+              "y": -868.609375,
+              "width": 363.6875,
+              "height": 55.1875,
+              "right": 427.65625,
+              "bottom": -813.421875
+            },
+            "scrollWidth": 364,
+            "clientWidth": 364
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "metric-card humidity",
+            "text": "HumedadLectura actual0% HRHumedad relativaLectura recienteÚltima lectura: 21/10/2026, 23:26:54",
+            "rect": {
+              "x": 470.65625,
+              "y": -970.609375,
+              "width": 409.6875,
+              "height": 261.1875,
+              "right": 880.34375,
+              "bottom": -709.421875
+            },
+            "scrollWidth": 408,
+            "clientWidth": 408
+          },
+          {
+            "tag": "P",
+            "class": "metric-value",
+            "text": "0% HR",
+            "rect": {
+              "x": 493.65625,
+              "y": -868.609375,
+              "width": 363.6875,
+              "height": 55.1875,
+              "right": 857.34375,
+              "bottom": -813.421875
+            },
+            "scrollWidth": 364,
+            "clientWidth": 364
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "metric-card co2",
+            "text": "CO₂ estimadoCO₂Lectura actual850ppmEstimación del MQ-135Lectura recienteÚltima lectura: 21/10/2026, ",
+            "rect": {
+              "x": 900.34375,
+              "y": -970.609375,
+              "width": 409.6875,
+              "height": 261.1875,
+              "right": 1310.03125,
+              "bottom": -709.421875
+            },
+            "scrollWidth": 408,
+            "clientWidth": 408
+          },
+          {
+            "tag": "P",
+            "class": "metric-value",
+            "text": "850ppm",
+            "rect": {
+              "x": 923.34375,
+              "y": -868.609375,
+              "width": 363.6875,
+              "height": 55.1875,
+              "right": 1287.03125,
+              "bottom": -813.421875
+            },
+            "scrollWidth": 364,
+            "clientWidth": 364
+          },
+          {
+            "tag": "SECTION",
+            "class": "air-status-panel air-status-moderado",
+            "text": "INDICADOR DE CALIDADEstado del aireNivel actualmoderadoCalidad moderadoRecomendación: Ventilar el au",
+            "rect": {
+              "x": 40.96875,
+              "y": -689.421875,
+              "width": 1269.0625,
+              "height": 276.984375,
+              "right": 1310.03125,
+              "bottom": -412.4375
+            },
+            "scrollWidth": 1263,
+            "clientWidth": 1263
+          },
+          {
+            "tag": "P",
+            "class": "air-status-tag",
+            "text": "Calidad moderado",
+            "rect": {
+              "x": 69.96875,
+              "y": -542.421875,
+              "width": 137.265625,
+              "height": 29,
+              "right": 207.234375,
+              "bottom": -513.421875
+            },
+            "scrollWidth": 137,
+            "clientWidth": 137
+          },
+          {
+            "tag": "P",
+            "class": "air-status-recommendation",
+            "text": "Recomendación: Ventilar el aula según la clasificación recibida.",
+            "rect": {
+              "x": 69.96875,
+              "y": -497.421875,
+              "width": 1215.0625,
+              "height": 25.59375,
+              "right": 1285.03125,
+              "bottom": -471.828125
+            },
+            "scrollWidth": 1215,
+            "clientWidth": 1215
+          },
+          {
+            "tag": "SECTION",
+            "class": "pending-alerts",
+            "text": "!Alertas pendientes · 2Revisa los avisos registrados de calidad del aire. Atenderlos no cambia el ni",
+            "rect": {
+              "x": 40.96875,
+              "y": -388.4375,
+              "width": 1269.0625,
+              "height": 344.765625,
+              "right": 1310.03125,
+              "bottom": -43.671875
+            },
+            "scrollWidth": 1264,
+            "clientWidth": 1264
+          },
+          {
+            "tag": "BUTTON",
+            "class": "",
+            "text": "Marcar como atendida",
+            "rect": {
+              "x": 1107.296875,
+              "y": -242.75,
+              "width": 177.734375,
+              "height": 44.375,
+              "right": 1285.03125,
+              "bottom": -198.375
+            },
+            "scrollWidth": 176,
+            "clientWidth": 176
+          },
+          {
+            "tag": "BUTTON",
+            "class": "",
+            "text": "Marcar como atendida",
+            "rect": {
+              "x": 1107.296875,
+              "y": -130.65625,
+              "width": 177.734375,
+              "height": 44.375,
+              "right": 1285.03125,
+              "bottom": -86.28125
+            },
+            "scrollWidth": 176,
+            "clientWidth": 176
+          },
+          {
+            "tag": "FORM",
+            "class": "history-range-selector",
+            "text": "PeriodoÚltima horaÚltimas 24 horasPersonalizado",
+            "rect": {
+              "x": 40.96875,
+              "y": 84.328125,
+              "width": 1269.0625,
+              "height": 107,
+              "right": 1310.03125,
+              "bottom": 191.328125
+            },
+            "scrollWidth": 1267,
+            "clientWidth": 1267
+          },
+          {
+            "tag": "SELECT",
+            "class": "",
+            "text": "Última horaÚltimas 24 horasPersonalizado",
+            "rect": {
+              "x": 61.96875,
+              "y": 128.328125,
+              "width": 260,
+              "height": 44,
+              "right": 321.96875,
+              "bottom": 172.328125
+            },
+            "scrollWidth": 258,
+            "clientWidth": 258
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "history-card temperature",
+            "text": "Temperatura°C21/10, 22:4121/10, 23:260 °C7 °C14 °C21 °C28 °C",
+            "rect": {
+              "x": 40.96875,
+              "y": 251.125,
+              "width": 409.6875,
+              "height": 341,
+              "right": 450.65625,
+              "bottom": 592.125
+            },
+            "scrollWidth": 408,
+            "clientWidth": 408
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "history-card humidity",
+            "text": "Humedad% HR21/10, 22:4121/10, 23:260 % HR15 % HR30 % HR45 % HR60 % HR",
+            "rect": {
+              "x": 470.65625,
+              "y": 251.125,
+              "width": 409.6875,
+              "height": 341,
+              "right": 880.34375,
+              "bottom": 592.125
+            },
+            "scrollWidth": 408,
+            "clientWidth": 408
+          },
+          {
+            "tag": "ARTICLE",
+            "class": "history-card co2",
+            "text": "CO₂ estimadoppm21/10, 22:4121/10, 23:260 ppm250 ppm500 ppm750 ppm1.000 ppm",
+            "rect": {
+              "x": 900.34375,
+              "y": 251.125,
+              "width": 409.6875,
+              "height": 341,
+              "right": 1310.03125,
+              "bottom": 592.125
+            },
+            "scrollWidth": 408,
+            "clientWidth": 408
+          }
+        ],
+        "outside": [],
+        "overlaps": [],
+        "charts": [
+          {
+            "rect": {
+              "x": 61.96875,
+              "y": 311.125,
+              "width": 367.6875,
+              "height": 260,
+              "right": 429.65625,
+              "bottom": 571.125
+            },
+            "svg": {
+              "x": 61.96875,
+              "y": 311.125,
+              "width": 368,
+              "height": 260,
+              "right": 429.96875,
+              "bottom": 571.125
+            },
+            "invalidPath": false
+          },
+          {
+            "rect": {
+              "x": 491.65625,
+              "y": 311.125,
+              "width": 367.6875,
+              "height": 260,
+              "right": 859.34375,
+              "bottom": 571.125
+            },
+            "svg": {
+              "x": 491.65625,
+              "y": 311.125,
+              "width": 368,
+              "height": 260,
+              "right": 859.65625,
+              "bottom": 571.125
+            },
+            "invalidPath": false
+          },
+          {
+            "rect": {
+              "x": 921.34375,
+              "y": 311.125,
+              "width": 367.6875,
+              "height": 260,
+              "right": 1289.03125,
+              "bottom": 571.125
+            },
+            "svg": {
+              "x": 921.34375,
+              "y": 311.125,
+              "width": 368,
+              "height": 260,
+              "right": 1289.34375,
+              "bottom": 571.125
+            },
+            "invalidPath": false
+          }
+        ]
+      },
+      "status": "PASS",
+      "screenshot": "capturas/chrome/1366x768/tooltips/02-tooltips-tres-graficos.png",
+      "finishedAt": "2026-10-22T03:26:55.486Z"
+    }
+  ],
+  "screenshots": [
+    "capturas/chrome/360x800/tooltips/01-dashboard-ultima-hora.png",
+    "capturas/chrome/360x800/tooltips/02-tooltip-temperatura.png",
+    "capturas/chrome/360x800/tooltips/02-tooltip-humedad.png",
+    "capturas/chrome/360x800/tooltips/02-tooltip-co2.png",
+    "capturas/chrome/360x800/tooltips/02-tooltips-tres-graficos.png",
+    "capturas/chrome/768x1024/tooltips/01-dashboard-ultima-hora.png",
+    "capturas/chrome/768x1024/tooltips/02-tooltip-temperatura.png",
+    "capturas/chrome/768x1024/tooltips/02-tooltip-humedad.png",
+    "capturas/chrome/768x1024/tooltips/02-tooltip-co2.png",
+    "capturas/chrome/768x1024/tooltips/02-tooltips-tres-graficos.png",
+    "capturas/chrome/1366x768/tooltips/01-dashboard-ultima-hora.png",
+    "capturas/chrome/1366x768/tooltips/02-tooltip-temperatura.png",
+    "capturas/chrome/1366x768/tooltips/02-tooltip-humedad.png",
+    "capturas/chrome/1366x768/tooltips/02-tooltip-co2.png",
+    "capturas/chrome/1366x768/tooltips/02-tooltips-tres-graficos.png"
+  ],
+  "calls": [
+    {
+      "path": "/api/lecturas",
+      "query": {
+        "variable": "temperatura",
+        "desde": "2026-10-22T02:26:51.221Z",
+        "hasta": "2026-10-22T03:26:51.221Z"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639611272,
+      "points": 4,
+      "duration": 3600000,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas",
+      "query": {
+        "variable": "humedad",
+        "desde": "2026-10-22T02:26:51.221Z",
+        "hasta": "2026-10-22T03:26:51.221Z"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639611273,
+      "points": 4,
+      "duration": 3600000,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas",
+      "query": {
+        "variable": "co2",
+        "desde": "2026-10-22T02:26:51.221Z",
+        "hasta": "2026-10-22T03:26:51.221Z"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639611273,
+      "points": 4,
+      "duration": 3600000,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas/ultima",
+      "query": {},
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639611273,
+      "status": 200
+    },
+    {
+      "path": "/api/estado-aire",
+      "query": {},
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639611274,
+      "status": 200
+    },
+    {
+      "path": "/api/alertas",
+      "query": {
+        "atendida": "false"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639611274,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas",
+      "query": {
+        "variable": "temperatura",
+        "desde": "2026-10-22T02:26:51.221Z",
+        "hasta": "2026-10-22T03:26:51.221Z"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639611276,
+      "points": 4,
+      "duration": 3600000,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas",
+      "query": {
+        "variable": "humedad",
+        "desde": "2026-10-22T02:26:51.221Z",
+        "hasta": "2026-10-22T03:26:51.221Z"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639611276,
+      "points": 4,
+      "duration": 3600000,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas",
+      "query": {
+        "variable": "co2",
+        "desde": "2026-10-22T02:26:51.221Z",
+        "hasta": "2026-10-22T03:26:51.221Z"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639611276,
+      "points": 4,
+      "duration": 3600000,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas/ultima",
+      "query": {},
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639611277,
+      "status": 200
+    },
+    {
+      "path": "/api/estado-aire",
+      "query": {},
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639611277,
+      "status": 200
+    },
+    {
+      "path": "/api/alertas",
+      "query": {
+        "atendida": "false"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639611277,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas",
+      "query": {
+        "variable": "temperatura",
+        "desde": "2026-10-22T02:26:52.708Z",
+        "hasta": "2026-10-22T03:26:52.708Z"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639612715,
+      "points": 4,
+      "duration": 3600000,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas",
+      "query": {
+        "variable": "humedad",
+        "desde": "2026-10-22T02:26:52.708Z",
+        "hasta": "2026-10-22T03:26:52.708Z"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639612715,
+      "points": 4,
+      "duration": 3600000,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas",
+      "query": {
+        "variable": "co2",
+        "desde": "2026-10-22T02:26:52.708Z",
+        "hasta": "2026-10-22T03:26:52.708Z"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639612716,
+      "points": 4,
+      "duration": 3600000,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas/ultima",
+      "query": {},
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639612717,
+      "status": 200,
+      "cancelled": true
+    },
+    {
+      "path": "/api/estado-aire",
+      "query": {},
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639612717,
+      "status": 200,
+      "cancelled": true
+    },
+    {
+      "path": "/api/alertas",
+      "query": {
+        "atendida": "false"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639612717,
+      "status": 200,
+      "cancelled": true
+    },
+    {
+      "path": "/api/lecturas",
+      "query": {
+        "variable": "temperatura",
+        "desde": "2026-10-22T02:26:52.708Z",
+        "hasta": "2026-10-22T03:26:52.708Z"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639612718,
+      "points": 4,
+      "duration": 3600000,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas",
+      "query": {
+        "variable": "humedad",
+        "desde": "2026-10-22T02:26:52.708Z",
+        "hasta": "2026-10-22T03:26:52.708Z"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639612718,
+      "points": 4,
+      "duration": 3600000,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas",
+      "query": {
+        "variable": "co2",
+        "desde": "2026-10-22T02:26:52.708Z",
+        "hasta": "2026-10-22T03:26:52.708Z"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639612718,
+      "points": 4,
+      "duration": 3600000,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas/ultima",
+      "query": {},
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639612718,
+      "status": 200
+    },
+    {
+      "path": "/api/estado-aire",
+      "query": {},
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639612719,
+      "status": 200
+    },
+    {
+      "path": "/api/alertas",
+      "query": {
+        "atendida": "false"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639612719,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas",
+      "query": {
+        "variable": "temperatura",
+        "desde": "2026-10-22T02:26:54.247Z",
+        "hasta": "2026-10-22T03:26:54.247Z"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639614254,
+      "points": 4,
+      "duration": 3600000,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas",
+      "query": {
+        "variable": "humedad",
+        "desde": "2026-10-22T02:26:54.247Z",
+        "hasta": "2026-10-22T03:26:54.247Z"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639614254,
+      "points": 4,
+      "duration": 3600000,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas",
+      "query": {
+        "variable": "co2",
+        "desde": "2026-10-22T02:26:54.247Z",
+        "hasta": "2026-10-22T03:26:54.247Z"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639614254,
+      "points": 4,
+      "duration": 3600000,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas/ultima",
+      "query": {},
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639614255,
+      "status": 200
+    },
+    {
+      "path": "/api/estado-aire",
+      "query": {},
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639614255,
+      "status": 200
+    },
+    {
+      "path": "/api/alertas",
+      "query": {
+        "atendida": "false"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639614255,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas",
+      "query": {
+        "variable": "temperatura",
+        "desde": "2026-10-22T02:26:54.247Z",
+        "hasta": "2026-10-22T03:26:54.247Z"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639614256,
+      "points": 4,
+      "duration": 3600000,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas",
+      "query": {
+        "variable": "humedad",
+        "desde": "2026-10-22T02:26:54.247Z",
+        "hasta": "2026-10-22T03:26:54.247Z"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639614256,
+      "points": 4,
+      "duration": 3600000,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas",
+      "query": {
+        "variable": "co2",
+        "desde": "2026-10-22T02:26:54.247Z",
+        "hasta": "2026-10-22T03:26:54.247Z"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639614256,
+      "points": 4,
+      "duration": 3600000,
+      "status": 200
+    },
+    {
+      "path": "/api/lecturas/ultima",
+      "query": {},
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639614257,
+      "status": 200
+    },
+    {
+      "path": "/api/estado-aire",
+      "query": {},
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639614258,
+      "status": 200
+    },
+    {
+      "path": "/api/alertas",
+      "query": {
+        "atendida": "false"
+      },
+      "method": "GET",
+      "mode": "data",
+      "at": 1792639614258,
+      "status": 200
+    }
+  ],
+  "exceptions": [],
+  "consoleErrors": [],
+  "browserWarnings": [],
+  "cancelledRequests": 3,
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/155.0.8059.86",
+    "revision": "@804d6b05f089b27af8342622a36558c49401a1d4",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "jsVersion": "15.5.35.25"
+  },
+  "finishedAt": "2026-10-22T03:26:55.609Z",
+  "totals": {
+    "executed": 6,
+    "pass": 6,
+    "fail": 0
+  }
+}

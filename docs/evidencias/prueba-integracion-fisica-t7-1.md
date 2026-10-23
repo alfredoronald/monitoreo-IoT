@@ -4,7 +4,7 @@ Issue: #94. Ejecución del 23/10/2026.
 
 ## Alcance y duración
 
-Cadena física ESP32 → Mosquitto → backend → PostgreSQL local → API → dashboard. Inicio: 2026-10-23T19:23:44.842Z. Fin: 2026-10-23T19:40:37.7862036Z. Duración registrada: **16 min 52.9 s**. El criterio de una ventana completa de 30 minutos permanece pendiente.
+Cadena física ESP32 → Mosquitto → backend → PostgreSQL local → API → dashboard. Inicio: 2026-10-23T19:23:44.842Z. Fin: 2026-10-23T19:40:37.7862036Z. Duración registrada: **16 min 52.9 s**. El equipo comunicó el 23/10/2026 una reducción de alcance: se acepta la validación funcional durante la ventana observada y se sustituye el objetivo inicial de 30 minutos. Los registros y las duraciones medidas se conservan sin alteraciones.
 
 El firmware usado fue el entorno físico esp32dev, con DHT22 y MQ-135. La referencia de CO2 sigue siendo provisional; la calibración con 50 lecturas exteriores pertenece al Sprint 3. El destino MQTT se ajustó solo en config.h privado a la IP actual del hotspot.
 
@@ -28,7 +28,7 @@ Las imágenes son capturas directas del dashboard durante la publicación físic
 
 ![Histórico con rango de 24 horas](t7-1/captura-historico.png)
 
-El archivo t7-1/evidencia-integracion-fisica.zip contiene el video, los mensajes recibidos y el resultado JSON con el checkpoint del monitor.
+El archivo t7-1/evidencia-integracion-fisica.zip contiene el video, los mensajes recibidos y el resultado JSON con el checkpoint del monitor. Los campos requiredDurationSeconds, fullDurationCompleted y targetSeconds conservan el objetivo original de 1 800 s y su resultado; el cambio de alcance está documentado en #94.
 
 ## Verificaciones complementarias
 
@@ -45,7 +45,7 @@ El archivo t7-1/evidencia-integracion-fisica.zip contiene el video, los mensajes
 2. Conectar PC y ESP32 al mismo hotspot de 2,4 GHz; comprobar que mqtt_host del config.h privado coincide con la IPv4 de la PC.
 3. Cargar el entorno físico esp32dev y esperar calentamiento, referencia provisional y publicaciones en ambiente/# cada 15 s.
 4. Abrir el dashboard en http://localhost:5173; comparar API /api/lecturas/ultima con v_ultima_lectura y los mensajes MQTT.
-5. Para satisfacer el criterio de duración de #94, mantener la cadena durante 30 minutos completos y adjuntar el nuevo registro.
+5. Registrar inicio, fin, duración, mensajes recibidos, filas coincidentes y comprobaciones de API; adjuntar el registro de la ventana observada.
 
 ## Versiones de origen
 

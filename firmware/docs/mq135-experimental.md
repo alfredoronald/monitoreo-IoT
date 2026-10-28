@@ -1,3 +1,8 @@
+> Ruta actual T-8.4: con Ro configurado y aceptado se usa la conversión
+> descrita en [CO2 con Ro configurado](co2-con-ro-configurado.md), sin capturar
+> una referencia nueva de 400 ppm. Este documento conserva el procedimiento
+> anterior para configuraciones sin Ro y sus evidencias históricas.
+
 # T-1.5 / Issue #11: estimación provisional física del MQ-135
 
 La captura de Rs de T-8.1 tiene comandos `mq135 calibracion iniciar/estado/detener`.

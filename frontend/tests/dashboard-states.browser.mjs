@@ -16,6 +16,7 @@ assert.ok(executable, 'Configura CHROME_PATH con Chrome, Edge o Chromium.')
 const artifactDir = process.argv.includes('--evidence') ? '../docs/evidencias/t5-7' : 'node_modules/.tmp/t5-7'
 await mkdir(artifactDir, { recursive: true })
 process.env.VITE_API_URL = 'http://controlled-api.test/api'
+process.env.VITE_API_KEY = 'test-api-key'
 const server = await createServer({ server: { host: '127.0.0.1', port: 0 } })
 await server.listen()
 const origin = `http://127.0.0.1:${server.httpServer.address().port}`
@@ -72,13 +73,16 @@ try {
       const { requestId, request } = message.params
       const url = new URL(request.url)
       const path = url.pathname
-      calls.push({ path, method: request.method, at: Date.now() })
+      if (request.method !== 'OPTIONS') calls.push({ path, method: request.method, at: Date.now() })
       if (mode === 'loading' || mode === 'hold-current' && ['/api/lecturas/ultima', '/api/estado-aire'].includes(path)) return
       let body = []
       let responseCode = 200
       const now = mode === 'healthy' ? Date.now() : fixtureTime
       if (request.method === 'OPTIONS') responseCode = 204
-      else if (mode === 'error' || mode === 'error-current' && ['/api/lecturas/ultima', '/api/estado-aire'].includes(path)
+      else if (mode === 'unauthorized') {
+        responseCode = 401
+        body = { mensaje: 'No autorizado.' }
+      } else if (mode === 'error' || mode === 'error-current' && ['/api/lecturas/ultima', '/api/estado-aire'].includes(path)
         || mode === 'partial' && url.searchParams.get('variable') === 'humedad') {
         responseCode = 500
         body = { mensaje: 'Error controlado de la API' }
@@ -102,7 +106,7 @@ try {
       void send('Fetch.fulfillRequest', { requestId, responseCode, responseHeaders: [
         { name: 'Content-Type', value: 'application/json' }, { name: 'Access-Control-Allow-Origin', value: '*' },
         { name: 'Access-Control-Allow-Methods', value: 'GET, PATCH, OPTIONS' },
-        { name: 'Access-Control-Allow-Headers', value: 'Content-Type' },
+        { name: 'Access-Control-Allow-Headers', value: 'Content-Type, X-API-Key' },
       ], body: responseCode === 204 ? '' : Buffer.from(JSON.stringify(body)).toString('base64') }).catch(error => {
         if (!error.message.includes('Invalid InterceptionId')) errors.push(error.message)
       })
@@ -160,13 +164,16 @@ try {
   await send('Fetch.enable', { patterns: [{ urlPattern: '*controlled-api.test/api/*', requestStage: 'Request' }] })
   for (const width of [1366, 360]) {
     await send('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: false })
+    await navigate('unauthorized')
+    await waitFor('document.querySelector(".readings-error")?.textContent.includes("No autorizado: revisa la clave de la API")')
+    await screenshot('no-autorizado', width)
     await navigate('loading')
     assert.equal(await evaluate('document.querySelectorAll(".metric-card[aria-busy=true]").length'), 3)
     assert.equal(await evaluate('document.querySelectorAll(".history-card[aria-busy=true]").length'), 3)
     await screenshot('cargando', width)
     await navigate('error')
     await waitFor('document.querySelectorAll(".metric-status").length === 3 && [...document.querySelectorAll(".metric-status")].every(e => e.textContent.includes("No se pudieron cargar"))')
-    assert.equal(await evaluate('document.querySelectorAll(".history-error").length'), 3)
+    await waitFor('document.querySelectorAll(".history-error").length === 3')
     assert.equal(await evaluate('document.querySelector(".air-status-message").textContent.includes("error")'), true)
     await screenshot('error', width)
     await navigate('empty')

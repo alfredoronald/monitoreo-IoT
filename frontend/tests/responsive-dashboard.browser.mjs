@@ -39,6 +39,7 @@ for (const file of ['src/App.tsx', 'src/App.css', 'src/index.css', 'src/componen
 await mkdir(output, { recursive: true })
 // Sólo se cambia el entorno del proceso, sin leer/escribir .env de usuario.
 process.env.VITE_API_URL = 'http://controlled-api.test/api'
+process.env.VITE_API_KEY = 'test-api-key'
 const server = await createServer({ root, envDir: false, server: { host: '127.0.0.1', port: 0 } })
 await server.listen()
 const origin = `http://127.0.0.1:${server.httpServer.address().port}`
@@ -248,14 +249,14 @@ async function runBrowser(name) {
             await send('Fetch.fulfillRequest', { requestId, responseCode, responseHeaders: [
               { name: 'Content-Type', value: 'application/json' }, { name: 'Access-Control-Allow-Origin', value: '*' },
               { name: 'Access-Control-Allow-Methods', value: 'GET, PATCH, OPTIONS' },
-              { name: 'Access-Control-Allow-Headers', value: 'Content-Type' },
+              { name: 'Access-Control-Allow-Headers', value: 'Content-Type, X-API-Key' },
             ], body: responseCode === 204 ? '' : Buffer.from(JSON.stringify(body)).toString('base64') })
           } catch (error) {
             if (error.message.includes('Invalid InterceptionId')) { report.cancelledRequests++; call.cancelled = true }
             else report.exceptions.push(error.message)
           }
         }
-        if (mode === 'hold-history' && path === '/api/lecturas') held.push(fulfill)
+        if (mode === 'hold-history' && path === '/api/lecturas' && request.method !== 'OPTIONS') held.push(fulfill)
         else void fulfill()
       }
     }

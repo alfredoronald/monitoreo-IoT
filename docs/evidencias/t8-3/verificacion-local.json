@@ -1,0 +1,24 @@
+{
+  "verificado_en": "2026-10-28T22:27:11.610Z",
+  "entorno": "PostgreSQL local; monitoreo_ambiental",
+  "calibracion": {
+    "id": 1,
+    "sensor": "MQ-135",
+    "ro_kohm": "49.486",
+    "numero_lecturas": 60,
+    "co2_referencia_ppm": "420.00",
+    "acondicionamiento_horas": "0.250",
+    "fecha_hora": "2026-10-28T20:20:08.251Z",
+    "vigente": true,
+    "observaciones": "Referencia experimental de #141, PR #173 fusionada. Recalculo de captura existente con VCC aproximado 4.54 V (rango comunicado 4.45-4.56 V), RL efectiva nominal 6666.67 ohm; referencia 420 ppm asumida. No certifica exactitud de CO2 ni estabilidad metrologica. Exterior segun declaracion del responsable."
+  },
+  "vigentes_por_sensor": [
+    {
+      "sensor": "MQ-135",
+      "vigentes": 1
+    }
+  ],
+  "config_ro_kohm": "49.486",
+  "coinciden": true,
+  "firmware_cargado": false
+}

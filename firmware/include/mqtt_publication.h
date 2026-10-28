@@ -4,6 +4,7 @@
 #include <cmath>
 #include <cstdint>
 #include <cstdio>
+#include <cstring>
 #include <limits>
 #include "dht_validation.h"
 #include "mq135_acquisition.h"
@@ -34,6 +35,9 @@ struct Snapshot {
   Reading temperature;
   Reading humidity;
   Reading co2;
+  bool co2Suppressed = false;
+  bool co2SuppressionAcknowledged = false;
+  std::uint32_t co2Epoch = 0;
 };
 
 inline void record(Reading& reading, SampleState state, double value,
@@ -45,6 +49,21 @@ inline void record(Reading& reading, SampleState state, double value,
       ? value : std::numeric_limits<double>::quiet_NaN();
   reading.timestampMs = now;
   ++reading.revision;
+}
+
+// Llamar bajo el mismo mux que protege las lecturas. Descarta CO2 al entrar
+// Y al salir; el cambio de epoca invalida ciclos copiados antes de la orden.
+inline void setCalibrationCapture(Snapshot& snapshot, bool active, std::uint32_t now) {
+  if (snapshot.co2Suppressed == active) return;
+  snapshot.co2Suppressed = active;
+  snapshot.co2SuppressionAcknowledged = false;
+  ++snapshot.co2Epoch;
+  record(snapshot.co2, SampleState::Unavailable, 0.0, now);
+}
+
+// Solo la tarea de red: llamar entre ciclos, cuando no hay publish en curso.
+inline void acknowledgeCalibrationCapture(Snapshot& snapshot) {
+  snapshot.co2SuppressionAcknowledged = snapshot.co2Suppressed;
 }
 
 inline SampleState dhtState(double value, double minimum, double maximum) {
@@ -144,7 +163,15 @@ struct Message {
 struct Cycle {
   bool due;
   Message messages[VARIABLE_COUNT];
+  std::uint32_t co2Epoch;
 };
+
+// Revalidar justo antes de publicar, usando un snapshot ACTUAL, no la copia del
+// inicio del ciclo. Un paquete ya entregado al transporte no puede retirarse.
+inline bool mayTransmit(const Cycle& cycle, const Snapshot& current, const char* topic) {
+  return std::strcmp(topic, TOPICS[2]) != 0 ||
+      (!current.co2Suppressed && cycle.co2Epoch == current.co2Epoch);
+}
 
 // Propiedad exclusiva de la tarea de red. Sin Arduino, sensores ni transporte.
 class Scheduler {
@@ -171,13 +198,15 @@ class Scheduler {
     if (static_cast<std::uint32_t>(now - lastCycleMs_) < intervalMs_) return cycle;
     lastCycleMs_ = now;  // Saltar ciclos perdidos; jamás sumar intervalos atrasados.
     cycle.due = true;
+    cycle.co2Epoch = snapshot.co2Epoch;
     const Reading readings[VARIABLE_COUNT] = {
         snapshot.temperature, snapshot.humidity, snapshot.co2};
     for (std::size_t i = 0; i < VARIABLE_COUNT; ++i) {
       const auto& reading = readings[i];
       auto& message = cycle.messages[i];
       message.topic = TOPICS[i];
-      if (reading.state == SampleState::Unavailable) message.omission = Omission::Unavailable;
+      if ((i == 2 && snapshot.co2Suppressed) || reading.state == SampleState::Unavailable)
+        message.omission = Omission::Unavailable;
       else if (reading.state == SampleState::Invalid) message.omission = Omission::Invalid;
       else if (reading.state == SampleState::Discarded) message.omission = Omission::Discarded;
       else if (static_cast<std::uint32_t>(now - reading.timestampMs) > MAX_SAMPLE_AGE_MS)

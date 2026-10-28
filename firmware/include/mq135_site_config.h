@@ -2,6 +2,7 @@
 #define MONITOREO_IOT_MQ135_SITE_CONFIG_H
 
 #include "mq135_acquisition.h"
+#include "mq135_calibration_config.h"
 #include <cstring>
 
 #ifndef MQ135_SIMULATED_DEMO
@@ -56,6 +57,7 @@ inline mq135_acquisition::Configuration electricalConfiguration() {
   config.adcConversionVerified = true;
   config.referenceSampleCount = REFERENCE_SAMPLE_COUNT;
   config.maxRelativeSpread = mq135_experimental::NO_SPREAD_LIMIT;
+  config.calibrationLoad = mq135_calibration_config::loadConfiguration();
   // TP no disponible; VREF eFuse=1058 mV comunicado. Se consulta en el chip:
   // NO poner 1058 en measuredAdcVrefMilliVolts, que es un fallback MEDIDO externo.
   return config;  // El inicio automático usa las mismas verificaciones que los comandos.

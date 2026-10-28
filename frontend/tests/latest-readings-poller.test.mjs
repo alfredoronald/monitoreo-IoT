@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
+import { ApiError } from '../src/api/client.ts'
 import { startLatestReadingsPolling } from '../src/api/latestReadingsPoller.ts'
 
 const flush = async () => { await Promise.resolve(); await Promise.resolve() }
@@ -41,6 +42,15 @@ test('Un fallo no reemplaza los datos con ceros y la próxima consulta se recupe
   t.mock.timers.tick(15_000)
   await flush()
   assert.deepEqual(results[2], { readings: [], error: null })
+})
+
+test('Una respuesta 401 informa que se debe revisar la clave de API', async t => {
+  t.mock.timers.enable({ apis: ['setInterval', 'setTimeout'] })
+  const results = []
+  const stop = startLatestReadingsPolling(async () => { throw new ApiError(401, 'No autorizado.') }, result => results.push(result))
+  t.after(stop)
+  await flush()
+  assert.deepEqual(results, [{ error: 'No autorizado: revisa la clave de la API.' }])
 })
 
 test('Cancela peticiones lentas, evita superposiciones e ignora respuestas después de salir', async t => {

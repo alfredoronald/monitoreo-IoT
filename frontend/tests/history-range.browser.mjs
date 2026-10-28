@@ -16,6 +16,7 @@ assert.ok(executable, 'Configura CHROME_PATH con la ruta de Chrome, Edge o Chrom
 const artifactDir = process.argv.includes('--evidence') ? '../docs/evidencias/t5-6' : 'node_modules/.tmp/t5-6'
 await mkdir(artifactDir, { recursive: true })
 process.env.VITE_API_URL = 'http://controlled-api.test/api'
+process.env.VITE_API_KEY = 'test-api-key'
 const server = await createServer({ server: { host: '127.0.0.1', port: 0 } })
 await server.listen()
 const address = server.httpServer.address()
@@ -58,7 +59,7 @@ try {
       const query = new URL(request.url).searchParams
       const variable = query.get('variable')
       const range = { desde: query.get('desde'), hasta: query.get('hasta') }
-      if (variable) calls.push({ variable, ...range })
+      if (variable && request.method !== 'OPTIONS') calls.push({ variable, ...range })
       let rows = []
       const responseCode = mode === 'partial' && variable === 'humedad' ? 500 : 200
       if (variable && mode !== 'empty' && responseCode === 200) {
@@ -72,9 +73,11 @@ try {
       }
       const fulfill = () => send('Fetch.fulfillRequest', { requestId, responseCode, responseHeaders: [
         { name: 'Content-Type', value: 'application/json' }, { name: 'Access-Control-Allow-Origin', value: '*' },
+        { name: 'Access-Control-Allow-Methods', value: 'GET, PATCH, OPTIONS' },
+        { name: 'Access-Control-Allow-Headers', value: 'Content-Type, X-API-Key' },
       ], body: Buffer.from(JSON.stringify(responseCode === 500 ? { mensaje: 'Error controlado' } : rows)).toString('base64') })
         .catch(error => { if (error.message.includes('Invalid InterceptionId')) cancelled++; else errors.push(error.message) })
-      if (mode === 'hold' && variable) held.push(fulfill)
+      if (mode === 'hold' && variable && request.method !== 'OPTIONS') held.push(fulfill)
       else void fulfill()
     }
   }

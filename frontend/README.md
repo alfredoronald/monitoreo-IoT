@@ -227,3 +227,13 @@ necesita backend, base de datos ni sensores. Comprueba estados, recuperación,
 polling, históricos, alertas, teclado y anchos de 360 y 1366 px. No modifica
 `.env`. Guarda capturas e informe en `frontend/node_modules/.tmp/t5-7/`.
 Añadir `-- --evidence` para guardarlos en `docs/evidencias/t5-7/`.
+# Acceso a la API (#132)
+
+Copiar `frontend/.env.example` a `frontend/.env` solo si el archivo privado aún
+no existe. Configurar `VITE_API_URL=http://localhost:3000/api` y `VITE_API_KEY`
+con el mismo valor de `API_KEY` en `backend/.env`. Reiniciar Vite tras editarlo.
+La clave se envía como `X-API-Key` tanto en GET como en PATCH. Si falta o es
+incorrecta, el dashboard muestra «No autorizado: revisa la clave de la API.».
+La clave incluida en un frontend es visible para quien usa el navegador;
+este mecanismo limita accesos casuales, no reemplaza una sesión de usuario.
+No subir `.env` ni los archivos generados de `dist/`.

@@ -102,7 +102,29 @@ o prueba, no mediciones de sensores. No se insertaron lecturas ambientales de
 prueba mediante estas verificaciones. Los servicios iniciados para la prueba
 se detuvieron al finalizar.
 
-## Pendiente para la presentación: ESP32 físico
+## Verificación física del ESP32 — 28/10/2026
+
+Se compiló y cargó `esp32dev` en la placa conectada por COM5, después de
+actualizar la dirección privada del broker para la red actual. El firmware usa
+la contraseña nueva de `esp32`; el backend se conectó con su usuario y clave
+nuevos. No se muestran las credenciales.
+
+El monitor serie registró estas publicaciones físicas:
+
+```text
+[18096 ms] MQTT publicacion: ambiente/temperatura; payload=20.1; enviado (QoS 0)
+[18096 ms] MQTT publicacion: ambiente/humedad; payload=64.7; enviado (QoS 0)
+[33111 ms] MQTT publicacion: ambiente/temperatura; payload=20.2; enviado (QoS 0)
+[33111 ms] MQTT publicacion: ambiente/humedad; payload=64.8; enviado (QoS 0)
+```
+
+El backend registró la recepción de los mismos topics y valores a las
+12:10:48 y 12:11:03–04 UTC, respectivamente. La conexión física y la recepción
+con las credenciales nuevas quedan verificadas. Durante la primera lectura el
+firmware indicó que CO₂ no estaba disponible por referencia experimental
+pendiente; esta prueba no acredita una medición calibrada de CO₂.
+
+### Procedimiento para repetirla
 
 La placa conserva su firmware y contraseña anteriores hasta volver a cargarla.
 Conectar el circuito y, desde la terminal de PlatformIO en `firmware/`, ejecutar:
@@ -116,12 +138,11 @@ Antes de la carga, comprobar que el host MQTT y la red WiFi del `config.h` local
 corresponden a la red de la presentación. Arrancar Mosquitto y el backend según
 el README. Después de cargar, pulsar EN/RESET y verificar:
 
-- [ ] El ESP32 conecta a WiFi y MQTT con las credenciales nuevas.
-- [ ] Publica lecturas en `ambiente/#` y el backend las recibe y guarda.
+- [x] El ESP32 conecta a WiFi y MQTT con las credenciales nuevas.
+- [x] Publica temperatura y humedad en `ambiente/#` y el backend las recibe.
 
 **Estado del criterio «ESP32 y backend siguen conectando con las credenciales
-nuevas»: backend verificado; conexión del ESP32 físico pendiente.** La conexión
-del cliente de prueba como `esp32` y la compilación no acreditan esa prueba física.
+nuevas»: verificado con la placa física y el backend real.**
 
 ## Exclusión de secretos
 

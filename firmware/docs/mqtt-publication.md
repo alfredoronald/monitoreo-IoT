@@ -1,3 +1,9 @@
+> T-8.4: cuando config.h contiene Ro aceptado, CO2 usa Rs/Ro con ese valor;
+> la serie muestra «CO2 estimado con Ro configurado». Se conservan calentamiento,
+> filtros, procedencia física y omisión de muestras inválidas. Las referencias
+> a 400 ppm y «provisional» de abajo describen la ruta anterior sin Ro configurado.
+> Véase [configuración actual](co2-con-ro-configurado.md).
+
 # Issue #13 — T-1.7: publicación periódica MQTT
 
 Rama de trabajo: `feat/13-publicacion-mqtt`. Base del futuro PR:

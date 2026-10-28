@@ -6,6 +6,7 @@
 #include "mq135_reference_log.h"
 #include "mq135_simulated_demo.h"
 #include "mq135_calibration.h"
+#include "mq135_calibrated.h"
 
 namespace mq135_acquisition {
 using mq135_experimental::Status;
@@ -79,6 +80,8 @@ struct Configuration {
   std::size_t referenceSampleCount;
   double maxRelativeSpread;
   mq135_calibration::LoadConfiguration calibrationLoad;
+  double calibratedRoKohm;
+  bool calibrationAccepted;
 };
 
 inline Configuration pendingConfiguration() {
@@ -106,7 +109,7 @@ struct Observation {
 
 // Formato compartido por main.cpp y las pruebas, sin Arduino ni acceso físico.
 inline int formatObservation(const Observation& observation, char* buffer,
-                             std::size_t capacity) {
+                             std::size_t capacity, bool calibrated = false) {
   // Fail closed ante procedencia desconocida; jamás formatearla como física.
   const bool simulated = observation.source != Source::Physical;
   const char* label = simulated ? " [SIMULADO]" : "";
@@ -140,6 +143,9 @@ inline int formatObservation(const Observation& observation, char* buffer,
         observation.adcRaw, stateName(observation.state), statusMessage(reason));
   }
   if (validPpm) {
+    if (calibrated) return std::snprintf(buffer, capacity,
+        "MQ-135 ADC: %d\nCO2 estimado con Ro configurado: %.2f ppm\n",
+        observation.adcRaw, observation.ppm.value);
     // CA-03: 400 ppm son un supuesto de desarrollo, no una medición de CO2.
     // HU-08 calibrará y validará el MQ-135; no es un requisito de este modelo.
     // La advertencia permanece documentada sin repetirla en cada muestra física.
@@ -312,6 +318,17 @@ class Controller {
   void disableEmission() { emission_ = false; }
 
   const mq135_calibration::Capture& calibration() const { return calibration_; }
+  bool usesCalibratedReference() const {
+    return config_.calibrationAccepted || config_.calibratedRoKohm != 0.0;
+  }
+  bool calibratedReferenceReady() const {
+    return source_ == Source::Physical && usesCalibratedReference() &&
+        config_.calibrationAccepted && configurationStatus() == Status::Ok &&
+        calibrationLoadStatus() == Status::Ok;
+  }
+  bool referenceAvailable() const {
+    return usesCalibratedReference() ? calibratedReferenceReady() : record() != nullptr;
+  }
   const mq135_calibration::LoadConfiguration& calibrationLoad() const {
     return config_.calibrationLoad;
   }
@@ -343,7 +360,7 @@ class Controller {
                  ? State::AdcDisponible : State::ReferenciaPendiente;
     }
     if (!electricalReady()) return State::VerificacionPendiente;
-    if (reference_.record() == nullptr) return State::ReferenciaPendiente;
+    if (!referenceAvailable()) return State::ReferenciaPendiente;
     // La disponibilidad de una estimación depende también de la muestra actual.
     return State::AdcDisponible;
   }
@@ -438,6 +455,10 @@ class Controller {
       const Status gate = prerequisiteStatus();
       if (gate != Status::Ok) result.ppm = mq135_experimental::failure(gate);
       else if (!emission_) result.ppm = mq135_experimental::failure(Status::EmissionDisabled);
+      else if (usesCalibratedReference()) result.ppm = mq135_calibrated::estimate(
+          config_.measuredVcV, vaoV, config_.calibrationLoad,
+          config_.electrical.circuitRevision, config_.calibratedRoKohm,
+          config_.calibrationAccepted);
       else result.ppm = reference_.estimate(sample, context());
     }
     if (result.ppm.isValid()) result.state = State::EstimacionDisponible;
@@ -476,6 +497,9 @@ class Controller {
 
  private:
   Status configurationStatus() const {
+    if ((config_.calibrationAccepted || config_.calibratedRoKohm != 0.0) &&
+        (!std::isfinite(config_.calibratedRoKohm) || config_.calibratedRoKohm <= 0.0))
+      return Status::InvalidMetadata;
     if (!begun_ || !config_.electricalVerified ||
         !mq135_experimental::hasText(config_.verificationEvidenceId) ||
         config_.electrical.circuitRevision == 0) return Status::CircuitNotVerified;
@@ -506,6 +530,10 @@ class Controller {
     if (!warmupComplete()) return Status::WarmupIncomplete;
     const Status ready = configurationStatus();
     if (ready != Status::Ok) return ready;
+    if (usesCalibratedReference()) {
+      if (!config_.calibrationAccepted) return Status::ReferenceMissing;
+      return calibrationLoadStatus();
+    }
     if (reference_.record() == nullptr) return Status::ReferenceMissing;
     if (reference_.record()->normalizedReference.circuitRevision !=
         config_.electrical.circuitRevision) return Status::ConfigurationMismatch;

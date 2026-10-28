@@ -1,7 +1,7 @@
 // ============================================================
 // Monitoreo IoT - Firmware ESP32
 // T-1.4: lectura del DHT22 con validación del rango del aula.
-// T-1.5: inicio físico automático con referencia provisional; demo [SIMULADO].
+// T-8.4: conversión física con Ro configurado; demo [SIMULADO] separada.
 // T-1.6: WiFi/MQTT con reconexión, sin esperar conexiones en loop().
 // T-1.7: publicación periódica de muestras físicas recientes, por variable.
 // ============================================================
@@ -1161,7 +1161,7 @@ void updateMq135() {
 #endif
   // Controller ya aplicó calentamiento, ADC 100–950 mV, referencia y emisión.
   // La publicación añade procedencia física; jamás envía la demo como CO2 real.
-  auto co2State = mqtt_publication::mq135State(observation, mq135.record() != nullptr);
+  auto co2State = mqtt_publication::mq135State(observation, mq135.referenceAvailable());
 #if MQTT_TEMPORARY_TEST
   // Solo inhibir la copia MQTT: conservar adquisición, estimador y salida física.
   if (mqttTestCo2Omitted) co2State = mqtt_publication::SampleState::Unavailable;
@@ -1176,7 +1176,7 @@ void updateMq135() {
   }
   char output[384];
   const int written = mq135_acquisition::formatObservation(observation, output,
-                                                          sizeof(output));
+      sizeof(output), mq135.calibratedReferenceReady());
   if (written >= 0 && static_cast<std::size_t>(written) < sizeof(output)) {
     queueMq135Output(output);
   } else {
@@ -1194,6 +1194,13 @@ void updateMq135() {
   using mq135_experimental::Status;
   if (mq135AutomaticStartup == Mq135AutomaticStartup::WaitingForWarmup &&
       mq135.warmupComplete()) {
+    if (mq135.usesCalibratedReference()) {
+      mq135AutomaticStartup = Mq135AutomaticStartup::Stopped;
+      const auto result = mq135.enableEmission();
+      queueMq135Printf("MQ-135 inicio con Ro configurado: %s\n",
+                      mq135_acquisition::statusMessage(result));
+      return;  // No fabrica una nueva referencia de 400 ppm al arrancar.
+    }
     // Solicitar después de observar el turno: el registro exige muestras
     // posteriores a la solicitud. Las tres siguientes conservan los 2000 ms.
     const auto result = mq135.startReference();

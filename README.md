@@ -11,6 +11,15 @@ ESP32 (DHT22 + MQ-135) ──MQTT──> Mosquitto ──> Backend (Express) ─
                               Dashboard (React) <──REST /api/lecturas
 ```
 
+## MQ-135 con Ro configurado (T-8.4)
+
+Después de registrar la calibración de T-8.3, configurar en `firmware/include/config.h`
+el mismo Ro en kΩ, la aceptación y la alimentación documentada. La conversión usa
+Rs/Ro y muestra `CO2 estimado con Ro configurado`, sin referencia automática de
+400 ppm. Véase [configuración y validación](firmware/docs/co2-con-ro-configurado.md).
+El MQ-135 sigue ofreciendo una estimación con las limitaciones de su calibración;
+la demo permanece separada de las lecturas físicas.
+
 ## Tecnologías
 
 | Capa | Tecnología |

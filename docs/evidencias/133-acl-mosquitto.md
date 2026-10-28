@@ -6,8 +6,8 @@
 - Rama: `chore/133-mosquitto-acl-hardening`.
 - Base y destino de la PR: `feature/backend-mqtt-api`.
 - Entorno local: Windows, Mosquitto 2.1.2, Node.js 24.14.0 y PlatformIO 6.2.0.
-- Verificación sin circuito conectado. Las pruebas físicas anteriores del
-  proyecto no sustituyen la conexión con las credenciales recién rotadas.
+- Las pruebas MQTT iniciales se realizaron sin circuito conectado. La prueba
+  física con las credenciales recién rotadas se documenta más abajo.
 
 ## Política versionada
 

@@ -212,7 +212,7 @@ Una publicación QoS 0 que termina sin error no demuestra autorización.
 Comprobar además el rechazo de acceso anónimo, usuario desconocido y claves
 incorrectas o anteriores. No escribir contraseñas literales en los comandos.
 
-Los resultados locales y la comprobación física pendiente están en la
+Los resultados locales y la comprobación física están en la
 [evidencia de #133](docs/evidencias/133-acl-mosquitto.md).
 
 ### 4. Configurar el entorno del backend

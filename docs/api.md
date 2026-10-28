@@ -27,7 +27,7 @@ son ilustrativos; no son evidencia de respuestas ejecutadas.
   codificar `+` como `%2B` si se utiliza una zona horaria positiva.
 - Las listas se devuelven como arrays directos, sin envoltorio `data` ni
   paginación implícita. Lista sin coincidencias: **200 con `[]`**, nunca 404.
-- Sprint 2 no exige `API_KEY`. No enviar credenciales MQTT ni PostgreSQL al
+- Las rutas /api requieren `X-API-Key`; sin clave o con clave incorrecta responden 401. No enviar credenciales MQTT ni PostgreSQL al
   navegador. CORS permite el origen configurado en `CORS_ORIGIN` (#77).
 - Errores no incluyen SQL, trazas, contraseñas ni contenido de `.env`.
 

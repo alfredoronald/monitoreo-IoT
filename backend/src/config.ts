@@ -6,6 +6,7 @@ dotenv.config({ path: fileURLToPath(new URL('../.env', import.meta.url)) });
 
 export const config = {
   apiPort: Number(process.env.API_PORT ?? 3000),
+  apiKey: process.env.API_KEY ?? '',
   corsOrigin: process.env.CORS_ORIGIN ?? 'http://localhost:5173',
   database: {
     host: process.env.PG_HOST ?? '',

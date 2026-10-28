@@ -10,7 +10,7 @@ let port: number;
 
 before(async () => {
   await new Promise<void>((resolve) => {
-    server = createApp('http://localhost:5173').listen(0, '127.0.0.1', resolve);
+    server = createApp('http://localhost:5173', 'test-only-key').listen(0, '127.0.0.1', resolve);
   });
   port = (server.address() as AddressInfo).port;
 });
@@ -22,7 +22,7 @@ after(async () => {
 
 function get(path = '/api/lecturas/ultima', body?: string, chunked = false) {
   return new Promise<{ status: number; contentType: string; body: unknown }>((resolve, reject) => {
-    const headers: Record<string, string | number> = {};
+    const headers: Record<string, string | number> = { 'X-API-Key': 'test-only-key' };
     if (body !== undefined) {
       headers['Content-Type'] = body === 'texto' ? 'text/plain' : 'application/json';
       headers[chunked ? 'Transfer-Encoding' : 'Content-Length'] = chunked

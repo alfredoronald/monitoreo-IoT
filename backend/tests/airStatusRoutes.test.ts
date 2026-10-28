@@ -10,7 +10,7 @@ function httpRequest(port: number, method: string, path: string, body?: string, 
       port,
       method,
       path,
-      headers: {
+      headers: { 'X-API-Key': 'test-only-key',
         ...(body === undefined ? {} : { 'content-length': Buffer.byteLength(body) }),
         ...(contentType === undefined ? {} : { 'content-type': contentType }),
       },
@@ -40,7 +40,7 @@ test('expone estado de aire, alertas pendientes y marca una alerta', async (cont
     return { rows: [{ id: '7', lectura_id: '102', umbral_id: '2', mensaje: 'El CO2 estimado pasó a nivel moderado.', fecha_hora: new Date('2026-10-15T16:00:15Z'), atendida: false }] };
   });
 
-  const server = createApp('*').listen(0);
+  const server = createApp('*', 'test-only-key').listen(0);
   await new Promise<void>((resolve) => server.once('listening', resolve));
   const port = (server.address() as { port: number }).port;
 
@@ -68,7 +68,7 @@ test('expone estado de aire, alertas pendientes y marca una alerta', async (cont
 });
 
 test('rechaza un PATCH sin JSON y un filtro atendida inválido', async () => {
-  const server = createApp('*').listen(0);
+  const server = createApp('*', 'test-only-key').listen(0);
   await new Promise<void>((resolve) => server.once('listening', resolve));
   const port = (server.address() as { port: number }).port;
   try {

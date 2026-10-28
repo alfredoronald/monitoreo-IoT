@@ -11,7 +11,7 @@ const origin = 'http://localhost:5173';
 let server: Server;
 let port: number;
 before(async () => {
-  await new Promise<void>((resolve) => { server = createApp(origin).listen(0, '127.0.0.1', resolve); });
+  await new Promise<void>((resolve) => { server = createApp(origin, 'test-only-key').listen(0, '127.0.0.1', resolve); });
   port = (server.address() as AddressInfo).port;
 });
 after(async () => {
@@ -22,7 +22,7 @@ after(async () => {
 function call(targetPort: number, path: string, headers: Record<string, string> = {}, method = 'GET', body?: string) {
   return new Promise<{ status: number; headers: IncomingHttpHeaders; text: string }>((resolve, reject) => {
     const client = request({ host: '127.0.0.1', port: targetPort, path, method, headers: {
-      ...headers, ...(body === undefined ? {} : { 'Content-Length': String(Buffer.byteLength(body)) }),
+      'X-API-Key': 'test-only-key', ...headers, ...(body === undefined ? {} : { 'Content-Length': String(Buffer.byteLength(body)) }),
     } }, (response) => {
       let text = '';
       response.setEncoding('utf8');
@@ -59,7 +59,7 @@ for (const denied of ['http://localhost:5174', 'http://127.0.0.1:5173', 'https:/
 }
 
 test('El origen configurado no está fijado al puerto de desarrollo', async () => {
-  const custom = createApp('https://dashboard.example.com').listen(0, '127.0.0.1');
+  const custom = createApp('https://dashboard.example.com', 'test-only-key').listen(0, '127.0.0.1');
   await new Promise<void>((resolve) => custom.once('listening', resolve));
   try {
     const result = await call((custom.address() as AddressInfo).port, '/', { Origin: 'https://dashboard.example.com' });
@@ -74,7 +74,7 @@ test('Preflight permite PATCH y Content-Type solo para el origen configurado', a
   assert.equal(result.status, 204);
   assert.equal(result.headers['access-control-allow-origin'], origin);
   assert.equal(result.headers['access-control-allow-methods'], 'GET,PATCH,OPTIONS');
-  assert.equal(result.headers['access-control-allow-headers'], 'Content-Type');
+  assert.equal(result.headers['access-control-allow-headers'], 'Content-Type,X-API-Key');
   const denied = await call(port, '/api/alertas/7', { ...headers, Origin: 'http://otro.example.com' }, 'OPTIONS');
   assert.equal(denied.status, 403);
   assert.equal(denied.headers['access-control-allow-origin'], undefined);

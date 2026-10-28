@@ -117,8 +117,11 @@ mqtt prueba co2 restaurar
 Se reutiliza el lector serie incremental existente de `loop()`, con su límite
 de 32 caracteres por vuelta y buffer de 64. Enviar una línea terminada en LF
 o CRLF. No se crea otra tarea ni otro lector. Mantener
-`WIFI_TEMPORARY_TEST=0` y `WIFI_TEMPORARY_DIAGNOSTIC=0`; una comprobación de
-compilación impide combinar los dos lectores de pruebas MQTT/WiFi.
+`WIFI_TEMPORARY_TEST=0` y `WIFI_TEMPORARY_DIAGNOSTIC=0` para operación normal.
+Desde T-8.1, un único parser atiende MQTT y calibración y envía las órdenes
+temporales WiFi por cola a la tarea de red; ya no hay dos lectores en competencia.
+La compilación conjunta de ambos flags de prueba se verifica en
+[la evidencia T-8.1](../../docs/evidencias/t8-1/resultados.md).
 
 **Omitir:** marca inmediatamente la copia compartida de CO2 como no disponible
 y borra su valor anterior bajo el mismo `portMUX`. Mientras está activa la

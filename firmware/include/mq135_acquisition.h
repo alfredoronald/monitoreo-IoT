@@ -5,6 +5,7 @@
 #include "mq135_experimental.h"
 #include "mq135_reference_log.h"
 #include "mq135_simulated_demo.h"
+#include "mq135_calibration.h"
 
 namespace mq135_acquisition {
 using mq135_experimental::Status;
@@ -58,6 +59,8 @@ inline const char* statusMessage(Status status) {
     case Status::EmissionDisabled: return "emisión de ppm deshabilitada explícitamente";
     case Status::CaptureNotActive: return "captura de referencia no activa";
     case Status::SampleNotDue: return "intervalo de adquisición pendiente";
+    case Status::LoadNotVerified: return "RL efectiva/topologia sin verificar o configurar";
+    case Status::CalibrationActive: return "captura de calibracion activa; detener primero";
   }
   return "condición inválida";
 }
@@ -75,6 +78,7 @@ struct Configuration {
   mq135_experimental::ElectricalConfiguration electrical;
   std::size_t referenceSampleCount;
   double maxRelativeSpread;
+  mq135_calibration::LoadConfiguration calibrationLoad;
 };
 
 inline Configuration pendingConfiguration() {
@@ -154,6 +158,38 @@ inline int formatObservation(const Observation& observation, char* buffer,
       observation.adcRaw, statusMessage(reason));
 }
 
+inline int formatCalibration(const mq135_calibration::Capture& capture,
+                             const mq135_calibration::LoadConfiguration& load,
+                             std::uint32_t revision, char* buffer, std::size_t capacity) {
+  const auto loadStatus = mq135_calibration::validateLoad(load, revision, true);
+  char rs[32] = "NO_DISPONIBLE";
+  char mean[32] = "NO_DISPONIBLE";
+  char q[32] = "NO_DISPONIBLE";
+  if (capture.lastResistance().isValid())
+    std::snprintf(rs, sizeof(rs), "%.9g", capture.lastResistance().value);
+  if (capture.validSamples() > 0)
+    std::snprintf(mean, sizeof(mean), "%.9g", capture.meanOhms());
+  if (capture.lastQ().isValid())
+    std::snprintf(q, sizeof(q), "%.9g", capture.lastQ().value);
+  const char* lastStatus = capture.lastResistance().status == Status::CaptureNotActive
+      ? "sin muestras procesadas" : statusMessage(capture.lastResistance().status);
+  return std::snprintf(buffer, capacity,
+      "MQ-135 CALIBRACION [FISICO]%s: %s; %s=%s; %s=%s; "
+      "validas=%llu; rechazadas=%llu; q_adimensional=%s; RL=%s; ultima=%s; "
+      "RL_efectiva_ohm=%.9g; topologia=%s; promedio Rs NO es Ro\n",
+      load.experimentalEstimate ? " [EXPERIMENTAL]" : "",
+      capture.active() ? "ACTIVA" : "INACTIVA",
+      load.experimentalEstimate ? "Rs_estimada_ohm" : "Rs_ohm", rs,
+      load.experimentalEstimate ? "promedio_Rs_estimada_ohm" : "promedio_Rs_ohm", mean,
+      static_cast<unsigned long long>(capture.validSamples()),
+      static_cast<unsigned long long>(capture.rejectedSamples()), q,
+      load.experimentalEstimate && loadStatus == Status::Ok
+          ? "NOMINAL_NO_MEDIDA" : statusMessage(loadStatus),
+      lastStatus, load.effectiveLoadOhms,
+      load.experimentalEstimate ? "SUPUESTA_NO_VERIFICADA" :
+          (load.topologyVerified ? "VERIFICADA" : "NO_VERIFICADA"));
+}
+
 template <std::size_t Capacity>
 class Controller {
  public:
@@ -169,6 +205,7 @@ class Controller {
     lastMillis_ = lastUpdateMillis_ = now;
     uptimeMs_ = warmupStartedMs_ = now;
     sampleDue_ = false;
+    calibration_.reset();
     config_ = pendingConfiguration();
     source_ = Source::Physical;
     demoIndex_ = 0;
@@ -206,6 +243,7 @@ class Controller {
   // Toda reaplicación invalida la referencia, incluso si se conserva el ID.
   // Los booleanos deben reflejar evidencia externa, nunca inferirse del ADC.
   Status configure(const Configuration& config) {
+    calibration_.reset();
     invalidateReference();
     source_ = Source::Physical;
     config_ = config;
@@ -216,6 +254,7 @@ class Controller {
   // Selección explícita del entorno demo. Nunca fabrica evidencia eléctrica,
   // VerifiedContext ni ReferenceLog. Su referencia no puede pasar al modo físico.
   void configureSimulatedDemo() {
+    calibration_.reset();
     invalidateReference();
     config_ = pendingConfiguration();
     source_ = Source::Simulated;
@@ -225,6 +264,7 @@ class Controller {
   }
 
   Status startReference(const mq135_experimental::AcquisitionTime& wallTime = {}) {
+    if (calibration_.active()) return Status::CalibrationActive;
     if (source_ != Source::Physical) return Status::InvalidProvenance;
     if (!warmupComplete()) return Status::WarmupIncomplete;
     const Status ready = configurationStatus();
@@ -262,6 +302,7 @@ class Controller {
   }
 
   Status enableEmission() {
+    if (calibration_.active()) return Status::CalibrationActive;
     if (source_ != Source::Physical) return Status::InvalidProvenance;
     const Status gate = prerequisiteStatus();
     if (gate != Status::Ok) return gate;
@@ -269,6 +310,31 @@ class Controller {
     return Status::Ok;
   }
   void disableEmission() { emission_ = false; }
+
+  const mq135_calibration::Capture& calibration() const { return calibration_; }
+  const mq135_calibration::LoadConfiguration& calibrationLoad() const {
+    return config_.calibrationLoad;
+  }
+  std::uint32_t circuitRevision() const { return config_.electrical.circuitRevision; }
+  Status calibrationLoadStatus() const {
+    return mq135_calibration::validateLoad(config_.calibrationLoad,
+                                          config_.electrical.circuitRevision, true);
+  }
+  Status startCalibration() {
+    const bool wasActive = calibration_.active();
+    const auto status = calibration_.start(begun_ && source_ == Source::Physical);
+    if (status == Status::Ok && !wasActive) {
+      invalidateReference();
+      sampleDue_ = false;  // Solo turnos posteriores a la orden.
+    }
+    return status;
+  }
+  bool stopCalibration() {
+    if (!calibration_.stop()) return false;
+    invalidateReference();  // Recuperacion con tres muestras NUEVAS, nunca Rs -> Ro.
+    sampleDue_ = false;
+    return true;
+  }
 
   State state() const {
     if (!warmupComplete()) return State::Calentando;
@@ -301,6 +367,8 @@ class Controller {
     }
     sampleDue_ = false;
     if (!warmupComplete()) {
+      calibration_.observe(Status::WarmupIncomplete, config_.calibrationLoad,
+                           config_.electrical.circuitRevision, 0.0, 0.0);
       result.ppm = mq135_experimental::failure(Status::WarmupIncomplete);
       result.measurementStatus = Status::WarmupIncomplete;
       return result;
@@ -326,6 +394,12 @@ class Controller {
           config_.electrical.minimumUsefulVaoV).status;
     }
     result.measurementStatus = status;
+    if (calibration_.active()) {
+      calibration_.observe(status, config_.calibrationLoad,
+                           config_.electrical.circuitRevision, config_.measuredVcV, vaoV);
+      result.ppm = mq135_experimental::failure(Status::CalibrationActive);
+      return result;  // Sin referencia provisional ni conversion a ppm en captura.
+    }
     mq135_experimental::ReferenceSample sample{
         raw, config_.measuredVcV, vaoV, uptimeMs_,
         config_.electrical.circuitRevision, environment};
@@ -439,6 +513,7 @@ class Controller {
   }
 
   Configuration config_;
+  mq135_calibration::Capture calibration_;
   mq135_experimental::ReferenceLog<Capacity> reference_;
   std::array<mq135_experimental::ReferenceSample, Capacity> samples_;
   mq135_experimental::CaptureMetadata captureMetadata_;

@@ -543,7 +543,7 @@ void connectionTask(void*) {
   mqtt.setServer(mqtt_host, mqtt_port);
   mqtt.setSocketTimeout(mqtt_socket_timeout_s);
   mqtt.setKeepAlive(mqtt_keepalive_s);
-  Serial.printf("MQTT publicacion: intervalo=%lu ms; edad maxima=%lu ms; CO2 provisional\n",
+  Serial.printf("MQTT publicacion: intervalo=%lu ms; edad maxima=%lu ms; CO2 estimado\n",
                 static_cast<unsigned long>(mqtt_publication_config::INTERVAL_MS),
                 static_cast<unsigned long>(mqtt_publication::MAX_SAMPLE_AGE_MS));
   wifiObservations = xQueueCreate(16, sizeof(WifiObservation));

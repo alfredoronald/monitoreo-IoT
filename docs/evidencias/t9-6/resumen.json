@@ -4,14 +4,17 @@
   "complete": false,
   "pending": [
     149,
-    150,
-    151
+    150
   ],
   "recoveryCases": [],
   "sources": [
     {
       "file": "../docs/evidencias/t9-2/resultados.json",
       "sha256": "50c9e2e3f7b1d2a7a946ee747b132791cbd66f76b6eb061f989bdbc8fd4b4f4d"
+    },
+    {
+      "file": "../../issue151/docs/evidencias/t9-5/latencia-real.json",
+      "sha256": "476e9a50998e1e283fb8a3f03eeeea8a520cbaab96837ac4ef1bc108b0d4c7df"
     }
   ],
   "rows": [
@@ -54,6 +57,36 @@
         "inicio": "2026-10-28T03:27:00.202Z",
         "fin": "2026-10-28T03:27:16.064Z"
       }
+    },
+    {
+      "key": "151:2026-10-28T14:30:57.374Z-476e9a50998e:latencia",
+      "description": "#151 2026-10-28T14:30:57.374Z-476e9a50998e latencia",
+      "sent": 10,
+      "received": 10,
+      "saved": 10,
+      "qos": 0,
+      "interval": null,
+      "durationMinutes": null,
+      "metrics": {
+        "latencias_segundos": [
+          15.038,
+          14.81,
+          14.943,
+          14.964,
+          14.85,
+          14.903,
+          14.81,
+          14.853,
+          14.963,
+          14.878
+        ],
+        "promedio_segundos": 14.9012,
+        "aprobado": true,
+        "conteos": "10 publicaciones, observaciones visuales y filas confirmadas; no conteo independiente de eventos MQTT.",
+        "inicio": "2026-10-28T14:30:57.374Z",
+        "fin": "2026-10-28T14:33:48.629Z",
+        "datos_sinteticos_eliminados": true
+      }
     }
   ],
   "persistence": [
@@ -65,6 +98,11 @@
     {
       "key": "148:2026-10-28T03:26:42.582Z-50c9e2e3f7b1:qos1",
       "id": "2",
+      "lostPercent": "0.00"
+    },
+    {
+      "key": "151:2026-10-28T14:30:57.374Z-476e9a50998e:latencia",
+      "id": "5",
       "lostPercent": "0.00"
     }
   ]

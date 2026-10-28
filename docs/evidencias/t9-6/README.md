@@ -1,7 +1,7 @@
 # Consolidación de resultados — #152
 
-Estado: **parcial**. Hay evidencia QoS de #148; faltan recuperación #149,
-continuidad física #150 y diez latencias #151. Esta tarea no está completada.
+Estado: **parcial**. Hay evidencia QoS de #148 y diez latencias de #151;
+faltan recuperación #149 y continuidad física #150. Esta tarea no está completada.
 
 ## Avance ejecutado el 28/10/2026
 
@@ -11,6 +11,10 @@ Se aplicó la migración y se importaron los dos resultados QoS reales en
 Las 15 lecturas existentes permanecen intactas. Ver `persistencia-qos.json`,
 `resumen.json` y `resumen.md`. La carga se probó dos veces en PostgreSQL
 temporal: quedaron dos filas, sin duplicación. Esa prueba no acredita #149–#151.
+
+Se incorporó también el resultado de #151: diez publicaciones y visualizaciones
+con promedio de 14,9012 s, con API key activa y datos sintéticos aislados. La fila
+de latencia y los hashes de ambas fuentes están en el resumen actualizado.
 
 La migración `database/001_extend_transmission_metrics.sql` amplía la tabla
 existente `pruebas_transmision` con JSONB para métricas y una clave única de

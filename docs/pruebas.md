@@ -45,10 +45,65 @@ seguir cada mensaje y no confundirlo con una lectura anterior.
 5. Guardar el log MQTT, los `id` o valores publicados y las consultas SQL
    utilizadas. No incluir contraseñas ni archivos `.env` en la evidencia.
 
+### QoS efectivo de la prueba
+
+El backend se suscribe actualmente con **QoS 0** a `ambiente/#` (`client.subscribe
+('ambiente/#', { qos: 0 })`). Por la regla MQTT, el QoS efectivo de una entrega
+es el menor entre el QoS de publicación y el QoS solicitado por la suscripción.
+Por tanto, publicar con QoS 1 mientras se mantiene esta suscripción no prueba la
+entrega QoS 1 hasta el backend: la recepción queda limitada a QoS 0.
+
+Registrar en la ficha de cada ronda el QoS de publicación y el QoS de
+suscripción. La ronda QoS 0 se ejecuta con la configuración actual. Para que la
+ronda QoS 1 sea una comparación válida, ejecutar una variante explícita del
+backend con la suscripción solicitando QoS 1, anotar el commit de esa variante y
+restaurar después la configuración actual. Si se conserva la suscripción QoS 0,
+etiquetar la ronda como **QoS de publicación 1 / QoS efectivo 0** y no
+interpretarla como garantía de entrega QoS 1.
+
 El firmware publica normalmente cada 15 s y el dashboard solicita las últimas
 lecturas cada 15 s. El dashboard marca una lectura como antigua después de 60 s;
 esa marca sirve como señal visual, pero la latencia se calcula con timestamps,
 no con el momento de repintado de la pantalla.
+
+### Identificación de mensajes y formato aceptado
+
+El validador del backend no acepta un JSON con `test_id`: acepta únicamente un
+contenido numérico en uno de estos topics exactos: `ambiente/temperatura`,
+`ambiente/humedad` o `ambiente/co2`. El identificador de prueba debe estar, por
+tanto, en un valor numérico único. Usar este formato para cada ronda:
+
+```text
+topic: ambiente/co2
+payload: 900000 + NNNN
+test_id: T91-Q<qos>-<NNNN>
+```
+
+Por ejemplo, el mensaje `T91-Q0-0001` se publica como payload `900001` en
+`ambiente/co2`; `T91-Q0-0002` usa `900002`. El `test_id` es una etiqueta de la
+planilla, no se envía dentro del payload. Para otra ronda cambiar la base
+numérica (por ejemplo, `910000`) y conservar una correspondencia de una fila por
+mensaje. Los valores sintéticos son válidos para el backend, pero no representan
+mediciones del aula.
+
+La identidad se reconstruye con `topic + payload`; no usar solo el valor si se
+mezclan topics. En el log JSONL del backend, una línea `event=received` cuenta
+como una entrega. Para una ronda con `N` mensajes:
+
+```text
+entregas_totales = cantidad de líneas received de la ronda
+entregas_únicas = cantidad de pares topic + payload distintos
+duplicados = entregas_totales - entregas_únicas
+guardados_únicos = cantidad de pares topic + valor distintos en las filas de la ronda
+pérdida de transporte = (N - entregas_únicas) / N × 100
+pérdida de persistencia = (N - guardados_únicos) / N × 100
+```
+
+El `timestamp` del log identifica cuándo el backend recibió el mensaje. La
+comparación con PostgreSQL debe usar un límite de `id` o una base numérica
+exclusiva para no contar datos de otras ejecuciones. En QoS 1, una entrega
+duplicada puede generar más de una fila; por eso se reportan tanto filas totales
+como valores únicos y no se considera un duplicado como una pérdida.
 
 ## Procedimientos
 
@@ -87,18 +142,22 @@ Para cada caso:
 
 1. Dejar llegar una lectura normal y anotar su timestamp, `id` y valor de
    control.
-2. Registrar `t_0` y provocar solo la interrupción indicada.
-3. Registrar el instante en que el componente vuelve a estar disponible.
-4. Esperar la primera publicación posterior a la recuperación y confirmar que
-   el mensaje aparece en el log MQTT y se guarda en PostgreSQL.
-5. Calcular `duración = t_lectura_recuperada − t_0`. Repetir el caso si hubo
+2. Preparar una siguiente lectura con un payload numérico único según la
+   sección de identificación y anotar el último `id` existente (`id_base`).
+3. Registrar `t_0` y provocar solo la interrupción indicada.
+4. Registrar por separado cuándo el componente vuelve a estar disponible, pero
+   no finalizar la medición en ese momento.
+5. Finalizar únicamente cuando exista en PostgreSQL una fila nueva (`id >
+   id_base`) con el topic/valor de esta ejecución. Ese instante es `t_fin` y es
+   el mismo criterio para M-02, M-03 y M-04.
+6. Calcular `duración = t_fin − t_0`. Repetir el caso si hubo
    una acción accidental o más de un componente quedó interrumpido.
 
 | Caso | Interrupción | Inicio del cronómetro | Fin del cronómetro |
 |---|---|---|---|
-| M-02 | Desactivar y volver a activar el WiFi del ESP32 o su punto de acceso | confirmación de pérdida de conexión | primera lectura nueva guardada después de reconectar |
-| M-03 | Detener y volver a iniciar Mosquitto | confirmación de parada del broker | broker disponible y primera lectura nueva guardada |
-| M-04 | Detener y volver a iniciar el proceso del backend | confirmación de cierre del proceso | HTTP listo, suscripción activa y primera lectura nueva guardada |
+| M-02 | Desactivar y volver a activar el WiFi del ESP32 o su punto de acceso | confirmación de pérdida de conexión | primera fila nueva de esta prueba guardada en PostgreSQL |
+| M-03 | Detener y volver a iniciar Mosquitto | confirmación de parada del broker | primera fila nueva de esta prueba guardada en PostgreSQL |
+| M-04 | Detener y volver a iniciar el proceso del backend | confirmación de cierre del proceso | primera fila nueva de esta prueba guardada en PostgreSQL |
 
 Plantilla de resultado:
 
@@ -113,9 +172,9 @@ Plantilla de resultado:
 **Duración:** 10 publicaciones controladas; esperar la recepción de cada una
 antes de enviar la siguiente para conservar la correspondencia.
 
-1. Generar diez mensajes con un `test_id` único en un valor válido o en el
-   mecanismo de correlación acordado. Registrar `t_publicación` inmediatamente
-   antes de `mosquitto_pub` y el resultado del envío.
+1. Generar diez mensajes con el formato numérico de la sección de identificación
+   y un `test_id` único por fila. Registrar `t_publicación` inmediatamente antes
+   de `mosquitto_pub` y el resultado del envío.
 2. Para cada mensaje, registrar `t_dashboard` cuando el dashboard muestre ese
    mismo `test_id` o valor después de una respuesta HTTP nueva. No usar la hora
    de una lectura antigua conservada en pantalla.
@@ -144,10 +203,12 @@ Plantilla de resultado:
 Usar topics y rangos de valores distintos por ronda, `retain=false`, y no
 mezclar resultados con mensajes de otras pruebas.
 
-1. Reiniciar el contador de la ronda y registrar exactamente 500 publicaciones
-   confirmadas por `mosquitto_pub` para el nivel QoS en curso.
-2. En el log del backend contar mensajes recibidos únicos por `test_id`; en la
-   base contar los guardados correspondientes. Registrar también duplicados,
+1. Registrar el QoS de publicación, el QoS solicitado por la suscripción y el
+   QoS efectivo. Reiniciar el contador de la ronda y registrar exactamente 500
+   publicaciones confirmadas por `mosquitto_pub` para el nivel en curso.
+2. Usar los payloads numéricos únicos de la sección de identificación. En el log
+   del backend contar entregas por `topic + payload`; en la base contar los
+   valores únicos correspondientes. Registrar también duplicados,
    porque QoS 1 puede entregar más de una vez.
 3. Calcular pérdida de transporte con los recibidos únicos y pérdida de
    persistencia con los guardados. Repetir con el otro QoS.
@@ -160,6 +221,14 @@ Plantilla de resultado:
 |---:|---:|---:|---:|---:|---:|---:|---|
 | 0 | 500 | `...` | `...` | `...` | `... %` | `... %` | Pendiente |
 | 1 | 500 | `...` | `...` | `...` | `... %` | `... %` | Pendiente |
+
+Añadir a la tabla anterior las columnas `QoS suscripción` y `QoS efectivo`, o
+registrarlas aquí:
+
+| QoS publicación | QoS suscripción | QoS efectivo | Commit/configuración del backend |
+|---:|---:|---:|---|
+| 0 | 0 | 0 | `...` |
+| 1 | `0 o 1` | `0 o 1` | `...` |
 
 ## Registro de ejecución y evidencia
 
@@ -175,6 +244,7 @@ Completar esta ficha junto con las tablas anteriores:
 | Mosquitto | `...` |
 | PostgreSQL | `...` |
 | Intervalo de publicación | `...` |
+| QoS de publicación / suscripción usado en cada ronda | `...` |
 | Dashboard / navegador | `...` |
 | Archivos de log, SQL y capturas | `...` |
 | Incidencias o interrupciones durante la prueba | `...` |

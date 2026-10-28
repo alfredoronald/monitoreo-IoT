@@ -87,9 +87,10 @@ CREATE TABLE IF NOT EXISTS calibraciones (
     sensor                   VARCHAR(20)  NOT NULL DEFAULT 'MQ-135',
     fecha_hora               TIMESTAMPTZ  NOT NULL DEFAULT now(),
     ro_kohm                  NUMERIC(10,3) NOT NULL CHECK (ro_kohm > 0),   -- resistencia en aire limpio
+    numero_lecturas          INTEGER CHECK (numero_lecturas IS NULL OR numero_lecturas > 0),
     rl_kohm                  NUMERIC(10,3) CHECK (rl_kohm > 0),            -- resistencia de carga del módulo
     co2_referencia_ppm       NUMERIC(8,2) NOT NULL DEFAULT 400,            -- aire exterior de referencia
-    acondicionamiento_horas  NUMERIC(6,1),                                 -- 24 h o más (T-1.1)
+    acondicionamiento_horas  NUMERIC(8,3),                                 -- duración real; 15 min = 0.250 h
     vigente                  BOOLEAN     NOT NULL DEFAULT false,
     observaciones            TEXT
 );

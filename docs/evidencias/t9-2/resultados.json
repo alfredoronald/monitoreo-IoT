@@ -1,0 +1,81 @@
+{
+  "issue": 148,
+  "started": "2026-10-28T03:26:42.582Z",
+  "source": "Datos sintéticos; no ESP32",
+  "environment": {
+    "node": "v24.18.0",
+    "postgres": "18.0",
+    "mosquitto": "2.1.2",
+    "backendCommit": "8df7281e675c400f55ae7819078c03c779a2457c"
+  },
+  "isolation": {
+    "schema": "qos148_c397122c0ad8",
+    "broker": "mqtt://127.0.0.1:18848",
+    "authentication": true,
+    "acl": "infra/mosquitto/acl",
+    "publicBefore": [],
+    "publicAfter": [],
+    "schemaDropped": true,
+    "brokerStopped": true,
+    "temporaryFilesRemoved": true
+  },
+  "publication": {
+    "topic": "ambiente/temperatura",
+    "perLevel": 500,
+    "intervalMs": 20,
+    "retain": false,
+    "sentDefinition": "Callback de publish sin error; QoS 0 no confirma recepción del broker. QoS 1 espera PUBACK."
+  },
+  "rounds": [
+    {
+      "publicationQos": 0,
+      "subscriptionRequested": 0,
+      "subscriptionGranted": 0,
+      "effectiveQos": 0,
+      "deliveredQos": [
+        0
+      ],
+      "payloadFrom": 10000,
+      "payloadTo": 10499,
+      "started": "2026-10-28T03:26:44.426Z",
+      "attempted": 500,
+      "sent": 500,
+      "received": 500,
+      "uniqueReceived": 500,
+      "duplicates": 0,
+      "savedBefore": 0,
+      "savedAfter": 500,
+      "savedUnique": 500,
+      "ended": "2026-10-28T03:27:00.202Z",
+      "transportLossPercent": 0,
+      "persistenceLossPercent": 0
+    },
+    {
+      "publicationQos": 1,
+      "subscriptionRequested": 0,
+      "subscriptionGranted": 0,
+      "effectiveQos": 0,
+      "deliveredQos": [
+        0
+      ],
+      "payloadFrom": 11000,
+      "payloadTo": 11499,
+      "started": "2026-10-28T03:27:00.202Z",
+      "attempted": 500,
+      "sent": 500,
+      "received": 500,
+      "uniqueReceived": 500,
+      "duplicates": 0,
+      "savedBefore": 0,
+      "savedAfter": 500,
+      "savedUnique": 500,
+      "ended": "2026-10-28T03:27:16.064Z",
+      "transportLossPercent": 0,
+      "persistenceLossPercent": 0
+    }
+  ],
+  "databaseErrors": [],
+  "errors": [],
+  "passed": true,
+  "ended": "2026-10-28T03:27:16.215Z"
+}

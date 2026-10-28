@@ -1,6 +1,6 @@
 # T-8.4 / #143 — conversión usando Ro configurado
 
-Estado: implementación y carga física realizadas; validación exterior pendiente (captura fuera de rango).
+Estado: implementación y carga física realizadas; rango exterior observado en el tramo final de la repetición; listo para revisión.
 No retirar advertencias de los informes históricos ni llamar calibrado a un
 candidato pendiente. La ruta configurada no se etiqueta como provisional; la
 ruta anterior sigue identificada como tal hasta que se complete la transición.
@@ -22,4 +22,4 @@ Esta implementación no vuelve selectivo ni preciso al MQ-135. RL nominal y
 topología supuesta conservan sus limitaciones aunque se acepte un ensayo
 experimental. No confundir aprobación del código con calibración validada.
 
-Registro local T-8.3 completado con Ro 49.486 kΩ y PR #174. Firmware físico cargado y captura real realizada: 35 muestras, 269.40–338.16 ppm junto a ventana abierta; no cumple 350–500 ppm. PostgreSQL recibe las nuevas lecturas. Ver [evidencias](../../docs/evidencias/t8-4/README.md). Falta repetir y superar la validación exterior antes del cierre. Los registros históricos no cambian de valor.
+Registro local T-8.3 completado con Ro 49.486 kΩ y PR #174. Firmware físico cargado y captura real realizada: 35 muestras, 269.40–338.16 ppm junto a ventana abierta; no cumple 350–500 ppm. PostgreSQL recibe las nuevas lecturas. Ver [evidencias](../../docs/evidencias/t8-4/README.md). La repetición exterior posterior mostró 15 lecturas finales consecutivas en 353.37–419.47 ppm, sin cambiar constantes; la serie completa conserva las lecturas iniciales inferiores al rango. Véase el informe de repetición antes de aceptar el cierre. Los registros históricos no cambian de valor.

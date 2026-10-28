@@ -1,0 +1,19 @@
+{
+  "fecha": "2026-10-28T18:43:42.926045-04:00",
+  "ubicacion": "Exterior seco y protegido segun confirmacion del responsable; ubicacion no verificada remotamente",
+  "ro_kohm": 49.486,
+  "vcc_aproximado_v": 4.54,
+  "muestras_ppm": 60,
+  "min_ppm": 309.24,
+  "max_ppm": 419.47,
+  "media_ppm": 360.1251666666667,
+  "todas_350_500": false,
+  "limitaciones": "Ro experimental y RL nominal; captura sin reinicio ni ajuste de constantes. El responsable aclara que tambien la captura previa estaba en exterior.",
+  "muestras_en_rango": 38,
+  "media_en_rango": true,
+  "ultimas_15": {
+    "min": 353.37,
+    "max": 419.47,
+    "media": 378.23733333333337
+  }
+}

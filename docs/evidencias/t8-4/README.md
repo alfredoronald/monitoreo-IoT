@@ -23,3 +23,9 @@ Ubicación comunicada: junto a ventana abierta con viento. No se acredita condic
 ## Pendiente para cerrar #143
 
 Repetir en exterior seco y protegido, con estabilización y condiciones identificadas. Si sigue fuera de rango, revisar alimentación, circuito y referencia con T-8.2/T-8.3; no alterar constantes para forzar 350–500. La integración de #142 sigue su PR #174. No cerrar esta tarea con esta evidencia como si el criterio exterior hubiera pasado.
+
+## Aclaración y repetición exterior
+
+El responsable aclaró después de la primera captura que el sensor ya estaba afuera y confirmó su ubicación exterior para repetir. La descripción anterior «junto a ventana» conserva lo entendido en ese momento; no contradice ni verifica remotamente esta aclaración. La repetición no cambia Ro, alimentación configurada ni fórmula y no reinicia el ESP32. Véanse los archivos de `repeticion-exterior/`.
+
+Resultado posterior: el tramo final de 15 lecturas consecutivas de la repetición exterior quedó en 353.37–419.47 ppm. El rango se observó sin cambiar la calibración; revisar [informe completo](repeticion-exterior/README.md). El apartado pendiente anterior describe el resultado de la primera captura.

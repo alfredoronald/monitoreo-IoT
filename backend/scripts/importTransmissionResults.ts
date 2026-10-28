@@ -49,16 +49,16 @@ export function normalizeEvidence(data: any, identity: string): Metric[] {
         conteos: 'Enviados y recibidos no medidos (0); guardados=primera fila de recuperación.' } })];
   }
   if (data.issue === 150) {
-    if (!data.completed || Date.parse(data.plannedEnd) - Date.parse(data.started) !== 86400000 ||
+    if (!data.completed || Date.parse(data.plannedEnd) - Date.parse(data.started) !== 300000 ||
         typeof data.runId !== 'string' || !data.runId ||
         !Number.isInteger(data.interval) || data.interval < 10 || data.interval > 30 || !Array.isArray(data.counts) ||
         data.counts.length !== 3 || new Set(data.counts.map((row: any) => row.variable)).size !== 3)
-      throw new Error('No se acepta una ventana menor de 24 h o sin intervalo final.');
+      throw new Error('Se requiere una ventana de 5 minutos con intervalo final.');
     return data.counts.map((row: any) => {
       if (!['temperatura','humedad','co2'].includes(row.variable)) throw new Error('Variable inválida.');
-      const expected = Math.floor(86400 / data.interval), saved = count(row.saved);
+      const expected = Math.floor(300 / data.interval), saved = count(row.saved);
       return make(row.variable, { sent: expected, received: saved, saved, qos: null,
-        interval: data.interval, durationMinutes: 1440, metrics: { esperadas: expected, porcentaje: saved * 100 / expected,
+        interval: data.interval, durationMinutes: 5, metrics: { esperadas: expected, porcentaje: saved * 100 / expected,
           aprobado: saved >= Math.ceil(expected * .98) && saved <= expected,
           inicio: data.started, fin: data.plannedEnd, incidencias: data.incidents,
           conteos: 'Enviados=esperadas teóricas; recibidos=mínimo confirmado por persistencia, no medición MQTT independiente.' } });

@@ -77,3 +77,7 @@ Requiere las dependencias de backend y su `.env` local; crea y elimina un esquem
 aislado `qa_calibration_*`. No inserta datos en las tablas reales. Comprueba
 migración repetida, conservación del historial, activación por sensor, precisión
 de 15 minutos, entradas inválidas y rollback si falla la inserción.
+
+## Verificación local realizada
+
+Registro y comparación completados con el resultado experimental aceptado en PR #173. Véase [evidencia T-8.3](evidencias/t8-3/README.md). Esto no ejecuta automáticamente los scripts en otras bases de datos.

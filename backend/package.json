@@ -15,7 +15,8 @@
     "test:integration:history": "tsx --test tests/historicalReadings.integration.test.ts",
     "test:air-status": "tsx --test tests/airStatusRoutes.test.ts",
     "evidence:validation": "tsx scripts/messageValidationEvidence.ts",
-    "test:load": "tsx scripts/loadTest100.ts"
+    "test:load": "tsx scripts/loadTest100.ts",
+    "test:qos": "tsx scripts/qosComparison.ts"
   },
   "dependencies": {
     "cors": "^2.8.5",

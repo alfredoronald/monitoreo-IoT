@@ -68,3 +68,11 @@ Gitleaks busca patrones conocidos y puede omitir secretos en formatos no
 reconocidos, imágenes o archivos binarios; un resultado sin hallazgos no es una
 garantía matemática de ausencia de credenciales. No se detectaron credenciales
 reales en el alcance analizado. Ante un hallazgo futuro, rotar la credencial.
+
+### Actualización posterior a la interrupción de red
+
+Al recuperar la conexión se actualizaron nuevamente las referencias. Git
+reportó 193 commits alcanzables y se extrajeron 634 blobs únicos. Gitleaks
+informó 99 commits con salida examinada y 0 hallazgos en los parches; el
+análisis de los 634 objetos también informó 0 hallazgos. La captura anterior
+corresponde a la ejecución inicial de 625 objetos, conservada como evidencia.

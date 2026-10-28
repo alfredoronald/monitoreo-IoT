@@ -1,10 +1,13 @@
-# Topic access control — matches the MQTT contract in README.md
-# "user" names must exist in infra/mosquitto/passwd (local, not committed).
+# Control de acceso MQTT: mínimo privilegio para #133.
+# Solo estos usuarios deben existir en passwd (archivo local, no versionado).
+# Mosquitto deniega por defecto las operaciones sin una regla que las permita.
+# No agregar permisos globales, reglas pattern ni topic readwrite.
 
-# ESP32 firmware publishes sensor readings
+# El ESP32 solo publica; no puede leer mensajes, ni siquiera sus publicaciones.
 user esp32
 topic write ambiente/#
 
-# Backend subscribes to sensor readings (read only, no publish)
+# El backend solo recibe mensajes de ambiente/#; no puede publicar.
+# Un SUBACK aceptado no acredita lectura: el ACL también filtra la entrega.
 user backend
 topic read ambiente/#

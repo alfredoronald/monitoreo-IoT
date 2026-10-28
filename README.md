@@ -153,7 +153,8 @@ if (-not (Test-Path -LiteralPath infra/mosquitto/passwd)) {
 New-Item -ItemType Directory -Force -Path infra/mosquitto/data | Out-Null
 ```
 
-Cada comando solicita y confirma una contraseña: guardar la de `esp32` para
+Cada comando solicita y confirma una contraseña: usar claves aleatorias distintas
+de **al menos 12 caracteres** (se recomiendan 20 o más). Guardar la de `esp32` para
 publicar y la de `backend` para `MQTT_PASS`. **`-c` sobrescribe el archivo completo**:
 usarlo solo al crearlo. Sin `-c`, agrega o actualiza un usuario. `passwd.example`
 solo ilustra el formato; cada integrante genera su `passwd`, ignorado por Git.
@@ -165,6 +166,54 @@ deshabilita conexiones anónimas y usa [acl](infra/mosquitto/acl):
 |---|---|
 | `esp32` | Publicar en `ambiente/#` |
 | `backend` | Leer y suscribirse a `ambiente/#` |
+
+#### Rotar las contraseñas MQTT (#133)
+
+Desde la raíz, con los clientes detenidos, actualizar los dos usuarios existentes
+sin `-c`. Los comandos solicitan las contraseñas sin mostrarlas en pantalla:
+
+```powershell
+& "C:\Program Files\mosquitto\mosquitto_passwd.exe" -H sha512-pbkdf2 infra/mosquitto/passwd esp32
+& "C:\Program Files\mosquitto\mosquitto_passwd.exe" -H sha512-pbkdf2 infra/mosquitto/passwd backend
+```
+
+`sha512-pbkdf2` permite usar el archivo tanto en Mosquitto 2.0 como en 2.1.
+Crear dos claves nuevas distintas y de al menos 12 caracteres. A continuación:
+
+1. En `backend/.env`, dejar `MQTT_USER=backend` y actualizar `MQTT_PASS` con
+   la clave nueva de `backend`.
+2. En `firmware/include/config.h`, dejar `mqtt_user` como `esp32` y actualizar
+   `mqtt_password` con la clave nueva de `esp32`. Conservar la configuración WiFi.
+3. Revisar localmente los nombres de usuario de `passwd`: deben quedar únicamente
+   `esp32` y `backend`. Si existe otro usuario, eliminarlo con `mosquitto_passwd -D`
+   indicando el archivo y el nombre. No mostrar ni adjuntar el archivo.
+4. Reiniciar Mosquitto con la configuración del repositorio y reiniciar el backend.
+   El reinicio del broker cierra también las sesiones que usaban claves anteriores.
+5. Compilar y cargar el firmware al ESP32. Cambiar `config.h` en la computadora
+   **no actualiza el dispositivo**: la contraseña anterior sigue en su memoria
+   hasta cargar el firmware nuevo.
+
+Las tres rutas privadas están ignoradas por Git, incluido el archivo de hashes
+`passwd`. Si se introduce `firmware/include/secrets.h`, agregarlo a `.gitignore`
+antes de guardar credenciales en él. No adjuntar binarios del firmware: también
+contienen la configuración privada y ya quedan excluidos dentro de `.pio/`.
+
+El ACL deniega por defecto toda operación sin permiso. No agregar `topic deny #`,
+ya que una denegación explícita puede bloquear también los permisos legítimos.
+Un filtro de suscripción aceptado (`SUBACK`) no demuestra permiso de lectura:
+Mosquitto también comprueba el ACL al entregar cada mensaje.
+
+Para verificar la rotación, publicar como `esp32` y recibir como `backend` en
+`ambiente/#`; comprobar también que `esp32` no recibe esos mensajes. Las
+publicaciones del backend y las de cualquiera fuera de `ambiente/#` deben ser
+rechazadas. Para comprobar publicaciones denegadas, usar MQTT 5 y QoS 1
+(`mosquitto_pub -V mqttv5 -q 1`): el broker devuelve «Not authorized» (135).
+Una publicación QoS 0 que termina sin error no demuestra autorización.
+Comprobar además el rechazo de acceso anónimo, usuario desconocido y claves
+incorrectas o anteriores. No escribir contraseñas literales en los comandos.
+
+Los resultados locales y la comprobación física están en la
+[evidencia de #133](docs/evidencias/133-acl-mosquitto.md).
 
 ### 4. Configurar el entorno del backend
 

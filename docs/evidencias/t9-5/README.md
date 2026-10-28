@@ -1,7 +1,50 @@
 # Latencia publicación → dashboard — #151
 
-Estado: **preparación**. #132 y #157 no estaban integradas al preparar la rama.
-No hay diez mediciones reales ni aprobación de su criterio de promedio.
+Estado: **ensayo ejecutado el 28/10/2026; listo para revisión**.
+Se usaron las versiones integradas de #132 y #157.
+
+## Resultados observados
+
+Se ejecutó Edge headless con el dashboard real, API Express autenticada, Mosquitto
+y PostgreSQL local. Los diez mensajes son sintéticos, separados de las mediciones
+físicas mediante broker y esquema exclusivos. No se interceptaron solicitudes ni
+se aceleró el polling de 15 s. El reloj se tomó antes de publicar y al detectar el
+valor en la tarjeta, esperando dos requestAnimationFrame para incluir el render.
+Esto automatiza el cronómetro; no es una observación humana de pantalla.
+
+| Medida | Valor sintético | Publicación UTC | Aparición observada UTC | Segundos |
+|---:|---:|---|---|---:|
+| 1 | 901 | 14:31:13.673 | 14:31:28.711 | 15,038 |
+| 2 | 902 | 14:31:28.915 | 14:31:43.725 | 14,810 |
+| 3 | 903 | 14:31:43.841 | 14:31:58.784 | 14,943 |
+| 4 | 904 | 14:31:58.895 | 14:32:13.859 | 14,964 |
+| 5 | 905 | 14:32:13.973 | 14:32:28.823 | 14,850 |
+| 6 | 906 | 14:32:28.927 | 14:32:43.830 | 14,903 |
+| 7 | 907 | 14:32:43.933 | 14:32:58.743 | 14,810 |
+| 8 | 908 | 14:32:58.859 | 14:33:13.712 | 14,853 |
+| 9 | 909 | 14:33:13.821 | 14:33:28.784 | 14,963 |
+| 10 | 910 | 14:33:28.895 | 14:33:43.773 | 14,878 |
+| **Promedio** | | | **Menor de 20 s** | **14,9012** |
+
+- Backend: `ab382e3`; frontend: `9de8ba3`; Node: v24.18.0.
+- Sin clave: HTTP 401; clave incorrecta: HTTP 401; clave correcta: HTTP 200.
+- Todas las solicitudes API del dashboard incluyeron la clave correcta. El JSON
+  registra solamente un booleano, nunca el valor de la clave.
+- Cero excepciones JavaScript registradas.
+- El esquema sintético se eliminó y las 15 lecturas físicas existentes quedaron
+  intactas. Los valores 901–910 °C son identificadores de correlación irreales;
+  no son lecturas del sensor. Las otras variables quedan vacías deliberadamente.
+- La ausencia de históricos en las capturas corresponde a la ventana fija
+  seleccionada antes de las publicaciones; no intervino en la medición de tarjetas.
+
+`latencia-real.json` contiene los timestamps completos, métricas, comprobaciones
+de autenticación y limpieza. `capturas-y-ejecutor.zip` incluye dos capturas reales
+y el ejecutor exacto empleado. Sus rutas locales deben adaptarse al repetirlo;
+requiere Playwright instalado aparte. El ejecutor genera credenciales temporales,
+levanta servicios aislados y los detiene al terminar; no incluye secretos reales.
+
+Los tiempos dependen del entorno y de la fase de polling: este resultado no
+garantiza la misma latencia en otra red ni acredita el circuito del ESP32.
 
 ## Ejecución
 
@@ -33,10 +76,5 @@ y SQL y elimina únicamente su rango sintético nuevo al finalizar.
 6. Copiar el JSON sin secretos y completar diez filas con publicación, aparición
    observada y segundos. Adjuntar captura o clip del ensayo y un promedio <20 s.
    Conservar fallos e intentos incompletos. Verificar que `cleaned=true`.
-
-| Medida | Valor | Publicación UTC | Confirmación visual UTC | Segundos |
-|---:|---:|---|---|---:|
-| 1–10 | Pendiente | Pendiente | Pendiente | — |
-| Promedio | | | Pendiente | — |
 
 Prueba del cálculo (sintética): `pnpm exec tsx --test tests/latencyCheck.test.ts`.

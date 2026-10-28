@@ -6,7 +6,7 @@ import { Pool } from 'pg';
 import { config } from '../src/config.js';
 import { redactLogText } from '../src/mqtt/messageLogger.js';
 
-export const DURATION_MS = 86400000;
+export const DURATION_MS = 300000;
 export function expectedReadings(interval: number) {
   if (!Number.isInteger(interval) || interval < 10 || interval > 30)
     throw new Error('Intervalo final requerido: entero entre 10 y 30 segundos.');
@@ -54,7 +54,7 @@ export async function monitorContinuity() {
       if (run.issue !== 150 || !run.runId || !/^\d+$/.test(run.baselineId) ||
           !Number.isFinite(Date.parse(run.started)) || Date.parse(run.plannedEnd) - Date.parse(run.started) !== DURATION_MS ||
           run.database !== config.database.database || run.host !== config.database.host || run.port !== config.database.port)
-        throw new Error('Checkpoint incompatible con la base o la ventana de 24 horas.');
+        throw new Error('Checkpoint incompatible con la base o la ventana de 5 minutos.');
       if (run.completed) throw new Error('La ejecución ya está completada.');
       run.incidents.push({ timestamp: new Date().toISOString(), message: 'Monitor reanudado; revisar intervalo sin observación.' });
     }
@@ -94,7 +94,7 @@ export async function monitorContinuity() {
           const description = `#150 ${run.runId} ${row.variable}`;
           await client.query(`INSERT INTO pruebas_transmision
             (descripcion, duracion_min, intervalo_s, enviados, recibidos, guardados, observaciones)
-            SELECT $1,1440,$2,$3,$4,$4,$5 WHERE NOT EXISTS
+             SELECT $1,5,$2,$3,$4,$4,$5 WHERE NOT EXISTS
             (SELECT 1 FROM pruebas_transmision WHERE descripcion=$1)`,
           [description, run.interval, row.expected, row.saved, JSON.stringify({
             inicio: run.started, fin: run.plannedEnd, porcentaje: row.percentage,

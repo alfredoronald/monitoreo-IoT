@@ -1,7 +1,8 @@
-# Continuidad de 24 horas en aula — #150
+# Continuidad de 5 minutos en aula — #150
 
 Estado: **preparación; #144 abierta; ensayo físico pendiente**.
-No se ha iniciado ni acreditado una ventana de 24 horas.
+No se ha iniciado ni acreditado una ventana de 5 minutos.
+Alcance reducido de 24 horas a 5 minutos por solicitud del responsable.
 
 1. Integrar el intervalo final de #144 y desplegar versiones compatibles.
 2. Llevar el circuito al aula y comprobar las tres variables físicas recientes.
@@ -15,7 +16,7 @@ pnpm exec tsx scripts/continuityRun.ts start logs/continuidad-150.json 15
 ```
 
 Reemplazar `15` por el intervalo realmente configurado. Mantener PC, broker,
-backend, red y sensores durante 24 h; desactivar suspensión automática de la PC.
+backend, red y sensores durante 5 minutos; desactivar suspensión automática de la PC.
 El script mantiene checkpoints cada minuto. `Ctrl+C` guarda un resultado incompleto;
 reanudar con `pnpm exec tsx scripts/continuityRun.ts resume logs/continuidad-150.json`.
 Reanudar no borra incidencias ni reinicia el reloj; documentar la ausencia del monitor.
@@ -29,8 +30,9 @@ WHERE id > :baseline_id AND fecha_hora >= :inicio_utc AND fecha_hora < :fin_utc
 GROUP BY tipo_variable;
 ```
 
-La ventana es exactamente de 86.400 s; no se ofrecen ventanas abreviadas como evidencia.
-A 15 s: 5.760 esperadas y mínimo 5.645 por variable; 17.280 y mínimo 16.935 en total.
+La ventana es exactamente de 300 s y solo acredita continuidad durante 5 minutos.
+A 15 s: 20 esperadas y mínimo 20 por variable; 60 y mínimo 60 en total.
+Con muestras pequeñas, el umbral del 98% exige todas las lecturas esperadas.
 Un conteo superior a lo esperado se marca como desvío para investigar duplicados o
 publicaciones ajenas; no se usa para ocultar pérdidas. Los límites deben corresponder
 a la cadencia real (diferencias de fase de un mensaje deben explicarse).
@@ -50,4 +52,4 @@ conteo por sí solo no acredita disponibilidad continua del circuito.
 | CO2 | Pendiente | Pendiente | — | — | — | Pendiente |
 
 Prueba de cálculos: `pnpm exec tsx --test tests/continuityRun.test.ts`.
-Los tests de escritorio no reemplazan las 24 horas en el aula.
+Los tests de escritorio no reemplazan los 5 minutos físicos en el aula.

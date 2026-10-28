@@ -8,7 +8,9 @@ if (!Number.isInteger(port) || port < 1 || port > 65535) {
   throw new Error('API_PORT debe ser un entero entre 1 y 65535');
 }
 
-// API_KEY se utilizará en el Sprint 3; todavía no condiciona el arranque.
+if (!config.apiKey.trim()) {
+  throw new Error('API_KEY debe estar definida antes de iniciar el servidor.');
+}
 const mqttClient = startMqttSubscriber();
 try {
   await connectDatabase();

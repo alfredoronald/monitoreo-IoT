@@ -1,4 +1,6 @@
 import cors from 'cors';
+import { apiKeyMiddleware } from './middleware/apiKeyMiddleware.js';
+import { config } from './config.js';
 import express from 'express';
 import { airStatusRoutes } from './routes/airStatusRoutes.js';
 import { readingRoutes } from './routes/readingRoutes.js';
@@ -17,8 +19,9 @@ export function createApp(corsOrigin: string) {
       else callback(new CorsOriginError());
     },
     methods: ['GET', 'PATCH', 'OPTIONS'],
-    allowedHeaders: ['Content-Type'],
+    allowedHeaders: ['Content-Type', 'X-API-Key'],
   }));
+  app.use('/api', apiKeyMiddleware(config.apiKey));
   // Estas rutas rechazan cualquier cuerpo antes de que express.json lo procese.
   app.use('/api/lecturas', readingRoutes);
   app.use('/api/lecturas', historicalReadingRoutes);

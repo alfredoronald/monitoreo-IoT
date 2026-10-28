@@ -240,7 +240,7 @@ Completar y guardar las variables de [`.env.example`](.env.example):
 | `MQTT_PASS` | Contraseña MQTT del usuario `backend` | Obligatoria |
 | `API_PORT` | `3000`, puerto HTTP | Predeterminado: `3000` |
 | `CORS_ORIGIN` | `http://localhost:5173`, origen del frontend | Tiene ese valor predeterminado |
-| `API_KEY` | Vacía; prevista para el Sprint 3 | No condiciona el arranque actual |
+| `API_KEY` | Clave privada de acceso a la API | Obligatoria al arrancar; configurar en `backend/.env` |
 
 `PG_PASS` y `MQTT_PASS` son de servicios distintos. Guardarlas solo en `backend/.env`;
 si contienen `#`, envolver el valor en comillas dobles para evitar comentarios
@@ -254,9 +254,9 @@ sin ruta ni barra final, por ejemplo `http://localhost:5173`. No usar `*`.
 Las peticiones con otro encabezado `Origin` responden 403 con
 `{"mensaje":"Origen no permitido por CORS."}`, sin habilitar su lectura
 desde ese origen. El preflight OPTIONS del dashboard admite GET y PATCH
-con Content-Type. No se habilitan credenciales de navegador.
+con Content-Type y X-API-Key. No se habilitan credenciales de navegador.
 Los clientes sin `Origin`, como curl, siguen funcionando: CORS no reemplaza
-la autenticación prevista para Sprint 3.
+la autenticación mediante X-API-Key.
 
 Los fallos inesperados de las rutas pasan al manejador central y responden
 500 con `{"mensaje":"No se pudo completar la solicitud."}`. Los errores
@@ -535,8 +535,8 @@ el detalle. Si hay pérdidas, anotarlas aunque el resultado no sea 100/100/100.
 | GET | `/api/salud` | Estado de la base y del broker (pendiente) |
 
 Base local: `http://localhost:3000/api`. Las peticiones GET no llevan cuerpo.
-Las respuestas usan `Content-Type: application/json`. En Sprint 2 no se
-exige `API_KEY`. El contrato completo está en [docs/api.md](docs/api.md).
+Las respuestas usan `Content-Type: application/json`. Las rutas /api requieren
+`X-API-Key`. El contrato completo está en [docs/api.md](docs/api.md).
 Los valores de los ejemplos son ilustrativos y dependen de las lecturas
 que existan en la base; no son resultados de una ejecución real.
 

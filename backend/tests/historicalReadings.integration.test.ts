@@ -52,13 +52,13 @@ test('Histórico mediante HTTP y PostgreSQL real, aislado de los datos existente
     return database.query(text, values);
   });
 
-  server = createApp('http://localhost:5173').listen(0, '127.0.0.1');
+  server = createApp('http://localhost:5173', 'test-only-key').listen(0, '127.0.0.1');
   await once(server, 'listening');
   const endpoint = `http://127.0.0.1:${(server.address() as AddressInfo).port}/api/lecturas`;
   const readHistory = async (
     variable: string, desde = '2026-10-15T12:00:00Z', hasta = '2026-10-15T13:00:00Z',
   ) => {
-    const response = await fetch(`${endpoint}?${new URLSearchParams({ variable, desde, hasta })}`);
+    const response = await fetch(`${endpoint}?${new URLSearchParams({ variable, desde, hasta })}`, { headers: { 'X-API-Key': 'test-only-key' } });
     assert.equal(response.status, 200);
     assert.match(response.headers.get('content-type') ?? '', /^application\/json/);
     return response.json();

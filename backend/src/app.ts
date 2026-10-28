@@ -7,7 +7,7 @@ import { readingRoutes } from './routes/readingRoutes.js';
 import { historicalReadingRoutes } from './routes/historicalReadingRoutes.js';
 import { CorsOriginError, errorHandler } from './middleware/errorHandler.js';
 
-export function createApp(corsOrigin: string) {
+export function createApp(corsOrigin: string, apiKey: string = config.apiKey) {
   const app = express();
 
   app.disable('x-powered-by');
@@ -21,7 +21,7 @@ export function createApp(corsOrigin: string) {
     methods: ['GET', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'X-API-Key'],
   }));
-  app.use('/api', apiKeyMiddleware(config.apiKey));
+  app.use('/api', apiKeyMiddleware(apiKey));
   // Estas rutas rechazan cualquier cuerpo antes de que express.json lo procese.
   app.use('/api/lecturas', readingRoutes);
   app.use('/api/lecturas', historicalReadingRoutes);

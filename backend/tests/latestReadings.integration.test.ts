@@ -48,11 +48,11 @@ test('Últimas lecturas mediante HTTP y la vista PostgreSQL real', async (contex
     return database.query(text, values);
   });
 
-  server = createApp('http://localhost:5173').listen(0, '127.0.0.1');
+  server = createApp('http://localhost:5173', 'test-only-key').listen(0, '127.0.0.1');
   await once(server, 'listening');
   const endpoint = `http://127.0.0.1:${(server.address() as AddressInfo).port}/api/lecturas/ultima`;
   const readLatest = async () => {
-    const response = await fetch(endpoint);
+    const response = await fetch(endpoint, { headers: { 'X-API-Key': 'test-only-key' } });
     assert.equal(response.status, 200);
     assert.match(response.headers.get('content-type') ?? '', /^application\/json/);
     return response.json();

@@ -246,6 +246,31 @@ Completar y guardar las variables de [`.env.example`](.env.example):
 si contienen `#`, envolver el valor en comillas dobles para evitar comentarios
 de dotenv. El código usa `PG_*`; no lee las variables `SUPABASE_*` de la plantilla.
 
+#### Configurar la clave de la API (#135)
+
+Generar una clave aleatoria local, por ejemplo con Node.js:
+
+```powershell
+node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"
+```
+
+Guardar la clave generada como `API_KEY` en `backend/.env`. Configurar el mismo
+valor como `VITE_API_KEY` en `frontend/.env` y reiniciar ambos servicios. Los
+archivos `.env` son privados y no deben compartirse ni añadirse a Git. La clave
+incluida en el frontend puede ser visible en el navegador: limita accesos
+casuales, pero no sustituye autenticación de usuarios ni TLS.
+
+Para los ejemplos de Git Bash siguientes, introducir la clave sin mostrarla:
+
+```bash
+read -r -s -p 'Clave de API: ' API_KEY
+export API_KEY
+printf '\n'
+```
+
+Al terminar, ejecutar `unset API_KEY`. No incluir el encabezado de autorización
+ni valores de la clave en capturas o evidencias.
+
 #### CORS y errores de la API (#77)
 
 `CORS_ORIGIN` admite un único origen exacto (protocolo, host y puerto),
@@ -270,14 +295,14 @@ Para sacar la evidencia sin crear archivos adicionales:
 2. En las herramientas de desarrollo del navegador, abrir la consola y ejecutar:
 
    ```javascript
-   fetch('http://localhost:3000/api/lecturas/ultima')
+   fetch('http://localhost:3000/api/lecturas/ultima', { headers: { 'X-API-Key': prompt('Clave de API') } })
      .then(async (r) => console.log('HTTP', r.status, await r.json()));
    ```
 
 3. En Network/Red, seleccionar la petición `ultima` y capturar la URL,
    código 200 y encabezados `Origin` de la solicitud y
    `Access-Control-Allow-Origin` de la respuesta. Deben coincidir con el
-   origen del dashboard. No abrir directamente la URL de la API para esta
+   origen del dashboard. Ocultar X-API-Key antes de capturar. No abrir directamente la URL de la API para esta
    evidencia: se necesita una petición hecha desde la página del dashboard.
 4. Adjuntar la captura al PR. Las pruebas de orígenes rechazados, preflight
    y errores internos se ejecutan con `npm test` desde `backend/`.
@@ -556,7 +581,7 @@ ni se truncan silenciosamente los resultados.
 Llamada desde Git Bash:
 
 ```bash
-curl -i "http://localhost:3000/api/lecturas?variable=temperatura&desde=2026-10-15T12:00:00Z&hasta=2026-10-15T13:00:00Z"
+curl -i -H "X-API-Key: $API_KEY" "http://localhost:3000/api/lecturas?variable=temperatura&desde=2026-10-15T12:00:00Z&hasta=2026-10-15T13:00:00Z"
 ```
 
 Ejemplo de respuesta **HTTP 200**:
@@ -583,7 +608,7 @@ Devuelve la lectura más reciente de cada variable mediante la vista
 `v_ultima_lectura`. No admite parámetros de consulta ni cuerpo.
 
 ```bash
-curl -i "http://localhost:3000/api/lecturas/ultima"
+curl -i -H "X-API-Key: $API_KEY" "http://localhost:3000/api/lecturas/ultima"
 ```
 
 Ejemplo de respuesta **HTTP 200**:
@@ -622,7 +647,7 @@ campo `mensaje` en español. Reglas de validación acordadas en el contrato:
 Ejemplo para provocar un **400** sin depender de datos en PostgreSQL:
 
 ```bash
-curl -i "http://localhost:3000/api/lecturas/ultima?variable=co2"
+curl -i -H "X-API-Key: $API_KEY" "http://localhost:3000/api/lecturas/ultima?variable=co2"
 ```
 
 Respuesta **HTTP 400 Bad Request**:
@@ -634,7 +659,7 @@ Respuesta **HTTP 400 Bad Request**:
 Ejemplo con una variable desconocida:
 
 ```bash
-curl -i "http://localhost:3000/api/lecturas?variable=ruido&desde=2026-10-15T12:00:00Z&hasta=2026-10-15T13:00:00Z"
+curl -i -H "X-API-Key: $API_KEY" "http://localhost:3000/api/lecturas?variable=ruido&desde=2026-10-15T12:00:00Z&hasta=2026-10-15T13:00:00Z"
 ```
 
 Respuesta **HTTP 400 Bad Request**:

@@ -15,6 +15,7 @@ backend/logs/
 .pio/
 firmware/.pio/
 firmware/include/config.h
+firmware/include/secrets.h
 
 # Infraestructura local (credenciales reales)
 infra/mosquitto/passwd

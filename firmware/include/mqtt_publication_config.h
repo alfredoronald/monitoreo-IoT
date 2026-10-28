@@ -11,7 +11,7 @@
 #error "MQTT_TEMPORARY_TEST debe ser 0 o 1"
 #endif
 
-// Configuración pública, independiente de config.h y sus credenciales.
+// Valor por defecto público; config.h privado puede definirlo antes de incluir este archivo.
 // También admite -D MQTT_PUBLISH_INTERVAL_MS=10000 (hasta 30000).
 #ifndef MQTT_PUBLISH_INTERVAL_MS
 #define MQTT_PUBLISH_INTERVAL_MS 15000UL

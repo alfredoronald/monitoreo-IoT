@@ -23,4 +23,7 @@ constexpr int32_t mqtt_tcp_timeout_ms = 1000;
 constexpr uint16_t mqtt_socket_timeout_s = 1;
 constexpr uint16_t mqtt_keepalive_s = 5;
 
+// T-8.5: publicar cada 15 s; lectura DHT22/MQ-135 permanece cada 2 s.
+#define MQTT_PUBLISH_INTERVAL_MS 15000UL
+
 #endif  // FIRMWARE_CONFIG_H

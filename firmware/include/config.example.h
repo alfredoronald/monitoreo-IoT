@@ -23,4 +23,11 @@ constexpr int32_t mqtt_tcp_timeout_ms = 1000;
 constexpr uint16_t mqtt_socket_timeout_s = 1;
 constexpr uint16_t mqtt_keepalive_s = 5;
 
+// Completar tras aceptar #141 y registrar #142; kOhm con precisión de PostgreSQL.
+#define MQ135_CALIBRATED_RO_KOHM 0.0
+#define MQ135_CALIBRATION_ACCEPTED 0
+// Alimentación del sensor documentada; distinta del Vref interno del ADC.
+// Actualizarla junto al registro de la calibración si cambia el montaje.
+#define MQ135_SUPPLY_V 4.89
+
 #endif  // FIRMWARE_CONFIG_H

@@ -23,7 +23,7 @@ test('Todas las rutas requieren la clave y CORS permite preflight', async () => 
   } finally { await new Promise(resolve => server.close(resolve)); await pool.end(); }
 });
 test('El servidor no arranca sin API_KEY', () => {
-  const env = {...process.env}; delete env.API_KEY;
+  const env = {...process.env, API_KEY: ''};
   const result = spawnSync(process.execPath, ['dist/index.js'], { env, cwd:process.cwd(), encoding:'utf8', timeout:5000 });
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /API_KEY/);

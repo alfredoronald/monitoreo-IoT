@@ -30,7 +30,7 @@ while position<len(result):
   if len(value)>=8 and not ignore.search(value): candidates.append({'object':oid,'label':m.group(1).decode(errors='replace')})
  for name,pattern in patterns.items():
   if re.search(pattern,data): counts[name]+=1; matches.append({'object':oid,'rule':name})
- 
+
  for label,secret in private:
   if secret in data: matches.append({'object':oid,'rule':'current_local_secret','label':label})
 summary={'commits':len(git('rev-list','--all').splitlines()),'blobs':count,'rules':counts,'current_local_secret_objects':sum(x['rule']=='current_local_secret' for x in matches),'private_values_checked':len(private)}

@@ -1,8 +1,8 @@
 # T-8.7 / #146: revision de umbrales con el PO
 
-Estado: **propuesta preparada; revision actual con el PO pendiente de constancia**.
+Estado: **rangos operativos confirmados por el PO; nota provisional de HU-06 cerrada en este alcance**. La validación física de #145 permanece pendiente.
 
-## Valores vigentes consultados
+## Valores operativos confirmados
 
 | Nivel | Intervalo CO2 estimado (ppm) |
 |---|---|
@@ -26,40 +26,19 @@ Todas las muestras de esos ensayos estan por debajo de 800 ppm. Por ello no vali
 empiricamente los puntos de cambio de 800 y 1200 ni justifican bajarlos para obtener
 alertas. Las comprobaciones SQL de fronteras validan la logica, no los umbrales fisicos.
 
-## Propuesta para el PO
+## Decisión del PO
 
-Conservar 0/800/1200 como rangos operativos del prototipo, sin afirmar que son limites
-medicos, normativos o una calibracion metrologica del MQ-135. La propuesta prioriza
-continuidad del indicador existente; los ensayos disponibles no aportan evidencia
-para una nueva cifra. El PO puede rechazar, solicitar evidencia adicional o acordar
-otros valores. La seleccion original de rangos no acredita esta revision posterior.
+Alfredo confirma conservar 0/800/1200 ppm tras revisar la evidencia de #145 y la propuesta de #146. La declaración fue transmitida por el responsable en esta conversación el 28 de octubre de 2026 (America/La_Paz). Texto íntegro y procedencia: [decisión](evidencias/t8-7/decision-po.md).
 
-No se modifica la BD mientras no haya decision. Si conserva los rangos, no hace falta
-una migracion que reescriba valores identicos. Si los cambia, preparar y revisar un SQL
-versionado que preserve IDs y referencias de alertas, dentro de una transaccion;
-actualizar tambien las expectativas de pruebas. No usar cambios manuales en DBeaver.
+Esta decisión define el indicador del prototipo: no acredita precisión metrológica ni completa la validación física de #145. No se interpreta como aceptación de la habitación como aula o de la cercanía como ocupación equivalente. Los rangos podrán revisarse con mediciones comparables y referencia independiente.
 
-## Registro de revision (pendiente)
+## Aplicación y cierre de nota HU-06
 
-- PO: pendiente de identificar.
-- Fecha y enlace a comentario de decision: pendientes.
-- Evidencia de #177 y sus limitaciones revisadas: pendiente de confirmacion.
-- Decision: propuesta CONSERVAR, todavia no aprobada en esta revision.
-- Motivo y alcance aceptado: pendientes de constancia del PO.
-- Nota provisional HU-06: **abierta** hasta esa constancia; no cerrada por este documento.
+Se conservan los valores y textos vigentes; no hay UPDATE ni migración numérica que aplicar. La captura de datos y los seis casos SQL coinciden con la decisión. Si una revisión futura modifica los rangos, deberá incluir SQL versionado transaccional que preserve IDs y referencias de alertas, y actualizar sus pruebas; no usar cambios manuales.
 
-El responsable indico que cree que el PO ya reviso y que fue quien definio los rangos.
-Se registra como antecedente comunicado, sin convertirlo en aprobacion actual.
+La nota provisional de selección de rangos de HU-06 queda cerrada por esta decisión operativa. database/esquema.sql y docs/api.md enlazan este registro. Se mantienen las limitaciones del MQ-135 y la evidencia histórica; no se reescriben resultados anteriores ni se cierra #145 o toda HU-08.
 
-## Pasos para cerrar despues de la decision
-
-1. Adjuntar decision explicita del PO con nombre, fecha, rangos y alcance aceptado.
-2. Resolver la dependencia #145 o registrar la aceptacion formal de su alcance reducido.
-3. Si hay cambio, incluir y ejecutar el SQL versionado; consultar de nuevo los rangos.
-4. Actualizar la nota provisional de database/esquema.sql y docs/api.md enlazando este
-   registro ya completado. Conservar las limitaciones del sensor y evidencias historicas.
-5. Adjuntar captura real de la consulta de umbrales (por ejemplo DBeaver), ademas del JSON.
-6. Marcar lista para revision; no fusionar sin aprobacion del equipo.
+La revisión y fusión de esta PR siguen el flujo habitual del equipo. La declaración recibida del PO no se suplanta como una review de GitHub. La dependencia #145 aporta evidencia exploratoria y permanece con validación física pendiente, tal como la decisión reconoce.
 
 ## Reproduccion de comprobacion
 

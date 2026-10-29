@@ -1,0 +1,20 @@
+{
+  "fecha": "2026-10-29T11:44:16.941Z",
+  "esquema": "Temporal aislado y eliminado al terminar",
+  "pruebas": [
+    {
+      "caso": "Importacion completa conserva fila previa y evita colision de IDs",
+      "resultado": "PASS",
+      "filas_totales": 10419
+    },
+    {
+      "caso": "Segunda ejecucion no duplica",
+      "resultado": "PASS",
+      "filas_totales": 10419
+    },
+    {
+      "caso": "CSV incompleto falla sin modificar destino",
+      "resultado": "PASS"
+    }
+  ]
+}

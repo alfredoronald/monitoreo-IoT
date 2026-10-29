@@ -1,4 +1,15 @@
+> Ruta actual T-8.4: con Ro configurado y aceptado se usa la conversión
+> descrita en [CO2 con Ro configurado](co2-con-ro-configurado.md), sin capturar
+> una referencia nueva de 400 ppm. Este documento conserva el procedimiento
+> anterior para configuraciones sin Ro y sus evidencias históricas.
+
 # T-1.5 / Issue #11: estimación provisional física del MQ-135
+
+La captura de Rs de T-8.1 tiene comandos `mq135 calibracion iniciar/estado/detener`.
+Su [procedimiento y evidencia](../../docs/evidencias/t8-1/README.md) describen
+el bloqueo estricto por RL efectiva sin verificar, la captura de Rs estimada
+con carga nominal y topologia supuesta, la omisión temporal de CO2 y la
+recuperación de la referencia provisional al detener. El promedio Rs no es Ro.
 
 ## Alcance actual de CA-03
 

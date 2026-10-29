@@ -1,7 +1,7 @@
 // ============================================================
 // Monitoreo IoT - Firmware ESP32
 // T-1.4: lectura del DHT22 con validación del rango del aula.
-// T-1.5: inicio físico automático con referencia provisional; demo [SIMULADO].
+// T-8.4: conversión física con Ro configurado; demo [SIMULADO] separada.
 // T-1.6: WiFi/MQTT con reconexión, sin esperar conexiones en loop().
 // T-1.7: publicación periódica de muestras físicas recientes, por variable.
 // ============================================================
@@ -27,6 +27,7 @@
 #include "mq135_reference_log.h"
 #include "mq135_acquisition.h"
 #include "mq135_site_config.h"
+#include "serial_line_parser.h"
 #if !MQ135_SIMULATED_DEMO
 #include "mq135_adc_filter.h"
 #endif
@@ -39,10 +40,6 @@
 // Versión final: comandos y métricas de prueba temporal excluidos.
 #ifndef WIFI_TEMPORARY_TEST
 #define WIFI_TEMPORARY_TEST 0
-#endif
-
-#if MQTT_TEMPORARY_TEST && WIFI_TEMPORARY_TEST
-#error "La prueba MQTT requiere WIFI_TEMPORARY_TEST=0: un solo lector Serial"
 #endif
 
 namespace {
@@ -70,6 +67,8 @@ unsigned long lastAttemptFinishedMs = 0;
 // Solo se comparte esta copia, nunca dht, mq135 ni el cliente MQTT.
 portMUX_TYPE publicationMux = portMUX_INITIALIZER_UNLOCKED;
 mqtt_publication::Snapshot publicationSnapshot;
+bool connectionTaskAvailable = false;
+bool calibrationStartPending = false;  // Propiedad de loop(), nunca de la tarea de red.
 
 #if MQTT_TEMPORARY_TEST
 // Exclusivo de loop(); la tarea de red solo lee el snapshot protegido.
@@ -88,6 +87,13 @@ void invalidateCo2Publication() {
   portENTER_CRITICAL(&publicationMux);
   mqtt_publication::record(publicationSnapshot.co2,
       mqtt_publication::SampleState::Unavailable, 0.0, now);
+  portEXIT_CRITICAL(&publicationMux);
+}
+
+void setCalibrationPublication(bool active) {
+  const auto now = static_cast<std::uint32_t>(millis());
+  portENTER_CRITICAL(&publicationMux);
+  mqtt_publication::setCalibrationCapture(publicationSnapshot, active, now);
   portEXIT_CRITICAL(&publicationMux);
 }
 
@@ -175,11 +181,10 @@ struct WifiTemporaryTest {
   unsigned long disconnectRequestedMs = 0;
   unsigned long recoveryRequestedMs = 0;
   unsigned long ipRecoveryMs = 0;
-  char command[32]{};
-  size_t commandLength = 0;
-  bool commandOverflow = false;
 };
 WifiTemporaryTest wifiTest;
+struct WifiTestCommand { char text[32]; };
+QueueHandle_t wifiTestCommands = nullptr;
 
 void reportWifiTestIp(unsigned long timestampMs, const char* origin) {
   if (!wifiTest.recoveryRequested || wifiTest.retriesSuspended || wifiTest.ipReported ||
@@ -268,30 +273,11 @@ void handleWifiTestCommand(const char* command, bool& attemptPending, bool& asso
 }
 
 void pollWifiTestCommands(bool& attemptPending, bool& associated) {
-  // Lectura incremental y acotada. Nunca readStringUntil(), esperas de línea
-  // ni un bucle que pueda quedarse consumiendo Serial permanentemente.
-  for (unsigned readCount = 0; readCount < 32 && Serial.available() > 0; ++readCount) {
-    const int received = Serial.read();
-    if (received < 0) break;
-    const char character = static_cast<char>(received);
-    if (character == '\r' || character == '\n') {
-      if (wifiTest.commandOverflow) {
-        Serial.println("WiFi PRUEBA: línea inválida o demasiado larga; descartada sin ejecutarla");
-      } else if (wifiTest.commandLength != 0) {
-        wifiTest.command[wifiTest.commandLength] = '\0';
-        handleWifiTestCommand(wifiTest.command, attemptPending, associated);
-      }
-      std::memset(wifiTest.command, 0, sizeof(wifiTest.command));
-      wifiTest.commandLength = 0;
-      wifiTest.commandOverflow = false;
-    } else if (!wifiTest.commandOverflow) {
-      if (character == '\0' || wifiTest.commandLength >= sizeof(wifiTest.command) - 1) {
-        wifiTest.commandOverflow = true;  // Descartar todo hasta fin de línea.
-      } else {
-        wifiTest.command[wifiTest.commandLength++] = character;
-      }
-    }
-  }
+  // Un solo lector Serial en loop(); la tarea de red recibe ordenes por cola.
+  WifiTestCommand command{};
+  if (wifiTestCommands != nullptr &&
+      xQueueReceive(wifiTestCommands, &command, 0) == pdTRUE)
+    handleWifiTestCommand(command.text, attemptPending, associated);
 }
 #endif  // WIFI_TEMPORARY_TEST
 
@@ -557,7 +543,7 @@ void connectionTask(void*) {
   mqtt.setServer(mqtt_host, mqtt_port);
   mqtt.setSocketTimeout(mqtt_socket_timeout_s);
   mqtt.setKeepAlive(mqtt_keepalive_s);
-  Serial.printf("MQTT publicacion: intervalo=%lu ms; edad maxima=%lu ms; CO2 provisional\n",
+  Serial.printf("MQTT publicacion: intervalo=%lu ms; edad maxima=%lu ms; CO2 estimado\n",
                 static_cast<unsigned long>(mqtt_publication_config::INTERVAL_MS),
                 static_cast<unsigned long>(mqtt_publication::MAX_SAMPLE_AGE_MS));
   wifiObservations = xQueueCreate(16, sizeof(WifiObservation));
@@ -610,6 +596,11 @@ void connectionTask(void*) {
 #endif
 
   for (;;) {
+    // Confirmar entre ciclos, despues de completar cualquier publish anterior.
+    // loop() espera este ACK sin bloquear antes de activar la captura fisica.
+    portENTER_CRITICAL(&publicationMux);
+    mqtt_publication::acknowledgeCalibrationCapture(publicationSnapshot);
+    portEXIT_CRITICAL(&publicationMux);
 #if WIFI_TEMPORARY_TEST
     pollWifiTestCommands(wifiAttemptPending, wifiAssociated);
 #endif
@@ -773,8 +764,12 @@ void connectionTask(void*) {
                         mqtt_publication::omissionName(message.omission));
         }
       }
-      mqtt_publication::transmit(cycle, [&mqtt, publicationMs](const char* topic,
+      mqtt_publication::transmit(cycle, [&mqtt, &cycle, publicationMs](const char* topic,
                                                              const char* payload) {
+        if (!mqtt_publication::mayTransmit(cycle, copyPublicationSnapshot(), topic)) {
+          Serial.println("MQTT omitido: CO2; cambio de modo de calibracion");
+          return false;
+        }
         const bool sent = mqtt.publish(topic, payload, false);  // QoS 0, no retained.
         Serial.printf("[%lu ms] MQTT publicacion: %s; payload=%s; %s\n",
                       static_cast<unsigned long>(publicationMs), topic, payload,
@@ -1031,8 +1026,14 @@ void setup() {
     queueMq135Output("MQ-135 [FISICO]: inicio automático tras calentamiento y tres muestras válidas; comandos: mq135 ayuda\n");
   }
   // ESP32-WROOM-32: comunicación en core 0; loop() conserva sus lecturas.
-  if (xTaskCreatePinnedToCore(connectionTask, "wifi-mqtt", 4096, nullptr, 1,
-                            nullptr, 0) != pdPASS) {
+#if WIFI_TEMPORARY_TEST
+  wifiTestCommands = xQueueCreate(4, sizeof(WifiTestCommand));
+  if (wifiTestCommands == nullptr)
+    Serial.println("WiFi PRUEBA: sin memoria para ordenes; pruebas WiFi no disponibles");
+#endif
+  connectionTaskAvailable = xTaskCreatePinnedToCore(
+      connectionTask, "wifi-mqtt", 4096, nullptr, 1, nullptr, 0) == pdPASS;
+  if (!connectionTaskAvailable) {
     Serial.println("WiFi/MQTT ERROR: no se pudo crear la tarea; sensores continúan");
   }
 }
@@ -1086,6 +1087,35 @@ void readDhtIfDue() {
                 attemptTimestampMs, temperature, humidity);
 }
 
+void reportMq135Calibration() {
+  if (calibrationStartPending)
+    queueMq135Output("MQ-135 CALIBRACION: INICIO_PENDIENTE; esperando confirmacion de omision CO2\n");
+  char output[512];
+  const int written = mq135_acquisition::formatCalibration(
+      mq135.calibration(), mq135.calibrationLoad(), mq135.circuitRevision(),
+      output, sizeof(output));
+  if (written >= 0 && static_cast<std::size_t>(written) < sizeof(output))
+    queueMq135Output(output);
+  else queueMq135Output("MQ-135 CALIBRACION: error de formato; consultar estado\n");
+}
+
+void serviceMq135CalibrationStart() {
+  if (!calibrationStartPending) return;
+  if (connectionTaskAvailable && !copyPublicationSnapshot().co2SuppressionAcknowledged)
+    return;
+  const auto result = mq135.startCalibration();
+  calibrationStartPending = false;
+  discardMq135Output();
+  if (result == mq135_experimental::Status::Ok) {
+    queueMq135Output("MQ-135 CALIBRACION: iniciada; CO2 omitido; DHT22/WiFi/MQTT continuan\n");
+  } else {
+    setCalibrationPublication(false);
+    queueMq135Printf("MQ-135 CALIBRACION: inicio rechazado; %s\n",
+                     mq135_acquisition::statusMessage(result));
+  }
+  reportMq135Calibration();
+}
+
 void updateMq135() {
   const auto timestampMs = static_cast<std::uint32_t>(millis());
   if (!mq135.poll(timestampMs)) return;
@@ -1131,7 +1161,7 @@ void updateMq135() {
 #endif
   // Controller ya aplicó calentamiento, ADC 100–950 mV, referencia y emisión.
   // La publicación añade procedencia física; jamás envía la demo como CO2 real.
-  auto co2State = mqtt_publication::mq135State(observation, mq135.record() != nullptr);
+  auto co2State = mqtt_publication::mq135State(observation, mq135.referenceAvailable());
 #if MQTT_TEMPORARY_TEST
   // Solo inhibir la copia MQTT: conservar adquisición, estimador y salida física.
   if (mqttTestCo2Omitted) co2State = mqtt_publication::SampleState::Unavailable;
@@ -1140,9 +1170,13 @@ void updateMq135() {
   mqtt_publication::record(publicationSnapshot.co2, co2State,
                           observation.ppm.value, timestampMs);
   portEXIT_CRITICAL(&publicationMux);
+  if (mq135.calibration().active()) {
+    reportMq135Calibration();
+    return;  // El arranque automatico provisional permanece detenido.
+  }
   char output[384];
   const int written = mq135_acquisition::formatObservation(observation, output,
-                                                          sizeof(output));
+      sizeof(output), mq135.calibratedReferenceReady());
   if (written >= 0 && static_cast<std::size_t>(written) < sizeof(output)) {
     queueMq135Output(output);
   } else {
@@ -1160,6 +1194,13 @@ void updateMq135() {
   using mq135_experimental::Status;
   if (mq135AutomaticStartup == Mq135AutomaticStartup::WaitingForWarmup &&
       mq135.warmupComplete()) {
+    if (mq135.usesCalibratedReference()) {
+      mq135AutomaticStartup = Mq135AutomaticStartup::Stopped;
+      const auto result = mq135.enableEmission();
+      queueMq135Printf("MQ-135 inicio con Ro configurado: %s\n",
+                      mq135_acquisition::statusMessage(result));
+      return;  // No fabrica una nueva referencia de 400 ppm al arrancar.
+    }
     // Solicitar después de observar el turno: el registro exige muestras
     // posteriores a la solicitud. Las tres siguientes conservan los 2000 ms.
     const auto result = mq135.startReference();
@@ -1206,6 +1247,46 @@ bool handleMqttTestCommand(const char* command) {
 void handleMq135Command(const char* command) {
   using mq135_experimental::Status;
   Status result = Status::Ok;
+  using serial_line_parser::CalibrationCommand;
+  const auto calibrationCommand = serial_line_parser::calibrationCommand(command);
+  if (calibrationCommand != CalibrationCommand::None) {
+    if (mq135.source() != mq135_acquisition::Source::Physical) {
+      queueMq135Output("MQ-135 CALIBRACION: rechazada [SIMULADO]; requiere adquisicion fisica\n");
+      return;
+    }
+    if (calibrationCommand == CalibrationCommand::Start) {
+      if (!mq135.calibration().active() && !calibrationStartPending) {
+        setCalibrationPublication(true);
+        mq135.invalidateReference();
+        calibrationStartPending = true;
+        discardMq135Output();
+#if !MQ135_SIMULATED_DEMO
+        mq135AutomaticStartup = Mq135AutomaticStartup::Stopped;
+#endif
+      }
+    } else if (calibrationCommand == CalibrationCommand::Stop) {
+      const bool wasPending = calibrationStartPending;
+      calibrationStartPending = false;
+      if (mq135.stopCalibration() || wasPending) {
+        setCalibrationPublication(false);
+        discardMq135Output();
+#if !MQ135_SIMULATED_DEMO
+        mq135AutomaticStartup = Mq135AutomaticStartup::WaitingForWarmup;
+#endif
+        queueMq135Output("MQ-135 CALIBRACION: detenida; recuperando referencia provisional con muestras nuevas\n");
+      }
+    }
+    reportMq135Calibration();
+    return;
+  }
+  // Estado/ayuda/diagnostico son seguros; los controles antiguos no pueden
+  // alterar una captura ni reactivar ppm o la referencia provisional.
+  if ((mq135.calibration().active() || calibrationStartPending) &&
+      (std::strncmp(command, "mq135 referencia ", 17) == 0 ||
+       std::strncmp(command, "mq135 ppm ", 10) == 0)) {
+    queueMq135Output("MQ-135: captura de calibracion activa; usar mq135 calibracion detener\n");
+    return;
+  }
   if (std::strcmp(command, "mq135 adc diagnostico") == 0) {
     reportMq135AdcDiagnostic();  // Reimprime datos del arranque, sin adquirir ADC.
     return;
@@ -1271,6 +1352,7 @@ void handleMq135Command(const char* command) {
     }
     return;
   } else if (std::strcmp(command, "mq135 ayuda") == 0) {
+    queueMq135Output("mq135 calibracion iniciar/estado/detener; Rs estimada si [EXPERIMENTAL]; promedio Rs NO es Ro\n");
     queueMq135Output("mq135 estado | mq135 referencia iniciar/cancelar/invalidar\n");
     queueMq135Output("mq135 adc diagnostico: reimprimir eFuse y metodo, sin muestrear\n");
     queueMq135Output("mq135 ppm habilitar/deshabilitar; ver firmware/docs/mq135-experimental.md\n");
@@ -1283,38 +1365,38 @@ void handleMq135Command(const char* command) {
 }
 
 void processMq135Commands() {
-  static char command[64];
-  static std::size_t length = 0;
-  static bool overflow = false;
+  static serial_line_parser::Parser parser;
   // Máximo 32 caracteres por vuelta; sin readStringUntil, delay ni espera.
   for (unsigned budget = 0; budget < 32 && Serial.available() > 0; ++budget) {
-    const char character = static_cast<char>(Serial.read());
-    if (character == '\r') continue;
-    if (character == '\n') {
-      if (overflow) queueMq135Output("Comando MQ-135 descartado: demasiado largo\n");
-      else if (length > 0) {
-        command[length] = '\0';
-#if MQTT_TEMPORARY_TEST
-        if (!handleMqttTestCommand(command)) {
-          handleMq135Command(command);
-        }
-#else
-        handleMq135Command(command);
-#endif
+    const int received = Serial.read();
+    if (received < 0) break;
+    parser.feed(static_cast<char>(received), [](const char* command) {
+#if WIFI_TEMPORARY_TEST
+      if (std::strcmp(command, "wifi prueba desconectar") == 0 ||
+          std::strcmp(command, "wifi prueba reconectar") == 0) {
+        WifiTestCommand request{};
+        std::strcpy(request.text, command);
+        if (wifiTestCommands == nullptr ||
+            xQueueSend(wifiTestCommands, &request, 0) != pdTRUE)
+          queueMq135Output("WiFi PRUEBA: cola de ordenes no disponible o llena\n");
+        return;
       }
-      length = 0;
-      overflow = false;
-    } else if (!overflow) {
-      if (length + 1 < sizeof(command)) command[length++] = character;
-      else overflow = true;
-    }
+#endif
+#if MQTT_TEMPORARY_TEST
+      if (handleMqttTestCommand(command)) return;
+#endif
+      handleMq135Command(command);
+    }, []() {
+      queueMq135Output("Comando serie descartado: linea invalida o demasiado larga\n");
+    });
   }
 }
 }  // namespace
 
 void loop() {
+  processMq135Commands();
+  serviceMq135CalibrationStart();
   readDhtIfDue();
   updateMq135();
-  processMq135Commands();
   flushMq135Output();
 }

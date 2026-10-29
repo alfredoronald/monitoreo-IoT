@@ -2,7 +2,21 @@
 #define MONITOREO_IOT_MQ135_SITE_CONFIG_H
 
 #include "mq135_acquisition.h"
+#include "mq135_calibration_config.h"
 #include <cstring>
+
+#ifndef MQ135_CALIBRATED_RO_KOHM
+#define MQ135_CALIBRATED_RO_KOHM 0.0
+#endif
+#ifndef MQ135_CALIBRATION_ACCEPTED
+#define MQ135_CALIBRATION_ACCEPTED 0
+#endif
+#if MQ135_CALIBRATION_ACCEPTED != 0 && MQ135_CALIBRATION_ACCEPTED != 1
+#error "MQ135_CALIBRATION_ACCEPTED debe ser 0 o 1"
+#endif
+#ifndef MQ135_SUPPLY_V
+#define MQ135_SUPPLY_V 4.89
+#endif
 
 #ifndef MQ135_SIMULATED_DEMO
 #define MQ135_SIMULATED_DEMO 0
@@ -32,12 +46,14 @@ inline mq135_acquisition::Configuration electricalConfiguration() {
   config.electricalVerified = true;  // Divisor instalado y comprobado por el responsable.
   config.directAoConnection = false;
   config.adcToAoVoltageRatio = 0.5;  // VAO = VADC / 0.5; nunca usar VADC como AO.
-  config.measuredVcV = 4.89;  // Medición puntual comunicada, no estabilidad probada.
+  config.measuredVcV = MQ135_SUPPLY_V;  // Valor del montaje documentado, no Vref ADC.
   config.electrical.circuitRevision = 3;
   std::strcpy(config.verificationEvidenceId,
               "docs/evidencias/t1-5/mq135-divisor-10k-rev3.md");
-  std::strcpy(config.electrical.circuitDescription,
-              "MQ-135 VIN/5V=4.89 V; AO-R1=10k-GPIO34; R2=10k GPIO34-GND; GND comun; k=0.50");
+  std::snprintf(config.electrical.circuitDescription,
+      sizeof(config.electrical.circuitDescription),
+      "MQ-135 Vc=%.2f V; AO-R1=10k-GPIO34; R2=10k GPIO34-GND; GND comun; k=0.50",
+      config.measuredVcV);
   std::strcpy(config.electrical.adcConversionId,
               "EFUSE_VREF-ADC1_CH6-12bit-0dB-REV3-OPERATIVO-100-950mV");
   // Mediana física=511 -> 191 mV; multímetro GPIO34–GND=170–200 mV.
@@ -56,6 +72,9 @@ inline mq135_acquisition::Configuration electricalConfiguration() {
   config.adcConversionVerified = true;
   config.referenceSampleCount = REFERENCE_SAMPLE_COUNT;
   config.maxRelativeSpread = mq135_experimental::NO_SPREAD_LIMIT;
+  config.calibrationLoad = mq135_calibration_config::loadConfiguration();
+  config.calibratedRoKohm = MQ135_CALIBRATED_RO_KOHM;
+  config.calibrationAccepted = MQ135_CALIBRATION_ACCEPTED == 1;
   // TP no disponible; VREF eFuse=1058 mV comunicado. Se consulta en el chip:
   // NO poner 1058 en measuredAdcVrefMilliVolts, que es un fallback MEDIDO externo.
   return config;  // El inicio automático usa las mismas verificaciones que los comandos.

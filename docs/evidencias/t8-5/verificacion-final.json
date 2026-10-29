@@ -1,0 +1,61 @@
+{
+  "verificado_en": "2026-10-28T23:28:22.006Z",
+  "intervalo_config_h_ms": 15000,
+  "lecturas": [
+    {
+      "id": "1980",
+      "fecha_hora": "2026-10-28T23:28:20.400Z",
+      "tipo_variable": "co2",
+      "valor": "385.30"
+    },
+    {
+      "id": "1979",
+      "fecha_hora": "2026-10-28T23:28:20.394Z",
+      "tipo_variable": "humedad",
+      "valor": "65.30"
+    },
+    {
+      "id": "1978",
+      "fecha_hora": "2026-10-28T23:28:20.152Z",
+      "tipo_variable": "temperatura",
+      "valor": "20.30"
+    },
+    {
+      "id": "1977",
+      "fecha_hora": "2026-10-28T23:28:05.258Z",
+      "tipo_variable": "co2",
+      "valor": "365.90"
+    },
+    {
+      "id": "1976",
+      "fecha_hora": "2026-10-28T23:28:05.252Z",
+      "tipo_variable": "humedad",
+      "valor": "64.90"
+    },
+    {
+      "id": "1975",
+      "fecha_hora": "2026-10-28T23:28:05.132Z",
+      "tipo_variable": "temperatura",
+      "valor": "20.30"
+    },
+    {
+      "id": "1974",
+      "fecha_hora": "2026-10-28T23:27:50.196Z",
+      "tipo_variable": "co2",
+      "valor": "392.00"
+    },
+    {
+      "id": "1973",
+      "fecha_hora": "2026-10-28T23:27:50.189Z",
+      "tipo_variable": "humedad",
+      "valor": "64.90"
+    },
+    {
+      "id": "1972",
+      "fecha_hora": "2026-10-28T23:27:50.135Z",
+      "tipo_variable": "temperatura",
+      "valor": "20.30"
+    }
+  ],
+  "nota": "Consulta real tras restaurar firmware a 15 s. Config.h no incluido."
+}

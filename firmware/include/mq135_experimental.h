@@ -43,7 +43,9 @@ enum class Status {
   VoltageOutsideAdcRange,
   EmissionDisabled,
   CaptureNotActive,
-  SampleNotDue
+  SampleNotDue,
+  LoadNotVerified,
+  CalibrationActive
 };
 
 struct Result {

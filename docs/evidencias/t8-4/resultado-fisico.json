@@ -1,0 +1,12 @@
+{
+  "fecha": "2026-10-28T18:36:24.627304-04:00",
+  "ubicacion": "Junto a ventana abierta con viento, segun declaracion del responsable; no exterior verificado",
+  "ro_kohm": 49.486,
+  "vcc_aproximado_v": 4.54,
+  "muestras_ppm": 35,
+  "min_ppm": 269.4,
+  "max_ppm": 338.16,
+  "media_ppm": 307.7817142857143,
+  "todas_350_500": false,
+  "limitaciones": "Ro experimental y RL nominal; ventana abierta no garantiza condicion exterior."
+}

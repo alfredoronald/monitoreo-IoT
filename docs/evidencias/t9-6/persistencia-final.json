@@ -1,0 +1,217 @@
+{
+  "issue": 152,
+  "verified": "2026-10-29T15:34:07.722Z",
+  "status": "CUATRO_GRUPOS_REGISTRADOS",
+  "database": "monitoreo_ambiental",
+  "before": 6,
+  "afterFirst": 9,
+  "afterSecond": 9,
+  "idempotent": true,
+  "originalReadingsPreserved": 15,
+  "rows": [
+    {
+      "id": "1",
+      "descripcion": "#148 2026-10-28T03:26:42.582Z-50c9e2e3f7b1 qos0",
+      "ejecucion_clave": "148:2026-10-28T03:26:42.582Z-50c9e2e3f7b1:qos0",
+      "duracion_min": null,
+      "qos": 0,
+      "intervalo_s": null,
+      "enviados": 500,
+      "recibidos": 500,
+      "guardados": 500,
+      "perdidos_pct": "0.00",
+      "metricas": {
+        "fin": "2026-10-28T03:27:00.202Z",
+        "inicio": "2026-10-28T03:26:44.426Z",
+        "duplicados": 0,
+        "qos_efectivo": 0,
+        "publicacion_qos": 0,
+        "suscripcion_qos": 0,
+        "recibidos_eventos": 500,
+        "periodo_publicacion_ms": 20
+      }
+    },
+    {
+      "id": "2",
+      "descripcion": "#148 2026-10-28T03:26:42.582Z-50c9e2e3f7b1 qos1",
+      "ejecucion_clave": "148:2026-10-28T03:26:42.582Z-50c9e2e3f7b1:qos1",
+      "duracion_min": null,
+      "qos": 1,
+      "intervalo_s": null,
+      "enviados": 500,
+      "recibidos": 500,
+      "guardados": 500,
+      "perdidos_pct": "0.00",
+      "metricas": {
+        "fin": "2026-10-28T03:27:16.064Z",
+        "inicio": "2026-10-28T03:27:00.202Z",
+        "duplicados": 0,
+        "qos_efectivo": 0,
+        "publicacion_qos": 1,
+        "suscripcion_qos": 0,
+        "recibidos_eventos": 500,
+        "periodo_publicacion_ms": 20
+      }
+    },
+    {
+      "id": "5",
+      "descripcion": "#151 2026-10-28T14:30:57.374Z-476e9a50998e latencia",
+      "ejecucion_clave": "151:2026-10-28T14:30:57.374Z-476e9a50998e:latencia",
+      "duracion_min": null,
+      "qos": 0,
+      "intervalo_s": null,
+      "enviados": 10,
+      "recibidos": 10,
+      "guardados": 10,
+      "perdidos_pct": "0.00",
+      "metricas": {
+        "fin": "2026-10-28T14:33:48.629Z",
+        "inicio": "2026-10-28T14:30:57.374Z",
+        "conteos": "10 publicaciones, observaciones visuales y filas confirmadas; no conteo independiente de eventos MQTT.",
+        "aprobado": true,
+        "promedio_segundos": 14.9012,
+        "latencias_segundos": [
+          15.038,
+          14.81,
+          14.943,
+          14.964,
+          14.85,
+          14.903,
+          14.81,
+          14.853,
+          14.963,
+          14.878
+        ],
+        "datos_sinteticos_eliminados": true
+      }
+    },
+    {
+      "id": "6",
+      "descripcion": "#150 1f8a80d8-d766-49af-913a-921d2f39cbb0 temperatura",
+      "ejecucion_clave": "150:1f8a80d8-d766-49af-913a-921d2f39cbb0:temperatura",
+      "duracion_min": "5.0",
+      "qos": null,
+      "intervalo_s": 15,
+      "enviados": 20,
+      "recibidos": 20,
+      "guardados": 20,
+      "perdidos_pct": "0.00",
+      "metricas": {
+        "fin": "2026-10-29T15:32:16.551Z",
+        "inicio": "2026-10-29T15:27:16.551Z",
+        "conteos": "Enviados=esperadas teóricas; recibidos=mínimo confirmado por persistencia, no medición MQTT independiente.",
+        "aprobado": true,
+        "esperadas": 20,
+        "porcentaje": 100,
+        "incidencias": []
+      }
+    },
+    {
+      "id": "7",
+      "descripcion": "#150 1f8a80d8-d766-49af-913a-921d2f39cbb0 humedad",
+      "ejecucion_clave": "150:1f8a80d8-d766-49af-913a-921d2f39cbb0:humedad",
+      "duracion_min": "5.0",
+      "qos": null,
+      "intervalo_s": 15,
+      "enviados": 20,
+      "recibidos": 20,
+      "guardados": 20,
+      "perdidos_pct": "0.00",
+      "metricas": {
+        "fin": "2026-10-29T15:32:16.551Z",
+        "inicio": "2026-10-29T15:27:16.551Z",
+        "conteos": "Enviados=esperadas teóricas; recibidos=mínimo confirmado por persistencia, no medición MQTT independiente.",
+        "aprobado": true,
+        "esperadas": 20,
+        "porcentaje": 100,
+        "incidencias": []
+      }
+    },
+    {
+      "id": "8",
+      "descripcion": "#150 1f8a80d8-d766-49af-913a-921d2f39cbb0 co2",
+      "ejecucion_clave": "150:1f8a80d8-d766-49af-913a-921d2f39cbb0:co2",
+      "duracion_min": "5.0",
+      "qos": null,
+      "intervalo_s": 15,
+      "enviados": 20,
+      "recibidos": 20,
+      "guardados": 20,
+      "perdidos_pct": "0.00",
+      "metricas": {
+        "fin": "2026-10-29T15:32:16.551Z",
+        "inicio": "2026-10-29T15:27:16.551Z",
+        "conteos": "Enviados=esperadas teóricas; recibidos=mínimo confirmado por persistencia, no medición MQTT independiente.",
+        "aprobado": true,
+        "esperadas": 20,
+        "porcentaje": 100,
+        "incidencias": []
+      }
+    },
+    {
+      "id": "11",
+      "descripcion": "#149 2026-10-29T15:25:40.941Z-e9767fd08b85 broker",
+      "ejecucion_clave": "149:2026-10-29T15:25:40.941Z-e9767fd08b85:broker",
+      "duracion_min": "0.3",
+      "qos": null,
+      "intervalo_s": null,
+      "enviados": 0,
+      "recibidos": 0,
+      "guardados": 1,
+      "perdidos_pct": null,
+      "metricas": {
+        "fin": "2026-10-29T15:26:00.577Z",
+        "inicio": "2026-10-29T15:25:40.941Z",
+        "conteos": "Enviados y recibidos no medidos (0); guardados=primera fila de recuperación.",
+        "aprobado": true,
+        "lectura_id": "47",
+        "recuperacion_segundos": 19.636
+      }
+    },
+    {
+      "id": "12",
+      "descripcion": "#149 2026-10-29T15:26:02.839Z-91d89ff4d73a backend",
+      "ejecucion_clave": "149:2026-10-29T15:26:02.839Z-91d89ff4d73a:backend",
+      "duracion_min": "0.2",
+      "qos": null,
+      "intervalo_s": null,
+      "enviados": 0,
+      "recibidos": 0,
+      "guardados": 1,
+      "perdidos_pct": null,
+      "metricas": {
+        "fin": "2026-10-29T15:26:15.635Z",
+        "inicio": "2026-10-29T15:26:02.839Z",
+        "conteos": "Enviados y recibidos no medidos (0); guardados=primera fila de recuperación.",
+        "aprobado": true,
+        "lectura_id": "50",
+        "recuperacion_segundos": 12.796
+      }
+    },
+    {
+      "id": "13",
+      "descripcion": "#149 2026-10-29T15:26:15.854Z-300ef7c1ed4f wifi",
+      "ejecucion_clave": "149:2026-10-29T15:26:15.854Z-300ef7c1ed4f:wifi",
+      "duracion_min": "0.7",
+      "qos": null,
+      "intervalo_s": null,
+      "enviados": 0,
+      "recibidos": 0,
+      "guardados": 1,
+      "perdidos_pct": null,
+      "metricas": {
+        "fin": "2026-10-29T15:26:59.442Z",
+        "inicio": "2026-10-29T15:26:15.854Z",
+        "conteos": "Enviados y recibidos no medidos (0); guardados=primera fila de recuperación.",
+        "aprobado": true,
+        "lectura_id": "53",
+        "recuperacion_segundos": 43.588
+      }
+    }
+  ],
+  "limitations": [
+    "Continuidad reducida a cinco minutos por solicitud del responsable",
+    "CO2 f?sico anormalmente bajo: transporte verificado, no exactitud del sensor",
+    "QoS y latencia usan publicaciones sint?ticas aisladas, recuperaci?n y continuidad usan ESP32 f?sico"
+  ]
+}

@@ -1,0 +1,311 @@
+{
+  "issue": 151,
+  "source": "Publicaciones sintéticas aisladas; navegador Edge, API autenticada, MQTT y PostgreSQL reales",
+  "started": "2026-10-28T14:30:57.374Z",
+  "ended": "2026-10-28T14:33:48.629Z",
+  "measurements": [
+    {
+      "value": 901,
+      "published": "2026-10-28T14:31:13.673Z",
+      "displayed": "2026-10-28T14:31:28.711Z",
+      "seconds": 15.038,
+      "readingId": "1"
+    },
+    {
+      "value": 902,
+      "published": "2026-10-28T14:31:28.915Z",
+      "displayed": "2026-10-28T14:31:43.725Z",
+      "seconds": 14.81,
+      "readingId": "2"
+    },
+    {
+      "value": 903,
+      "published": "2026-10-28T14:31:43.841Z",
+      "displayed": "2026-10-28T14:31:58.784Z",
+      "seconds": 14.943,
+      "readingId": "3"
+    },
+    {
+      "value": 904,
+      "published": "2026-10-28T14:31:58.895Z",
+      "displayed": "2026-10-28T14:32:13.859Z",
+      "seconds": 14.964,
+      "readingId": "4"
+    },
+    {
+      "value": 905,
+      "published": "2026-10-28T14:32:13.973Z",
+      "displayed": "2026-10-28T14:32:28.823Z",
+      "seconds": 14.85,
+      "readingId": "5"
+    },
+    {
+      "value": 906,
+      "published": "2026-10-28T14:32:28.927Z",
+      "displayed": "2026-10-28T14:32:43.830Z",
+      "seconds": 14.903,
+      "readingId": "6"
+    },
+    {
+      "value": 907,
+      "published": "2026-10-28T14:32:43.933Z",
+      "displayed": "2026-10-28T14:32:58.743Z",
+      "seconds": 14.81,
+      "readingId": "7"
+    },
+    {
+      "value": 908,
+      "published": "2026-10-28T14:32:58.859Z",
+      "displayed": "2026-10-28T14:33:13.712Z",
+      "seconds": 14.853,
+      "readingId": "8"
+    },
+    {
+      "value": 909,
+      "published": "2026-10-28T14:33:13.821Z",
+      "displayed": "2026-10-28T14:33:28.784Z",
+      "seconds": 14.963,
+      "readingId": "9"
+    },
+    {
+      "value": 910,
+      "published": "2026-10-28T14:33:28.895Z",
+      "displayed": "2026-10-28T14:33:43.773Z",
+      "seconds": 14.878,
+      "readingId": "10"
+    }
+  ],
+  "averageSeconds": 14.9012,
+  "passed": true,
+  "cleaned": true,
+  "versions": {
+    "backend": "ab382e3",
+    "frontend": "9de8ba3",
+    "node": "v24.18.0"
+  },
+  "method": "Date.now antes de publish; detección del valor DOM seguida de requestAnimationFrame. Sin recarga, sin mocks, polling normal de 15 s.",
+  "apiRequests": [
+    {
+      "timestamp": "2026-10-28T14:31:13.638Z",
+      "path": "/api/lecturas",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:13.638Z",
+      "path": "/api/lecturas",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:13.638Z",
+      "path": "/api/lecturas",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:13.638Z",
+      "path": "/api/lecturas/ultima",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:13.638Z",
+      "path": "/api/estado-aire",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:13.638Z",
+      "path": "/api/alertas",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:13.638Z",
+      "path": "/api/lecturas",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:13.638Z",
+      "path": "/api/lecturas",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:13.638Z",
+      "path": "/api/lecturas",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:13.638Z",
+      "path": "/api/lecturas/ultima",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:13.638Z",
+      "path": "/api/estado-aire",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:13.638Z",
+      "path": "/api/alertas",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:28.617Z",
+      "path": "/api/lecturas/ultima",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:28.617Z",
+      "path": "/api/estado-aire",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:28.617Z",
+      "path": "/api/alertas",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:43.622Z",
+      "path": "/api/lecturas/ultima",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:43.622Z",
+      "path": "/api/estado-aire",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:43.623Z",
+      "path": "/api/alertas",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:58.618Z",
+      "path": "/api/lecturas/ultima",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:58.619Z",
+      "path": "/api/estado-aire",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:31:58.619Z",
+      "path": "/api/alertas",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:32:13.618Z",
+      "path": "/api/lecturas/ultima",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:32:13.619Z",
+      "path": "/api/estado-aire",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:32:13.619Z",
+      "path": "/api/alertas",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:32:28.619Z",
+      "path": "/api/lecturas/ultima",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:32:28.620Z",
+      "path": "/api/estado-aire",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:32:28.623Z",
+      "path": "/api/alertas",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:32:43.617Z",
+      "path": "/api/lecturas/ultima",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:32:43.618Z",
+      "path": "/api/estado-aire",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:32:43.618Z",
+      "path": "/api/alertas",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:32:58.622Z",
+      "path": "/api/lecturas/ultima",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:32:58.622Z",
+      "path": "/api/estado-aire",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:32:58.622Z",
+      "path": "/api/alertas",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:33:13.616Z",
+      "path": "/api/lecturas/ultima",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:33:13.616Z",
+      "path": "/api/estado-aire",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:33:13.616Z",
+      "path": "/api/alertas",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:33:28.616Z",
+      "path": "/api/lecturas/ultima",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:33:28.617Z",
+      "path": "/api/estado-aire",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:33:28.617Z",
+      "path": "/api/alertas",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:33:43.623Z",
+      "path": "/api/lecturas/ultima",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:33:43.624Z",
+      "path": "/api/estado-aire",
+      "keyPresent": true
+    },
+    {
+      "timestamp": "2026-10-28T14:33:43.624Z",
+      "path": "/api/alertas",
+      "keyPresent": true
+    }
+  ],
+  "apiAuthentication": {
+    "withoutKey": 401,
+    "wrongKey": 401,
+    "correctKey": 200
+  },
+  "pageErrors": [],
+  "cleanup": {
+    "schemaDropped": true,
+    "realReadingsBefore": 15,
+    "realReadingsAfter": 15
+  },
+  "errors": []
+}

@@ -57,7 +57,8 @@ CREATE TABLE IF NOT EXISTS umbrales (
     CONSTRAINT uq_umbrales_variable_nivel UNIQUE (tipo_variable, nivel)
 );
 
--- Umbrales provisionales de CO2; seguimiento de revision PO en docs/revision-umbrales-t8-7.md.
+-- Rangos operativos confirmados por el PO en T-8.7; docs/revision-umbrales-t8-7.md.
+-- No acreditan precision metrologica del MQ-135 ni validacion fisica de T-8.6.
 INSERT INTO umbrales (tipo_variable, nivel, valor_desde, etiqueta, recomendacion) VALUES
     ('co2', 'bueno',       0, 'Aire bueno',     'No hace falta ventilar.'),
     ('co2', 'moderado',  800, 'Aire moderado',  'Conviene ventilar pronto.'),

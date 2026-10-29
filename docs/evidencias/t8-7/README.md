@@ -1,7 +1,8 @@
-# T-8.7: evidencia preparatoria
+# T-8.7: rangos operativos confirmados
 
 - umbrales-consultados.json: consulta real de PostgreSQL local, sin cambiar datos.
-- verificacion-fronteras.json: ejecucion real de database/review_co2_thresholds.sql, 6/6 PASS. Entradas de frontera sinteticas, no mediciones fisicas ni validacion de calidad del aire.
-- Registro y propuesta: docs/revision-umbrales-t8-7.md.
+- verificacion-fronteras.json: 6/6 PASS en SQL de solo lectura; entradas de frontera sintéticas, no mediciones físicas.
+- decision-po.md: declaración de Alfredo transmitida por el responsable, procedencia y alcance explícitos.
+- umbrales.html: informe de la consulta real para inspección visual; no es la interfaz de DBeaver.
 
-Pendientes: captura de la consulta en la herramienta de BD, decision actual identificable del PO y cierre documentado de la nota provisional HU-06. No se inventa una aprobacion ni se cambia el estado de la nota. Las limitaciones de #145 / PR #177 deben formar parte de la revision.
+Se conservan 0/800/1200 ppm; no requiere migración numérica. Se cierra la nota provisional de selección de umbrales HU-06. #145 y la precisión metrológica no quedan aprobadas por esta decisión. Véase docs/revision-umbrales-t8-7.md.

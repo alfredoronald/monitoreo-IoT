@@ -20,6 +20,20 @@ const seconds = (value: unknown) => {
   return value;
 };
 
+// Ordena objetos, no arrays: cambia el formato del archivo, no su significado.
+function canonicalValue(value: any): any {
+  if (Array.isArray(value)) return value.map(canonicalValue);
+  if (value !== null && typeof value === 'object')
+    return Object.fromEntries(Object.keys(value).sort().map(key => [key, canonicalValue(value[key])]));
+  return value;
+}
+export function evidenceIdentity(raw: string) {
+  const data = JSON.parse(raw);
+  const canonicalSha256 = createHash('sha256').update(JSON.stringify(canonicalValue(data))).digest('hex');
+  return { data, canonicalSha256,
+    identity: data.issue === 150 ? data.runId : `${data.started ?? ''}-v2-${canonicalSha256}` };
+}
+
 // Solo admite los JSON generados por los ensayos de #148–#151.
 export function normalizeEvidence(data: any, identity: string): Metric[] {
   const make = (suffix: string, values: Omit<Metric, 'key' | 'description'>): Metric => ({
@@ -81,13 +95,12 @@ export async function importResults() {
   const apply = args.includes('--apply');
   const paths = args.filter(value => value !== '--apply');
   if (!paths.length) throw new Error('Indica uno o más archivos JSON de resultados. --apply persiste en PostgreSQL.');
-  const imported: { file: string; sha256: string; rows: Metric[] }[] = [];
+  const imported: { file: string; sha256: string; canonicalSha256: string; rows: Metric[] }[] = [];
   for (const file of paths) {
     const raw = await readFile(resolve(file), 'utf8');
-    const data = JSON.parse(raw);
+    const { data, canonicalSha256, identity } = evidenceIdentity(raw);
     const hash = createHash('sha256').update(raw).digest('hex');
-    const identity = data.issue === 150 ? data.runId : `${data.started ?? ''}-${hash.slice(0,12)}`;
-    imported.push({ file: file.replaceAll('\\','/'), sha256: hash, rows: normalizeEvidence(data, identity) });
+    imported.push({ file: file.replaceAll('\\','/'), sha256: hash, canonicalSha256, rows: normalizeEvidence(data, identity) });
   }
   const rows = imported.flatMap(source => source.rows);
   if (new Set(rows.map(row => row.key)).size !== rows.length) throw new Error('Hay ejecuciones duplicadas en la entrada.');
@@ -100,6 +113,21 @@ export async function importResults() {
         await client.query('BEGIN');
         await client.query(await readFile(new URL('../../database/001_extend_transmission_metrics.sql', import.meta.url), 'utf8'));
         for (const row of rows) {
+          await client.query('SELECT pg_advisory_xact_lock(hashtext($1))', [row.key]);
+          // Migra claves v1 solo si coinciden ensayo, caso y métricas completas.
+          // No borra ni fusiona filas ambiguas: revierte la transacción para revisión.
+          const issue = row.key.split(':')[0], suffix = row.key.split(':').at(-1);
+          if (issue !== '150') {
+            const legacyPrefix = row.key.slice(0, row.key.indexOf('-v2-'));
+            const legacyPattern = `^${legacyPrefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}-[a-f0-9]{12}:${suffix}$`;
+            const matches = (await client.query(`SELECT id, ejecucion_clave FROM pruebas_transmision
+              WHERE ejecucion_clave=$1 OR (ejecucion_clave ~ $2 AND metricas=$3::jsonb) FOR UPDATE`,
+            [row.key, legacyPattern, JSON.stringify(row.metrics)])).rows;
+            if (matches.length > 1) throw new Error('Evidencia con filas duplicadas: revisar antes de migrar claves.');
+            if (matches.length === 1 && matches[0].ejecucion_clave !== row.key)
+              await client.query('UPDATE pruebas_transmision SET ejecucion_clave=$1, descripcion=$2 WHERE id=$3',
+                [row.key, row.description, matches[0].id]);
+          }
           // Reutiliza las filas insertadas por el monitor #150, si existen.
           await client.query('UPDATE pruebas_transmision SET ejecucion_clave=$1 WHERE descripcion=$2 AND ejecucion_clave IS NULL', [row.key, row.description]);
           const stored = (await client.query(`INSERT INTO pruebas_transmision
@@ -122,7 +150,8 @@ export async function importResults() {
   const recovery = new Set(rows.filter(row => row.key.startsWith('149:')).map(row => row.metrics && row.key.split(':').at(-1)));
   const complete = [148,149,150,151].every(issue => present.has(issue)) && recovery.size === 3;
   const report = { issue: 152, persisted: apply, complete, pending: [148,149,150,151].filter(issue => !present.has(issue)),
-    recoveryCases: [...recovery], sources: imported.map(({ file, sha256 }) => ({ file, sha256 })), rows, persistence };
+    recoveryCases: [...recovery], identityVersion: 2,
+    sources: imported.map(({ file, sha256, canonicalSha256 }) => ({ file, sha256, canonicalSha256 })), rows, persistence };
   await writeFile(resolve(directory, 'resumen.json'), JSON.stringify(report, null, 2) + '\n');
   const markdown = ['# Resumen de transmisión — #152', '',
     `Estado: ${complete && apply ? 'cuatro grupos registrados; revisar criterios' : 'PARCIAL: no completa #152'}.`, '',

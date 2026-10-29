@@ -77,3 +77,38 @@ copiar a `docs/` el resumen y evidencia SQL sin secretos para el informe. No mar
 esta issue como aprobada sin revisión del equipo; los cuatro grupos ya están registrados.
 
 Pruebas: `pnpm exec tsx --test tests/transmissionResults.test.ts`.
+
+## Corrección de identidad de importación (v2)
+
+La primera comprobación de idempotencia usó los mismos archivos locales. Una
+copia nueva con `core.autocrlf=true` mostró que las claves v1 dependían de los
+bytes y podían duplicar ensayos al convertir LF/CRLF. Los resultados físicos y
+los resúmenes anteriores se conservan como evidencia histórica de esa versión.
+
+El importador ahora calcula `canonicalSha256` sobre JSON compacto con claves de
+objetos ordenadas recursivamente y arrays en su orden original. La identidad v2
+usa ese hash completo; es estable ante LF/CRLF, espacios y orden de propiedades.
+`sha256` sigue siendo el hash de los bytes leídos para auditar el archivo exacto:
+puede cambiar entre checkouts sin cambiar el ensayo. Un cambio en los datos sí
+cambia el hash canónico. #150 mantiene su `runId` y sus claves anteriores.
+
+Al aplicar, se reconcilian las claves v1 cuando coinciden issue, inicio, caso y
+métricas completas: se preservan id, conteos y lecturas. Si hay múltiples filas
+coincidentes, la transacción se revierte para revisión; no se borran duplicados
+ni se escoge arbitrariamente una fila. La carga y reconciliación son atómicas.
+
+Verificación del 29/10/2026: **109 pruebas unitarias aprobadas**, TypeScript
+estricto correcto y **una prueba de integración PostgreSQL aprobada**. Esta
+última crea un esquema aislado con los nueve resultados v1 publicados, carga
+las seis fuentes en LF, CRLF, compacto y propiedades reordenadas, y confirma
+que las cuatro importaciones conservan nueve filas, ids, fechas, conteos y
+métricas. También introduce una coincidencia ambigua y verifica el rollback.
+El esquema y los archivos temporales se eliminan al terminar. Esta prueba no
+migra las claves de las filas reales de `public.pruebas_transmision`.
+
+Desde `backend/`, con PostgreSQL activo y las variables `PG_*` configuradas:
+
+```powershell
+pnpm exec tsx --test tests/transmissionResults.test.ts
+pnpm exec tsx --test tests/transmissionResults.integration.test.ts
+```

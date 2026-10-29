@@ -1,0 +1,29 @@
+{
+  "issue": 149,
+  "scenario": "wifi",
+  "started": "2026-10-29T15:26:15.854Z",
+  "ended": "2026-10-29T15:26:59.442Z",
+  "baselineId": "52",
+  "seconds": 43.588,
+  "recovered": {
+    "id": "53",
+    "tipo_variable": "temperatura",
+    "valor": "24.60",
+    "fecha_hora": "2026-10-29T15:26:59.201Z"
+  },
+  "source": "ESP32 físico en aula; interrupción automatizada confirmada por proceso/driver y recuperación hasta primera fila SQL",
+  "firmware": "7a0ac17",
+  "buildFlags": [
+    "WIFI_TEMPORARY_TEST=1"
+  ],
+  "samplingIntervalSeconds": 15,
+  "passed": true,
+  "errors": [],
+  "operatorLocation": "Aula real confirmada por el usuario",
+  "outageHoldSeconds": 3,
+  "interruptionConfirmation": {
+    "timestamp": 1793287575.8000364,
+    "line": "[209915 ms] WiFi PRUEBA: desconexión confirmada por SDK; desde solicitud=6 ms; reintentos suspendidos"
+  },
+  "restoreRequested": "2026-10-29T15:26:18.856Z"
+}

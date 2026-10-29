@@ -1,23 +1,26 @@
-# T-8.6: comparación de tres escenarios
+# T-8.6: comparacion de escenarios y repeticion
 
-Resultado: **criterio de subida en cerrado/ocupado NO CUMPLIDO** en estas capturas. Tres ventanas reales de cinco minutos, sin modificar Ro ni normalizar valores.
+Estado: evidencia real ampliada; validacion comparativa pendiente por cambio de condiciones.
 
-| Escenario | Lecturas CO2 | Mínimo ppm | Máximo ppm | Media ppm |
+| Escenario | Lecturas | Minimo ppm | Maximo ppm | Media ppm |
 |---|---:|---:|---:|---:|
 | Exterior | 19 | 365.90 | 444.70 | 393.31 |
 | Aula ventilada | 18 | 306.40 | 356.50 | 332.19 |
-| Aula cerrada y ocupada | 20 | 287.50 | 332.20 | 303.50 |
+| Aula cerrada y ocupada - inicial | 20 | 287.50 | 332.20 | 303.50 |
+| Aula cerrada y ocupada - repeticion con mayor cercania | 11 | 398.70 | 448.40 | 428.76 |
 
-La diferencia de medias cerrado menos ventilado es -28.69 ppm. No se observa la subida pedida por #145; la tendencia comparativa es contraria a la esperada. Esto no demuestra que el CO2 real haya descendido por cerrar el recinto.
+## Repeticion solicitada
 
-Condiciones declaradas: escenario Exterior en la ventana, expuesto al aire y protegido; no se confirmó lado exterior. Recinto interior: habitación pequeña usada como aproximación de aula. Ventilado con puerta y ventana abiertas; cerrado con ambas cerradas y una persona. Las condiciones no fueron verificadas remotamente.
+Nueva ventana de cinco minutos, sin cambiar Ro. El responsable declaro haberse acercado mas al sensor, sin otras acciones. Se recibieron 11 lecturas de CO2 (20 teoricas), 398.70-448.40 ppm, media 428.76 ppm: 96.57 ppm por encima de la media ventilada. Todas las muestras recibidas de esta repeticion superan el maximo ventilado anterior (356.50 ppm). Mayor hueco de recepcion: 110.49 s. No se afirma que se disponga de muestras durante ese hueco.
 
-El rango numérico de la captura Exterior está en 350–500 ppm, pero la equivalencia de la ubicación con exterior abierto queda por validar. La aceptación del recinto como sustituto de aula también corresponde al equipo.
+El incremento numerico esta observado, pero la proximidad del ocupante cambio respecto a la primera prueba; puede influir aire exhalado local y no se cuantifico la distancia. No se puede atribuir el incremento exclusivamente a acumulacion ambiental por cerrar el recinto. La primera captura cerrada (303.50 ppm) se conserva, no se reemplaza. Se incluye tambien la consulta intermedia de un minuto como dato exploratorio separado.
 
-Limitaciones: pruebas cortas y secuenciales, cambios de temperatura/humedad, MQ-135 no selectivo y referencia experimental. No se atribuye una causa concreta sin comprobarla. Se conserva la evidencia completa, incluyendo valores bajos, timestamps y huecos. No declarar la issue aprobada con estos resultados.
+## Condiciones y limites
 
-No se han iniciado nuevas mediciones ni ampliado los cinco minutos acordados por escenario.
+Recinto: habitacion pequena usada como aproximacion de aula. Ocupacion del escenario cerrado: una persona, nunca dos. Ventilado con puerta y ventana abiertas; cerrado con ambas cerradas, segun declaraciones del responsable. Exterior: en la ventana, expuesto al aire y protegido; no se confirmo lado exterior. Condiciones no verificadas remotamente.
+
+El rango exterior observado fue 365.90-444.70 ppm, pero la equivalencia de la ubicacion con exterior abierto queda pendiente. El equipo debe aceptar el uso del recinto aproximado. MQ-135, referencia experimental, pruebas secuenciales, temperatura/humedad y cambio de cercania limitan las conclusiones. No se certifica exactitud ni se declara aprobada la comparacion representativa de aula.
 
 ## Archivos
 
-`evidencias.zip` reúne las tres capturas, resúmenes y condiciones declaradas; `sha256.json` permite comprobar cada archivo. `comparacion.csv` contiene la tabla. No contiene credenciales ni config.h.
+evidencias.zip conserva todas las capturas con timestamps, resumenes y condiciones; sha256.json verifica sus archivos. comparacion.csv contiene las cuatro filas. No contiene credenciales ni config.h. No se alteraron valores para obtener el incremento.

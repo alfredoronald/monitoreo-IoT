@@ -27,7 +27,7 @@ son ilustrativos; no son evidencia de respuestas ejecutadas.
   codificar `+` como `%2B` si se utiliza una zona horaria positiva.
 - Las listas se devuelven como arrays directos, sin envoltorio `data` ni
   paginación implícita. Lista sin coincidencias: **200 con `[]`**, nunca 404.
-- Sprint 2 no exige `API_KEY`. No enviar credenciales MQTT ni PostgreSQL al
+- Las rutas /api requieren `X-API-Key`; sin clave o con clave incorrecta responden 401. No enviar credenciales MQTT ni PostgreSQL al
   navegador. CORS permite el origen configurado en `CORS_ORIGIN` (#77).
 - Errores no incluyen SQL, trazas, contraseñas ni contenido de `.env`.
 
@@ -133,9 +133,12 @@ Respuesta **200**:
   El frontend muestra «Sin datos para clasificar», no «Aire bueno».
 - La clasificación sale de la tabla `umbrales` mediante la vista: se elige
   el mayor `valor_desde` que no supere la lectura. No duplicar rangos en React.
-- Rangos iniciales provisionales de #88: bueno `0 <= valor < 800`, moderado
-  `800 <= valor < 1200`, malo `valor >= 1200`. No son límites médicos ni
-  definitivos; el PO debe revisarlos. Los textos se leen de la base.
+- Rangos operativos de #88 conservados por decisión del PO en #146: bueno `0 <= valor < 800`, moderado
+  `800 <= valor < 1200`, malo `valor >= 1200`. No son límites médicos ni acreditan
+  precisión metrológica del MQ-135. Los textos se leen de la base.
+  Seguimiento de T-8.7: [revision con el PO](revision-umbrales-t8-7.md);
+  la nota provisional de selección de rangos quedó cerrada por esa decisión;
+  la validación física de #145 permanece pendiente.
 
 Para #83, #86 y #91: consultar valores actuales y estado cada **15 s**.
 Una lectura con más de **60 s** de antigüedad se muestra como «Sin datos

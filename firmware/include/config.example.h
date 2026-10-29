@@ -25,7 +25,9 @@ constexpr uint16_t mqtt_keepalive_s = 5;
 
 // T-8.5: publicar cada 15 s; lectura DHT22/MQ-135 permanece cada 2 s.
 #define MQTT_PUBLISH_INTERVAL_MS 15000UL
-// Completar tras aceptar #141 y registrar #142; kOhm con precisión de PostgreSQL.
+// #142/#143: completar en config.h con la calibración aceptada en PostgreSQL.
+// kOhm, exactamente los tres decimales de calibraciones.ro_kohm.
+// El ejemplo queda pendiente: Ro=0 y aceptación=0 no habilitan la conversión.
 #define MQ135_CALIBRATED_RO_KOHM 0.0
 #define MQ135_CALIBRATION_ACCEPTED 0
 // Alimentación del sensor documentada; distinta del Vref interno del ADC.

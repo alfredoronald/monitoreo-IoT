@@ -73,7 +73,7 @@ for (const [from, to, status] of [
 }
 
 before(async () => {
-  await new Promise<void>((resolve) => { server = createApp('http://localhost:5173').listen(0, '127.0.0.1', resolve); });
+  await new Promise<void>((resolve) => { server = createApp('http://localhost:5173', 'test-only-key').listen(0, '127.0.0.1', resolve); });
   port = (server.address() as AddressInfo).port;
 });
 after(async () => {
@@ -84,7 +84,7 @@ after(async () => {
 function get(search = query.toString(), body?: string) {
   return new Promise<{ status: number; contentType: string; body: unknown }>((resolve, reject) => {
     const call = request({ host: '127.0.0.1', port, path: `/api/lecturas?${search}`, method: 'GET', agent: false,
-      headers: body === undefined ? {} : { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(body) },
+      headers: { 'X-API-Key': 'test-only-key', ...(body === undefined ? {} : { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(body) }) },
     }, (response) => {
       let content = '';
       response.setEncoding('utf8');

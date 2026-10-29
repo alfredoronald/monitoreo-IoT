@@ -88,13 +88,13 @@ test('T-4.8: casos HTTP y consulta de 24 h contra PostgreSQL aislado', async (co
 
   // La API usa el mismo cliente transaccional. Ninguna lectura de prueba se confirma.
   context.mock.method(pool, 'query', async (sql: string, values?: unknown[]) => database.query(sql, values));
-  server = createApp(dashboardOrigin).listen(0, '127.0.0.1');
+  server = createApp(dashboardOrigin, 'test-only-key').listen(0, '127.0.0.1');
   await once(server, 'listening');
   const baseUrl = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
 
   async function call(path: string, init?: RequestInit): Promise<HttpResult> {
     const started = performance.now();
-    const response = await fetch(`${baseUrl}${path}`, init);
+    const response = await fetch(`${baseUrl}${path}`, { ...init, headers: { 'X-API-Key': 'test-only-key', ...init?.headers } });
     const body = await response.json();
     return {
       status: response.status,

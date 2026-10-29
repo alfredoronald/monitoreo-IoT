@@ -1,0 +1,267 @@
+{
+  "issue": 152,
+  "persisted": true,
+  "complete": true,
+  "pending": [],
+  "recoveryCases": [
+    "broker",
+    "backend",
+    "wifi"
+  ],
+  "sources": [
+    {
+      "file": "../docs/evidencias/t9-2/resultados.json",
+      "sha256": "50c9e2e3f7b1d2a7a946ee747b132791cbd66f76b6eb061f989bdbc8fd4b4f4d"
+    },
+    {
+      "file": "../docs/evidencias/t9-6/fuentes/149-broker.json",
+      "sha256": "e9767fd08b8545752c08b6864537e00535465334b7bfc73d0dfdc18e8e443ab6"
+    },
+    {
+      "file": "../docs/evidencias/t9-6/fuentes/149-backend.json",
+      "sha256": "91d89ff4d73ab39c391426091cc49b62b7a42cb7c3762255c21279f23273c237"
+    },
+    {
+      "file": "../docs/evidencias/t9-6/fuentes/149-wifi.json",
+      "sha256": "300ef7c1ed4f58ae124dbe449642756ce268fbec2c141bbc40e92878dc20dd11"
+    },
+    {
+      "file": "../docs/evidencias/t9-6/fuentes/150-continuidad.json",
+      "sha256": "e476e23ad6c9e6e142483083ada6bb8f6bb4c21dce587168f0695c7569111ec8"
+    },
+    {
+      "file": "../docs/evidencias/t9-6/fuentes/151-latencia.json",
+      "sha256": "476e9a50998e1e283fb8a3f03eeeea8a520cbaab96837ac4ef1bc108b0d4c7df"
+    }
+  ],
+  "rows": [
+    {
+      "key": "148:2026-10-28T03:26:42.582Z-50c9e2e3f7b1:qos0",
+      "description": "#148 2026-10-28T03:26:42.582Z-50c9e2e3f7b1 qos0",
+      "sent": 500,
+      "received": 500,
+      "saved": 500,
+      "qos": 0,
+      "interval": null,
+      "durationMinutes": null,
+      "metrics": {
+        "publicacion_qos": 0,
+        "suscripcion_qos": 0,
+        "qos_efectivo": 0,
+        "recibidos_eventos": 500,
+        "duplicados": 0,
+        "periodo_publicacion_ms": 20,
+        "inicio": "2026-10-28T03:26:44.426Z",
+        "fin": "2026-10-28T03:27:00.202Z"
+      }
+    },
+    {
+      "key": "148:2026-10-28T03:26:42.582Z-50c9e2e3f7b1:qos1",
+      "description": "#148 2026-10-28T03:26:42.582Z-50c9e2e3f7b1 qos1",
+      "sent": 500,
+      "received": 500,
+      "saved": 500,
+      "qos": 1,
+      "interval": null,
+      "durationMinutes": null,
+      "metrics": {
+        "publicacion_qos": 1,
+        "suscripcion_qos": 0,
+        "qos_efectivo": 0,
+        "recibidos_eventos": 500,
+        "duplicados": 0,
+        "periodo_publicacion_ms": 20,
+        "inicio": "2026-10-28T03:27:00.202Z",
+        "fin": "2026-10-28T03:27:16.064Z"
+      }
+    },
+    {
+      "key": "149:2026-10-29T15:25:40.941Z-e9767fd08b85:broker",
+      "description": "#149 2026-10-29T15:25:40.941Z-e9767fd08b85 broker",
+      "sent": 0,
+      "received": 0,
+      "saved": 1,
+      "qos": null,
+      "interval": null,
+      "durationMinutes": 0.32726666666666665,
+      "metrics": {
+        "recuperacion_segundos": 19.636,
+        "aprobado": true,
+        "lectura_id": "47",
+        "inicio": "2026-10-29T15:25:40.941Z",
+        "fin": "2026-10-29T15:26:00.577Z",
+        "conteos": "Enviados y recibidos no medidos (0); guardados=primera fila de recuperación."
+      }
+    },
+    {
+      "key": "149:2026-10-29T15:26:02.839Z-91d89ff4d73a:backend",
+      "description": "#149 2026-10-29T15:26:02.839Z-91d89ff4d73a backend",
+      "sent": 0,
+      "received": 0,
+      "saved": 1,
+      "qos": null,
+      "interval": null,
+      "durationMinutes": 0.21326666666666666,
+      "metrics": {
+        "recuperacion_segundos": 12.796,
+        "aprobado": true,
+        "lectura_id": "50",
+        "inicio": "2026-10-29T15:26:02.839Z",
+        "fin": "2026-10-29T15:26:15.635Z",
+        "conteos": "Enviados y recibidos no medidos (0); guardados=primera fila de recuperación."
+      }
+    },
+    {
+      "key": "149:2026-10-29T15:26:15.854Z-300ef7c1ed4f:wifi",
+      "description": "#149 2026-10-29T15:26:15.854Z-300ef7c1ed4f wifi",
+      "sent": 0,
+      "received": 0,
+      "saved": 1,
+      "qos": null,
+      "interval": null,
+      "durationMinutes": 0.7264666666666667,
+      "metrics": {
+        "recuperacion_segundos": 43.588,
+        "aprobado": true,
+        "lectura_id": "53",
+        "inicio": "2026-10-29T15:26:15.854Z",
+        "fin": "2026-10-29T15:26:59.442Z",
+        "conteos": "Enviados y recibidos no medidos (0); guardados=primera fila de recuperación."
+      }
+    },
+    {
+      "key": "150:1f8a80d8-d766-49af-913a-921d2f39cbb0:temperatura",
+      "description": "#150 1f8a80d8-d766-49af-913a-921d2f39cbb0 temperatura",
+      "sent": 20,
+      "received": 20,
+      "saved": 20,
+      "qos": null,
+      "interval": 15,
+      "durationMinutes": 5,
+      "metrics": {
+        "esperadas": 20,
+        "porcentaje": 100,
+        "aprobado": true,
+        "inicio": "2026-10-29T15:27:16.551Z",
+        "fin": "2026-10-29T15:32:16.551Z",
+        "incidencias": [],
+        "conteos": "Enviados=esperadas teóricas; recibidos=mínimo confirmado por persistencia, no medición MQTT independiente."
+      }
+    },
+    {
+      "key": "150:1f8a80d8-d766-49af-913a-921d2f39cbb0:humedad",
+      "description": "#150 1f8a80d8-d766-49af-913a-921d2f39cbb0 humedad",
+      "sent": 20,
+      "received": 20,
+      "saved": 20,
+      "qos": null,
+      "interval": 15,
+      "durationMinutes": 5,
+      "metrics": {
+        "esperadas": 20,
+        "porcentaje": 100,
+        "aprobado": true,
+        "inicio": "2026-10-29T15:27:16.551Z",
+        "fin": "2026-10-29T15:32:16.551Z",
+        "incidencias": [],
+        "conteos": "Enviados=esperadas teóricas; recibidos=mínimo confirmado por persistencia, no medición MQTT independiente."
+      }
+    },
+    {
+      "key": "150:1f8a80d8-d766-49af-913a-921d2f39cbb0:co2",
+      "description": "#150 1f8a80d8-d766-49af-913a-921d2f39cbb0 co2",
+      "sent": 20,
+      "received": 20,
+      "saved": 20,
+      "qos": null,
+      "interval": 15,
+      "durationMinutes": 5,
+      "metrics": {
+        "esperadas": 20,
+        "porcentaje": 100,
+        "aprobado": true,
+        "inicio": "2026-10-29T15:27:16.551Z",
+        "fin": "2026-10-29T15:32:16.551Z",
+        "incidencias": [],
+        "conteos": "Enviados=esperadas teóricas; recibidos=mínimo confirmado por persistencia, no medición MQTT independiente."
+      }
+    },
+    {
+      "key": "151:2026-10-28T14:30:57.374Z-476e9a50998e:latencia",
+      "description": "#151 2026-10-28T14:30:57.374Z-476e9a50998e latencia",
+      "sent": 10,
+      "received": 10,
+      "saved": 10,
+      "qos": 0,
+      "interval": null,
+      "durationMinutes": null,
+      "metrics": {
+        "latencias_segundos": [
+          15.038,
+          14.81,
+          14.943,
+          14.964,
+          14.85,
+          14.903,
+          14.81,
+          14.853,
+          14.963,
+          14.878
+        ],
+        "promedio_segundos": 14.9012,
+        "aprobado": true,
+        "conteos": "10 publicaciones, observaciones visuales y filas confirmadas; no conteo independiente de eventos MQTT.",
+        "inicio": "2026-10-28T14:30:57.374Z",
+        "fin": "2026-10-28T14:33:48.629Z",
+        "datos_sinteticos_eliminados": true
+      }
+    }
+  ],
+  "persistence": [
+    {
+      "key": "148:2026-10-28T03:26:42.582Z-50c9e2e3f7b1:qos0",
+      "id": "1",
+      "lostPercent": "0.00"
+    },
+    {
+      "key": "148:2026-10-28T03:26:42.582Z-50c9e2e3f7b1:qos1",
+      "id": "2",
+      "lostPercent": "0.00"
+    },
+    {
+      "key": "149:2026-10-29T15:25:40.941Z-e9767fd08b85:broker",
+      "id": "11",
+      "lostPercent": null
+    },
+    {
+      "key": "149:2026-10-29T15:26:02.839Z-91d89ff4d73a:backend",
+      "id": "12",
+      "lostPercent": null
+    },
+    {
+      "key": "149:2026-10-29T15:26:15.854Z-300ef7c1ed4f:wifi",
+      "id": "13",
+      "lostPercent": null
+    },
+    {
+      "key": "150:1f8a80d8-d766-49af-913a-921d2f39cbb0:temperatura",
+      "id": "6",
+      "lostPercent": "0.00"
+    },
+    {
+      "key": "150:1f8a80d8-d766-49af-913a-921d2f39cbb0:humedad",
+      "id": "7",
+      "lostPercent": "0.00"
+    },
+    {
+      "key": "150:1f8a80d8-d766-49af-913a-921d2f39cbb0:co2",
+      "id": "8",
+      "lostPercent": "0.00"
+    },
+    {
+      "key": "151:2026-10-28T14:30:57.374Z-476e9a50998e:latencia",
+      "id": "5",
+      "lostPercent": "0.00"
+    }
+  ]
+}

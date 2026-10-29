@@ -162,7 +162,8 @@ if (-not (Test-Path -LiteralPath infra/mosquitto/passwd)) {
 New-Item -ItemType Directory -Force -Path infra/mosquitto/data | Out-Null
 ```
 
-Cada comando solicita y confirma una contraseña: guardar la de `esp32` para
+Cada comando solicita y confirma una contraseña: usar claves aleatorias distintas
+de **al menos 12 caracteres** (se recomiendan 20 o más). Guardar la de `esp32` para
 publicar y la de `backend` para `MQTT_PASS`. **`-c` sobrescribe el archivo completo**:
 usarlo solo al crearlo. Sin `-c`, agrega o actualiza un usuario. `passwd.example`
 solo ilustra el formato; cada integrante genera su `passwd`, ignorado por Git.
@@ -174,6 +175,54 @@ deshabilita conexiones anónimas y usa [acl](infra/mosquitto/acl):
 |---|---|
 | `esp32` | Publicar en `ambiente/#` |
 | `backend` | Leer y suscribirse a `ambiente/#` |
+
+#### Rotar las contraseñas MQTT (#133)
+
+Desde la raíz, con los clientes detenidos, actualizar los dos usuarios existentes
+sin `-c`. Los comandos solicitan las contraseñas sin mostrarlas en pantalla:
+
+```powershell
+& "C:\Program Files\mosquitto\mosquitto_passwd.exe" -H sha512-pbkdf2 infra/mosquitto/passwd esp32
+& "C:\Program Files\mosquitto\mosquitto_passwd.exe" -H sha512-pbkdf2 infra/mosquitto/passwd backend
+```
+
+`sha512-pbkdf2` permite usar el archivo tanto en Mosquitto 2.0 como en 2.1.
+Crear dos claves nuevas distintas y de al menos 12 caracteres. A continuación:
+
+1. En `backend/.env`, dejar `MQTT_USER=backend` y actualizar `MQTT_PASS` con
+   la clave nueva de `backend`.
+2. En `firmware/include/config.h`, dejar `mqtt_user` como `esp32` y actualizar
+   `mqtt_password` con la clave nueva de `esp32`. Conservar la configuración WiFi.
+3. Revisar localmente los nombres de usuario de `passwd`: deben quedar únicamente
+   `esp32` y `backend`. Si existe otro usuario, eliminarlo con `mosquitto_passwd -D`
+   indicando el archivo y el nombre. No mostrar ni adjuntar el archivo.
+4. Reiniciar Mosquitto con la configuración del repositorio y reiniciar el backend.
+   El reinicio del broker cierra también las sesiones que usaban claves anteriores.
+5. Compilar y cargar el firmware al ESP32. Cambiar `config.h` en la computadora
+   **no actualiza el dispositivo**: la contraseña anterior sigue en su memoria
+   hasta cargar el firmware nuevo.
+
+Las tres rutas privadas están ignoradas por Git, incluido el archivo de hashes
+`passwd`. Si se introduce `firmware/include/secrets.h`, agregarlo a `.gitignore`
+antes de guardar credenciales en él. No adjuntar binarios del firmware: también
+contienen la configuración privada y ya quedan excluidos dentro de `.pio/`.
+
+El ACL deniega por defecto toda operación sin permiso. No agregar `topic deny #`,
+ya que una denegación explícita puede bloquear también los permisos legítimos.
+Un filtro de suscripción aceptado (`SUBACK`) no demuestra permiso de lectura:
+Mosquitto también comprueba el ACL al entregar cada mensaje.
+
+Para verificar la rotación, publicar como `esp32` y recibir como `backend` en
+`ambiente/#`; comprobar también que `esp32` no recibe esos mensajes. Las
+publicaciones del backend y las de cualquiera fuera de `ambiente/#` deben ser
+rechazadas. Para comprobar publicaciones denegadas, usar MQTT 5 y QoS 1
+(`mosquitto_pub -V mqttv5 -q 1`): el broker devuelve «Not authorized» (135).
+Una publicación QoS 0 que termina sin error no demuestra autorización.
+Comprobar además el rechazo de acceso anónimo, usuario desconocido y claves
+incorrectas o anteriores. No escribir contraseñas literales en los comandos.
+
+Los resultados locales y la comprobación física están en la
+[evidencia de #133](docs/evidencias/133-acl-mosquitto.md).
 
 ### 4. Configurar el entorno del backend
 
@@ -200,11 +249,36 @@ Completar y guardar las variables de [`.env.example`](.env.example):
 | `MQTT_PASS` | Contraseña MQTT del usuario `backend` | Obligatoria |
 | `API_PORT` | `3000`, puerto HTTP | Predeterminado: `3000` |
 | `CORS_ORIGIN` | `http://localhost:5173`, origen del frontend | Tiene ese valor predeterminado |
-| `API_KEY` | Vacía; prevista para el Sprint 3 | No condiciona el arranque actual |
+| `API_KEY` | Clave privada de acceso a la API | Obligatoria al arrancar; configurar en `backend/.env` |
 
 `PG_PASS` y `MQTT_PASS` son de servicios distintos. Guardarlas solo en `backend/.env`;
 si contienen `#`, envolver el valor en comillas dobles para evitar comentarios
 de dotenv. El código usa `PG_*`; no lee las variables `SUPABASE_*` de la plantilla.
+
+#### Configurar la clave de la API (#135)
+
+Generar una clave aleatoria local, por ejemplo con Node.js:
+
+```powershell
+node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"
+```
+
+Guardar la clave generada como `API_KEY` en `backend/.env`. Configurar el mismo
+valor como `VITE_API_KEY` en `frontend/.env` y reiniciar ambos servicios. Los
+archivos `.env` son privados y no deben compartirse ni añadirse a Git. La clave
+incluida en el frontend puede ser visible en el navegador: limita accesos
+casuales, pero no sustituye autenticación de usuarios ni TLS.
+
+Para los ejemplos de Git Bash siguientes, introducir la clave sin mostrarla:
+
+```bash
+read -r -s -p 'Clave de API: ' API_KEY
+export API_KEY
+printf '\n'
+```
+
+Al terminar, ejecutar `unset API_KEY`. No incluir el encabezado de autorización
+ni valores de la clave en capturas o evidencias.
 
 #### CORS y errores de la API (#77)
 
@@ -214,9 +288,9 @@ sin ruta ni barra final, por ejemplo `http://localhost:5173`. No usar `*`.
 Las peticiones con otro encabezado `Origin` responden 403 con
 `{"mensaje":"Origen no permitido por CORS."}`, sin habilitar su lectura
 desde ese origen. El preflight OPTIONS del dashboard admite GET y PATCH
-con Content-Type. No se habilitan credenciales de navegador.
+con Content-Type y X-API-Key. No se habilitan credenciales de navegador.
 Los clientes sin `Origin`, como curl, siguen funcionando: CORS no reemplaza
-la autenticación prevista para Sprint 3.
+la autenticación mediante X-API-Key.
 
 Los fallos inesperados de las rutas pasan al manejador central y responden
 500 con `{"mensaje":"No se pudo completar la solicitud."}`. Los errores
@@ -230,14 +304,14 @@ Para sacar la evidencia sin crear archivos adicionales:
 2. En las herramientas de desarrollo del navegador, abrir la consola y ejecutar:
 
    ```javascript
-   fetch('http://localhost:3000/api/lecturas/ultima')
+   fetch('http://localhost:3000/api/lecturas/ultima', { headers: { 'X-API-Key': prompt('Clave de API') } })
      .then(async (r) => console.log('HTTP', r.status, await r.json()));
    ```
 
 3. En Network/Red, seleccionar la petición `ultima` y capturar la URL,
    código 200 y encabezados `Origin` de la solicitud y
    `Access-Control-Allow-Origin` de la respuesta. Deben coincidir con el
-   origen del dashboard. No abrir directamente la URL de la API para esta
+   origen del dashboard. Ocultar X-API-Key antes de capturar. No abrir directamente la URL de la API para esta
    evidencia: se necesita una petición hecha desde la página del dashboard.
 4. Adjuntar la captura al PR. Las pruebas de orígenes rechazados, preflight
    y errores internos se ejecutan con `npm test` desde `backend/`.
@@ -495,8 +569,8 @@ el detalle. Si hay pérdidas, anotarlas aunque el resultado no sea 100/100/100.
 | GET | `/api/salud` | Estado de la base y del broker (pendiente) |
 
 Base local: `http://localhost:3000/api`. Las peticiones GET no llevan cuerpo.
-Las respuestas usan `Content-Type: application/json`. En Sprint 2 no se
-exige `API_KEY`. El contrato completo está en [docs/api.md](docs/api.md).
+Las respuestas usan `Content-Type: application/json`. Las rutas /api requieren
+`X-API-Key`. El contrato completo está en [docs/api.md](docs/api.md).
 Los valores de los ejemplos son ilustrativos y dependen de las lecturas
 que existan en la base; no son resultados de una ejecución real.
 
@@ -516,7 +590,7 @@ ni se truncan silenciosamente los resultados.
 Llamada desde Git Bash:
 
 ```bash
-curl -i "http://localhost:3000/api/lecturas?variable=temperatura&desde=2026-10-15T12:00:00Z&hasta=2026-10-15T13:00:00Z"
+curl -i -H "X-API-Key: $API_KEY" "http://localhost:3000/api/lecturas?variable=temperatura&desde=2026-10-15T12:00:00Z&hasta=2026-10-15T13:00:00Z"
 ```
 
 Ejemplo de respuesta **HTTP 200**:
@@ -543,7 +617,7 @@ Devuelve la lectura más reciente de cada variable mediante la vista
 `v_ultima_lectura`. No admite parámetros de consulta ni cuerpo.
 
 ```bash
-curl -i "http://localhost:3000/api/lecturas/ultima"
+curl -i -H "X-API-Key: $API_KEY" "http://localhost:3000/api/lecturas/ultima"
 ```
 
 Ejemplo de respuesta **HTTP 200**:
@@ -582,7 +656,7 @@ campo `mensaje` en español. Reglas de validación acordadas en el contrato:
 Ejemplo para provocar un **400** sin depender de datos en PostgreSQL:
 
 ```bash
-curl -i "http://localhost:3000/api/lecturas/ultima?variable=co2"
+curl -i -H "X-API-Key: $API_KEY" "http://localhost:3000/api/lecturas/ultima?variable=co2"
 ```
 
 Respuesta **HTTP 400 Bad Request**:
@@ -594,7 +668,7 @@ Respuesta **HTTP 400 Bad Request**:
 Ejemplo con una variable desconocida:
 
 ```bash
-curl -i "http://localhost:3000/api/lecturas?variable=ruido&desde=2026-10-15T12:00:00Z&hasta=2026-10-15T13:00:00Z"
+curl -i -H "X-API-Key: $API_KEY" "http://localhost:3000/api/lecturas?variable=ruido&desde=2026-10-15T12:00:00Z&hasta=2026-10-15T13:00:00Z"
 ```
 
 Respuesta **HTTP 400 Bad Request**:

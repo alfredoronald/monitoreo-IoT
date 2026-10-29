@@ -57,7 +57,8 @@ CREATE TABLE IF NOT EXISTS umbrales (
     CONSTRAINT uq_umbrales_variable_nivel UNIQUE (tipo_variable, nivel)
 );
 
--- Umbrales provisionales de CO2, pendientes de calibración.
+-- Rangos operativos confirmados por el PO en T-8.7; docs/revision-umbrales-t8-7.md.
+-- No acreditan precision metrologica del MQ-135 ni validacion fisica de T-8.6.
 INSERT INTO umbrales (tipo_variable, nivel, valor_desde, etiqueta, recomendacion) VALUES
     ('co2', 'bueno',       0, 'Aire bueno',     'No hace falta ventilar.'),
     ('co2', 'moderado',  800, 'Aire moderado',  'Conviene ventilar pronto.'),
@@ -87,9 +88,10 @@ CREATE TABLE IF NOT EXISTS calibraciones (
     sensor                   VARCHAR(20)  NOT NULL DEFAULT 'MQ-135',
     fecha_hora               TIMESTAMPTZ  NOT NULL DEFAULT now(),
     ro_kohm                  NUMERIC(10,3) NOT NULL CHECK (ro_kohm > 0),   -- resistencia en aire limpio
+    numero_lecturas          INTEGER CHECK (numero_lecturas IS NULL OR numero_lecturas > 0),
     rl_kohm                  NUMERIC(10,3) CHECK (rl_kohm > 0),            -- resistencia de carga del módulo
     co2_referencia_ppm       NUMERIC(8,2) NOT NULL DEFAULT 400,            -- aire exterior de referencia
-    acondicionamiento_horas  NUMERIC(6,1),                                 -- 24 h o más (T-1.1)
+    acondicionamiento_horas  NUMERIC(8,3),                                 -- duración real; 15 min = 0.250 h
     vigente                  BOOLEAN     NOT NULL DEFAULT false,
     observaciones            TEXT
 );

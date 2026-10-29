@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS umbrales (
     CONSTRAINT uq_umbrales_variable_nivel UNIQUE (tipo_variable, nivel)
 );
 
--- Umbrales provisionales de CO2, pendientes de calibración.
+-- Umbrales provisionales de CO2; seguimiento de revision PO en docs/revision-umbrales-t8-7.md.
 INSERT INTO umbrales (tipo_variable, nivel, valor_desde, etiqueta, recomendacion) VALUES
     ('co2', 'bueno',       0, 'Aire bueno',     'No hace falta ventilar.'),
     ('co2', 'moderado',  800, 'Aire moderado',  'Conviene ventilar pronto.'),

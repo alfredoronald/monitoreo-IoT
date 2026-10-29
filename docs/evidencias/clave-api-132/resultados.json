@@ -1,0 +1,125 @@
+{
+  "apiReal": true,
+  "requests": [
+    {
+      "mode": "correcta",
+      "path": "/api/lecturas",
+      "hasKey": true
+    },
+    {
+      "mode": "correcta",
+      "path": "/api/lecturas",
+      "hasKey": true
+    },
+    {
+      "mode": "correcta",
+      "path": "/api/lecturas",
+      "hasKey": true
+    },
+    {
+      "mode": "correcta",
+      "path": "/api/lecturas/ultima",
+      "hasKey": true
+    },
+    {
+      "mode": "correcta",
+      "path": "/api/estado-aire",
+      "hasKey": true
+    },
+    {
+      "mode": "correcta",
+      "path": "/api/alertas",
+      "hasKey": true
+    },
+    {
+      "mode": "incorrecta",
+      "path": "/api/lecturas/ultima",
+      "hasKey": true
+    },
+    {
+      "mode": "incorrecta",
+      "path": "/api/estado-aire",
+      "hasKey": true
+    },
+    {
+      "mode": "incorrecta",
+      "path": "/api/alertas",
+      "hasKey": true
+    },
+    {
+      "mode": "incorrecta",
+      "path": "/api/lecturas/ultima",
+      "hasKey": true
+    },
+    {
+      "mode": "incorrecta",
+      "path": "/api/estado-aire",
+      "hasKey": true
+    },
+    {
+      "mode": "incorrecta",
+      "path": "/api/alertas",
+      "hasKey": true
+    },
+    {
+      "mode": "incorrecta",
+      "path": "/api/lecturas",
+      "hasKey": true
+    },
+    {
+      "mode": "incorrecta",
+      "path": "/api/lecturas",
+      "hasKey": true
+    },
+    {
+      "mode": "incorrecta",
+      "path": "/api/lecturas",
+      "hasKey": true
+    },
+    {
+      "mode": "ausente",
+      "path": "/api/lecturas/ultima",
+      "hasKey": true
+    },
+    {
+      "mode": "ausente",
+      "path": "/api/estado-aire",
+      "hasKey": true
+    },
+    {
+      "mode": "ausente",
+      "path": "/api/alertas",
+      "hasKey": true
+    },
+    {
+      "mode": "ausente",
+      "path": "/api/lecturas/ultima",
+      "hasKey": true
+    },
+    {
+      "mode": "ausente",
+      "path": "/api/estado-aire",
+      "hasKey": true
+    },
+    {
+      "mode": "ausente",
+      "path": "/api/alertas",
+      "hasKey": true
+    },
+    {
+      "mode": "ausente",
+      "path": "/api/lecturas",
+      "hasKey": true
+    },
+    {
+      "mode": "ausente",
+      "path": "/api/lecturas",
+      "hasKey": true
+    },
+    {
+      "mode": "ausente",
+      "path": "/api/lecturas",
+      "hasKey": true
+    }
+  ]
+}

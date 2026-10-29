@@ -10,7 +10,7 @@ const air = { tipo_variable: 'co2', valor: 900, fecha_hora: timestamp, nivel: 'm
 const query = { variable: 'temperatura', desde: '2026-10-15T08:00:00+02:00', hasta: '2026-10-15T09:00:00+02:00' }
 function fixture(body, status = 200) {
   const calls = []
-  const client = createApiClient('http://example.test:4000/api/', async (url, options) => {
+  const client = createApiClient('http://example.test:4000/api/', 'test-api-key', async (url, options) => {
     calls.push({ url: new URL(url), options })
     return Response.json(body, { status })
   })
@@ -27,6 +27,7 @@ test('Histórico: codifica fechas con +, conserva BIGINT y no agrega limite', as
   assert.match(calls[0].url.search, /%2B/)
   assert.equal(calls[0].url.searchParams.has('limite'), false)
   assert.equal(calls[0].options.body, undefined)
+  assert.equal(calls[0].options.headers['X-API-Key'], 'test-api-key')
 })
 
 test('Últimas: array directo sin exigir id y sin inventar variables', async () => {
@@ -87,7 +88,7 @@ test('HTTP 400, 404, 415 y 500 conservan status y mensaje del contrato', async (
 
 test('Error HTTP sin JSON usa mensaje genérico; éxito sin JSON no se acepta', async () => {
   for (const status of [502, 200]) {
-    const client = createApiClient('http://example.test/api', async () => new Response('<html>Error</html>', { status }))
+    const client = createApiClient('http://example.test/api', 'test-api-key', async () => new Response('<html>Error</html>', { status }))
     await assert.rejects(client.getAirState(), status === 502 ? error => error instanceof ApiError && error.status === 502 : TypeError)
   }
 })
@@ -105,7 +106,7 @@ test('Rechaza alertas mal tipadas y PATCH sin confirmación atendida', async () 
 
 test('URL configurable: se preserva el prefijo y se rechazan bases inseguras o inválidas', () => {
   for (const value of ['', '/api', 'file:///api', 'http://user:pass@example.test/api', 'http://example.test/api?x=1']) {
-    assert.throws(() => createApiClient(value), TypeError)
+    assert.throws(() => createApiClient(value, 'test-api-key'), TypeError)
   }
 })
 
@@ -116,12 +117,13 @@ test('Cada operación propaga AbortSignal', async () => {
     const { client, calls } = fixture(body)
     await invoke(client)
     assert.equal(calls[0].options.signal, controller.signal)
+    assert.equal(calls[0].options.headers['X-API-Key'], 'test-api-key')
   }
 })
 
 test('Fallo de red y cancelación no se disfrazan de datos vacíos ni errores HTTP', async () => {
   for (const error of [new TypeError('Failed to fetch'), new DOMException('Cancelado', 'AbortError')]) {
-    const client = createApiClient('http://example.test/api', async () => { throw error })
+    const client = createApiClient('http://example.test/api', 'test-api-key', async () => { throw error })
     await assert.rejects(client.getLatestReadings(), actual => actual === error)
   }
 })

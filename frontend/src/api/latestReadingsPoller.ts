@@ -1,4 +1,5 @@
 import type { LatestReading } from './types.ts'
+import { ApiError } from './client.ts'
 
 export const LATEST_READINGS_INTERVAL_MS = 15_000
 type Result = { readings: LatestReading[]; error: null } | { error: string }
@@ -18,8 +19,8 @@ export function startLatestReadingsPolling(
     try {
       const readings = await load({ signal: controller.signal })
       if (!stopped) onResult({ readings, error: null })
-    } catch {
-      if (!stopped) onResult({ error: 'No se pudieron actualizar las lecturas. Se reintentará automáticamente.' })
+    } catch (error) {
+      if (!stopped) onResult({ error: error instanceof ApiError && error.status === 401 ? 'No autorizado: revisa la clave de la API.' : 'No se pudieron actualizar las lecturas. Se reintentará automáticamente.' })
     } finally {
       clearTimeout(timeout)
       if (active === controller) active = undefined

@@ -20,7 +20,7 @@ test('Última hora: extremos ISO explícitos y una duración exacta incluso al c
 
 test('Carga tres históricos mediante el cliente real, con el mismo rango, sin limite y sin fabricar lecturas', async t => {
   const calls = []
-  const api = createApiClient('http://api.example.test/api', async (url, options) => {
+  const api = createApiClient('http://api.example.test/api', 'test-api-key', async (url, options) => {
     calls.push({ url: new URL(url), signal: options.signal })
     return Response.json(new URL(url).searchParams.get('variable') === 'temperatura' ? sample : [])
   })

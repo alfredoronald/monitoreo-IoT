@@ -1,0 +1,104 @@
+﻿[SINTETICO] PASS: Rs=RL*(Vc/VAO-1); salida en ohmios, no kOhm
+[SINTETICO] PASS: conversion explicita a kOhm para futura ro_kohm
+[SINTETICO] PASS: usar carga efectiva y AO reconstruida recupera Rs del circuito ideal
+[SINTETICO] PASS: tension posterior al divisor NO es VAO
+[SINTETICO] PASS: topologia sin verificar bloquea Rs
+[SINTETICO] PASS: evidencia vacia bloquea RL
+[SINTETICO] PASS: evidencia sin terminador rechazada
+[SINTETICO] PASS: RL verificada no sirve para otra revision ni revision cero
+[SINTETICO] PASS: RL no positiva/no finita rechazada
+[SINTETICO] PASS: Vc no positiva/no finita rechazada
+[SINTETICO] PASS: VAO no positiva/no finita rechazada
+[SINTETICO] PASS: RL no positiva/no finita rechazada
+[SINTETICO] PASS: Vc no positiva/no finita rechazada
+[SINTETICO] PASS: VAO no positiva/no finita rechazada
+[SINTETICO] PASS: RL no positiva/no finita rechazada
+[SINTETICO] PASS: Vc no positiva/no finita rechazada
+[SINTETICO] PASS: VAO no positiva/no finita rechazada
+[SINTETICO] PASS: RL no positiva/no finita rechazada
+[SINTETICO] PASS: Vc no positiva/no finita rechazada
+[SINTETICO] PASS: VAO no positiva/no finita rechazada
+[SINTETICO] PASS: RL no positiva/no finita rechazada
+[SINTETICO] PASS: Vc no positiva/no finita rechazada
+[SINTETICO] PASS: VAO no positiva/no finita rechazada
+[SINTETICO] PASS: VAO mayor o igual que Vc rechazada
+[SINTETICO] PASS: overflow de Rs rechazado
+[SINTETICO] PASS: underflow de Rs a cero rechazado
+[SINTETICO] PASS: configuracion de produccion no inventa RL ni usa R1/R2 como carga interna
+[SINTETICO] PASS: configuracion predeterminada solo permite q, nunca Rs fisica
+[SINTETICO] PASS: arranque desactivado sin promedio fisico ficticio
+[SINTETICO] PASS: fuente simulada no inicia captura fisica
+[SINTETICO] PASS: iniciar captura fisica habilita acumulador
+[SINTETICO] PASS: promedio de una muestra
+[SINTETICO] PASS: promedio de dos muestras
+[SINTETICO] PASS: iniciar repetido no reinicia captura activa
+[SINTETICO] PASS: rechazo no modifica n valido ni promedio
+[SINTETICO] PASS: detener es idempotente y conserva resumen
+[SINTETICO] PASS: inactiva no acumula
+[SINTETICO] PASS: nueva captura reinicia contadores y promedio
+[SINTETICO] PASS: 50 muestras sin almacenar lote
+[SINTETICO] PASS: 512 muestras mantienen media incremental
+[SINTETICO] PASS: media estable aunque la suma directa desbordaria double
+[SINTETICO] PASS: sin RL solo q adimensional; ninguna Rs aceptada
+[SINTETICO] PASS: Serial distingue diagnostico de resistencia fisica y Ro
+[SINTETICO] PASS: Serial informa Rs, media y contador con unidades
+[SINTETICO] PASS: sin begin no iniciar
+[SINTETICO] PASS: controlador arranca en modo normal
+[SINTETICO] PASS: calentamiento no produce Rs ni lecturas aceptadas
+[SINTETICO] PASS: comandos de referencia/ppm bloqueados durante captura
+[SINTETICO] PASS: 11 lecturas internas son una muestra; VAO=500mV/0.5=1V
+[SINTETICO] PASS: captura no crea referencia provisional ni ppm
+[SINTETICO] PASS: no consumir dos veces un turno
+[SINTETICO] PASS: ADC cero/saturado/fuera de rango rechazado
+[SINTETICO] PASS: ADC cero/saturado/fuera de rango rechazado
+[SINTETICO] PASS: ADC cero/saturado/fuera de rango rechazado
+[SINTETICO] PASS: ADC cero/saturado/fuera de rango rechazado
+[SINTETICO] PASS: tension ADC invalida rechazada
+[SINTETICO] PASS: tension ADC invalida rechazada
+[SINTETICO] PASS: tension ADC invalida rechazada
+[SINTETICO] PASS: tension ADC invalida rechazada
+[SINTETICO] PASS: tension ADC invalida rechazada
+[SINTETICO] PASS: tension ADC invalida rechazada
+[SINTETICO] PASS: tension ADC invalida rechazada
+[SINTETICO] PASS: rechazos ADC/conversion no contaminan acumulado
+[SINTETICO] PASS: detener congela resumen y exige referencia nueva
+[SINTETICO] PASS: salida de captura no recupera ppm antiguas
+[SINTETICO] PASS: recuperacion permite referencia normal
+[SINTETICO] PASS: tres muestras nuevas recuperan referencia y emision
+[SINTETICO] PASS: modo normal vuelve a producir estimacion provisional
+[SINTETICO] PASS: nueva captura elimina referencia anterior y reinicia media
+[SINTETICO] PASS: captura repetida acepta muestra nueva
+[SINTETICO] PASS: reconfiguracion descarta captura de otra configuracion
+[SINTETICO] PASS: entorno demo no puede calibrar fisicamente
+[SINTETICO] PASS: VAO reconstruida mayor que Vc bloqueada en controlador
+[SINTETICO] PASS: sin verificacion electrica/conversion/configuracion no q ni Rs
+[SINTETICO] PASS: sin verificacion electrica/conversion/configuracion no q ni Rs
+[SINTETICO] PASS: sin verificacion electrica/conversion/configuracion no q ni Rs
+[SINTETICO] PASS: sin verificacion electrica/conversion/configuracion no q ni Rs
+[SINTETICO] PASS: captura respeta rollover de millis
+[SINTETICO] PASS: linea parcial no ejecuta comando
+[SINTETICO] PASS: CRLF ejecuta iniciar una sola vez
+[SINTETICO] PASS: iniciar/estado repetidos no reinician acumulador ni adquieren ADC
+[SINTETICO] PASS: parser conserva comandos MQ135, WiFi y MQTT existentes
+[SINTETICO] PASS: comando con sufijo no detiene captura
+[SINTETICO] PASS: overflow y NUL descartan linea entera
+[SINTETICO] PASS: lineas vacias y detener repetido conservan resumen
+[SINTETICO] PASS: modo normal publica CO2
+[SINTETICO] PASS: solicitar captura no confirma fin de publish en curso
+[SINTETICO] PASS: inicio invalida CO2 y cancela ciclo copiado antes de la orden
+[SINTETICO] PASS: ACK entre ciclos permite captura sin CO2 preparado anteriormente
+[SINTETICO] PASS: iniciar repetido no altera epoca
+[SINTETICO] PASS: captura mantiene temperatura/humedad y omite CO2
+[SINTETICO] PASS: transporte recibe solo DHT22 durante captura
+[SINTETICO] PASS: transporte recibe solo DHT22 durante captura
+[SINTETICO] PASS: dos publicaciones DHT validas durante captura
+[SINTETICO] PASS: validacion independiente DHT sigue activa en calibracion
+[SINTETICO] PASS: salir descarta ACK anterior
+[SINTETICO] PASS: salir no revive CO2 de epoca anterior
+[SINTETICO] PASS: reiniciar exige ACK nuevo
+[SINTETICO] PASS: detener no genera publicacion inmediata o rafaga
+[SINTETICO] PASS: sin referencia/muestra nuevas CO2 permanece omitido tras detener
+[SINTETICO] PASS: muestra nueva reanuda CO2 a cadencia normal
+[SINTETICO] PASS: reconexion durante captura espera intervalo completo
+[SINTETICO] PASS: reconexion preserva DHT y bloqueo CO2 sin backlog
+SINTETICO T-8.1: 103 comprobaciones; 0 fallos

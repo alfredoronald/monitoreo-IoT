@@ -1,0 +1,18 @@
+{
+  "cerrada/condiciones.json": "263edfa4c872b66a87d18714bca6554deb8c63b640638401cb3e79c1bbb840f1",
+  "cerrada/mensajes.jsonl": "6c8a5e188310bbb8195f0b51e70a602e357bb7003106b1cdd0b0bcbfe3f32593",
+  "cerrada/resumen.json": "699c8dda610b0814b5c9ef3dbf5c4241617e653c11ddf7bce1b7d5579e118e56",
+  "cerrada-repeticion/condiciones.json": "39f43ddf115b63c9f2a8bdd884677e1a47d6e4dadc35740aac6c377b4535eda3",
+  "cerrada-repeticion/mensajes.jsonl": "f9d728cb22566436a9c48901eed281d10922a7de43eaa2ae4dfec5d4d4d7daec",
+  "cerrada-repeticion/resumen.json": "9f79dddc3113130ecac533b0f22b8141130975798ce0d1198e4b3a6e56e0edd3",
+  "consulta-un-minuto/mensajes.jsonl": "7d63563bdb0404b5b520f13941faba40e152964a1991486d7b839a0ddeaf7918",
+  "consulta-un-minuto/resumen.json": "130698613eee5614c54a414b7222152f15eb53c715bfd1ebde4cacd8963bcd82",
+  "exterior/condiciones.json": "b15ae268aeb420950f74c9b4b0368c2f05c9f615d312ba00744a793a689f0e05",
+  "exterior/mensajes.jsonl": "e75fc34ee1e23eb2c707613ac10e0acf6590028586977e058204f24ceeb64a84",
+  "exterior/README.md": "54708148e702b6b318d14b958da644ca628539ffcd8b9f7cfeb70e5ee3937ac2",
+  "exterior/resumen.json": "c35773e0dff40a5eef2ffe65944155a2d1617a568e79948bbc2831f391b37707",
+  "ventilada/condiciones.json": "0a2b41963289e58dc5d9bb186a454cdf901f01d2ff26eec98ddc1d6d70aca925",
+  "ventilada/mensajes.jsonl": "6d95cf76e1c22c3ee3db7bac5f73ca1fa9dcb21179e76e213a11ed040d9e9552",
+  "ventilada/README.md": "3e5004b04828f311ff8dbf22d2da3346fce8871068efb07eb1adeab33574c6b1",
+  "ventilada/resumen.json": "7a7ac5dd151c5ace259f1254cdd62e161f9883c60705a6d680627b933dbce0d6"
+}

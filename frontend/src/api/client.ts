@@ -21,7 +21,7 @@ export class ApiError extends Error {
   }
 }
 
-export function createApiClient(baseUrl: string, fetcher: typeof fetch = globalThis.fetch) {
+export function createApiClient(baseUrl: string, apiKey: string, fetcher: typeof fetch = globalThis.fetch) {
   const base = new URL(baseUrl)
   if (!['http:', 'https:'].includes(base.protocol) || base.search || base.hash || base.username || base.password) {
     throw new TypeError('VITE_API_URL debe ser una URL HTTP sin credenciales, query ni fragmento.')
@@ -29,7 +29,7 @@ export function createApiClient(baseUrl: string, fetcher: typeof fetch = globalT
   const prefix = base.href.replace(/\/+$/, '')
 
   async function request<T>(path: string, guard: Guard<T>, options: RequestInit = {}): Promise<T> {
-    const response = await fetcher(`${prefix}${path}`, { ...options, headers: { Accept: 'application/json', ...options.headers } })
+    const response = await fetcher(`${prefix}${path}`, { ...options, headers: { Accept: 'application/json', ...options.headers, 'X-API-Key': apiKey } })
     // Conservar AbortError y los fallos de red para que la interfaz los trate.
     const json: unknown = await response.json().catch((error: unknown) => {
       if (error instanceof SyntaxError) return undefined

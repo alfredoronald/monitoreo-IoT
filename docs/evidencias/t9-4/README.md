@@ -1,8 +1,34 @@
 # Continuidad de 5 minutos en aula — #150
 
-Estado: **preparación; #144 abierta; ensayo físico pendiente**.
-No se ha iniciado ni acreditado una ventana de 5 minutos.
+Estado: **cinco minutos físicos completados y aprobados el 29/10/2026; listo para revisión**.
 Alcance reducido de 24 horas a 5 minutos por solicitud del responsable.
+
+## Sesión física del 29/10/2026
+
+Ventana UTC: **15:27:16.551 → 15:32:16.551**, exactamente 300 s.
+El monitor cerró a las 15:32:17.174 UTC, contando únicamente dentro de la ventana.
+**60/60 lecturas guardadas (100%); ninguna incidencia registrada.**
+La verificación SQL independiente confirmó esos conteos y tres filas de resumen
+en `pruebas_transmision`, con duración de 5 minutos y pérdida calculada de 0%.
+Ver `verificar-continuidad.sql` y `verificacion-postgres.json` (incluye las 60 filas).
+El mayor intervalo observado entre filas de una misma variable fue 23,417 s:
+el intervalo configurado es 15 s, pero el transporte presenta variación temporal.
+No se infiere una cadencia perfecta a partir del conteo total. Las 15 lecturas
+anteriores a la sesión permanecen intactas.
+
+El usuario confirmó explícitamente que el circuito está en el aula real.
+Firmware `7a0ac17` cargado en COM5, publicación cada 15 s conforme a #144
+(cerrada), backend `ab382e3`, Mosquitto 2.1.2 y PostgreSQL real. La red de
+2,4 GHz se configuró privadamente tras el cambio de hotspot.
+Los cortes de #149 finalizaron antes de esta ventana. Durante los cinco minutos
+no se provocan fallos, no se recarga el firmware ni se publican mensajes sintéticos.
+
+El archivo `continuidad-fisica-2026-10-29.json` conserva inicio y fin planificado,
+checkpoint, conteos e incidencias. La confirmación de ubicación es del operador,
+no una verificación remota independiente. `CO2` es la estimación del MQ-135 con
+Ro experimental de 49,486 kΩ; sus valores anormalmente bajos en esta sesión se
+conservan sin corregirlos. Este ensayo verifica continuidad de transporte y
+persistencia, no exactitud de CO2 ni una calibración nueva.
 
 1. Integrar el intervalo final de #144 y desplegar versiones compatibles.
 2. Llevar el circuito al aula y comprobar las tres variables físicas recientes.
@@ -47,9 +73,9 @@ conteo por sí solo no acredita disponibilidad continua del circuito.
 
 | Variable | Inicio UTC | Fin UTC | Esperadas | Guardadas | Porcentaje | Resultado |
 |---|---|---|---:|---:|---:|---|
-| Temperatura | Pendiente | Pendiente | — | — | — | Pendiente |
-| Humedad | Pendiente | Pendiente | — | — | — | Pendiente |
-| CO2 | Pendiente | Pendiente | — | — | — | Pendiente |
+| Temperatura | 2026-10-29T15:27:16.551Z | 2026-10-29T15:32:16.551Z | 20 | 20 | 100% | PASS |
+| Humedad | 2026-10-29T15:27:16.551Z | 2026-10-29T15:32:16.551Z | 20 | 20 | 100% | PASS |
+| CO2 | 2026-10-29T15:27:16.551Z | 2026-10-29T15:32:16.551Z | 20 | 20 | 100% | PASS |
 
 Prueba de cálculos: `pnpm exec tsx --test tests/continuityRun.test.ts`.
 Los tests de escritorio no reemplazan los 5 minutos físicos en el aula.

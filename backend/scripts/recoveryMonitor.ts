@@ -27,7 +27,7 @@ export async function runRecovery() {
     passed: false, errors: [] as string[] };
   db.on('error', error => { result.errors.push(redactLogText(String(error))); });
   try {
-    const latest = (await db.query(`SELECT id::text, fecha_hora FROM lecturas ORDER BY id DESC LIMIT 1`)).rows[0];
+    const latest = (await db.query(`SELECT id::text, fecha_hora FROM lecturas ORDER BY lecturas.id DESC LIMIT 1`)).rows[0];
     if (!latest || Date.now() - new Date(latest.fecha_hora).getTime() > 60000)
       throw new Error('Primero confirma lecturas físicas recientes, de menos de 60 segundos.');
     result.baselineId = latest.id;

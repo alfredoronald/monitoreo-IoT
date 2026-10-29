@@ -1,0 +1,354 @@
+1793287543: Restored 0 base messages
+1793287543: Restored 0 retained messages
+1793287543: Restored 0 clients
+1793287543: Restored 0 subscriptions
+1793287543: Restored 0 client messages
+1793287543: mosquitto version 2.1.2 starting
+1793287543: Config loaded from infra/mosquitto/mosquitto.conf.
+1793287543: Bridge support available.
+1793287543: Persistence support available.
+1793287543: TLS support available.
+1793287543: TLS-PSK support available.
+1793287543: Websockets support available.
+1793287543: Plugin builtin-security has registered to receive 'basic-auth' events.
+1793287543: Plugin builtin-security has registered to receive 'acl-check' events.
+1793287543: Opening ipv4 listen socket on port 1883.
+1793287543: mosquitto version 2.1.2 running
+1793287544: New connection from 127.0.0.1:59128 on port 1883.
+1793287544: New client connected from 127.0.0.1:59128 as mqttjs_ec2b9f29 (p4, c1, k60, u'backend').
+1793287544: No will message specified.
+1793287544: Sending CONNACK to mqttjs_ec2b9f29 (0, 0)
+1793287544: Received SUBSCRIBE from mqttjs_ec2b9f29
+1793287544: 	ambiente/# (QoS 0)
+1793287544: mqttjs_ec2b9f29 0 ambiente/#
+1793287544: Sending SUBACK to mqttjs_ec2b9f29
+1793287545: New connection from 10.132.143.55:57941 on port 1883.
+1793287545: New client connected from 10.132.143.55:57941 as esp32-aula-01 (p4, c1, k5, u'esp32').
+1793287545: No will message specified.
+1793287545: Sending CONNACK to esp32-aula-01 (0, 0)
+1793287550: Received PINGREQ from esp32-aula-01
+1793287550: Sending PINGRESP to esp32-aula-01
+1793287555: Received PINGREQ from esp32-aula-01
+1793287555: Sending PINGRESP to esp32-aula-01
+1793287560: Received PINGREQ from esp32-aula-01
+1793287560: Sending PINGRESP to esp32-aula-01
+1793287560: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287560: Sending PUBLISH to mqttjs_ec2b9f29 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287560: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287560: Sending PUBLISH to mqttjs_ec2b9f29 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287560: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287560: Sending PUBLISH to mqttjs_ec2b9f29 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287562: Client mqttjs_ec2b9f29 [127.0.0.1:59128] disconnected: connection closed by client.
+1793287565: Received PINGREQ from esp32-aula-01
+1793287565: Sending PINGRESP to esp32-aula-01
+1793287566: New connection from 127.0.0.1:59135 on port 1883.
+1793287566: New client connected from 127.0.0.1:59135 as mqttjs_cad63cdd (p4, c1, k60, u'backend').
+1793287566: No will message specified.
+1793287566: Sending CONNACK to mqttjs_cad63cdd (0, 0)
+1793287566: Received SUBSCRIBE from mqttjs_cad63cdd
+1793287566: 	ambiente/# (QoS 0)
+1793287566: mqttjs_cad63cdd 0 ambiente/#
+1793287566: Sending SUBACK to mqttjs_cad63cdd
+1793287570: Received PINGREQ from esp32-aula-01
+1793287570: Sending PINGRESP to esp32-aula-01
+1793287575: Received PINGREQ from esp32-aula-01
+1793287575: Sending PINGRESP to esp32-aula-01
+1793287575: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287575: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287575: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287575: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287575: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287575: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287579: New connection from 10.132.143.55:57942 on port 1883.
+1793287579: Client esp32-aula-01 [10.132.143.55:57941] disconnected: session taken over.
+1793287579: New client connected from 10.132.143.55:57942 as esp32-aula-01 (p4, c1, k5, u'esp32').
+1793287579: No will message specified.
+1793287579: Sending CONNACK to esp32-aula-01 (0, 0)
+1793287584: Received PINGREQ from esp32-aula-01
+1793287584: Sending PINGRESP to esp32-aula-01
+1793287589: Received PINGREQ from esp32-aula-01
+1793287589: Sending PINGRESP to esp32-aula-01
+1793287597: Client esp32-aula-01 [10.132.143.55:57942] disconnected: exceeded timeout.
+1793287597: New connection from 10.132.143.55:57943 on port 1883.
+1793287597: New client connected from 10.132.143.55:57943 as esp32-aula-01 (p4, c1, k5, u'esp32').
+1793287597: No will message specified.
+1793287597: Sending CONNACK to esp32-aula-01 (0, 0)
+1793287602: Received PINGREQ from esp32-aula-01
+1793287602: Sending PINGRESP to esp32-aula-01
+1793287607: Received PINGREQ from esp32-aula-01
+1793287607: Sending PINGRESP to esp32-aula-01
+1793287612: Received PINGREQ from esp32-aula-01
+1793287612: Sending PINGRESP to esp32-aula-01
+1793287619: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287619: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287619: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287619: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287619: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287619: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287619: Received PINGREQ from esp32-aula-01
+1793287619: Sending PINGRESP to esp32-aula-01
+1793287622: Received PINGREQ from esp32-aula-01
+1793287622: Sending PINGRESP to esp32-aula-01
+1793287626: Received PINGREQ from mqttjs_cad63cdd
+1793287626: Sending PINGRESP to mqttjs_cad63cdd
+1793287627: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287627: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287628: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287628: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287628: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287628: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287628: Received PINGREQ from esp32-aula-01
+1793287628: Sending PINGRESP to esp32-aula-01
+1793287633: Received PINGREQ from esp32-aula-01
+1793287633: Sending PINGRESP to esp32-aula-01
+1793287638: Received PINGREQ from esp32-aula-01
+1793287638: Sending PINGRESP to esp32-aula-01
+1793287642: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287642: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287643: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287643: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287643: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287643: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287643: Received PINGREQ from esp32-aula-01
+1793287643: Sending PINGRESP to esp32-aula-01
+1793287648: Received PINGREQ from esp32-aula-01
+1793287648: Sending PINGRESP to esp32-aula-01
+1793287653: Received PINGREQ from esp32-aula-01
+1793287653: Sending PINGRESP to esp32-aula-01
+1793287658: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287658: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287658: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287658: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287658: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287658: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287658: Received PINGREQ from esp32-aula-01
+1793287658: Sending PINGRESP to esp32-aula-01
+1793287663: Received PINGREQ from esp32-aula-01
+1793287663: Sending PINGRESP to esp32-aula-01
+1793287670: Received PINGREQ from esp32-aula-01
+1793287670: Sending PINGRESP to esp32-aula-01
+1793287672: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287672: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287673: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287673: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287673: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287673: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287675: Received PINGREQ from esp32-aula-01
+1793287675: Sending PINGRESP to esp32-aula-01
+1793287680: Received PINGREQ from esp32-aula-01
+1793287680: Sending PINGRESP to esp32-aula-01
+1793287685: Received PINGREQ from esp32-aula-01
+1793287685: Sending PINGRESP to esp32-aula-01
+1793287686: Received PINGREQ from mqttjs_cad63cdd
+1793287686: Sending PINGRESP to mqttjs_cad63cdd
+1793287687: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287687: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287688: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287688: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287688: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287688: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287690: Received PINGREQ from esp32-aula-01
+1793287690: Sending PINGRESP to esp32-aula-01
+1793287695: Received PINGREQ from esp32-aula-01
+1793287695: Sending PINGRESP to esp32-aula-01
+1793287700: Received PINGREQ from esp32-aula-01
+1793287700: Sending PINGRESP to esp32-aula-01
+1793287702: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287702: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287703: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287703: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287703: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287703: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287711: Client esp32-aula-01 [10.132.143.55:57943] disconnected: exceeded timeout.
+1793287711: New connection from 10.132.143.55:57944 on port 1883.
+1793287711: New client connected from 10.132.143.55:57944 as esp32-aula-01 (p4, c1, k5, u'esp32').
+1793287711: No will message specified.
+1793287711: Sending CONNACK to esp32-aula-01 (0, 0)
+1793287716: Received PINGREQ from esp32-aula-01
+1793287716: Sending PINGRESP to esp32-aula-01
+1793287721: Received PINGREQ from esp32-aula-01
+1793287721: Sending PINGRESP to esp32-aula-01
+1793287726: Received PINGREQ from esp32-aula-01
+1793287726: Sending PINGRESP to esp32-aula-01
+1793287726: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287726: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287726: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287726: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287726: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287726: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287731: Received PINGREQ from esp32-aula-01
+1793287731: Sending PINGRESP to esp32-aula-01
+1793287736: Received PINGREQ from esp32-aula-01
+1793287736: Sending PINGRESP to esp32-aula-01
+1793287741: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287741: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287741: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287741: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287741: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287741: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287741: Received PINGREQ from esp32-aula-01
+1793287741: Sending PINGRESP to esp32-aula-01
+1793287746: Received PINGREQ from mqttjs_cad63cdd
+1793287746: Sending PINGRESP to mqttjs_cad63cdd
+1793287748: Received PINGREQ from esp32-aula-01
+1793287748: Sending PINGRESP to esp32-aula-01
+1793287751: Received PINGREQ from esp32-aula-01
+1793287751: Sending PINGRESP to esp32-aula-01
+1793287756: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287756: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287756: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287756: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287756: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287756: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287756: Received PINGREQ from esp32-aula-01
+1793287756: Sending PINGRESP to esp32-aula-01
+1793287761: Received PINGREQ from esp32-aula-01
+1793287761: Sending PINGRESP to esp32-aula-01
+1793287766: Received PINGREQ from esp32-aula-01
+1793287766: Sending PINGRESP to esp32-aula-01
+1793287771: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287771: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287771: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287771: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287771: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (5 bytes))
+1793287771: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (5 bytes))
+1793287771: Received PINGREQ from esp32-aula-01
+1793287771: Sending PINGRESP to esp32-aula-01
+1793287776: Received PINGREQ from esp32-aula-01
+1793287776: Sending PINGRESP to esp32-aula-01
+1793287781: Received PINGREQ from esp32-aula-01
+1793287781: Sending PINGRESP to esp32-aula-01
+1793287786: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287786: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287786: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287786: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287786: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (5 bytes))
+1793287786: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (5 bytes))
+1793287786: Received PINGREQ from esp32-aula-01
+1793287786: Sending PINGRESP to esp32-aula-01
+1793287791: Received PINGREQ from esp32-aula-01
+1793287791: Sending PINGRESP to esp32-aula-01
+1793287796: Received PINGREQ from esp32-aula-01
+1793287796: Sending PINGRESP to esp32-aula-01
+1793287801: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287801: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287801: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287801: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287801: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (5 bytes))
+1793287801: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (5 bytes))
+1793287801: Received PINGREQ from esp32-aula-01
+1793287801: Sending PINGRESP to esp32-aula-01
+1793287806: Received PINGREQ from esp32-aula-01
+1793287806: Sending PINGRESP to esp32-aula-01
+1793287806: Received PINGREQ from mqttjs_cad63cdd
+1793287806: Sending PINGRESP to mqttjs_cad63cdd
+1793287811: Received PINGREQ from esp32-aula-01
+1793287811: Sending PINGRESP to esp32-aula-01
+1793287816: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287816: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287816: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287816: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287816: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287816: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287816: Received PINGREQ from esp32-aula-01
+1793287816: Sending PINGRESP to esp32-aula-01
+1793287821: Received PINGREQ from esp32-aula-01
+1793287821: Sending PINGRESP to esp32-aula-01
+1793287826: Received PINGREQ from esp32-aula-01
+1793287826: Sending PINGRESP to esp32-aula-01
+1793287831: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287831: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287831: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287831: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287831: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287831: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287831: Received PINGREQ from esp32-aula-01
+1793287831: Sending PINGRESP to esp32-aula-01
+1793287836: Received PINGREQ from esp32-aula-01
+1793287836: Sending PINGRESP to esp32-aula-01
+1793287841: Received PINGREQ from esp32-aula-01
+1793287841: Sending PINGRESP to esp32-aula-01
+1793287846: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287846: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287846: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287846: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287846: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287846: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287847: Received PINGREQ from esp32-aula-01
+1793287847: Sending PINGRESP to esp32-aula-01
+1793287852: Received PINGREQ from esp32-aula-01
+1793287852: Sending PINGRESP to esp32-aula-01
+1793287857: Received PINGREQ from esp32-aula-01
+1793287857: Sending PINGRESP to esp32-aula-01
+1793287861: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287861: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287861: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287861: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287861: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287861: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287862: Received PINGREQ from esp32-aula-01
+1793287862: Sending PINGRESP to esp32-aula-01
+1793287866: Received PINGREQ from mqttjs_cad63cdd
+1793287866: Sending PINGRESP to mqttjs_cad63cdd
+1793287867: Received PINGREQ from esp32-aula-01
+1793287867: Sending PINGRESP to esp32-aula-01
+1793287872: Received PINGREQ from esp32-aula-01
+1793287872: Sending PINGRESP to esp32-aula-01
+1793287876: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287876: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287876: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287876: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287876: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287876: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287877: Received PINGREQ from esp32-aula-01
+1793287877: Sending PINGRESP to esp32-aula-01
+1793287882: Received PINGREQ from esp32-aula-01
+1793287882: Sending PINGRESP to esp32-aula-01
+1793287887: Received PINGREQ from esp32-aula-01
+1793287887: Sending PINGRESP to esp32-aula-01
+1793287891: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287891: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287891: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287891: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287891: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287891: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287892: Received PINGREQ from esp32-aula-01
+1793287892: Sending PINGRESP to esp32-aula-01
+1793287897: Received PINGREQ from esp32-aula-01
+1793287897: Sending PINGRESP to esp32-aula-01
+1793287903: Received PINGREQ from esp32-aula-01
+1793287903: Sending PINGRESP to esp32-aula-01
+1793287906: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287906: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287906: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287906: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287906: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287906: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287909: Received PINGREQ from esp32-aula-01
+1793287909: Sending PINGRESP to esp32-aula-01
+1793287914: Received PINGREQ from esp32-aula-01
+1793287914: Sending PINGRESP to esp32-aula-01
+1793287919: Received PINGREQ from esp32-aula-01
+1793287919: Sending PINGRESP to esp32-aula-01
+1793287921: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287921: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287921: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287921: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287921: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287921: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287924: Received PINGREQ from esp32-aula-01
+1793287924: Sending PINGRESP to esp32-aula-01
+1793287926: Received PINGREQ from mqttjs_cad63cdd
+1793287926: Sending PINGRESP to mqttjs_cad63cdd
+1793287929: Received PINGREQ from esp32-aula-01
+1793287929: Sending PINGRESP to esp32-aula-01
+1793287934: Received PINGREQ from esp32-aula-01
+1793287934: Sending PINGRESP to esp32-aula-01
+1793287936: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287936: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/temperatura', ... (4 bytes))
+1793287936: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287936: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/humedad', ... (4 bytes))
+1793287936: Received PUBLISH from esp32-aula-01 (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287936: Sending PUBLISH to mqttjs_cad63cdd (d0, q0, r0, m0, 'ambiente/co2', ... (4 bytes))
+1793287939: Received PINGREQ from esp32-aula-01
+1793287939: Sending PINGRESP to esp32-aula

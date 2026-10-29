@@ -1,0 +1,168 @@
+{"timestamp": 1793287540.441064, "line": "[174567 ms] DHT22 OK: T=24.5 C; HR=37.7 %"}
+{"timestamp": 1793287540.4413042, "line": "MQ-135 ADC: 685"}
+{"timestamp": 1793287540.4443119, "line": "CO2 estimado con Ro configurado: 56.70 ppm"}
+{"timestamp": 1793287541.093154, "line": "[175222 ms] MQTT: desconectado; estado=-3; reconexi\u00f3n autom\u00e1tica"}
+{"timestamp": 1793287541.094501, "line": "[175222 ms] MQTT: intentando reconexi\u00f3n"}
+{"timestamp": 1793287542.0973682, "line": "[176228 ms] MQTT: intento fallido; estado=-2; reintento programado"}
+{"timestamp": 1793287542.4472575, "line": "[176573 ms] DHT22 OK: T=24.5 C; HR=37.7 %"}
+{"timestamp": 1793287542.4480321, "line": "MQ-135 ADC: 685"}
+{"timestamp": 1793287542.4512641, "line": "CO2 estimado con Ro configurado: 56.70 ppm"}
+{"timestamp": 1793287543.0954287, "line": "[177228 ms] MQTT: intentando reconexi\u00f3n"}
+{"timestamp": 1793287544.1059759, "line": "[178236 ms] MQTT: intento fallido; estado=-2; reintento programado"}
+{"timestamp": 1793287544.4535642, "line": "[178579 ms] DHT22 OK: T=24.5 C; HR=37.7 %"}
+{"timestamp": 1793287544.4547405, "line": "MQ-135 ADC: 682"}
+{"timestamp": 1793287544.458719, "line": "CO2 estimado con Ro configurado: 55.95 ppm"}
+{"timestamp": 1793287545.1032257, "line": "[179236 ms] MQTT: intentando reconexi\u00f3n"}
+{"timestamp": 1793287545.4718122, "line": "[179602 ms] MQTT: conectado al broker"}
+{"timestamp": 1793287546.4595606, "line": "[180585 ms] DHT22 OK: T=24.5 C; HR=37.7 %"}
+{"timestamp": 1793287546.4605343, "line": "MQ-135 ADC: 668"}
+{"timestamp": 1793287546.4636936, "line": "CO2 estimado con Ro configurado: 53.74 ppm"}
+{"timestamp": 1793287548.4653087, "line": "[182591 ms] DHT22 OK: T=24.5 C; HR=37.8 %"}
+{"timestamp": 1793287548.4659216, "line": "MQ-135 ADC: 675"}
+{"timestamp": 1793287548.4690254, "line": "CO2 estimado con Ro configurado: 55.21 ppm"}
+{"timestamp": 1793287550.4713724, "line": "[184597 ms] DHT22 OK: T=24.5 C; HR=37.7 %"}
+{"timestamp": 1793287550.471913, "line": "MQ-135 ADC: 682"}
+{"timestamp": 1793287550.474972, "line": "CO2 estimado con Ro configurado: 55.95 ppm"}
+{"timestamp": 1793287552.477618, "line": "[186603 ms] DHT22 OK: T=24.6 C; HR=37.8 %"}
+{"timestamp": 1793287552.478374, "line": "MQ-135 ADC: 674"}
+{"timestamp": 1793287552.4818864, "line": "CO2 estimado con Ro configurado: 55.21 ppm"}
+{"timestamp": 1793287554.483726, "line": "[188609 ms] DHT22 OK: T=24.5 C; HR=37.8 %"}
+{"timestamp": 1793287554.4847069, "line": "MQ-135 ADC: 670"}
+{"timestamp": 1793287554.4877503, "line": "CO2 estimado con Ro configurado: 54.47 ppm"}
+{"timestamp": 1793287556.4895864, "line": "[190615 ms] DHT22 OK: T=24.6 C; HR=37.8 %"}
+{"timestamp": 1793287556.4902413, "line": "MQ-135 ADC: 678"}
+{"timestamp": 1793287556.4932764, "line": "CO2 estimado con Ro configurado: 55.21 ppm"}
+{"timestamp": 1793287558.4959898, "line": "MQ-135 ADC: 670"}
+{"timestamp": 1793287558.495599, "line": "[192621 ms] DHT22 OK: T=24.6 C; HR=37.8 %"}
+{"timestamp": 1793287558.498709, "line": "CO2 estimado con Ro configurado: 54.47 ppm"}
+{"timestamp": 1793287560.4605823, "line": "[194584 ms] MQTT publicacion: ambiente/temperatura; payload=24.6; enviado (QoS 0)"}
+{"timestamp": 1793287560.4660952, "line": "[194584 ms] MQTT publicacion: ambiente/humedad; payload=37.8; enviado (QoS 0)"}
+{"timestamp": 1793287560.4727314, "line": "[194584 ms] MQTT publicacion: ambiente/co2; payload=54.5; enviado (QoS 0)"}
+{"timestamp": 1793287560.5015101, "line": "[194627 ms] DHT22 OK: T=24.6 C; HR=37.8 %"}
+{"timestamp": 1793287560.501885, "line": "MQ-135 ADC: 661"}
+{"timestamp": 1793287560.5048232, "line": "CO2 estimado con Ro configurado: 53.02 ppm"}
+{"timestamp": 1793287562.5079846, "line": "[196633 ms] DHT22 OK: T=24.6 C; HR=37.8 %"}
+{"timestamp": 1793287562.509079, "line": "MQ-135 ADC: 668"}
+{"timestamp": 1793287562.5123734, "line": "CO2 estimado con Ro configurado: 53.74 ppm"}
+{"timestamp": 1793287564.5142863, "line": "[198639 ms] DHT22 OK: T=24.6 C; HR=37.8 %"}
+{"timestamp": 1793287564.5157132, "line": "MQ-135 ADC: 669"}
+{"timestamp": 1793287564.5201578, "line": "CO2 estimado con Ro configurado: 53.74 ppm"}
+{"timestamp": 1793287566.519954, "line": "[200645 ms] DHT22 OK: T=24.6 C; HR=37.8 %"}
+{"timestamp": 1793287566.520821, "line": "MQ-135 ADC: 671"}
+{"timestamp": 1793287566.5241132, "line": "CO2 estimado con Ro configurado: 54.47 ppm"}
+{"timestamp": 1793287568.526039, "line": "[202651 ms] DHT22 OK: T=24.6 C; HR=37.8 %"}
+{"timestamp": 1793287568.5280137, "line": "MQ-135 ADC: 672"}
+{"timestamp": 1793287568.531464, "line": "CO2 estimado con Ro configurado: 54.47 ppm"}
+{"timestamp": 1793287570.5317876, "line": "[204657 ms] DHT22 OK: T=24.6 C; HR=37.8 %"}
+{"timestamp": 1793287570.5322118, "line": "MQ-135 ADC: 657"}
+{"timestamp": 1793287570.535163, "line": "CO2 estimado con Ro configurado: 52.31 ppm"}
+{"timestamp": 1793287572.5382204, "line": "[206663 ms] DHT22 OK: T=24.6 C; HR=37.8 %"}
+{"timestamp": 1793287572.5391855, "line": "MQ-135 ADC: 678"}
+{"timestamp": 1793287572.54233, "line": "CO2 estimado con Ro configurado: 55.21 ppm"}
+{"timestamp": 1793287574.5443618, "line": "[208669 ms] DHT22 OK: T=24.6 C; HR=37.8 %"}
+{"timestamp": 1793287574.545082, "line": "MQ-135 ADC: 685"}
+{"timestamp": 1793287574.5492427, "line": "CO2 estimado con Ro configurado: 56.70 ppm"}
+{"timestamp": 1793287575.4658446, "line": "[209588 ms] MQTT publicacion: ambiente/temperatura; payload=24.6; enviado (QoS 0)"}
+{"timestamp": 1793287575.4715667, "line": "[209588 ms] MQTT publicacion: ambiente/humedad; payload=37.8; enviado (QoS 0)"}
+{"timestamp": 1793287575.4801767, "line": "[209588 ms] MQTT publicacion: ambiente/co2; payload=56.7; enviado (QoS 0)"}
+{"timestamp": 1793287575.791464, "line": "[209909 ms] WiFi PRUEBA: desconexi\u00f3n solicitada; reintentos suspendidos; esperando confirmaci\u00f3n; sensores contin\u00faan"}
+{"timestamp": 1793287575.8000364, "line": "[209915 ms] WiFi PRUEBA: desconexi\u00f3n confirmada por SDK; desde solicitud=6 ms; reintentos suspendidos"}
+{"timestamp": 1793287575.8052442, "line": "[209927 ms] WiFi: desconectado; reintentos suspendidos por prueba"}
+{"timestamp": 1793287575.8110282, "line": "[209938 ms] MQTT: desconectado por p\u00e9rdida WiFi; sensores contin\u00faan"}
+{"timestamp": 1793287576.5503855, "line": "[210675 ms] DHT22 OK: T=24.6 C; HR=37.8 %"}
+{"timestamp": 1793287576.5511093, "line": "MQ-135 ADC: 665"}
+{"timestamp": 1793287576.5548985, "line": "CO2 estimado con Ro configurado: 53.74 ppm"}
+{"timestamp": 1793287578.5575485, "line": "[212681 ms] DHT22 OK: T=24.6 C; HR=37.8 %"}
+{"timestamp": 1793287578.5593774, "line": "MQ-135 ADC: 679"}
+{"timestamp": 1793287578.5637646, "line": "CO2 estimado con Ro configurado: 55.95 ppm"}
+{"timestamp": 1793287578.8704042, "line": "[212998 ms] WiFi PRUEBA: recuperaci\u00f3n solicitada; reintentos normales reactivados"}
+{"timestamp": 1793287578.873974, "line": "[212998 ms] WiFi: intentando reconexi\u00f3n"}
+{"timestamp": 1793287578.9932535, "line": "[213120 ms] WiFi PRUEBA: IP recuperada; desde solicitud=122 ms; origen=GOT_IP SDK"}
+{"timestamp": 1793287578.9964461, "line": "[213121 ms] WiFi: conectado; IP=10.132.143.55"}
+{"timestamp": 1793287579.000512, "line": "[213122 ms] MQTT: intentando reconexi\u00f3n"}
+{"timestamp": 1793287579.464119, "line": "[213592 ms] WiFi PRUEBA: MQTT recuperado; desde solicitud=594 ms; desde IP=472 ms"}
+{"timestamp": 1793287579.4824152, "line": "[213613 ms] MQTT: conectado al broker"}
+{"timestamp": 1793287580.5622916, "line": "[214687 ms] DHT22 OK: T=24.6 C; HR=37.8 %"}
+{"timestamp": 1793287580.5628011, "line": "MQ-135 ADC: 686"}
+{"timestamp": 1793287580.5663118, "line": "CO2 estimado con Ro configurado: 56.70 ppm"}
+{"timestamp": 1793287582.5685222, "line": "[216693 ms] DHT22 OK: T=24.6 C; HR=37.8 %"}
+{"timestamp": 1793287582.5694144, "line": "MQ-135 ADC: 689"}
+{"timestamp": 1793287582.572848, "line": "CO2 estimado con Ro configurado: 57.46 ppm"}
+{"timestamp": 1793287584.5748355, "line": "[218699 ms] DHT22 OK: T=24.6 C; HR=37.8 %"}
+{"timestamp": 1793287584.5759773, "line": "MQ-135 ADC: 674"}
+{"timestamp": 1793287584.5799198, "line": "CO2 estimado con Ro configurado: 55.21 ppm"}
+{"timestamp": 1793287586.5822506, "line": "[220705 ms] DHT22 OK: T=24.6 C; HR=37.9 %"}
+{"timestamp": 1793287586.5843098, "line": "MQ-135 ADC: 688"}
+{"timestamp": 1793287586.5905833, "line": "CO2 estimado con Ro configurado: 57.46 ppm"}
+{"timestamp": 1793287588.58661, "line": "[222711 ms] DHT22 OK: T=24.6 C; HR=37.8 %"}
+{"timestamp": 1793287588.5872023, "line": "MQ-135 ADC: 676"}
+{"timestamp": 1793287588.5911403, "line": "CO2 estimado con Ro configurado: 55.21 ppm"}
+{"timestamp": 1793287590.593176, "line": "MQ-135 ADC: 690"}
+{"timestamp": 1793287590.5926735, "line": "[224717 ms] DHT22 OK: T=24.6 C; HR=37.9 %"}
+{"timestamp": 1793287590.5967069, "line": "CO2 estimado con Ro configurado: 57.46 ppm"}
+{"timestamp": 1793287592.5990105, "line": "[226723 ms] DHT22 OK: T=24.6 C; HR=38.0 %"}
+{"timestamp": 1793287592.6000104, "line": "MQ-135 ADC: 690"}
+{"timestamp": 1793287592.6030743, "line": "CO2 estimado con Ro configurado: 57.46 ppm"}
+{"timestamp": 1793287594.4796102, "line": "[228603 ms] MQTT publicacion: ambiente/temperatura; payload=24.6; enviado (QoS 0)"}
+{"timestamp": 1793287594.48579, "line": "[228603 ms] MQTT publicacion: ambiente/humedad; payload=38.0; enviado (QoS 0)"}
+{"timestamp": 1793287594.4927273, "line": "[228603 ms] MQTT publicacion: ambiente/co2; payload=57.5; enviado (QoS 0)"}
+{"timestamp": 1793287594.605242, "line": "[228729 ms] DHT22 OK: T=24.6 C; HR=37.9 %"}
+{"timestamp": 1793287594.606314, "line": "MQ-135 ADC: 674"}
+{"timestamp": 1793287594.6092393, "line": "CO2 estimado con Ro configurado: 55.21 ppm"}
+{"timestamp": 1793287596.6108158, "line": "[230735 ms] DHT22 OK: T=24.6 C; HR=37.9 %"}
+{"timestamp": 1793287596.6115663, "line": "MQ-135 ADC: 693"}
+{"timestamp": 1793287596.6161706, "line": "CO2 estimado con Ro configurado: 58.22 ppm"}
+{"timestamp": 1793287597.222184, "line": "[231345 ms] MQTT: desconectado; estado=-3; reconexi\u00f3n autom\u00e1tica"}
+{"timestamp": 1793287597.2259693, "line": "[231348 ms] MQTT: intentando reconexi\u00f3n"}
+{"timestamp": 1793287597.7944546, "line": "[231925 ms] MQTT: conectado al broker"}
+{"timestamp": 1793287598.6170812, "line": "[232741 ms] DHT22 OK: T=24.6 C; HR=37.8 %"}
+{"timestamp": 1793287598.6177032, "line": "MQ-135 ADC: 672"}
+{"timestamp": 1793287598.622153, "line": "CO2 estimado con Ro configurado: 54.47 ppm"}
+{"timestamp": 1793287600.6228647, "line": "[234747 ms] DHT22 OK: T=24.6 C; HR=37.9 %"}
+{"timestamp": 1793287600.6235807, "line": "MQ-135 ADC: 688"}
+{"timestamp": 1793287600.6274028, "line": "CO2 estimado con Ro configurado: 57.46 ppm"}
+{"timestamp": 1793287602.6291225, "line": "[236753 ms] DHT22 OK: T=24.6 C; HR=37.9 %"}
+{"timestamp": 1793287602.6298018, "line": "MQ-135 ADC: 679"}
+{"timestamp": 1793287602.6325486, "line": "CO2 estimado con Ro configurado: 55.95 ppm"}
+{"timestamp": 1793287604.635508, "line": "[238759 ms] DHT22 OK: T=24.6 C; HR=37.9 %"}
+{"timestamp": 1793287604.6365736, "line": "MQ-135 ADC: 688"}
+{"timestamp": 1793287604.6397412, "line": "CO2 estimado con Ro configurado: 57.46 ppm"}
+{"timestamp": 1793287606.6417437, "line": "MQ-135 ADC: 687"}
+{"timestamp": 1793287606.6411884, "line": "[240765 ms] DHT22 OK: T=24.6 C; HR=37.9 %"}
+{"timestamp": 1793287606.644549, "line": "CO2 estimado con Ro configurado: 57.46 ppm"}
+{"timestamp": 1793287608.6471214, "line": "MQ-135 ADC: 679"}
+{"timestamp": 1793287608.646956, "line": "[242771 ms] DHT22 OK: T=24.6 C; HR=38.0 %"}
+{"timestamp": 1793287608.6506972, "line": "CO2 estimado con Ro configurado: 55.95 ppm"}
+{"timestamp": 1793287610.6532571, "line": "[244777 ms] DHT22 OK: T=24.6 C; HR=38.0 %"}
+{"timestamp": 1793287610.6537857, "line": "MQ-135 ADC: 686"}
+{"timestamp": 1793287610.657301, "line": "CO2 estimado con Ro configurado: 56.70 ppm"}
+{"timestamp": 1793287612.659162, "line": "[246783 ms] DHT22 OK: T=24.6 C; HR=38.0 %"}
+{"timestamp": 1793287612.6595347, "line": "MQ-135 ADC: 676"}
+{"timestamp": 1793287612.6625228, "line": "CO2 estimado con Ro configurado: 55.21 ppm"}
+{"timestamp": 1793287612.8003073, "line": "[246924 ms] MQTT publicacion: ambiente/temperatura; payload=24.6; enviado (QoS 0)"}
+{"timestamp": 1793287612.8059893, "line": "[246924 ms] MQTT publicacion: ambiente/humedad; payload=38.0; enviado (QoS 0)"}
+{"timestamp": 1793287612.8126323, "line": "[246924 ms] MQTT publicacion: ambiente/co2; payload=55.2; enviado (QoS 0)"}
+{"timestamp": 1793287614.6655662, "line": "[248789 ms] DHT22 OK: T=24.6 C; HR=38.1 %"}
+{"timestamp": 1793287614.666545, "line": "MQ-135 ADC: 691"}
+{"timestamp": 1793287614.6713681, "line": "CO2 estimado con Ro configurado: 57.46 ppm"}
+{"timestamp": 1793287616.671648, "line": "[250795 ms] DHT22 OK: T=24.6 C; HR=38.2 %"}
+{"timestamp": 1793287616.6725893, "line": "MQ-135 ADC: 691"}
+{"timestamp": 1793287616.6758738, "line": "CO2 estimado con Ro configurado: 57.46 ppm"}
+{"timestamp": 1793287618.6778789, "line": "[252801 ms] DHT22 OK: T=24.6 C; HR=38.2 %"}
+{"timestamp": 1793287618.679234, "line": "MQ-135 ADC: 674"}
+{"timestamp": 1793287618.6821723, "line": "CO2 estimado con Ro configurado: 55.21 ppm"}
+{"timestamp": 1793287620.684032, "line": "[254807 ms] DHT22 OK: T=24.6 C; HR=38.1 %"}
+{"timestamp": 1793287620.6852286, "line": "MQ-135 ADC: 683"}
+{"timestamp": 1793287620.6914217, "line": "CO2 estimado con Ro configurado: 56.70 ppm"}
+{"timestamp": 1793287622.6895797, "line": "[256813 ms] DHT22 OK: T=24.6 C; HR=38.1 %"}
+{"timestamp": 1793287622.6905408, "line": "MQ-135 ADC: 694"}
+{"timestamp": 1793287622.6937077, "line": "CO2 estimado con Ro configurado: 58.22 ppm"}
+{"timestamp": 1793287624.6956484, "line": "[258819 ms] DHT22 OK: T=24.6 C; HR=38.1 %"}
+{"timestamp": 1793287624.6964314, "line": "MQ-135 ADC: 688"}
+{"timestamp": 1793287624.6996717, "line": "CO2 estimado con Ro configurado: 57.46 ppm"}
+{"timestamp": 1793287626.7031457, "line": "MQ-135 ADC: 689"}
+{"timestamp": 1793287626.7020133, "line": "[260825 ms] DHT22 OK: T=24.6 C; HR=38.1 %"}
+{"timestamp": 1793287626.7063088, "line": "CO2 estimado con Ro configurado: 57.46 ppm"}
+{"timestamp": 1793287627.8165097, "line": "[261935 ms] MQTT publicacion: ambiente/temperatura; payload=24.6; enviado (QoS 0)"}
+{"timestamp": 1793287627.8230786, "line": "[261935 ms] MQTT publicacion: ambiente/humedad; payload=38.1; enviado (QoS 0)"}
+{"timestamp": 1793287627.82953, "line": "[261935 ms] MQTT publicacion: ambiente/co2; payload=57.5; enviado (QoS 0)"}

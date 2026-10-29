@@ -1,0 +1,21 @@
+{
+  "issue": 149,
+  "scenario": "broker",
+  "started": "",
+  "ended": "2026-10-29T15:24:46.066Z",
+  "baselineId": "34",
+  "seconds": null,
+  "recovered": null,
+  "source": "ESP32 físico en aula; interrupción automatizada confirmada por proceso/driver y recuperación hasta primera fila SQL",
+  "firmware": "7a0ac17",
+  "buildFlags": [
+    "WIFI_TEMPORARY_TEST=1"
+  ],
+  "samplingIntervalSeconds": 15,
+  "passed": false,
+  "errors": [
+    "Command failed: powershell.exe -NoProfile -Command Get-NetTCPConnection -State Listen -LocalPort 1883 -ErrorAction SilentlyContinue | Select-Object -ExpandProperty OwningProcess -Unique | ForEach-Object { Stop-Process -Id $_ -Force }\n"
+  ],
+  "operatorLocation": "Aula real confirmada por el usuario",
+  "outageHoldSeconds": 3
+}

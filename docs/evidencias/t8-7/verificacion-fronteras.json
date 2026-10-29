@@ -1,0 +1,69 @@
+{
+  "fecha": "2026-10-29T02:14:43.917Z",
+  "tipo": "Consulta SQL de solo lectura; valores de frontera sinteticos, no mediciones fisicas",
+  "umbrales": [
+    {
+      "id": 1,
+      "tipo_variable": "co2",
+      "nivel": "bueno",
+      "valor_desde": "0.00",
+      "etiqueta": "Aire bueno",
+      "recomendacion": "No hace falta ventilar."
+    },
+    {
+      "id": 2,
+      "tipo_variable": "co2",
+      "nivel": "moderado",
+      "valor_desde": "800.00",
+      "etiqueta": "Aire moderado",
+      "recomendacion": "Conviene ventilar pronto."
+    },
+    {
+      "id": 3,
+      "tipo_variable": "co2",
+      "nivel": "malo",
+      "valor_desde": "1200.00",
+      "etiqueta": "Aire malo",
+      "recomendacion": "Ventila el aula ahora."
+    }
+  ],
+  "casos": [
+    {
+      "valor": "0.00",
+      "esperado": "bueno",
+      "obtenido": "bueno",
+      "coincide": true
+    },
+    {
+      "valor": "799.99",
+      "esperado": "bueno",
+      "obtenido": "bueno",
+      "coincide": true
+    },
+    {
+      "valor": "800.00",
+      "esperado": "moderado",
+      "obtenido": "moderado",
+      "coincide": true
+    },
+    {
+      "valor": "1199.99",
+      "esperado": "moderado",
+      "obtenido": "moderado",
+      "coincide": true
+    },
+    {
+      "valor": "1200.00",
+      "esperado": "malo",
+      "obtenido": "malo",
+      "coincide": true
+    },
+    {
+      "valor": "1500.00",
+      "esperado": "malo",
+      "obtenido": "malo",
+      "coincide": true
+    }
+  ],
+  "resultado": "6/6 PASS"
+}

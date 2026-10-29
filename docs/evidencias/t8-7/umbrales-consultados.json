@@ -1,0 +1,31 @@
+{
+  "fecha": "2026-10-29T02:09:54.787Z",
+  "entorno": "PostgreSQL local monitoreo_ambiental",
+  "operacion": "Solo lectura; no se cambiaron los rangos",
+  "umbrales": [
+    {
+      "id": 1,
+      "tipo_variable": "co2",
+      "nivel": "bueno",
+      "valor_desde": "0.00",
+      "etiqueta": "Aire bueno",
+      "recomendacion": "No hace falta ventilar."
+    },
+    {
+      "id": 2,
+      "tipo_variable": "co2",
+      "nivel": "moderado",
+      "valor_desde": "800.00",
+      "etiqueta": "Aire moderado",
+      "recomendacion": "Conviene ventilar pronto."
+    },
+    {
+      "id": 3,
+      "tipo_variable": "co2",
+      "nivel": "malo",
+      "valor_desde": "1200.00",
+      "etiqueta": "Aire malo",
+      "recomendacion": "Ventila el aula ahora."
+    }
+  ]
+}

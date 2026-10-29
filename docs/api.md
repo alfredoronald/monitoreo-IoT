@@ -136,6 +136,8 @@ Respuesta **200**:
 - Rangos iniciales provisionales de #88: bueno `0 <= valor < 800`, moderado
   `800 <= valor < 1200`, malo `valor >= 1200`. No son límites médicos ni
   definitivos; el PO debe revisarlos. Los textos se leen de la base.
+  Seguimiento de T-8.7: [revision con el PO](revision-umbrales-t8-7.md);
+  la nota provisional permanece abierta hasta registrar su decision.
 
 Para #83, #86 y #91: consultar valores actuales y estado cada **15 s**.
 Una lectura con más de **60 s** de antigüedad se muestra como «Sin datos

@@ -1,0 +1,4 @@
+escenario,duracion_s,lecturas_co2,min_ppm,max_ppm,media_ppm,ocupacion
+Exterior,300.0070415,19,365.9,444.7,393.3105263157895,No confirmada
+Aula ventilada,300.0196653,18,306.4,356.5,332.18888888888887,No confirmada
+Aula cerrada y ocupada,300.0078127,20,287.5,332.2,303.49999999999994,1

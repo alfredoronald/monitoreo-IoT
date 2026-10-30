@@ -1,0 +1,31 @@
+{
+  "inicio_utc": "2026-10-30T22:07:11.359Z",
+  "fin_utc": "2026-10-30T22:22:42.032Z",
+  "duracion_segundos": 931,
+  "muestras_api": 32,
+  "api_con_clave_200": 32,
+  "api_sin_clave_401": 32,
+  "lecturas": [
+    {
+      "tipo_variable": "co2",
+      "cantidad": 62,
+      "primera": "2026-10-30T22:07:16.979Z",
+      "ultima": "2026-10-30T22:22:32.628Z",
+      "intervalo_maximo_s": "15.638"
+    },
+    {
+      "tipo_variable": "humedad",
+      "cantidad": 62,
+      "primera": "2026-10-30T22:07:16.976Z",
+      "ultima": "2026-10-30T22:22:32.622Z",
+      "intervalo_maximo_s": "15.638"
+    },
+    {
+      "tipo_variable": "temperatura",
+      "cantidad": 62,
+      "primera": "2026-10-30T22:07:16.885Z",
+      "ultima": "2026-10-30T22:22:32.412Z",
+      "intervalo_maximo_s": "15.386"
+    }
+  ]
+}

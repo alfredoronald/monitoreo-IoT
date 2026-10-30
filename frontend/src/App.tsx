@@ -91,7 +91,7 @@ function App() {
 
         <aside className="measurement-note" aria-label="Acerca de las mediciones">
           <span className="note-symbol" aria-hidden="true">i</span>
-          <p><strong>Sobre el CO₂ estimado.</strong> El MQ-135 ofrece una estimación provisional de la calidad del aire. Sus valores requieren calibración.</p>
+          <p><strong>Sobre el CO₂ estimado.</strong> El MQ-135 estima la calidad del aire a partir de su calibración. También responde a otros gases, temperatura y humedad; sus valores no son una medición precisa de CO₂.</p>
         </aside>
         <footer className="dashboard-footer"><span>Monitoreo ambiental del aula</span><span>Servicios Telemáticos · Grupo 22</span></footer>
       </main>

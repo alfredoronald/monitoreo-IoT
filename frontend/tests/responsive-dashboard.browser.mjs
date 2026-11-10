@@ -291,7 +291,9 @@ async function runBrowser(name) {
             const path=el.querySelector('.recharts-line-curve'),vertices=[...path.getAttribute('d').matchAll(/[ML]([\\d.-]+),([\\d.-]+)/g)];
             const p={x:Number(vertices[2][1]),y:Number(vertices[2][2])},m=path.getScreenCTM();
             return {x:m.a*p.x+m.c*p.y+m.e,y:m.b*p.x+m.d*p.y+m.f,vertices:vertices.map(v=>({x:Number(v[1]),y:Number(v[2])}))};})()`)
-          assert.equal(point.vertices.length, 4)
+          // El tramo final del fixture (75 % de la hora) es un hueco: el trazo
+          // agrega un vértice con el último valor antes de la reconexión.
+          assert.equal(point.vertices.length, 5)
           const span = point.vertices[3].x - point.vertices[0].x
           assert.ok(Math.abs((point.vertices[1].x - point.vertices[0].x) / span - 0.01) < 0.01)
           assert.ok(Math.abs((point.vertices[2].x - point.vertices[0].x) / span - 0.25) < 0.01, 'Distancias X proporcionales a intervalos irregulares')

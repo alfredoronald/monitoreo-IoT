@@ -31,4 +31,20 @@ test('Componentes históricos: estados accesibles y tooltip sin perder valor ni 
     assert.match(tooltip, /123/)
     assert.equal(renderToStaticMarkup(createElement(HistoricalTooltip, { unit: variable.unit })), '')
   }
+  const temperature = environmentalVariables[0]
+  const hole = [
+    { id: '1', tipo_variable: 'temperatura', valor: 10, fecha_hora: '2026-10-15T12:00:00.000Z' },
+    { id: '2', tipo_variable: 'temperatura', valor: 11, fecha_hora: '2026-10-15T12:00:15.000Z' },
+    { id: '3', tipo_variable: 'temperatura', valor: 12, fecha_hora: '2026-10-15T12:20:15.000Z' },
+  ]
+  const chart = renderToStaticMarkup(createElement(HistoricalChart, { variable: temperature, range, series: { readings: hole, loading: false, error: null } }))
+  assert.match(chart, /history-gap-note/)
+  assert.match(chart, /sin lecturas; el trazo mantiene el último valor/)
+  const held = renderToStaticMarkup(createElement(HistoricalTooltip, {
+    reading: { ...hole[2], held: true }, unit: temperature.unit,
+  }))
+  assert.match(held, /Sin lectura/)
+  assert.match(held, /Se mantiene el valor anterior/)
+  assert.match(held, /dateTime="2026-10-15T12:20:15.000Z"/i)
+  assert.doesNotMatch(held, /12 °C/)
 })

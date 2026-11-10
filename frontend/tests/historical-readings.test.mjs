@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { createApiClient } from '../src/api/client.ts'
 import { lastHourRange, startHistoricalReadingsLoad } from '../src/history/historicalReadings.ts'
-import { formatHistoryDate, formatHistoryTick, formatHistoryValue, historyPoints } from '../src/history/historyFormatters.ts'
+import { formatHistoryDate, formatHistoryTick, formatHistoryValue, HISTORY_GAP_MIN_MS, historyChartPoints, historyGaps, historyPoints } from '../src/history/historyFormatters.ts'
 
 const range = { desde: '2026-10-15T12:00:00.000Z', hasta: '2026-10-15T13:00:00.000Z' }
 const sample = [{ id: '9007199254740993', tipo_variable: 'temperatura', valor: 0, fecha_hora: '2026-10-15T12:00:15.123Z' }]
@@ -153,4 +153,55 @@ test('Los formatos muestran fecha y hora en el eje, hora completa con milisegund
   assert.match(formatHistoryValue(0, '°C'), /^0 °C$/)
   assert.match(formatHistoryValue(55.25, '% HR'), /^55[.,]25 % HR$/)
   assert.equal(formatHistoryValue(900, 'ppm'), '900 ppm')
+})
+
+const seriesBase = Date.parse('2026-10-15T12:00:00.000Z')
+const seriesAt = offsets => offsets.map((offset, index) => ({
+  id: String(index + 1), tipo_variable: 'temperatura', valor: 10 + index,
+  fecha_hora: new Date(seriesBase + offset).toISOString(),
+}))
+const seriesRange = hastaOffset => ({ desde: new Date(seriesBase).toISOString(), hasta: new Date(seriesBase + hastaOffset).toISOString() })
+
+test('Un hueco mayor al umbral mantiene el último valor sin fabricar lecturas', () => {
+  const readings = seriesAt([0, 15_000, 30_000, 180_000, 195_000])
+  const points = historyChartPoints(readings, seriesRange(195_000))
+  assert.equal(points.length, 6)
+  const held = points[3]
+  assert.equal(held.held, true)
+  assert.equal(held.valor, 12)
+  assert.equal(held.timestamp, seriesBase + 180_000)
+  assert.equal(held.fecha_hora, readings[3].fecha_hora)
+  assert.deepEqual(points.filter(point => !point.held), historyPoints(readings))
+  assert.deepEqual(historyGaps(points), [{ x1: seriesBase + 30_000, x2: seriesBase + 180_000 }])
+})
+
+test('Una serie uniforme más espaciada no marca huecos falsos', () => {
+  const readings = seriesAt([0, 180_000, 360_000, 540_000])
+  const points = historyChartPoints(readings, seriesRange(540_000))
+  assert.equal(points.length, 4)
+  assert.equal(points.some(point => point.held), false)
+  assert.deepEqual(points, historyPoints(readings))
+  assert.deepEqual(historyGaps(points), [])
+})
+
+test('Si el corte llega al final del rango la recta se mantiene hasta el borde', () => {
+  const readings = seriesAt([0, 15_000, 30_000])
+  const range = seriesRange(330_000)
+  const points = historyChartPoints(readings, range)
+  const held = points.at(-1)
+  assert.equal(points.length, 4)
+  assert.equal(held.held, true)
+  assert.equal(held.valor, 12)
+  assert.equal(held.fecha_hora, range.hasta)
+  assert.equal(held.timestamp, Date.parse(range.hasta))
+  assert.deepEqual(historyGaps(points), [{ x1: seriesBase + 30_000, x2: Date.parse(range.hasta) }])
+})
+
+test('Una lectura única o una separación exacta de 45 s no inserta puntos', () => {
+  assert.equal(historyChartPoints(seriesAt([0]), seriesRange(600_000)).length, 1)
+  const readings = seriesAt([0, 15_000, 60_000, 75_000])
+  const points = historyChartPoints(readings, seriesRange(75_000))
+  assert.equal(HISTORY_GAP_MIN_MS, 45_000)
+  assert.equal(points.some(point => point.held), false)
+  assert.deepEqual(points, historyPoints(readings))
 })

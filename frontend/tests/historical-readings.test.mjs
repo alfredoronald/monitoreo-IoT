@@ -160,17 +160,18 @@ const seriesAt = offsets => offsets.map((offset, index) => ({
   id: String(index + 1), tipo_variable: 'temperatura', valor: 10 + index,
   fecha_hora: new Date(seriesBase + offset).toISOString(),
 }))
-const seriesRange = (hastaOffset, desdeOffset = 0) => ({ desde: new Date(seriesBase + desdeOffset).toISOString(), hasta: new Date(seriesBase + hastaOffset).toISOString() })
+const seriesRange = hastaOffset => ({ desde: new Date(seriesBase).toISOString(), hasta: new Date(seriesBase + hastaOffset).toISOString() })
 
-test('Un hueco entre sesiones corta la línea con un punto sin valor y no fabrica lecturas', () => {
+test('Un hueco mayor al umbral mantiene el último valor sin fabricar lecturas', () => {
   const readings = seriesAt([0, 15_000, 30_000, 180_000, 195_000])
   const points = historyChartPoints(readings, seriesRange(195_000))
   assert.equal(points.length, 6)
-  const gap = points[3]
-  assert.equal(gap.valor, null)
-  assert.deepEqual(gap.gap, { desde: seriesBase + 30_000, hasta: seriesBase + 180_000 })
-  assert.equal(gap.timestamp, seriesBase + 105_000)
-  assert.deepEqual(points.filter(point => !point.gap), historyPoints(readings))
+  const held = points[3]
+  assert.equal(held.held, true)
+  assert.equal(held.valor, 12)
+  assert.equal(held.timestamp, seriesBase + 180_000)
+  assert.equal(held.fecha_hora, readings[3].fecha_hora)
+  assert.deepEqual(points.filter(point => !point.held), historyPoints(readings))
   assert.deepEqual(historyGaps(points), [{ x1: seriesBase + 30_000, x2: seriesBase + 180_000 }])
 })
 
@@ -178,33 +179,29 @@ test('Una serie uniforme más espaciada no marca huecos falsos', () => {
   const readings = seriesAt([0, 180_000, 360_000, 540_000])
   const points = historyChartPoints(readings, seriesRange(540_000))
   assert.equal(points.length, 4)
-  assert.equal(points.some(point => point.gap), false)
+  assert.equal(points.some(point => point.held), false)
   assert.deepEqual(points, historyPoints(readings))
   assert.deepEqual(historyGaps(points), [])
 })
 
-test('Si el circuito se apaga al final del rango, el hueco llega hasta el borde derecho', () => {
+test('Si el corte llega al final del rango la recta se mantiene hasta el borde', () => {
   const readings = seriesAt([0, 15_000, 30_000])
   const range = seriesRange(330_000)
   const points = historyChartPoints(readings, range)
+  const held = points.at(-1)
   assert.equal(points.length, 4)
-  assert.equal(points.at(-1).valor, null)
+  assert.equal(held.held, true)
+  assert.equal(held.valor, 12)
+  assert.equal(held.fecha_hora, range.hasta)
+  assert.equal(held.timestamp, Date.parse(range.hasta))
   assert.deepEqual(historyGaps(points), [{ x1: seriesBase + 30_000, x2: Date.parse(range.hasta) }])
 })
 
-test('Si las lecturas empiezan tarde en el rango, el hueco inicial también se marca', () => {
-  const readings = seriesAt([300_000, 315_000, 330_000])
-  const points = historyChartPoints(readings, seriesRange(330_000))
-  assert.equal(points.length, 4)
-  assert.equal(points[0].valor, null)
-  assert.deepEqual(historyGaps(points), [{ x1: seriesBase, x2: seriesBase + 300_000 }])
-})
-
-test('Una lectura única o una separación exacta de 45 s no inserta huecos', () => {
+test('Una lectura única o una separación exacta de 45 s no inserta puntos', () => {
   assert.equal(historyChartPoints(seriesAt([0]), seriesRange(600_000)).length, 1)
   const readings = seriesAt([0, 15_000, 60_000, 75_000])
   const points = historyChartPoints(readings, seriesRange(75_000))
   assert.equal(HISTORY_GAP_MIN_MS, 45_000)
-  assert.equal(points.some(point => point.gap), false)
+  assert.equal(points.some(point => point.held), false)
   assert.deepEqual(points, historyPoints(readings))
 })

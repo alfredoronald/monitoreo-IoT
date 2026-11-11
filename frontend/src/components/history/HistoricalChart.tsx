@@ -35,11 +35,11 @@ export function HistoricalChart({ variable, series, range }: { variable: Variabl
                 <Tooltip content={({ active, activeIndex }) => <HistoricalTooltip unit={variable.unit}
                   reading={active && activeIndex != null ? points[Number(activeIndex)] : undefined} />} />
                 <Line type="linear" dataKey="valor" name={variable.name} stroke="var(--variable-color)" strokeWidth={2}
-                  dot={points.length === 1 ? { r: 4 } : false} activeDot={{ r: 4 }} connectNulls={false} isAnimationActive={false} />
+                  dot={points.length === 1 ? { r: 4 } : false} activeDot={{ r: 4 }} isAnimationActive={false} />
               </LineChart>
             </ResponsiveContainer>
           </div>
-          {gaps.length > 0 && <p className="history-gap-note">Banda sombreada: el circuito no envió lecturas; la línea se interrumpe.</p>}
+          {gaps.length > 0 && <p className="history-gap-note">Banda sombreada: sin lecturas; el trazo mantiene el último valor.</p>}
         </>}
     </article>
   )

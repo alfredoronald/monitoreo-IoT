@@ -39,13 +39,12 @@ test('Componentes históricos: estados accesibles y tooltip sin perder valor ni 
   ]
   const chart = renderToStaticMarkup(createElement(HistoricalChart, { variable: temperature, range, series: { readings: hole, loading: false, error: null } }))
   assert.match(chart, /history-gap-note/)
-  assert.match(chart, /el circuito no envió lecturas; la línea se interrumpe/)
-  const gapTooltip = renderToStaticMarkup(createElement(HistoricalTooltip, {
-    reading: { id: 'hueco-1', tipo_variable: 'temperatura', valor: null, fecha_hora: '2026-10-15T12:00:15.000Z', timestamp: 1,
-      gap: { desde: Date.parse('2026-10-15T12:00:15.000Z'), hasta: Date.parse('2026-10-15T12:20:15.000Z') } },
-    unit: temperature.unit,
+  assert.match(chart, /sin lecturas; el trazo mantiene el último valor/)
+  const held = renderToStaticMarkup(createElement(HistoricalTooltip, {
+    reading: { ...hole[2], held: true }, unit: temperature.unit,
   }))
-  assert.match(gapTooltip, /Sin lecturas/)
-  assert.match(gapTooltip, /Del /)
-  assert.doesNotMatch(gapTooltip, /°C/)
+  assert.match(held, /Sin lectura/)
+  assert.match(held, /Se mantiene el valor anterior/)
+  assert.match(held, /dateTime="2026-10-15T12:20:15.000Z"/i)
+  assert.doesNotMatch(held, /12 °C/)
 })

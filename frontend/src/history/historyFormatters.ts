@@ -23,11 +23,7 @@ export function historyPoints(readings: HistoricalReading[]) {
 export const HISTORY_GAP_MIN_MS = 45_000
 const HISTORY_GAP_CADENCE_FACTOR = 3
 
-// Un hueco no es una lectura: es un punto con valor null que corta la línea para
-// que la gráfica no una dos sesiones distintas. Guarda desde cuándo y hasta cuándo
-// no hubo lecturas, para la banda sombreada y el tooltip.
-export type HistoryGap = { desde: number; hasta: number }
-export type HistoryChartPoint = Omit<HistoricalReading, 'valor'> & { valor: number | null; timestamp: number; gap?: HistoryGap }
+export type HistoryChartPoint = HistoricalReading & { timestamp: number; held?: true }
 
 function medianInterval(readings: HistoricalReading[]) {
   const intervals = readings.slice(1)
@@ -43,30 +39,28 @@ export function historyGapThreshold(readings: HistoricalReading[]) {
   return cadence === null ? null : Math.max(HISTORY_GAP_MIN_MS, HISTORY_GAP_CADENCE_FACTOR * cadence)
 }
 
-// Inserta un punto sin valor en cada hueco: al inicio del rango (antes de la primera
-// lectura), entre sesiones y al final (después de la última). No inventa lecturas.
+// Puntos de presentación: en cada hueco se repite el último valor para que el
+// trazo quede horizontal y marcado, sin fabricar lecturas nuevas.
 export function historyChartPoints(readings: HistoricalReading[], range: HistoryRange): HistoryChartPoint[] {
-  const points: HistoryChartPoint[] = historyPoints(readings)
+  const points = historyPoints(readings)
   const threshold = historyGapThreshold(readings)
-  if (points.length === 0 || threshold === null) return points
-  const gapPoint = (desde: number, hasta: number, base: Pick<HistoricalReading, 'tipo_variable'>): HistoryChartPoint => ({
-    id: `hueco-${desde}`, tipo_variable: base.tipo_variable, valor: null, fecha_hora: new Date(desde).toISOString(),
-    timestamp: desde + (hasta - desde) / 2, gap: { desde, hasta },
-  })
-  const out: HistoryChartPoint[] = []
-  const start = Date.parse(range.desde)
-  if (points[0].timestamp - start > threshold) out.push(gapPoint(start, points[0].timestamp, points[0]))
+  if (threshold === null) return points
+  const chartPoints: HistoryChartPoint[] = []
   points.forEach((point, index) => {
     const previous = points[index - 1]
-    if (previous && point.timestamp - previous.timestamp > threshold) out.push(gapPoint(previous.timestamp, point.timestamp, point))
-    out.push(point)
+    if (previous && point.timestamp - previous.timestamp > threshold)
+      chartPoints.push({ ...previous, fecha_hora: point.fecha_hora, timestamp: point.timestamp, held: true })
+    chartPoints.push(point)
   })
   const last = points.at(-1)!
   const end = Date.parse(range.hasta)
-  if (end - last.timestamp > threshold) out.push(gapPoint(last.timestamp, end, last))
-  return out
+  if (end - last.timestamp > threshold)
+    chartPoints.push({ ...last, fecha_hora: range.hasta, timestamp: end, held: true })
+  return chartPoints
 }
 
 export function historyGaps(points: HistoryChartPoint[]) {
-  return points.flatMap(point => point.gap ? [{ x1: point.gap.desde, x2: point.gap.hasta }] : [])
+  return points.flatMap((point, index) => point.held && index > 0
+    ? [{ x1: points[index - 1].timestamp, x2: point.timestamp }]
+    : [])
 }

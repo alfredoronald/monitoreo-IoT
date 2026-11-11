@@ -1,0 +1,126 @@
+{
+  "stage": "final",
+  "timestamp": "2026-10-13T18:51:58.483Z",
+  "start": "2026-10-13T18:46:51.340Z",
+  "end": "2026-10-13T18:51:51.532Z",
+  "elapsedSeconds": 300.1914185,
+  "commit": "c9f2d2d2db56311a9160b0294fc0ecfa81b69f6e",
+  "firmwareHash": "49a39c34f12a5b7d81930d9cb0e2df52442a25c0",
+  "database": "monitoreo_ambiental",
+  "serialPort": "COM5",
+  "baselineId": "131",
+  "processBaseline": [
+    {
+      "port": 1883,
+      "pid": 26580,
+      "started": "2026-10-13T17:57:12.9486449Z"
+    },
+    {
+      "port": 3000,
+      "pid": 25420,
+      "started": "2026-10-13T17:57:16.8497784Z"
+    },
+    {
+      "port": 5432,
+      "pid": 8540,
+      "started": null
+    }
+  ],
+  "databaseStarted": "2026-10-13T17:29:38.133Z",
+  "comparison": [
+    {
+      "variable": "temperatura",
+      "published": 20,
+      "mqtt": 20,
+      "backend": 20,
+      "saved": 20,
+      "publishedVsMqtt": [],
+      "mqttVsBackend": [],
+      "mqttVsDatabase": [],
+      "sequenceMatches": true
+    },
+    {
+      "variable": "humedad",
+      "published": 20,
+      "mqtt": 20,
+      "backend": 20,
+      "saved": 20,
+      "publishedVsMqtt": [],
+      "mqttVsBackend": [],
+      "mqttVsDatabase": [],
+      "sequenceMatches": true
+    },
+    {
+      "variable": "co2",
+      "published": 20,
+      "mqtt": 20,
+      "backend": 20,
+      "saved": 20,
+      "publishedVsMqtt": [],
+      "mqttVsBackend": [],
+      "mqttVsDatabase": [],
+      "sequenceMatches": true
+    }
+  ],
+  "incidents": [],
+  "allMatch": true,
+  "reducedTest": true,
+  "original30MinuteCriterionMet": false,
+  "valuesResult": "Cantidades, valores y secuencias coinciden en las cuatro etapas.",
+  "lastPublications": [
+    {
+      "timestamp": "2026-10-13T18:51:50.944619+00:00",
+      "line": "[1000356 ms] MQTT publicacion: ambiente/temperatura; payload=30.5; enviado (QoS 0)"
+    },
+    {
+      "timestamp": "2026-10-13T18:51:50.953351+00:00",
+      "line": "[1000356 ms] MQTT publicacion: ambiente/humedad; payload=25.3; enviado (QoS 0)"
+    },
+    {
+      "timestamp": "2026-10-13T18:51:50.957951+00:00",
+      "line": "[1000356 ms] MQTT publicacion: ambiente/co2; payload=314.3; enviado (QoS 0)"
+    }
+  ],
+  "lastMqtt": [
+    {
+      "timestamp": "2026-10-13T18:51:51.033Z",
+      "topic": "ambiente/temperatura",
+      "content": "30.5",
+      "retained": false
+    },
+    {
+      "timestamp": "2026-10-13T18:51:51.211Z",
+      "topic": "ambiente/humedad",
+      "content": "25.3",
+      "retained": false
+    },
+    {
+      "timestamp": "2026-10-13T18:51:51.222Z",
+      "topic": "ambiente/co2",
+      "content": "314.3",
+      "retained": false
+    }
+  ],
+  "lastRows": [
+    {
+      "id": "192",
+      "fecha_hora": "2026-10-13T18:51:51.035Z",
+      "tipo_variable": "temperatura",
+      "valor": "30.50"
+    },
+    {
+      "id": "193",
+      "fecha_hora": "2026-10-13T18:51:51.213Z",
+      "tipo_variable": "humedad",
+      "valor": "25.30"
+    },
+    {
+      "id": "194",
+      "fecha_hora": "2026-10-13T18:51:51.225Z",
+      "tipo_variable": "co2",
+      "valor": "314.30"
+    }
+  ],
+  "stabilityPass": true,
+  "dataPass": true
+}

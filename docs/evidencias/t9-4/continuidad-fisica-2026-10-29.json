@@ -1,0 +1,39 @@
+{
+  "issue": 150,
+  "runId": "1f8a80d8-d766-49af-913a-921d2f39cbb0",
+  "source": "Aula real; confirmación del operador",
+  "started": "2026-10-29T15:27:16.551Z",
+  "plannedEnd": "2026-10-29T15:32:16.551Z",
+  "baselineId": "58",
+  "interval": 15,
+  "database": "monitoreo_ambiental",
+  "host": "localhost",
+  "port": 5432,
+  "checkpoint": "2026-10-29T15:32:17.174Z",
+  "completed": true,
+  "passed": true,
+  "incidents": [],
+  "counts": [
+    {
+      "variable": "temperatura",
+      "saved": 20,
+      "expected": 20,
+      "percentage": 100,
+      "passed": true
+    },
+    {
+      "variable": "humedad",
+      "saved": 20,
+      "expected": 20,
+      "percentage": 100,
+      "passed": true
+    },
+    {
+      "variable": "co2",
+      "saved": 20,
+      "expected": 20,
+      "percentage": 100,
+      "passed": true
+    }
+  ]
+}

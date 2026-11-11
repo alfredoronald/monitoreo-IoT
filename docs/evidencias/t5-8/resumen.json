@@ -1,0 +1,117 @@
+{
+    "generatedAt":  "2026-10-22T03:32:49.0444490Z",
+    "timezone":  "America/La_Paz",
+    "commit":  "9913129e2cd9a05b7858420825ea3c2b39d55d67",
+    "final":  {
+                  "executed":  146,
+                  "pass":  146,
+                  "fail":  0,
+                  "browsers":  [
+                                   "chrome",
+                                   "edge"
+                               ]
+              },
+    "allAttempts":  {
+                        "executed":  472,
+                        "pass":  462,
+                        "fail":  10
+                    },
+    "history":  [
+                    {
+                        "file":  "resultados-chrome-antes.json",
+                        "browser":  "chrome",
+                        "phase":  "antes",
+                        "executed":  22,
+                        "pass":  18,
+                        "fail":  4,
+                        "startedAt":  "2026-10-22T03:21:16.232Z",
+                        "finishedAt":  "2026-10-22T03:22:01.536Z"
+                    },
+                    {
+                        "file":  "resultados-chrome-integracion-inicial.json",
+                        "browser":  "chrome",
+                        "phase":  "final",
+                        "executed":  73,
+                        "pass":  72,
+                        "fail":  1,
+                        "startedAt":  "2026-10-22T03:22:33.323Z",
+                        "finishedAt":  "2026-10-22T03:25:09.239Z"
+                    },
+                    {
+                        "file":  "resultados-edge-integracion-inicial.json",
+                        "browser":  "edge",
+                        "phase":  "final",
+                        "executed":  73,
+                        "pass":  72,
+                        "fail":  1,
+                        "startedAt":  "2026-10-22T03:25:09.428Z",
+                        "finishedAt":  "2026-10-22T03:27:48.208Z"
+                    },
+                    {
+                        "file":  "resultados-chrome-regresion.json",
+                        "browser":  "chrome",
+                        "phase":  "regresion",
+                        "executed":  73,
+                        "pass":  71,
+                        "fail":  2,
+                        "startedAt":  "2026-10-22T03:25:58.034Z",
+                        "finishedAt":  "2026-10-22T03:28:19.776Z"
+                    },
+                    {
+                        "file":  "resultados-edge-regresion.json",
+                        "browser":  "edge",
+                        "phase":  "regresion",
+                        "executed":  73,
+                        "pass":  71,
+                        "fail":  2,
+                        "startedAt":  "2026-10-22T03:28:19.941Z",
+                        "finishedAt":  "2026-10-22T03:30:35.566Z"
+                    },
+                    {
+                        "file":  "resultados-chrome-tooltips.json",
+                        "browser":  "chrome",
+                        "phase":  "tooltips",
+                        "executed":  6,
+                        "pass":  6,
+                        "fail":  0,
+                        "startedAt":  "2026-10-22T03:26:49.050Z",
+                        "finishedAt":  "2026-10-22T03:26:55.609Z"
+                    },
+                    {
+                        "file":  "resultados-edge-tooltips.json",
+                        "browser":  "edge",
+                        "phase":  "tooltips",
+                        "executed":  6,
+                        "pass":  6,
+                        "fail":  0,
+                        "startedAt":  "2026-10-22T03:26:55.749Z",
+                        "finishedAt":  "2026-10-22T03:27:01.376Z"
+                    },
+                    {
+                        "file":  "resultados-chrome-cierre.json",
+                        "browser":  "chrome",
+                        "phase":  "cierre",
+                        "executed":  73,
+                        "pass":  73,
+                        "fail":  0,
+                        "startedAt":  "2026-10-22T03:27:27.706Z",
+                        "finishedAt":  "2026-10-22T03:29:43.999Z"
+                    },
+                    {
+                        "file":  "resultados-edge-cierre.json",
+                        "browser":  "edge",
+                        "phase":  "cierre",
+                        "executed":  73,
+                        "pass":  73,
+                        "fail":  0,
+                        "startedAt":  "2026-10-22T03:29:44.160Z",
+                        "finishedAt":  "2026-10-22T03:31:59.293Z"
+                    }
+                ],
+    "pngCount":  569,
+    "sourceHashesVerified":  true,
+    "physicalPhone":  false,
+    "rawPngCount":  186,
+    "archivedPngCount":  393,
+    "archiveSha256":  "9046b380f43a6a878c84a8ac3d0cd4c55f8a27bade0b52853074d942e650f620"
+}

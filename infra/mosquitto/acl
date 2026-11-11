@@ -1,0 +1,13 @@
+# Control de acceso MQTT: mínimo privilegio para #133.
+# Solo estos usuarios deben existir en passwd (archivo local, no versionado).
+# Mosquitto deniega por defecto las operaciones sin una regla que las permita.
+# No agregar permisos globales, reglas pattern ni topic readwrite.
+
+# El ESP32 solo publica; no puede leer mensajes, ni siquiera sus publicaciones.
+user esp32
+topic write ambiente/#
+
+# El backend solo recibe mensajes de ambiente/#; no puede publicar.
+# Un SUBACK aceptado no acredita lectura: el ACL también filtra la entrega.
+user backend
+topic read ambiente/#

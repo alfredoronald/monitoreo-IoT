@@ -1,0 +1,47 @@
+{
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/155.0.8059.84",
+    "revision": "@5869fe313571d75152b77813cf0a4ee26a4e6df0",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/155.0.0.0 Safari/537.36",
+    "jsVersion": "15.5.35.25"
+  },
+  "controlledResponsesOnly": true,
+  "widths": [
+    360,
+    1366
+  ],
+  "screenshots": [
+    "cargando-1366.png",
+    "error-1366.png",
+    "sin-datos-1366.png",
+    "sin-datos-recientes-1366.png",
+    "cargando-360.png",
+    "error-360.png",
+    "sin-datos-360.png",
+    "sin-datos-recientes-360.png",
+    "error-con-ultima-lectura-360.png",
+    "recuperacion-360.png"
+  ],
+  "pollingIntervalsMs": [
+    15000,
+    15000
+  ],
+  "checks": [
+    "carga",
+    "error inicial",
+    "respuesta vacía",
+    "antigüedad por variable",
+    "valor cero",
+    "vencimiento automático sin respuestas HTTP",
+    "error conservando valores y fechas",
+    "recuperación con muestras recientes",
+    "polling de 15 s",
+    "históricos antiguos válidos y estados independientes",
+    "indicador de aire y recomendaciones",
+    "banner y atención de alertas",
+    "Tab y Enter",
+    "sin overflow"
+  ],
+  "errors": []
+}

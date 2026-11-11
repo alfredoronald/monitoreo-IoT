@@ -1,0 +1,1883 @@
+﻿[
+    {
+        "path":  "build.txt",
+        "bytes":  411,
+        "MiB":  0.000392,
+        "category":  "Logs",
+        "purpose":  "Salida original de validación build.txt; conservar incluso el lint repetido por contexto temporal",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "6f764b2f109314611d543a43efe47909c20ce1602f28dabc9f367fb23c866c07"
+    },
+    {
+        "path":  "capturas-diagnostico-manifiesto.json",
+        "bytes":  94156,
+        "MiB":  0.089794,
+        "category":  "Metadatos y manifiestos",
+        "purpose":  "Índice original de 393 capturas archivadas, tamaños y SHA-256",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "de3f99c6eaef9be1b373a4c34022d918ee6c00cf84e0b8603d9cb4989ba368b3"
+    },
+    {
+        "path":  "capturas-diagnostico.zip",
+        "bytes":  52031383,
+        "MiB":  49.620994,
+        "category":  "ZIP diagnóstico",
+        "purpose":  "393 PNG de intentos anteriores; conserva el histórico completo y diez copias de FAIL también sueltas",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "9046b380f43a6a878c84a8ac3d0cd4c55f8a27bade0b52853074d942e650f620"
+    },
+    {
+        "path":  "defectos.md",
+        "bytes":  4629,
+        "MiB":  0.004415,
+        "category":  "Documentación",
+        "purpose":  "Reproducción y corrección de los dos defectos, y errores de preparación de la herramienta",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "f07f02bad6bba1097586205cd9c2cad91c0c5452d355663c406d43a5308a47e8"
+    },
+    {
+        "path":  "entorno.json",
+        "bytes":  1579,
+        "MiB":  0.001506,
+        "category":  "Metadatos y manifiestos",
+        "purpose":  "Versiones reales, rama, commit, Node y paquetes",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "2090242495ee4d821949b7e7828740c3339c7e35a78fa638e18221541c50fe6a"
+    },
+    {
+        "path":  "lint-cierre.txt",
+        "bytes":  37,
+        "MiB":  3.5E-05,
+        "category":  "Logs",
+        "purpose":  "Salida original de validación lint-cierre.txt; conservar incluso el lint repetido por contexto temporal",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "d3436792b35e62682b183fb9b69e43aee7aff54b6cc2a16c262dc315ce47898f"
+    },
+    {
+        "path":  "lint.txt",
+        "bytes":  37,
+        "MiB":  3.5E-05,
+        "category":  "Logs",
+        "purpose":  "Salida original de validación lint.txt; conservar incluso el lint repetido por contexto temporal",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "d3436792b35e62682b183fb9b69e43aee7aff54b6cc2a16c262dc315ce47898f"
+    },
+    {
+        "path":  "matriz-pruebas.md",
+        "bytes":  15888,
+        "MiB":  0.015152,
+        "category":  "Documentación",
+        "purpose":  "Cobertura por escenario, combinación y breakpoint con enlaces a capturas",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "2c1d88477a6eacfbdc5f7c0131fe084b36bbeef39e494d543986f4c493fde257"
+    },
+    {
+        "path":  "README.md",
+        "bytes":  8334,
+        "MiB":  0.007948,
+        "category":  "Documentación",
+        "purpose":  "Alcance, entorno, reproducción, resultados y limitaciones",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "93a6cd8d417b3284496ed45f06d1e4b604d058533fecc97462611683ce955cc0"
+    },
+    {
+        "path":  "resultados-chrome-antes.json",
+        "bytes":  274300,
+        "MiB":  0.261593,
+        "category":  "Informes resultados",
+        "purpose":  "Informe original completo de ejecución: PASS/FAIL, consultas, geometría, errores, hashes y referencias a capturas; conservar sus bytes",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "53a5c50d679c0d109f017149045c1a41039120457fd0db50b894688a955c2ac6"
+    },
+    {
+        "path":  "resultados-chrome-cierre.json",
+        "bytes":  933804,
+        "MiB":  0.890545,
+        "category":  "Informes resultados",
+        "purpose":  "Informe original completo de ejecución: PASS/FAIL, consultas, geometría, errores, hashes y referencias a capturas; conservar sus bytes",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "608d08a8d38a36f9e4a38cfb3fe4a1ded493b34b5a141ba84bda25fde27a86b0"
+    },
+    {
+        "path":  "resultados-chrome-integracion-inicial.json",
+        "bytes":  930517,
+        "MiB":  0.88741,
+        "category":  "Informes resultados",
+        "purpose":  "Informe original completo de ejecución: PASS/FAIL, consultas, geometría, errores, hashes y referencias a capturas; conservar sus bytes",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "0ba4dde595d86020c78a5fa52c28371905eb435d0ab19ddb5297b096c697fb5b"
+    },
+    {
+        "path":  "resultados-chrome-regresion.json",
+        "bytes":  931127,
+        "MiB":  0.887992,
+        "category":  "Informes resultados",
+        "purpose":  "Informe original completo de ejecución: PASS/FAIL, consultas, geometría, errores, hashes y referencias a capturas; conservar sus bytes",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "57b5fd90f98751ce3102696f2858761390f5ed5ce2029e591d137eb3f5268615"
+    },
+    {
+        "path":  "resultados-chrome-tooltips.json",
+        "bytes":  76920,
+        "MiB":  0.073357,
+        "category":  "Informes resultados",
+        "purpose":  "Informe original completo de ejecución: PASS/FAIL, consultas, geometría, errores, hashes y referencias a capturas; conservar sus bytes",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "9a0701aba92a71670cccb347216a3398aaee02affd2aab8ec3c4391455a7fe6c"
+    },
+    {
+        "path":  "resultados-chrome.json",
+        "bytes":  933804,
+        "MiB":  0.890545,
+        "category":  "Informes resultados",
+        "purpose":  "Informe original completo de ejecución: PASS/FAIL, consultas, geometría, errores, hashes y referencias a capturas; conservar sus bytes",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "608d08a8d38a36f9e4a38cfb3fe4a1ded493b34b5a141ba84bda25fde27a86b0"
+    },
+    {
+        "path":  "resultados-edge-cierre.json",
+        "bytes":  933842,
+        "MiB":  0.890581,
+        "category":  "Informes resultados",
+        "purpose":  "Informe original completo de ejecución: PASS/FAIL, consultas, geometría, errores, hashes y referencias a capturas; conservar sus bytes",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "6093f177a4c8ce473a8d65c628c7c0ee724cc2120a0f614716a2f3f6a8f58b27"
+    },
+    {
+        "path":  "resultados-edge-integracion-inicial.json",
+        "bytes":  929392,
+        "MiB":  0.886337,
+        "category":  "Informes resultados",
+        "purpose":  "Informe original completo de ejecución: PASS/FAIL, consultas, geometría, errores, hashes y referencias a capturas; conservar sus bytes",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "45f5046b5ae3fd60867adbaead5610979ca33214d0815bf6914e5a71418efdea"
+    },
+    {
+        "path":  "resultados-edge-regresion.json",
+        "bytes":  930906,
+        "MiB":  0.887781,
+        "category":  "Informes resultados",
+        "purpose":  "Informe original completo de ejecución: PASS/FAIL, consultas, geometría, errores, hashes y referencias a capturas; conservar sus bytes",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "5aa66479897c9983ef83264fd15b645ff97cea018a0f36d3491a8cca20093c58"
+    },
+    {
+        "path":  "resultados-edge-tooltips.json",
+        "bytes":  77042,
+        "MiB":  0.073473,
+        "category":  "Informes resultados",
+        "purpose":  "Informe original completo de ejecución: PASS/FAIL, consultas, geometría, errores, hashes y referencias a capturas; conservar sus bytes",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "c5d3d91c799d60711d7a66e18218844be38dfe3f269d707a1de9facfbe9660e4"
+    },
+    {
+        "path":  "resultados-edge.json",
+        "bytes":  933842,
+        "MiB":  0.890581,
+        "category":  "Informes resultados",
+        "purpose":  "Informe original completo de ejecución: PASS/FAIL, consultas, geometría, errores, hashes y referencias a capturas; conservar sus bytes",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "6093f177a4c8ce473a8d65c628c7c0ee724cc2120a0f614716a2f3f6a8f58b27"
+    },
+    {
+        "path":  "resumen.json",
+        "bytes":  5023,
+        "MiB":  0.00479,
+        "category":  "Metadatos y manifiestos",
+        "purpose":  "Consolidación: 146 PASS/0 FAIL finales, 472 ejecuciones y 10 FAIL históricos; checksum del ZIP",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "6d1bc83a1e8e173cc0b1c90d8a896f18e760a335292b159100adaab059daf394"
+    },
+    {
+        "path":  "test.txt",
+        "bytes":  4546,
+        "MiB":  0.004335,
+        "category":  "Logs",
+        "purpose":  "Salida original de validación test.txt; conservar incluso el lint repetido por contexto temporal",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "f6bc037acca7678a6fe7de35105f621eb7e4b2c5988c2118ca37b1d9c67572f8"
+    },
+    {
+        "path":  "validacion.json",
+        "bytes":  2469,
+        "MiB":  0.002355,
+        "category":  "Metadatos y manifiestos",
+        "purpose":  "Comandos, tiempos y códigos de salida de tests, lint, build y cierre CDP",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "2817893b0e08cd6b7079c8d8b369bfd5b804fa93bb847a9bffe110de10c8f048"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/01-dashboard-ultima-hora.png",
+        "bytes":  139767,
+        "MiB":  0.133292,
+        "category":  "PNG cierre",
+        "purpose":  "Dashboard completo: tarjetas, cero válido, tres gráficos, rango de una hora, aire moderado y banner; cobertura de la combinación navegador/viewport",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "178cc776f20a8bc731cc2ba92380777ef6c55292bc29c94a000aa3da29acc072"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/02-tooltip-co2.png",
+        "bytes":  146701,
+        "MiB":  0.139905,
+        "category":  "PNG cierre",
+        "purpose":  "Tooltip activo de cada variable en Chrome laptop",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "f3756347d67f339d8799cc2f5cf4330fac69394d7daf0b4fd26d7d3c655fe0f8"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/02-tooltip-humedad.png",
+        "bytes":  148238,
+        "MiB":  0.141371,
+        "category":  "PNG cierre",
+        "purpose":  "Tooltip activo de cada variable en Chrome laptop",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "9698719e134a6e102c6042878902f0096f2a35d8b1c012f882233a86427e965a"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/02-tooltip-temperatura.png",
+        "bytes":  147342,
+        "MiB":  0.140516,
+        "category":  "PNG cierre",
+        "purpose":  "Tooltip activo de cada variable en Chrome laptop",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "252f2d9522e6e1a27cd49b2f33d8f0a9446be09477011959eb9e1bfa4e9a89bc"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/02-tooltips-tres-graficos.png",
+        "bytes":  139767,
+        "MiB":  0.133292,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "178cc776f20a8bc731cc2ba92380777ef6c55292bc29c94a000aa3da29acc072"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/03-24-horas-5760-puntos.png",
+        "bytes":  141252,
+        "MiB":  0.134708,
+        "category":  "PNG cierre",
+        "purpose":  "Histórico de 24 horas con 5760 puntos por variable",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "b8e9188d872407f24980a4b26f048927487f7dd4d4e682f90ab9d1c911d37746"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/04-personalizado-valido-teclado.png",
+        "bytes":  150554,
+        "MiB":  0.143579,
+        "category":  "PNG cierre",
+        "purpose":  "Rango personalizado y foco visible; controles móviles y laptop",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "70c3f28420738e0ab9aadd314ea053618973328ca561f97317e833a6f56da990"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/05-fechas-vacias-invalidas.png",
+        "bytes":  152807,
+        "MiB":  0.145728,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "cb3030ec072108c222935e76557b16df232226f03d1c32bbdeb666d2104a27f8"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/06-fechas-invertidas.png",
+        "bytes":  153385,
+        "MiB":  0.146279,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "7a2b2a9d02bbef3991847f60f40339e5d75e3f93add2c6e85e94ed525e76de72"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/07-fechas-iguales-un-punto.png",
+        "bytes":  145694,
+        "MiB":  0.138945,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "259db857d8f40f303e42773c7d0932f0b1c4956f683519eee51832884e8d1c2a"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/08-cambio-rapido-cancelacion.png",
+        "bytes":  141341,
+        "MiB":  0.134793,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "284c16825234da6fae2e42e66f7fcb9ad12bc57950568a3a9936e9efb07fcd84"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/09-cargando.png",
+        "bytes":  87993,
+        "MiB":  0.083917,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "66c5ab251d78e4f27acc6c2c79a4059de67cd2dcd84c64236a268d9122c3941c"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/10-error-inicial.png",
+        "bytes":  100275,
+        "MiB":  0.09563,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "d5c9e246a4cde43483544947b2070a1ef2129a299aef5c3d7a7d261cfda9d556"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/11-sin-datos.png",
+        "bytes":  86685,
+        "MiB":  0.082669,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "e18eaf48ab11a0efce47c8b35de7307453d75074ce64e0893e918bc49efb1c19"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/12-datos-antiguos.png",
+        "bytes":  147456,
+        "MiB":  0.140625,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "2fdd122bff64e7e5aaaef0d40c847798f6d5998fc411bdea14a4945900880268"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/13-error-parcial.png",
+        "bytes":  135829,
+        "MiB":  0.129537,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "7e422d3282aad4f33e48bef032be17931d5916b037e4e0bb5f5f325f975dbdc5"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/14-aire-bueno.png",
+        "bytes":  138219,
+        "MiB":  0.131816,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "6eaee93a96f4579c5639f26ac4bcb7e07364040086fce4c68b45ba80ed2fe23b"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/14-aire-malo.png",
+        "bytes":  137406,
+        "MiB":  0.131041,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "74c334de9fbd3244cc178de531ecd5c37c306b7a6f056e56f1f774ae20b5c9fd"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/14-aire-moderado.png",
+        "bytes":  139728,
+        "MiB":  0.133255,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "a48421372249a7c373d24c5af44489dccf3d3fa7b8498198e964ba060d0c541c"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/15-alertas-patch-fallido-reintento.png",
+        "bytes":  113084,
+        "MiB":  0.107845,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "24a261c5111d4f7bba8a60ff05bc6e346d36eea213e86d780bd75edd33add6b9"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/15-patch-fallido.png",
+        "bytes":  141399,
+        "MiB":  0.134849,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "91ff6f9ecbeac7c93fd66ae82973cde62cbb5d046f5576239a09d6eff6b0d534"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/16-navegacion-foco-controles.png",
+        "bytes":  150231,
+        "MiB":  0.143271,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "e0ac807949d88c1fb9a0cd8f6a8e24a671548980f7503d5b5f9ab2c2b7c84f40"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/17-valores-numericos-largos.png",
+        "bytes":  159816,
+        "MiB":  0.152412,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "f3bdeddfae991146afe3e99653345e55659c42ecef2c08e931a8ee1f9c1c546a"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/18-textos-aire-sin-espacios.png",
+        "bytes":  150320,
+        "MiB":  0.143356,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "28819716c13ed910d5dd4049cd67a9f5689b5d0e215fa921bd59d7979705b2d2"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/19-error-conserva-valores.png",
+        "bytes":  150645,
+        "MiB":  0.143666,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "c46ed8a40eb7a77594ab7468dbb16e71ebc28ce42788e8879296e01c887ebeb5"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/19-polling-error-conserva-recuperacion.png",
+        "bytes":  139860,
+        "MiB":  0.133381,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "e6d3ed1c3bfc4095484f9d2914cd73627f60e7208314a498a2e2f73f5d8cafa0"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/cierre/21-sin-excepciones-javascript.png",
+        "bytes":  150598,
+        "MiB":  0.143621,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "d0a5be3f3062ca34c74d5692f564d27b25f4677bd04f7dbeb5c74ad1899759f1"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/final/02-tooltips-tres-graficos.png",
+        "bytes":  139325,
+        "MiB":  0.132871,
+        "category":  "PNG FAIL históricos",
+        "purpose":  "FAIL histórico de preparación de la herramienta; conservar visual original en archivo completo, además de los resultados JSON en Git",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "91e598b9f639df0f2cf4307cd5475ae065ed7675b371efaba5de0c3954e7061b"
+    },
+    {
+        "path":  "capturas/chrome/1366x768/regresion/02-tooltips-tres-graficos.png",
+        "bytes":  147666,
+        "MiB":  0.140825,
+        "category":  "PNG FAIL históricos",
+        "purpose":  "FAIL histórico de preparación de la herramienta; conservar visual original en archivo completo, además de los resultados JSON en Git",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "5255ad9e2bdb4d277d91c6003b653e2cffc98930082814a2dcf0b1392abf3f39"
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/01-dashboard-ultima-hora.png",
+        "bytes":  143008,
+        "MiB":  0.136383,
+        "category":  "PNG FAIL históricos",
+        "purpose":  "FAIL histórico de preparación de la herramienta; conservar visual original en archivo completo, además de los resultados JSON en Git",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "97ee5e3f4e3ace71c2d9c7155beb64b57d7175aa06863fee9aff3ab8137fbb36"
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/16-navegacion-foco-controles.png",
+        "bytes":  144089,
+        "MiB":  0.137414,
+        "category":  "PNG FAIL históricos",
+        "purpose":  "FAIL histórico de preparación de la herramienta; conservar visual original en archivo completo, además de los resultados JSON en Git",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "9134df5bd84186b3ebbfa631ea3ed1857d8d3f6f503fc4280fb196b33f62ea7f"
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/17-valores-numericos-largos.png",
+        "bytes":  170422,
+        "MiB":  0.162527,
+        "category":  "PNG FAIL históricos",
+        "purpose":  "Antes de corregir D87-01/D87-02: evidencia visual original del desbordamiento",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "cd814cfcb183c39df6dc470a6e25ba9eb73e2490e1442931d9017686aa176061"
+    },
+    {
+        "path":  "capturas/chrome/360x800/antes/18-textos-aire-sin-espacios.png",
+        "bytes":  207595,
+        "MiB":  0.197978,
+        "category":  "PNG FAIL históricos",
+        "purpose":  "Antes de corregir D87-01/D87-02: evidencia visual original del desbordamiento",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "7367f001c30e606c81082aca26f72c297c30327d1b33f86e42cf42ad0e6d7007"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/01-dashboard-ultima-hora.png",
+        "bytes":  143374,
+        "MiB":  0.136732,
+        "category":  "PNG cierre",
+        "purpose":  "Dashboard completo: tarjetas, cero válido, tres gráficos, rango de una hora, aire moderado y banner; cobertura de la combinación navegador/viewport",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "b90f5922fda745df9709de40ca41157442ae35964c21e55368784344c5155b8d"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/02-tooltip-co2.png",
+        "bytes":  148912,
+        "MiB":  0.142014,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "820fecd9cfb24742e30202b32d8654e4e26e9cc0d08ae1f43f8eed2fc61bbf88"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/02-tooltip-humedad.png",
+        "bytes":  148672,
+        "MiB":  0.141785,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "27f33983e5da6f7f55e1ead9b20b439d8859cece11a730e4446896b6636b5345"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/02-tooltip-temperatura.png",
+        "bytes":  148687,
+        "MiB":  0.141799,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "504944d7d1ae8aa7568f1fd08f29129f9184ef0ef6b5d897dfb220ea20c0409c"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/02-tooltips-tres-graficos.png",
+        "bytes":  143374,
+        "MiB":  0.136732,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "b90f5922fda745df9709de40ca41157442ae35964c21e55368784344c5155b8d"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/03-24-horas-5760-puntos.png",
+        "bytes":  143461,
+        "MiB":  0.136815,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "f0b790652f80b4a44d0b1a82d081949fd2feebe1843435cadc6b19002949856d"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/04-personalizado-valido-teclado.png",
+        "bytes":  155875,
+        "MiB":  0.148654,
+        "category":  "PNG cierre",
+        "purpose":  "Rango personalizado y foco visible; controles móviles y laptop",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "cf8316d2175bd44f6519af504811a2eb70c013398dbbcac0830415d71d3bf0b6"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/05-fechas-vacias-invalidas.png",
+        "bytes":  157082,
+        "MiB":  0.149805,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "b5d275a16c68cc49490417980d5b5585aa24e32d8c40200e69f6e652a443efd1"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/06-fechas-invertidas.png",
+        "bytes":  158247,
+        "MiB":  0.150916,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "e2ccf7b91e4e20bbfe0e945dc9bcce6b098e666fc5cb245a6ea0c8a728cb4c1e"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/07-fechas-iguales-un-punto.png",
+        "bytes":  151002,
+        "MiB":  0.144007,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "8e7c29bcfab3de3a9f3c4345a2c27175d19b4166b319d56b82fd58eae8dea66f"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/08-cambio-rapido-cancelacion.png",
+        "bytes":  128533,
+        "MiB":  0.122579,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "6f9e2038b5964b35674ba92a15cd604640a8ca65c39b44ac095495076563acda"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/09-cargando.png",
+        "bytes":  89011,
+        "MiB":  0.084888,
+        "category":  "PNG cierre",
+        "purpose":  "Estado importante en móvil; el informe conserva el resultado en las otras resoluciones",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "e332a82946a335299fdd63f68602fbaa2a6757bcb1604f0bd3494bc74df92eb7"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/10-error-inicial.png",
+        "bytes":  102735,
+        "MiB":  0.097976,
+        "category":  "PNG cierre",
+        "purpose":  "Estado importante en móvil; el informe conserva el resultado en las otras resoluciones",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "b68eb073779f6d2d55294bcb9a83c0fdbf3880ac8ad8271f22abccc84364c283"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/11-sin-datos.png",
+        "bytes":  88209,
+        "MiB":  0.084123,
+        "category":  "PNG cierre",
+        "purpose":  "Estado importante en móvil; el informe conserva el resultado en las otras resoluciones",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "7ee53bc5ac18674353a4997cd4ff83e9a2b3f4d40beda537da3d2274bb0ceaa1"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/12-datos-antiguos.png",
+        "bytes":  151008,
+        "MiB":  0.144012,
+        "category":  "PNG cierre",
+        "purpose":  "Estado importante en móvil; el informe conserva el resultado en las otras resoluciones",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "b82784e331bcbda72cb90886a52bc85e45b48f22e27d694781e0cc88997ec070"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/13-error-parcial.png",
+        "bytes":  135679,
+        "MiB":  0.129394,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "17574893f39dcf0d59ac510bee421ff6913357d669169e62318c52e890e53c0d"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/14-aire-bueno.png",
+        "bytes":  141945,
+        "MiB":  0.135369,
+        "category":  "PNG cierre",
+        "purpose":  "Clasificación y color del aire; moderado ya visible en el dashboard representativo",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "45413edf2bf75526407d667f2a29cf6b617877c72f397681cae503de0a2cd6c8"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/14-aire-malo.png",
+        "bytes":  141383,
+        "MiB":  0.134833,
+        "category":  "PNG cierre",
+        "purpose":  "Clasificación y color del aire; moderado ya visible en el dashboard representativo",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "a3a8ed8274b3dd15419887a52b0ef2da14f4dbecc3ee769c0bda9475cd9d49ad"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/14-aire-moderado.png",
+        "bytes":  143685,
+        "MiB":  0.137029,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "5ea928e6935f7727d7af7746d9feb7b6fb8cd6a4dbf7d9d80be7c4c71e2ab49d"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/15-alertas-patch-fallido-reintento.png",
+        "bytes":  116270,
+        "MiB":  0.110884,
+        "category":  "PNG cierre",
+        "purpose":  "Alertas: error de PATCH visible y desaparición del banner después del reintento",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "f86d6aae34f1ff8927624296b037dbe640825c7327e732cbf099fa4141068d1b"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/15-patch-fallido.png",
+        "bytes":  145478,
+        "MiB":  0.138739,
+        "category":  "PNG cierre",
+        "purpose":  "Alertas: error de PATCH visible y desaparición del banner después del reintento",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "cac93533eeb45ce6ccc0142cb3ffe8d8ad6699d44dfd2f7c62320931d018f8bd"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/16-navegacion-foco-controles.png",
+        "bytes":  155598,
+        "MiB":  0.14839,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "c8475eeab7edc827d27e614aae2abb6e83f0392628fddffc51997cb802a836b8"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/17-valores-numericos-largos.png",
+        "bytes":  165175,
+        "MiB":  0.157523,
+        "category":  "PNG cierre",
+        "purpose":  "Después de corregir D87-01/D87-02; prueba visual en ambos navegadores",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "89b8d2bc0b5447738007c707c6c230bb3ac7b3f05ae5b6daebca11ef7b306ca3"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/18-textos-aire-sin-espacios.png",
+        "bytes":  154760,
+        "MiB":  0.147591,
+        "category":  "PNG cierre",
+        "purpose":  "Después de corregir D87-01/D87-02; prueba visual en ambos navegadores",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "57ad1025f3c0525c69a9050089ae15c8a7ac3c4bd9b0676cd7c7074cfb041865"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/19-error-conserva-valores.png",
+        "bytes":  153859,
+        "MiB":  0.146731,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "c1fb542696160f56834bf20bece68299d6051ad21b4c06b7c0ae4f3d6fcf133b"
+    },
+    {
+        "path":  "capturas/chrome/360x800/cierre/19-polling-error-conserva-recuperacion.png",
+        "bytes":  142949,
+        "MiB":  0.136327,
+        "category":  "PNG cierre",
+        "purpose":  "Recuperación tras error de actualización con polling real",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "3e589814129ab7188d4d929381ebd2e97d51d1882c06ef53c8518c441da07ff8"
+    },
+    {
+        "path":  "capturas/chrome/360x800/regresion/02-tooltips-tres-graficos.png",
+        "bytes":  149707,
+        "MiB":  0.142772,
+        "category":  "PNG FAIL históricos",
+        "purpose":  "FAIL histórico de preparación de la herramienta; conservar visual original en archivo completo, además de los resultados JSON en Git",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "11266e0616d0c55518a96d40a769081cc2b12e176279b3b7a7052b6f45c8780b"
+    },
+    {
+        "path":  "capturas/chrome/599x900/cierre/20-breakpoint.png",
+        "bytes":  162951,
+        "MiB":  0.155402,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "0dcf8b95714535df2538f2798681d2f591e8ae78edd92e9dbf743a689b6f422f"
+    },
+    {
+        "path":  "capturas/chrome/600x900/cierre/20-breakpoint.png",
+        "bytes":  163512,
+        "MiB":  0.155937,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "fe0436b2605458f97b1960e63700c943ee3842f912c83d41ab866de879ceb09a"
+    },
+    {
+        "path":  "capturas/chrome/601x900/cierre/20-breakpoint.png",
+        "bytes":  167568,
+        "MiB":  0.159805,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "a24172a5d4eab650d30c4b9cbf730c7945edb92ecc6524a02e479984fdcb1f29"
+    },
+    {
+        "path":  "capturas/chrome/619x900/cierre/20-breakpoint.png",
+        "bytes":  168543,
+        "MiB":  0.160735,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "58e5aceec3fff0962f2d03c990d62b5f70b3730a20cdfb684a3f637ce6b66bf4"
+    },
+    {
+        "path":  "capturas/chrome/620x900/cierre/20-breakpoint.png",
+        "bytes":  167754,
+        "MiB":  0.159983,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "6d6261faad5eb9e686781eb520fcb975df4b5ae8586d3799b425092808d7a10d"
+    },
+    {
+        "path":  "capturas/chrome/621x900/cierre/20-breakpoint.png",
+        "bytes":  169265,
+        "MiB":  0.161424,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "ed589e2cb6034ae2bc87ff4301cc47f6061509110eb7e0ac110bf1c9f5221d81"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/01-dashboard-ultima-hora.png",
+        "bytes":  155921,
+        "MiB":  0.148698,
+        "category":  "PNG cierre",
+        "purpose":  "Dashboard completo: tarjetas, cero válido, tres gráficos, rango de una hora, aire moderado y banner; cobertura de la combinación navegador/viewport",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "98248bb2311f0a9e2c1939aa0c22d7b50a5d3a3cbcd1f7306b7a91e2a0b80193"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/02-tooltip-co2.png",
+        "bytes":  162524,
+        "MiB":  0.154995,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "4c75b58dc7159b32798ad2bfb45f90f89cf1f584bd63cdb0f65c7fe0c100dc5b"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/02-tooltip-humedad.png",
+        "bytes":  163193,
+        "MiB":  0.155633,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "21bf550c1f5c742c4f5459de571a959ee04b626cd1a8d29eca3a730d4c27d403"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/02-tooltip-temperatura.png",
+        "bytes":  162370,
+        "MiB":  0.154848,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "5f7b49b161a188fcdb58f83761c094db9ec9d3cb7b6e8b59d3a0d054e94ced01"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/02-tooltips-tres-graficos.png",
+        "bytes":  155921,
+        "MiB":  0.148698,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "98248bb2311f0a9e2c1939aa0c22d7b50a5d3a3cbcd1f7306b7a91e2a0b80193"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/03-24-horas-5760-puntos.png",
+        "bytes":  165607,
+        "MiB":  0.157935,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "8c774a884c60ec427313845cba936e546f042dbf0aedca9a46eee2a900e8f79e"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/04-personalizado-valido-teclado.png",
+        "bytes":  168279,
+        "MiB":  0.160483,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "ce249536cd6e0a1c664ab795bf71a80f58a2eaaae41356c17a4122a88d10748c"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/05-fechas-vacias-invalidas.png",
+        "bytes":  169601,
+        "MiB":  0.161744,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "cdad0ed84425101a08e0b44339b84a5b3c5078c809ede865ec62485d691139d8"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/06-fechas-invertidas.png",
+        "bytes":  170652,
+        "MiB":  0.162746,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "480d4fcf712e0ee21e85e4f9dd91ed85381e2349101729b9ce203f583d668b14"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/07-fechas-iguales-un-punto.png",
+        "bytes":  160485,
+        "MiB":  0.15305,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "f0c8d1ba14823b7e564168a1ff17e5737a8e46c06afd8dd7f85bbba121c8467c"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/08-cambio-rapido-cancelacion.png",
+        "bytes":  137036,
+        "MiB":  0.130688,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "817e5ce33ad36bc6bcbe86d87b4ab34872c12554b5b838a7009da1f74ece9809"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/09-cargando.png",
+        "bytes":  95000,
+        "MiB":  0.090599,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "8946ea547608beef5cf173b66f37d45f2ebcbcf3ba2c53e65bb95df9f9664a14"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/10-error-inicial.png",
+        "bytes":  107368,
+        "MiB":  0.102394,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "5501ec7d0175cbc50fce843c2012cfa777e35e50be9ee7fb1b859c52d79e3f94"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/11-sin-datos.png",
+        "bytes":  94080,
+        "MiB":  0.089722,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "025f15c4d5d0a837c6cd44680f52599f52ca1ba48ee37cd78935399346db80db"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/12-datos-antiguos.png",
+        "bytes":  163598,
+        "MiB":  0.156019,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "5aa657146e31f1efd582226d0e240de12071ea8f31db33daac1bbaecadebc10e"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/13-error-parcial.png",
+        "bytes":  145300,
+        "MiB":  0.138569,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "2743c68eddc246d6371f6d105ee5916b1b988973e4204cc0678b54a4ab447378"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/14-aire-bueno.png",
+        "bytes":  154515,
+        "MiB":  0.147357,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "e5894a927996f64824be994268c8ea2b2b643cd138c7ed91fa35e7cdf515f3ea"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/14-aire-malo.png",
+        "bytes":  153921,
+        "MiB":  0.146791,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "5086c613c8cd89f43fcdee39e606e52eb7db215834164b70fc41eeddf1bd9dcd"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/14-aire-moderado.png",
+        "bytes":  156355,
+        "MiB":  0.149112,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "851a1ddaed65c60266b5a242af79332f811bf970a7510c8c6d4460a84f65ee23"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/15-alertas-patch-fallido-reintento.png",
+        "bytes":  126691,
+        "MiB":  0.120822,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "ae4072949d5a8150818552d803e55d7490ad2c0c1ada1f3769beee3caf062f58"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/15-patch-fallido.png",
+        "bytes":  158439,
+        "MiB":  0.151099,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "4b6e72bd5116b2dc22e6cc056453a4bac29a6366b57983867491d31d6a821faa"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/16-navegacion-foco-controles.png",
+        "bytes":  169278,
+        "MiB":  0.161436,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "e1af782ff6e5d57ed7e18e5bf5e4b96c731c3efbed1f2adcd268d782794cb2c1"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/17-valores-numericos-largos.png",
+        "bytes":  173769,
+        "MiB":  0.165719,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "82d7ba182de00175392ce1bbf2ab0b861a961b27b49cc195f027376f09dcddd4"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/18-textos-aire-sin-espacios.png",
+        "bytes":  171485,
+        "MiB":  0.163541,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "512a7780b431afc25d566bad0d262367104ee219a98849d3b3e3fde712eec0a0"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/19-error-conserva-valores.png",
+        "bytes":  167477,
+        "MiB":  0.159719,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "f2d7721ed5d4c2f39854c9f92353f3f43bb540938c41ddda52a9fd703cdf0dce"
+    },
+    {
+        "path":  "capturas/chrome/768x1024/cierre/19-polling-error-conserva-recuperacion.png",
+        "bytes":  156544,
+        "MiB":  0.149292,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "3b21320dca5b663f0110b47783e3351d0279bb38564ea301ba24a42afd604177"
+    },
+    {
+        "path":  "capturas/chrome/899x900/cierre/20-breakpoint.png",
+        "bytes":  168572,
+        "MiB":  0.160763,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "c0de940a574b5b697fc1e50b6e3e0dcd88c08c55558869036711e7d5319f1042"
+    },
+    {
+        "path":  "capturas/chrome/900x900/cierre/20-breakpoint.png",
+        "bytes":  168826,
+        "MiB":  0.161005,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "5ff3a9691f7f0acb2e2d3655eedf898f33b520cfd7f30e3f7d6b135b9af52666"
+    },
+    {
+        "path":  "capturas/chrome/901x900/cierre/20-breakpoint.png",
+        "bytes":  141803,
+        "MiB":  0.135234,
+        "category":  "PNG cierre",
+        "purpose":  "Breakpoint de 900px: tarjetas y personalizados en tres columnas",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "03dcde55ebe1a9e32a0f005745a07a13ad2a2aee72fb42c7cb411ea62e8602d2"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/01-dashboard-ultima-hora.png",
+        "bytes":  138923,
+        "MiB":  0.132487,
+        "category":  "PNG cierre",
+        "purpose":  "Dashboard completo: tarjetas, cero válido, tres gráficos, rango de una hora, aire moderado y banner; cobertura de la combinación navegador/viewport",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "d1438ad102cfd739ca74d9379e8b558b1a9f84f152af45a0e15679f73a00615f"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/02-tooltip-co2.png",
+        "bytes":  145766,
+        "MiB":  0.139013,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "f61e777d8a3690d92b6ca5d786caf95c711df1079e8f7da4d8decc7f9c0ff274"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/02-tooltip-humedad.png",
+        "bytes":  147218,
+        "MiB":  0.140398,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "96ebbb1c8bbf96e160d3728e8160c691d9cb01d24351be07a98a84339f3d1f1f"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/02-tooltip-temperatura.png",
+        "bytes":  146229,
+        "MiB":  0.139455,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "c40e513d4c1bb52dd69d9eff2f546b0d86f98b4bd3b237f3012102679f439a81"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/02-tooltips-tres-graficos.png",
+        "bytes":  138923,
+        "MiB":  0.132487,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "d1438ad102cfd739ca74d9379e8b558b1a9f84f152af45a0e15679f73a00615f"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/03-24-horas-5760-puntos.png",
+        "bytes":  140007,
+        "MiB":  0.133521,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "db5897c135677777e891078777ff8d951a1a5a0ab09bdfcb2c075e8180f34479"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/04-personalizado-valido-teclado.png",
+        "bytes":  150074,
+        "MiB":  0.143122,
+        "category":  "PNG cierre",
+        "purpose":  "Rango personalizado y foco visible; controles móviles y laptop",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "e5ad43c4d88110455e7291428cbb98a80185765edaab9c6e96e8a39326e3de7e"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/05-fechas-vacias-invalidas.png",
+        "bytes":  152173,
+        "MiB":  0.145123,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "2a49883a9d828452ab7286e61ce3efba30b8060e1c2a5199da200c00d6826916"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/06-fechas-invertidas.png",
+        "bytes":  152899,
+        "MiB":  0.145816,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "339f311d71f62a5b1e6c41008db302bfd807cbfdc1f85231bf291386593f5519"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/07-fechas-iguales-un-punto.png",
+        "bytes":  145193,
+        "MiB":  0.138467,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "be9c477fb525ae4413d178c49e3a5f5fba982ff2793a4e6bd7ebd1d97aef745b"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/08-cambio-rapido-cancelacion.png",
+        "bytes":  125980,
+        "MiB":  0.120144,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "c92a4f711b194b24ca2ca78b14058b40c37d5adc3446d745ad9fa9792578d8fd"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/09-cargando.png",
+        "bytes":  87843,
+        "MiB":  0.083774,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "5fc1ac7d3e4b704ed91ea9dbb6aa0695f7c1702e6050fd4d957ae9b1a8ecf3ac"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/10-error-inicial.png",
+        "bytes":  100286,
+        "MiB":  0.09564,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "042abc3adc0f3cb0b25a3e684a6d6ba409e1c7efe360ec67e2d81956ca2bf641"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/11-sin-datos.png",
+        "bytes":  86721,
+        "MiB":  0.082704,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "8943cd21fd584a71f09ea05de05bc83df4b976164fffde25a971bd896cd8eae4"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/12-datos-antiguos.png",
+        "bytes":  147244,
+        "MiB":  0.140423,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "020b9d12f804fb2c664d177b92aafd8c8457dd2307701d0ef6b5d5465c77e71d"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/13-error-parcial.png",
+        "bytes":  135436,
+        "MiB":  0.129162,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "490f4c460a3eae6de875d16d74cb4410d368274f068fa37b90b5b9beff2851d5"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/14-aire-bueno.png",
+        "bytes":  137638,
+        "MiB":  0.131262,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "caec50a5acc81caaa6839002b0d72eee0119faac013b03d40465c4eab0e3b25a"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/14-aire-malo.png",
+        "bytes":  137040,
+        "MiB":  0.130692,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "58f317a1e9d2640e408ae665dadbf1a003eedba89c452f6217f1aa1e34ebe165"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/14-aire-moderado.png",
+        "bytes":  139244,
+        "MiB":  0.132793,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "b602278e5112d3803c868c024f0017d8eacdcf22bb80100988a3d930a3aa6744"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/15-alertas-patch-fallido-reintento.png",
+        "bytes":  112872,
+        "MiB":  0.107643,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "9b83bc4884e732e95032f05ae20a794a1fb229c327b926f2e0557a2cf3761b25"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/15-patch-fallido.png",
+        "bytes":  140880,
+        "MiB":  0.134354,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "230db9fbf0df1f29cf97bfffd81ffe811bd0033f7189d68d98f2540b7c72b659"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/16-navegacion-foco-controles.png",
+        "bytes":  149830,
+        "MiB":  0.142889,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "a1430fdab825b87f9f5c8bf357727a0262e343db9b5edcc639dd5da1244665de"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/17-valores-numericos-largos.png",
+        "bytes":  159099,
+        "MiB":  0.151729,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "905727942e1fa85731b565b89ebe1937ee7d256b3d6e914e517d9aa5d5337046"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/18-textos-aire-sin-espacios.png",
+        "bytes":  149675,
+        "MiB":  0.142741,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "3ae3b7a267b514c20b40a616411b4dbfacf5d983af07c922250629d43a14be96"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/19-error-conserva-valores.png",
+        "bytes":  149888,
+        "MiB":  0.142944,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "fb274758866a82f8b3ae910a3244468676dbf1dadfae2e376bf4c88f941dceb5"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/19-polling-error-conserva-recuperacion.png",
+        "bytes":  139204,
+        "MiB":  0.132755,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "8f17db8433e8b84e3e242ab472ba6a72a898bc8d8eee0decac2216e0a460fce5"
+    },
+    {
+        "path":  "capturas/edge/1366x768/cierre/21-sin-excepciones-javascript.png",
+        "bytes":  150586,
+        "MiB":  0.14361,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "50e48a3f06bc2924f03b5fcb8962f4d40798b4add9c5d8e8056fc96b9e8a028a"
+    },
+    {
+        "path":  "capturas/edge/1366x768/final/02-tooltips-tres-graficos.png",
+        "bytes":  139721,
+        "MiB":  0.133248,
+        "category":  "PNG FAIL históricos",
+        "purpose":  "FAIL histórico de preparación de la herramienta; conservar visual original en archivo completo, además de los resultados JSON en Git",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "fabdd99bb87b83d4fd1ea9a50f436af2e66bd0072216ea8d0fd091b33e4f1de3"
+    },
+    {
+        "path":  "capturas/edge/1366x768/regresion/02-tooltips-tres-graficos.png",
+        "bytes":  148481,
+        "MiB":  0.141603,
+        "category":  "PNG FAIL históricos",
+        "purpose":  "FAIL histórico de preparación de la herramienta; conservar visual original en archivo completo, además de los resultados JSON en Git",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "b23f6663616402bbf6133e83ced878db72ab3e965242dbe90f309b8ab277b8d6"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/01-dashboard-ultima-hora.png",
+        "bytes":  143869,
+        "MiB":  0.137204,
+        "category":  "PNG cierre",
+        "purpose":  "Dashboard completo: tarjetas, cero válido, tres gráficos, rango de una hora, aire moderado y banner; cobertura de la combinación navegador/viewport",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "b0b8383a848330fb0849865c17981e19f95d29c5d20fae8be0ac36869fb22542"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/02-tooltip-co2.png",
+        "bytes":  149459,
+        "MiB":  0.142535,
+        "category":  "PNG cierre",
+        "purpose":  "Tooltip activo de cada variable en Edge móvil emulado",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "633d3d78849b8b67357126e08239e0f49b5c4d7c685da3001d828e45165af7dd"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/02-tooltip-humedad.png",
+        "bytes":  149380,
+        "MiB":  0.14246,
+        "category":  "PNG cierre",
+        "purpose":  "Tooltip activo de cada variable en Edge móvil emulado",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "6b041487e53d463bf08733d244691dc03de58584c3e94e16a617e8d637d4b70f"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/02-tooltip-temperatura.png",
+        "bytes":  148742,
+        "MiB":  0.141851,
+        "category":  "PNG cierre",
+        "purpose":  "Tooltip activo de cada variable en Edge móvil emulado",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "1c31f35f29fdbe7c40033863a4893476bfae54daab5838b29ae0649f8e32f0dc"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/02-tooltips-tres-graficos.png",
+        "bytes":  143869,
+        "MiB":  0.137204,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "b0b8383a848330fb0849865c17981e19f95d29c5d20fae8be0ac36869fb22542"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/03-24-horas-5760-puntos.png",
+        "bytes":  145223,
+        "MiB":  0.138495,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "530eb6f2d243062104027562588bc53019c3e15f75e329947076a89a775c851e"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/04-personalizado-valido-teclado.png",
+        "bytes":  156549,
+        "MiB":  0.149297,
+        "category":  "PNG cierre",
+        "purpose":  "Rango personalizado y foco visible; controles móviles y laptop",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "0f06ff94347f60671c9b03613cde602f1d5ef5c7d421c83a381c4d2ecc658abc"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/05-fechas-vacias-invalidas.png",
+        "bytes":  157600,
+        "MiB":  0.150299,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "a4ee0b056d68e5ed22c31b2517b02d3044da59112b68092f94fb307b734783ba"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/06-fechas-invertidas.png",
+        "bytes":  158925,
+        "MiB":  0.151563,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "e95308fe551b3fad3c15afa30a5b03cc10287d4e8fcc58835482ca02ba5dbd8f"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/07-fechas-iguales-un-punto.png",
+        "bytes":  151441,
+        "MiB":  0.144425,
+        "category":  "PNG cierre",
+        "purpose":  "Extremos iguales y un único punto por gráfico",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "86d8fed569ffe1082250b3987b40d94ae68fb4b4c47ed4aee717f4d51d584449"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/08-cambio-rapido-cancelacion.png",
+        "bytes":  128797,
+        "MiB":  0.12283,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "bba5bb6d0dea094395d6a4081cd6f0f5f09c6e2a9e432b9ce6831e85eb296467"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/09-cargando.png",
+        "bytes":  88905,
+        "MiB":  0.084786,
+        "category":  "PNG cierre",
+        "purpose":  "Estado importante en móvil; el informe conserva el resultado en las otras resoluciones",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "36ff09040b1c9531d1eaa03728f43172a934ebe6635ee6ff1feb53706a346687"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/10-error-inicial.png",
+        "bytes":  102868,
+        "MiB":  0.098103,
+        "category":  "PNG cierre",
+        "purpose":  "Estado importante en móvil; el informe conserva el resultado en las otras resoluciones",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "be55196eb2c6758770933de9c516103b39596844dee0f9d6d3b96db344a7fcae"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/11-sin-datos.png",
+        "bytes":  88371,
+        "MiB":  0.084277,
+        "category":  "PNG cierre",
+        "purpose":  "Estado importante en móvil; el informe conserva el resultado en las otras resoluciones",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "02565455beae5dfb5ebed9a059a934a5bbc41bc01018fd1a42247380ebc59ec0"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/12-datos-antiguos.png",
+        "bytes":  151503,
+        "MiB":  0.144485,
+        "category":  "PNG cierre",
+        "purpose":  "Estado importante en móvil; el informe conserva el resultado en las otras resoluciones",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "98af025ca3929fbdfeb4d8dfe6deee9a3eb5e0fc508732114efce316e5475cca"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/13-error-parcial.png",
+        "bytes":  136126,
+        "MiB":  0.12982,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "a981c6fa71489a64e325ab7bb55bd389c06cea7e6a4adcdac940a1f363713a48"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/14-aire-bueno.png",
+        "bytes":  142277,
+        "MiB":  0.135686,
+        "category":  "PNG cierre",
+        "purpose":  "Clasificación y color del aire; moderado ya visible en el dashboard representativo",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "b7a605349eff8fd17fd800444d7efa870a2cee59e1478e40ac24b8c29a7d2084"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/14-aire-malo.png",
+        "bytes":  140970,
+        "MiB":  0.134439,
+        "category":  "PNG cierre",
+        "purpose":  "Clasificación y color del aire; moderado ya visible en el dashboard representativo",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "c0a5e0cdc41b7ad6ace6708edfa691afef2df6c46cbfd95d58c0e01bfc7c3147"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/14-aire-moderado.png",
+        "bytes":  143910,
+        "MiB":  0.137243,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "a7efa4bc109bd30cb1311f7227da2e24d784be8f667d012b40c50764ddae1102"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/15-alertas-patch-fallido-reintento.png",
+        "bytes":  116398,
+        "MiB":  0.111006,
+        "category":  "PNG cierre",
+        "purpose":  "Alertas: error de PATCH visible y desaparición del banner después del reintento",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "fc046001fa2b9b45d5450d45357a14457ab4569c54bce3d31850fbce1ad68c4c"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/15-patch-fallido.png",
+        "bytes":  145588,
+        "MiB":  0.138844,
+        "category":  "PNG cierre",
+        "purpose":  "Alertas: error de PATCH visible y desaparición del banner después del reintento",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "a99db167ae09c40f1a3a32a7aa1bcb6509c1ea5622f18919ae2d5d3fc7fa1e34"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/16-navegacion-foco-controles.png",
+        "bytes":  155924,
+        "MiB":  0.148701,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "ad15c96138ba38ffe7e0bbedc5205bc432d12196b09bc26296f9f1a9f6f779cc"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/17-valores-numericos-largos.png",
+        "bytes":  165680,
+        "MiB":  0.158005,
+        "category":  "PNG cierre",
+        "purpose":  "Después de corregir D87-01/D87-02; prueba visual en ambos navegadores",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "0f5f0eba708ae35976e9738f6add74484c36071ee420501177bffcdea29238fa"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/18-textos-aire-sin-espacios.png",
+        "bytes":  155187,
+        "MiB":  0.147998,
+        "category":  "PNG cierre",
+        "purpose":  "Después de corregir D87-01/D87-02; prueba visual en ambos navegadores",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "ade1d2fb819df42e5e58ad9795eebc78aa65c300e24e4b70ffc217685a48521b"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/19-error-conserva-valores.png",
+        "bytes":  154611,
+        "MiB":  0.147449,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "9958328b2f9d16ef43f452bfac93ac1b43f422fbfffa4804234f8668022106b4"
+    },
+    {
+        "path":  "capturas/edge/360x800/cierre/19-polling-error-conserva-recuperacion.png",
+        "bytes":  143710,
+        "MiB":  0.137053,
+        "category":  "PNG cierre",
+        "purpose":  "Recuperación tras error de actualización con polling real",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "a3916e5bf0781ceab21807e31d829e13371ae1139292d5fd21b68dcb9e6ed1f6"
+    },
+    {
+        "path":  "capturas/edge/360x800/regresion/02-tooltips-tres-graficos.png",
+        "bytes":  149945,
+        "MiB":  0.142999,
+        "category":  "PNG FAIL históricos",
+        "purpose":  "FAIL histórico de preparación de la herramienta; conservar visual original en archivo completo, además de los resultados JSON en Git",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "fc84115d9f27f0126e322bc03483ebb15b4237486729e2b5cbbf2715e28c0f3e"
+    },
+    {
+        "path":  "capturas/edge/599x900/cierre/20-breakpoint.png",
+        "bytes":  162618,
+        "MiB":  0.155085,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "26c1178eaf3901387da83c87dc5e33d00a1466860450aba4ff5be9c5b74b79bc"
+    },
+    {
+        "path":  "capturas/edge/600x900/cierre/20-breakpoint.png",
+        "bytes":  163540,
+        "MiB":  0.155964,
+        "category":  "PNG cierre",
+        "purpose":  "Breakpoint de 600px: banner apilado",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "36aec253b31e4ef9f047f70141f07f799131576511863e9dd25d6e87c64cc009"
+    },
+    {
+        "path":  "capturas/edge/601x900/cierre/20-breakpoint.png",
+        "bytes":  167419,
+        "MiB":  0.159663,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "83b00a922c5d148a382b646e82b20c7955190d2f2065d63518501863fd0aede9"
+    },
+    {
+        "path":  "capturas/edge/619x900/cierre/20-breakpoint.png",
+        "bytes":  168550,
+        "MiB":  0.160742,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "2085a9adf2600079152441f438efbc0445f6e54e08bc7ff667318e2c8e696654"
+    },
+    {
+        "path":  "capturas/edge/620x900/cierre/20-breakpoint.png",
+        "bytes":  167826,
+        "MiB":  0.160051,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "dc1231b2120701787be05a9c287723a895fbff0519a782fa5fcd781cc99779c1"
+    },
+    {
+        "path":  "capturas/edge/621x900/cierre/20-breakpoint.png",
+        "bytes":  169493,
+        "MiB":  0.161641,
+        "category":  "PNG cierre",
+        "purpose":  "Breakpoint de 620px: controles y botón después de la transición",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "7768b7c8007a7539911cc430e49a439ea91c8d4a5fb023bf1be9ba71330de932"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/01-dashboard-ultima-hora.png",
+        "bytes":  156331,
+        "MiB":  0.149089,
+        "category":  "PNG cierre",
+        "purpose":  "Dashboard completo: tarjetas, cero válido, tres gráficos, rango de una hora, aire moderado y banner; cobertura de la combinación navegador/viewport",
+        "proposal":  "CONSERVAR_EN_GIT",
+        "sha256":  "79c1f1e47611c1ee191d0e67bbdd52913f5739b465f056240a864ad397b9d0c5"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/02-tooltip-co2.png",
+        "bytes":  162954,
+        "MiB":  0.155405,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "eda8165dea755f06f7bcea97d58a71f78d48224c4d4d194d7a118b511e2f3abd"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/02-tooltip-humedad.png",
+        "bytes":  163129,
+        "MiB":  0.155572,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "3ba556ef5bb4808d894db65dd222255049a7618848d8fb202fc2f9ee3a890215"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/02-tooltip-temperatura.png",
+        "bytes":  163526,
+        "MiB":  0.155951,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "a150ca823ab71498ccecfb04f0ca61fa4923745848bbd6dcf53a4bd3396cde95"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/02-tooltips-tres-graficos.png",
+        "bytes":  156331,
+        "MiB":  0.149089,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "79c1f1e47611c1ee191d0e67bbdd52913f5739b465f056240a864ad397b9d0c5"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/03-24-horas-5760-puntos.png",
+        "bytes":  166596,
+        "MiB":  0.158878,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "6c620aa253e9cb2860a3756071ab81b4452d68a846f9ecd4f832307bb684227c"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/04-personalizado-valido-teclado.png",
+        "bytes":  169351,
+        "MiB":  0.161506,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "d72248e1befcfe373d5e357fb4c861ead85856c88d06901f2bd9a7de755e310a"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/05-fechas-vacias-invalidas.png",
+        "bytes":  170699,
+        "MiB":  0.162791,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "fe3089ea1963877b407677b4da3f107f34372831fd4228f8e63ae1846a58bcaa"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/06-fechas-invertidas.png",
+        "bytes":  171864,
+        "MiB":  0.163902,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "d929f7b0e4cacfba397c2f7940f8f1598b8a6ec3f300381b0306c430cd783f10"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/07-fechas-iguales-un-punto.png",
+        "bytes":  161518,
+        "MiB":  0.154036,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "9d40270036a391256744cd7b45b5bd5f30821f18838fa13dfa849a59e0ec090c"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/08-cambio-rapido-cancelacion.png",
+        "bytes":  166584,
+        "MiB":  0.158867,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "9504d00771ac93f35615b55cc0fb15f8203f9f0d293f11b0293e0f2ec94d328f"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/09-cargando.png",
+        "bytes":  94976,
+        "MiB":  0.090576,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "b93478f61038bc64ff27bdf4182d31f1268ca7a0f8889ca180e7ce101a116cc9"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/10-error-inicial.png",
+        "bytes":  107603,
+        "MiB":  0.102618,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "91e1f394e54a7174e7bbd37a603b89ca81d49fdd81dd6a0b5bbd3b366ac4a186"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/11-sin-datos.png",
+        "bytes":  94228,
+        "MiB":  0.089863,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "4adb2ee28eb803071f69e9ca1a0d280b19a44f744fb44c48ec1446e2b12e98d6"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/12-datos-antiguos.png",
+        "bytes":  164617,
+        "MiB":  0.156991,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "ec74d6234878558991d38aadd1bc01c49179560bceac8662b781494c892bcd46"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/13-error-parcial.png",
+        "bytes":  145407,
+        "MiB":  0.138671,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "96e671b405135b41b7ab92f1845a31839894f1c9c70a45d64dacdf4382a79b70"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/14-aire-bueno.png",
+        "bytes":  154356,
+        "MiB":  0.147205,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "56aacc48133824a64fa006c54951af3a4d79fdd1ca4381e17a0b4647ea710d07"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/14-aire-malo.png",
+        "bytes":  154091,
+        "MiB":  0.146953,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "5e277129b50a4b917d572d9dd6f9a277d311247c3dfe05f95d0277b3f2d8f811"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/14-aire-moderado.png",
+        "bytes":  156055,
+        "MiB":  0.148826,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "e13c5dcbd1c89dbc6bd97f1058d4b2b19dd213f2e8e94bd72ad2c144f119a996"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/15-alertas-patch-fallido-reintento.png",
+        "bytes":  126179,
+        "MiB":  0.120334,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "615af47be2dc6f79c29af116ee5b1eb7234985eb89362f53af6127735130c67e"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/15-patch-fallido.png",
+        "bytes":  158052,
+        "MiB":  0.15073,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "25980ff9811351ead41b1d4bae071852845fdda1da8706437d61c44fac04c6fa"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/16-navegacion-foco-controles.png",
+        "bytes":  169010,
+        "MiB":  0.16118,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "ab96f60b33e89d6de075c4d3f46ef0d02863f86938e7842a9f4beb49f23099e7"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/17-valores-numericos-largos.png",
+        "bytes":  173239,
+        "MiB":  0.165214,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "13b79255d7ae418d3230a5501017517693673664cf607e81848bb5f6ebe45a11"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/18-textos-aire-sin-espacios.png",
+        "bytes":  171454,
+        "MiB":  0.163511,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "da9096ae947785b055defaf0373815e793b6a58b54d4d8b62784c566ba6828f7"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/19-error-conserva-valores.png",
+        "bytes":  167055,
+        "MiB":  0.159316,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "2d37cba954a5ba7c5fab34d5811f1878d623b73ed0860aa58b70a6291151c28f"
+    },
+    {
+        "path":  "capturas/edge/768x1024/cierre/19-polling-error-conserva-recuperacion.png",
+        "bytes":  155781,
+        "MiB":  0.148564,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "569c86ac271401962b7fe13f62ea5987b1a9ed49f4da1f6e7517e3a91d8c562c"
+    },
+    {
+        "path":  "capturas/edge/899x900/cierre/20-breakpoint.png",
+        "bytes":  168928,
+        "MiB":  0.161102,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "8352c3a56949010a2d21780a5fb2b2ce212ae212697d04494b532730222c1f80"
+    },
+    {
+        "path":  "capturas/edge/900x900/cierre/20-breakpoint.png",
+        "bytes":  169064,
+        "MiB":  0.161232,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "856743bf1682cd505a1b8d609ed48afeed4da8e1de919b80456417e5bb1f06f5"
+    },
+    {
+        "path":  "capturas/edge/901x900/cierre/20-breakpoint.png",
+        "bytes":  141709,
+        "MiB":  0.135144,
+        "category":  "PNG cierre",
+        "purpose":  "Captura de cierre adicional: evidencia visual de escenario o resolución ya cubiertos por informes completos y selección representativa",
+        "proposal":  "ARCHIVAR_FUERA_DE_GIT",
+        "sha256":  "d46a38fa8ce6f64859d9368bf16871ea515194982333c8e673d434d45851832a"
+    }
+]

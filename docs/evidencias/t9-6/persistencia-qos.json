@@ -1,0 +1,56 @@
+{
+  "issue": 152,
+  "status": "PARCIAL",
+  "recorded": "2026-10-28T12:48:20.491Z",
+  "database": "monitoreo_ambiental",
+  "lecturasBefore": 15,
+  "lecturasAfter": 15,
+  "rows": [
+    {
+      "id": "1",
+      "qos": 0,
+      "enviados": 500,
+      "recibidos": 500,
+      "guardados": 500,
+      "perdidos_pct": "0.00",
+      "metricas": {
+        "fin": "2026-10-28T03:27:00.202Z",
+        "inicio": "2026-10-28T03:26:44.426Z",
+        "duplicados": 0,
+        "qos_efectivo": 0,
+        "publicacion_qos": 0,
+        "suscripcion_qos": 0,
+        "recibidos_eventos": 500,
+        "periodo_publicacion_ms": 20
+      }
+    },
+    {
+      "id": "2",
+      "qos": 1,
+      "enviados": 500,
+      "recibidos": 500,
+      "guardados": 500,
+      "perdidos_pct": "0.00",
+      "metricas": {
+        "fin": "2026-10-28T03:27:16.064Z",
+        "inicio": "2026-10-28T03:27:00.202Z",
+        "duplicados": 0,
+        "qos_efectivo": 0,
+        "publicacion_qos": 1,
+        "suscripcion_qos": 0,
+        "recibidos_eventos": 500,
+        "periodo_publicacion_ms": 20
+      }
+    }
+  ],
+  "pending": [
+    149,
+    150,
+    151
+  ],
+  "idempotencyCheck": {
+    "environment": "PostgreSQL temporal 55489",
+    "imports": 2,
+    "resultingRows": 2
+  }
+}

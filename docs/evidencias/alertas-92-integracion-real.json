@@ -1,0 +1,84 @@
+{
+  "entorno": "Backend Express real y PostgreSQL local; sin interceptación ni API simulada",
+  "capturado_en": "2026-10-18T03:22:35.575Z",
+  "peticiones": [
+    {
+      "metodo": "PATCH",
+      "ruta": "/api/alertas/920000000000009202",
+      "cuerpo": {
+        "atendida": true
+      },
+      "status": 200,
+      "respuesta": {
+        "id": "920000000000009202",
+        "lectura_id": "920000000000009202",
+        "umbral_id": "3",
+        "mensaje": "[Prueba integración #92] CO₂ malo: ventilar el aula.",
+        "fecha_hora": "2026-10-18T03:22:35.685Z",
+        "atendida": true
+      }
+    },
+    {
+      "metodo": "PATCH",
+      "ruta": "/api/alertas/920000000000009201",
+      "cuerpo": {
+        "atendida": true
+      },
+      "status": 200,
+      "respuesta": {
+        "id": "920000000000009201",
+        "lectura_id": "920000000000009201",
+        "umbral_id": "2",
+        "mensaje": "[Prueba integración #92] CO₂ moderado: revisar ventilación.",
+        "fecha_hora": "2026-10-18T03:22:35.685Z",
+        "atendida": true
+      }
+    }
+  ],
+  "conexion": {
+    "base": "monitoreo_ambiental",
+    "rol": "app",
+    "version": "PostgreSQL 18.0 on x86_64-windows, compiled by msvc-19.44.35215, 64-bit"
+  },
+  "lecturas_previas": 15,
+  "antes": [
+    {
+      "id": "920000000000009201",
+      "lectura_id": "920000000000009201",
+      "mensaje": "[Prueba integración #92] CO₂ moderado: revisar ventilación.",
+      "atendida": false
+    },
+    {
+      "id": "920000000000009202",
+      "lectura_id": "920000000000009202",
+      "mensaje": "[Prueba integración #92] CO₂ malo: ventilar el aula.",
+      "atendida": false
+    }
+  ],
+  "despues_patch": [
+    {
+      "id": "920000000000009201",
+      "atendida": true
+    },
+    {
+      "id": "920000000000009202",
+      "atendida": true
+    }
+  ],
+  "pendientes_tras_recarga": [],
+  "despues_recarga": [
+    {
+      "id": "920000000000009201",
+      "atendida": true
+    },
+    {
+      "id": "920000000000009202",
+      "atendida": true
+    }
+  ],
+  "resultado": "PASS: aviso, PATCH real, persistencia SQL y ausencia tras recargar",
+  "limpieza": {
+    "filas_de_prueba_eliminadas": true,
+    "lecturas_finales": 15
+  }
+}

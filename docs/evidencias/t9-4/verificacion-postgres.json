@@ -1,0 +1,443 @@
+{
+  "issue": 150,
+  "verified": "2026-10-29T15:33:33.104Z",
+  "runId": "1f8a80d8-d766-49af-913a-921d2f39cbb0",
+  "summary": [
+    {
+      "tipo_variable": "co2",
+      "guardadas": "20",
+      "esperadas": 20,
+      "porcentaje": "100.00",
+      "primera": "2026-10-29T15:27:23.101Z",
+      "ultima": "2026-10-29T15:32:16.549Z",
+      "max_intervalo_segundos": "23.159000",
+      "aprobado": true
+    },
+    {
+      "tipo_variable": "humedad",
+      "guardadas": "20",
+      "esperadas": 20,
+      "porcentaje": "100.00",
+      "primera": "2026-10-29T15:27:23.096Z",
+      "ultima": "2026-10-29T15:32:16.547Z",
+      "max_intervalo_segundos": "23.161000",
+      "aprobado": true
+    },
+    {
+      "tipo_variable": "temperatura",
+      "guardadas": "20",
+      "esperadas": 20,
+      "porcentaje": "100.00",
+      "primera": "2026-10-29T15:27:22.835Z",
+      "ultima": "2026-10-29T15:32:16.290Z",
+      "max_intervalo_segundos": "23.417000",
+      "aprobado": true
+    }
+  ],
+  "rows": [
+    {
+      "id": "59",
+      "tipo_variable": "temperatura",
+      "valor": "24.70",
+      "fecha_hora": "2026-10-29T15:27:22.835Z"
+    },
+    {
+      "id": "60",
+      "tipo_variable": "humedad",
+      "valor": "38.00",
+      "fecha_hora": "2026-10-29T15:27:23.096Z"
+    },
+    {
+      "id": "61",
+      "tipo_variable": "co2",
+      "valor": "57.50",
+      "fecha_hora": "2026-10-29T15:27:23.101Z"
+    },
+    {
+      "id": "63",
+      "tipo_variable": "temperatura",
+      "valor": "24.60",
+      "fecha_hora": "2026-10-29T15:27:38.019Z"
+    },
+    {
+      "id": "62",
+      "tipo_variable": "humedad",
+      "valor": "38.10",
+      "fecha_hora": "2026-10-29T15:27:38.096Z"
+    },
+    {
+      "id": "64",
+      "tipo_variable": "co2",
+      "valor": "57.50",
+      "fecha_hora": "2026-10-29T15:27:38.104Z"
+    },
+    {
+      "id": "65",
+      "tipo_variable": "temperatura",
+      "valor": "24.60",
+      "fecha_hora": "2026-10-29T15:27:52.917Z"
+    },
+    {
+      "id": "66",
+      "tipo_variable": "humedad",
+      "valor": "38.00",
+      "fecha_hora": "2026-10-29T15:27:53.275Z"
+    },
+    {
+      "id": "67",
+      "tipo_variable": "co2",
+      "valor": "57.50",
+      "fecha_hora": "2026-10-29T15:27:53.280Z"
+    },
+    {
+      "id": "68",
+      "tipo_variable": "temperatura",
+      "valor": "24.70",
+      "fecha_hora": "2026-10-29T15:28:07.900Z"
+    },
+    {
+      "id": "69",
+      "tipo_variable": "humedad",
+      "valor": "38.10",
+      "fecha_hora": "2026-10-29T15:28:08.183Z"
+    },
+    {
+      "id": "70",
+      "tipo_variable": "co2",
+      "valor": "56.70",
+      "fecha_hora": "2026-10-29T15:28:08.186Z"
+    },
+    {
+      "id": "71",
+      "tipo_variable": "temperatura",
+      "valor": "24.60",
+      "fecha_hora": "2026-10-29T15:28:22.935Z"
+    },
+    {
+      "id": "72",
+      "tipo_variable": "humedad",
+      "valor": "37.90",
+      "fecha_hora": "2026-10-29T15:28:23.194Z"
+    },
+    {
+      "id": "73",
+      "tipo_variable": "co2",
+      "valor": "56.00",
+      "fecha_hora": "2026-10-29T15:28:23.198Z"
+    },
+    {
+      "id": "74",
+      "tipo_variable": "temperatura",
+      "valor": "24.60",
+      "fecha_hora": "2026-10-29T15:28:46.352Z"
+    },
+    {
+      "id": "75",
+      "tipo_variable": "humedad",
+      "valor": "37.80",
+      "fecha_hora": "2026-10-29T15:28:46.355Z"
+    },
+    {
+      "id": "76",
+      "tipo_variable": "co2",
+      "valor": "56.70",
+      "fecha_hora": "2026-10-29T15:28:46.357Z"
+    },
+    {
+      "id": "77",
+      "tipo_variable": "temperatura",
+      "valor": "24.60",
+      "fecha_hora": "2026-10-29T15:29:01.174Z"
+    },
+    {
+      "id": "78",
+      "tipo_variable": "humedad",
+      "valor": "37.80",
+      "fecha_hora": "2026-10-29T15:29:01.417Z"
+    },
+    {
+      "id": "79",
+      "tipo_variable": "co2",
+      "valor": "57.50",
+      "fecha_hora": "2026-10-29T15:29:01.424Z"
+    },
+    {
+      "id": "80",
+      "tipo_variable": "temperatura",
+      "valor": "24.60",
+      "fecha_hora": "2026-10-29T15:29:16.397Z"
+    },
+    {
+      "id": "81",
+      "tipo_variable": "humedad",
+      "valor": "37.80",
+      "fecha_hora": "2026-10-29T15:29:16.774Z"
+    },
+    {
+      "id": "82",
+      "tipo_variable": "co2",
+      "valor": "55.20",
+      "fecha_hora": "2026-10-29T15:29:16.777Z"
+    },
+    {
+      "id": "83",
+      "tipo_variable": "temperatura",
+      "valor": "24.60",
+      "fecha_hora": "2026-10-29T15:29:31.168Z"
+    },
+    {
+      "id": "84",
+      "tipo_variable": "humedad",
+      "valor": "39.50",
+      "fecha_hora": "2026-10-29T15:29:31.268Z"
+    },
+    {
+      "id": "85",
+      "tipo_variable": "co2",
+      "valor": "361.20",
+      "fecha_hora": "2026-10-29T15:29:31.271Z"
+    },
+    {
+      "id": "86",
+      "tipo_variable": "temperatura",
+      "valor": "24.60",
+      "fecha_hora": "2026-10-29T15:29:46.181Z"
+    },
+    {
+      "id": "87",
+      "tipo_variable": "humedad",
+      "valor": "39.30",
+      "fecha_hora": "2026-10-29T15:29:46.462Z"
+    },
+    {
+      "id": "88",
+      "tipo_variable": "co2",
+      "valor": "103.00",
+      "fecha_hora": "2026-10-29T15:29:46.465Z"
+    },
+    {
+      "id": "89",
+      "tipo_variable": "temperatura",
+      "valor": "24.70",
+      "fecha_hora": "2026-10-29T15:30:01.214Z"
+    },
+    {
+      "id": "90",
+      "tipo_variable": "humedad",
+      "valor": "39.10",
+      "fecha_hora": "2026-10-29T15:30:01.390Z"
+    },
+    {
+      "id": "91",
+      "tipo_variable": "co2",
+      "valor": "100.70",
+      "fecha_hora": "2026-10-29T15:30:01.392Z"
+    },
+    {
+      "id": "92",
+      "tipo_variable": "temperatura",
+      "valor": "24.80",
+      "fecha_hora": "2026-10-29T15:30:16.196Z"
+    },
+    {
+      "id": "93",
+      "tipo_variable": "humedad",
+      "valor": "38.40",
+      "fecha_hora": "2026-10-29T15:30:16.265Z"
+    },
+    {
+      "id": "94",
+      "tipo_variable": "co2",
+      "valor": "98.40",
+      "fecha_hora": "2026-10-29T15:30:16.266Z"
+    },
+    {
+      "id": "95",
+      "tipo_variable": "temperatura",
+      "valor": "24.80",
+      "fecha_hora": "2026-10-29T15:30:31.324Z"
+    },
+    {
+      "id": "96",
+      "tipo_variable": "humedad",
+      "valor": "38.00",
+      "fecha_hora": "2026-10-29T15:30:31.517Z"
+    },
+    {
+      "id": "97",
+      "tipo_variable": "co2",
+      "valor": "97.30",
+      "fecha_hora": "2026-10-29T15:30:31.520Z"
+    },
+    {
+      "id": "98",
+      "tipo_variable": "temperatura",
+      "valor": "24.80",
+      "fecha_hora": "2026-10-29T15:30:46.232Z"
+    },
+    {
+      "id": "99",
+      "tipo_variable": "humedad",
+      "valor": "37.90",
+      "fecha_hora": "2026-10-29T15:30:46.450Z"
+    },
+    {
+      "id": "100",
+      "tipo_variable": "co2",
+      "valor": "95.10",
+      "fecha_hora": "2026-10-29T15:30:46.455Z"
+    },
+    {
+      "id": "101",
+      "tipo_variable": "temperatura",
+      "valor": "24.90",
+      "fecha_hora": "2026-10-29T15:31:01.268Z"
+    },
+    {
+      "id": "102",
+      "tipo_variable": "humedad",
+      "valor": "37.70",
+      "fecha_hora": "2026-10-29T15:31:01.413Z"
+    },
+    {
+      "id": "103",
+      "tipo_variable": "co2",
+      "valor": "94.00",
+      "fecha_hora": "2026-10-29T15:31:01.416Z"
+    },
+    {
+      "id": "106",
+      "tipo_variable": "temperatura",
+      "valor": "24.90",
+      "fecha_hora": "2026-10-29T15:31:16.232Z"
+    },
+    {
+      "id": "104",
+      "tipo_variable": "humedad",
+      "valor": "37.70",
+      "fecha_hora": "2026-10-29T15:31:16.284Z"
+    },
+    {
+      "id": "105",
+      "tipo_variable": "co2",
+      "valor": "97.30",
+      "fecha_hora": "2026-10-29T15:31:16.287Z"
+    },
+    {
+      "id": "107",
+      "tipo_variable": "temperatura",
+      "valor": "24.90",
+      "fecha_hora": "2026-10-29T15:31:31.482Z"
+    },
+    {
+      "id": "108",
+      "tipo_variable": "humedad",
+      "valor": "37.90",
+      "fecha_hora": "2026-10-29T15:31:31.920Z"
+    },
+    {
+      "id": "109",
+      "tipo_variable": "co2",
+      "valor": "94.00",
+      "fecha_hora": "2026-10-29T15:31:31.922Z"
+    },
+    {
+      "id": "110",
+      "tipo_variable": "temperatura",
+      "valor": "25.00",
+      "fecha_hora": "2026-10-29T15:31:46.280Z"
+    },
+    {
+      "id": "111",
+      "tipo_variable": "humedad",
+      "valor": "37.90",
+      "fecha_hora": "2026-10-29T15:31:46.442Z"
+    },
+    {
+      "id": "112",
+      "tipo_variable": "co2",
+      "valor": "94.00",
+      "fecha_hora": "2026-10-29T15:31:46.444Z"
+    },
+    {
+      "id": "113",
+      "tipo_variable": "temperatura",
+      "valor": "25.00",
+      "fecha_hora": "2026-10-29T15:32:01.288Z"
+    },
+    {
+      "id": "114",
+      "tipo_variable": "humedad",
+      "valor": "37.90",
+      "fecha_hora": "2026-10-29T15:32:01.420Z"
+    },
+    {
+      "id": "115",
+      "tipo_variable": "co2",
+      "valor": "89.80",
+      "fecha_hora": "2026-10-29T15:32:01.422Z"
+    },
+    {
+      "id": "116",
+      "tipo_variable": "temperatura",
+      "valor": "25.00",
+      "fecha_hora": "2026-10-29T15:32:16.290Z"
+    },
+    {
+      "id": "117",
+      "tipo_variable": "humedad",
+      "valor": "37.80",
+      "fecha_hora": "2026-10-29T15:32:16.547Z"
+    },
+    {
+      "id": "118",
+      "tipo_variable": "co2",
+      "valor": "94.00",
+      "fecha_hora": "2026-10-29T15:32:16.549Z"
+    }
+  ],
+  "persistence": [
+    {
+      "id": "6",
+      "descripcion": "#150 1f8a80d8-d766-49af-913a-921d2f39cbb0 temperatura",
+      "duracion_min": "5.0",
+      "intervalo_s": 15,
+      "enviados": 20,
+      "recibidos": 20,
+      "guardados": 20,
+      "perdidos_pct": "0.00",
+      "observaciones": "{\"inicio\":\"2026-10-29T15:27:16.551Z\",\"fin\":\"2026-10-29T15:32:16.551Z\",\"porcentaje\":100,\"enviados\":\"Esperadas teóricas, no envíos observados\",\"recibidos\":\"Mínimo confirmado por persistencia; no conteo MQTT independiente\",\"incidencias\":[],\"aprobado\":true}"
+    },
+    {
+      "id": "7",
+      "descripcion": "#150 1f8a80d8-d766-49af-913a-921d2f39cbb0 humedad",
+      "duracion_min": "5.0",
+      "intervalo_s": 15,
+      "enviados": 20,
+      "recibidos": 20,
+      "guardados": 20,
+      "perdidos_pct": "0.00",
+      "observaciones": "{\"inicio\":\"2026-10-29T15:27:16.551Z\",\"fin\":\"2026-10-29T15:32:16.551Z\",\"porcentaje\":100,\"enviados\":\"Esperadas teóricas, no envíos observados\",\"recibidos\":\"Mínimo confirmado por persistencia; no conteo MQTT independiente\",\"incidencias\":[],\"aprobado\":true}"
+    },
+    {
+      "id": "8",
+      "descripcion": "#150 1f8a80d8-d766-49af-913a-921d2f39cbb0 co2",
+      "duracion_min": "5.0",
+      "intervalo_s": 15,
+      "enviados": 20,
+      "recibidos": 20,
+      "guardados": 20,
+      "perdidos_pct": "0.00",
+      "observaciones": "{\"inicio\":\"2026-10-29T15:27:16.551Z\",\"fin\":\"2026-10-29T15:32:16.551Z\",\"porcentaje\":100,\"enviados\":\"Esperadas teóricas, no envíos observados\",\"recibidos\":\"Mínimo confirmado por persistencia; no conteo MQTT independiente\",\"incidencias\":[],\"aprobado\":true}"
+    }
+  ],
+  "originalReadingsPreserved": 15,
+  "syntheticPublications": 0,
+  "firmware": "7a0ac17",
+  "intervalSeconds": 15,
+  "location": "Aula real confirmada por el operador",
+  "limitations": [
+    "CO2 estimado anormalmente bajo; no acredita precisi?n metrol?gica",
+    "Solo ventana de 300 segundos; no acredita 24 horas"
+  ]
+}

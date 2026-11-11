@@ -1,0 +1,13 @@
+﻿PRUEBAS DE ESCRITORIO: datos sinteticos; no validacion fisica.
+Compilador: C:\msys64\ucrt64\bin\g++.exe
+Opciones: -std=c++11 -Wall -Wextra -Werror -pedantic
+connection_retry_test.cpp: compilacion=0; ejecucion=0; SINTÉTICO: 42 comprobaciones; 0 fallos
+dht_validation_test.cpp: compilacion=0; ejecucion=0; RESULTADO SINTETICO: 12/12 casos correctos; 0 fallos
+mq135_acquisition_test.cpp: compilacion=0; ejecucion=0; SINTÉTICO: 97 comprobaciones; 0 fallos
+mq135_adc_filter_test.cpp: compilacion=0; ejecucion=0; SINTÉTICO: 89 comprobaciones; 0 fallos
+mq135_calibration_test.cpp: compilacion=0; ejecucion=0; SINTETICO T-8.1: 103 comprobaciones; 0 fallos
+mq135_experimental_test.cpp: compilacion=0; ejecucion=0; SINTETICO: 131 comprobaciones, 0 fallos
+mq135_historical_demo_test.cpp: compilacion=0; ejecucion=0; Comprobaciones de algoritmo retrospectivo; no validación física. 0 fallos.
+mq135_simulated_demo_test.cpp: compilacion=0; ejecucion=0; SINTÉTICO: 64 comprobaciones; 0 fallos
+mqtt_publication_test.cpp: compilacion=0; ejecucion=0; SINTETICO: 85 comprobaciones; 0 fallos
+Suites fallidas: 0

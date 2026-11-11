@@ -1,0 +1,6 @@
+{
+  "folders": [
+    { "name": "monitoreo-IoT", "path": "." },
+    { "name": "firmware (PlatformIO)", "path": "firmware" }
+  ]
+}

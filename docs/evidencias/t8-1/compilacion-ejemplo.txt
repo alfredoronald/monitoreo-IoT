@@ -1,0 +1,70 @@
+﻿SOLO COMPILACION CON config.example.h: no valida conexiones ni hardware. NO CARGAR estos binarios.
+Processing esp32dev (platform: espressif32; board: esp32dev; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (7.1.3) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES:
+ - framework-arduinoespressif32 @ 4.20017.260907+sha.dcc1105b
+ - tool-esptoolpy @ 2.41100.260830 (4.11.0)
+ - toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 36 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- DHT sensor library @ 1.4.7
+|-- Adafruit Unified Sensor @ 1.1.15
+|-- PubSubClient @ 2.8.0
+|-- WiFi @ 2.0.0
+Building in release mode
+Compiling .pio\example-build\esp32dev\src\main.cpp.o
+Linking .pio\example-build\esp32dev\firmware.elf
+Retrieving maximum program size .pio\example-build\esp32dev\firmware.elf
+Checking size .pio\example-build\esp32dev\firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [=         ]  15.0% (used 49084 bytes from 327680 bytes)
+Flash: [======    ]  59.7% (used 781977 bytes from 1310720 bytes)
+Building .pio\example-build\esp32dev\firmware.bin
+esptool.py v4.11.0
+Creating esp32 image...
+Merged 27 ELF sections
+Successfully created esp32 image.
+========================= [SUCCESS] Took 12.83 seconds =========================
+
+Processing esp32dev-mq135-demo (platform: espressif32; board: esp32dev; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (7.1.3) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES:
+ - framework-arduinoespressif32 @ 4.20017.260907+sha.dcc1105b
+ - tool-esptoolpy @ 2.41100.260830 (4.11.0)
+ - toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 36 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- DHT sensor library @ 1.4.7
+|-- Adafruit Unified Sensor @ 1.1.15
+|-- PubSubClient @ 2.8.0
+|-- WiFi @ 2.0.0
+Building in release mode
+Compiling .pio\example-build\esp32dev-mq135-demo\src\main.cpp.o
+Retrieving maximum program size .pio\example-build\esp32dev-mq135-demo\firmware.elf
+Checking size .pio\example-build\esp32dev-mq135-demo\firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [=         ]  14.9% (used 48772 bytes from 327680 bytes)
+Flash: [======    ]  58.6% (used 767485 bytes from 1310720 bytes)
+========================= [SUCCESS] Took 5.60 seconds =========================
+
+Environment          Status    Duration
+-------------------  --------  ------------
+esp32dev             SUCCESS   00:00:12.829
+esp32dev-mq135-demo  SUCCESS   00:00:05.596
+========================= 2 succeeded in 00:00:18.425 =========================

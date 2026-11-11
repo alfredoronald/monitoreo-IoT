@@ -1,0 +1,15 @@
+27/10/2026 - SOLO COMPILACION; NO UPLOAD NI ENSAYO FISICO.
+Comando: powershell.exe -NoProfile -ExecutionPolicy Bypass -File firmware/tools/compile-with-example.ps1 -PlatformIO C:/Users/WIN/.platformio/penv/Scripts/platformio.exe
+Se preincluye config.example.h; no se crea config.h ni se usan credenciales reales.
+Extracto de salida de la compilacion completada con codigo 0:
+RAM:   [=         ]  15.0% (used 49092 bytes from 327680 bytes)
+Flash: [======    ]  59.7% (used 782409 bytes from 1310720 bytes)
+========================= [SUCCESS] Took 41.58 seconds =========================
+Processing esp32dev-mq135-demo (platform: espressif32; board: esp32dev; framework: arduino)
+RAM:   [=         ]  14.9% (used 48780 bytes from 327680 bytes)
+Flash: [======    ]  58.6% (used 767785 bytes from 1310720 bytes)
+========================= [SUCCESS] Took 24.49 seconds =========================
+Environment          Status    Duration
+esp32dev             SUCCESS   00:00:41.579
+esp32dev-mq135-demo  SUCCESS   00:00:24.491
+========================= 2 succeeded in 00:01:06.070 =========================

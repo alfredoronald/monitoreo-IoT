@@ -1,0 +1,142 @@
+[MQTT] Conectado al broker
+[MQTT] Suscrito a ambiente/#
+Conexión PostgreSQL establecida en localhost:5432/monitoreo_ambiental
+Servidor de monitoreo ambiental disponible en http://localhost:3000
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:26:15.466Z","event":"received","topic":"ambiente/temperatura","content":"24.6"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.6,"fecha_hora":"2026-10-29T15:26:15.475Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:26:15.520Z","event":"received","topic":"ambiente/humedad","content":"37.8"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":37.8,"fecha_hora":"2026-10-29T15:26:15.526Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:26:15.534Z","event":"received","topic":"ambiente/co2","content":"56.7"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":56.7,"fecha_hora":"2026-10-29T15:26:15.539Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:26:59.199Z","event":"received","topic":"ambiente/temperatura","content":"24.6"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.6,"fecha_hora":"2026-10-29T15:26:59.201Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:26:59.202Z","event":"received","topic":"ambiente/humedad","content":"38.0"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":38,"fecha_hora":"2026-10-29T15:26:59.206Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:26:59.208Z","event":"received","topic":"ambiente/co2","content":"55.2"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":55.2,"fecha_hora":"2026-10-29T15:26:59.211Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:27:07.849Z","event":"received","topic":"ambiente/temperatura","content":"24.6"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.6,"fecha_hora":"2026-10-29T15:27:07.852Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:27:08.113Z","event":"received","topic":"ambiente/humedad","content":"38.1"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":38.1,"fecha_hora":"2026-10-29T15:27:08.115Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:27:08.116Z","event":"received","topic":"ambiente/co2","content":"57.5"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":57.5,"fecha_hora":"2026-10-29T15:27:08.119Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:27:22.832Z","event":"received","topic":"ambiente/temperatura","content":"24.7"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.7,"fecha_hora":"2026-10-29T15:27:22.835Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:27:23.093Z","event":"received","topic":"ambiente/humedad","content":"38.0"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":38,"fecha_hora":"2026-10-29T15:27:23.096Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:27:23.098Z","event":"received","topic":"ambiente/co2","content":"57.5"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":57.5,"fecha_hora":"2026-10-29T15:27:23.101Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:27:38.014Z","event":"received","topic":"ambiente/temperatura","content":"24.6"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.6,"fecha_hora":"2026-10-29T15:27:38.019Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:27:38.088Z","event":"received","topic":"ambiente/humedad","content":"38.1"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":38.1,"fecha_hora":"2026-10-29T15:27:38.096Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:27:38.101Z","event":"received","topic":"ambiente/co2","content":"57.5"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":57.5,"fecha_hora":"2026-10-29T15:27:38.104Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:27:52.914Z","event":"received","topic":"ambiente/temperatura","content":"24.6"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.6,"fecha_hora":"2026-10-29T15:27:52.917Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:27:53.271Z","event":"received","topic":"ambiente/humedad","content":"38.0"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":38,"fecha_hora":"2026-10-29T15:27:53.275Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:27:53.276Z","event":"received","topic":"ambiente/co2","content":"57.5"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":57.5,"fecha_hora":"2026-10-29T15:27:53.280Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:28:07.897Z","event":"received","topic":"ambiente/temperatura","content":"24.7"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.7,"fecha_hora":"2026-10-29T15:28:07.900Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:28:08.180Z","event":"received","topic":"ambiente/humedad","content":"38.1"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":38.1,"fecha_hora":"2026-10-29T15:28:08.183Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:28:08.184Z","event":"received","topic":"ambiente/co2","content":"56.7"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":56.7,"fecha_hora":"2026-10-29T15:28:08.186Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:28:22.933Z","event":"received","topic":"ambiente/temperatura","content":"24.6"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.6,"fecha_hora":"2026-10-29T15:28:22.935Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:28:23.192Z","event":"received","topic":"ambiente/humedad","content":"37.9"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":37.9,"fecha_hora":"2026-10-29T15:28:23.194Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:28:23.195Z","event":"received","topic":"ambiente/co2","content":"56.0"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":56,"fecha_hora":"2026-10-29T15:28:23.198Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:28:46.350Z","event":"received","topic":"ambiente/temperatura","content":"24.6"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.6,"fecha_hora":"2026-10-29T15:28:46.352Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:28:46.353Z","event":"received","topic":"ambiente/humedad","content":"37.8"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":37.8,"fecha_hora":"2026-10-29T15:28:46.355Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:28:46.355Z","event":"received","topic":"ambiente/co2","content":"56.7"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":56.7,"fecha_hora":"2026-10-29T15:28:46.357Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:29:01.172Z","event":"received","topic":"ambiente/temperatura","content":"24.6"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.6,"fecha_hora":"2026-10-29T15:29:01.174Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:29:01.414Z","event":"received","topic":"ambiente/humedad","content":"37.8"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":37.8,"fecha_hora":"2026-10-29T15:29:01.417Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:29:01.419Z","event":"received","topic":"ambiente/co2","content":"57.5"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":57.5,"fecha_hora":"2026-10-29T15:29:01.424Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:29:16.392Z","event":"received","topic":"ambiente/temperatura","content":"24.6"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.6,"fecha_hora":"2026-10-29T15:29:16.397Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:29:16.772Z","event":"received","topic":"ambiente/humedad","content":"37.8"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":37.8,"fecha_hora":"2026-10-29T15:29:16.774Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:29:16.775Z","event":"received","topic":"ambiente/co2","content":"55.2"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":55.2,"fecha_hora":"2026-10-29T15:29:16.777Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:29:31.166Z","event":"received","topic":"ambiente/temperatura","content":"24.6"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.6,"fecha_hora":"2026-10-29T15:29:31.168Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:29:31.266Z","event":"received","topic":"ambiente/humedad","content":"39.5"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":39.5,"fecha_hora":"2026-10-29T15:29:31.268Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:29:31.269Z","event":"received","topic":"ambiente/co2","content":"361.2"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":361.2,"fecha_hora":"2026-10-29T15:29:31.271Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:29:46.179Z","event":"received","topic":"ambiente/temperatura","content":"24.6"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.6,"fecha_hora":"2026-10-29T15:29:46.181Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:29:46.461Z","event":"received","topic":"ambiente/humedad","content":"39.3"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":39.3,"fecha_hora":"2026-10-29T15:29:46.462Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:29:46.463Z","event":"received","topic":"ambiente/co2","content":"103.0"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":103,"fecha_hora":"2026-10-29T15:29:46.465Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:30:01.212Z","event":"received","topic":"ambiente/temperatura","content":"24.7"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.7,"fecha_hora":"2026-10-29T15:30:01.214Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:30:01.388Z","event":"received","topic":"ambiente/humedad","content":"39.1"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":39.1,"fecha_hora":"2026-10-29T15:30:01.390Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:30:01.390Z","event":"received","topic":"ambiente/co2","content":"100.7"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":100.7,"fecha_hora":"2026-10-29T15:30:01.392Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:30:16.195Z","event":"received","topic":"ambiente/temperatura","content":"24.8"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.8,"fecha_hora":"2026-10-29T15:30:16.196Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:30:16.264Z","event":"received","topic":"ambiente/humedad","content":"38.4"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":38.4,"fecha_hora":"2026-10-29T15:30:16.265Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:30:16.265Z","event":"received","topic":"ambiente/co2","content":"98.4"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":98.4,"fecha_hora":"2026-10-29T15:30:16.266Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:30:31.321Z","event":"received","topic":"ambiente/temperatura","content":"24.8"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.8,"fecha_hora":"2026-10-29T15:30:31.324Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:30:31.514Z","event":"received","topic":"ambiente/humedad","content":"38.0"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":38,"fecha_hora":"2026-10-29T15:30:31.517Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:30:31.518Z","event":"received","topic":"ambiente/co2","content":"97.3"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":97.3,"fecha_hora":"2026-10-29T15:30:31.520Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:30:46.229Z","event":"received","topic":"ambiente/temperatura","content":"24.8"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.8,"fecha_hora":"2026-10-29T15:30:46.232Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:30:46.448Z","event":"received","topic":"ambiente/humedad","content":"37.9"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":37.9,"fecha_hora":"2026-10-29T15:30:46.450Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:30:46.452Z","event":"received","topic":"ambiente/co2","content":"95.1"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":95.1,"fecha_hora":"2026-10-29T15:30:46.455Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:31:01.267Z","event":"received","topic":"ambiente/temperatura","content":"24.9"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.9,"fecha_hora":"2026-10-29T15:31:01.268Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:31:01.411Z","event":"received","topic":"ambiente/humedad","content":"37.7"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":37.7,"fecha_hora":"2026-10-29T15:31:01.413Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:31:01.414Z","event":"received","topic":"ambiente/co2","content":"94.0"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":94,"fecha_hora":"2026-10-29T15:31:01.416Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:31:16.231Z","event":"received","topic":"ambiente/temperatura","content":"24.9"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.9,"fecha_hora":"2026-10-29T15:31:16.232Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:31:16.283Z","event":"received","topic":"ambiente/humedad","content":"37.7"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":37.7,"fecha_hora":"2026-10-29T15:31:16.284Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:31:16.285Z","event":"received","topic":"ambiente/co2","content":"97.3"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":97.3,"fecha_hora":"2026-10-29T15:31:16.287Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:31:31.481Z","event":"received","topic":"ambiente/temperatura","content":"24.9"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":24.9,"fecha_hora":"2026-10-29T15:31:31.482Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:31:31.919Z","event":"received","topic":"ambiente/humedad","content":"37.9"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":37.9,"fecha_hora":"2026-10-29T15:31:31.920Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:31:31.921Z","event":"received","topic":"ambiente/co2","content":"94.0"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":94,"fecha_hora":"2026-10-29T15:31:31.922Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:31:46.279Z","event":"received","topic":"ambiente/temperatura","content":"25.0"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":25,"fecha_hora":"2026-10-29T15:31:46.280Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:31:46.440Z","event":"received","topic":"ambiente/humedad","content":"37.9"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":37.9,"fecha_hora":"2026-10-29T15:31:46.442Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:31:46.443Z","event":"received","topic":"ambiente/co2","content":"94.0"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":94,"fecha_hora":"2026-10-29T15:31:46.444Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:32:01.287Z","event":"received","topic":"ambiente/temperatura","content":"25.0"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":25,"fecha_hora":"2026-10-29T15:32:01.288Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:32:01.419Z","event":"received","topic":"ambiente/humedad","content":"37.9"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":37.9,"fecha_hora":"2026-10-29T15:32:01.420Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:32:01.421Z","event":"received","topic":"ambiente/co2","content":"89.8"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":89.8,"fecha_hora":"2026-10-29T15:32:01.422Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:32:16.288Z","event":"received","topic":"ambiente/temperatura","content":"25.0"}
+[MQTT] Lectura válida: {"tipo_variable":"temperatura","valor":25,"fecha_hora":"2026-10-29T15:32:16.290Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:32:16.546Z","event":"received","topic":"ambiente/humedad","content":"37.8"}
+[MQTT] Lectura válida: {"tipo_variable":"humedad","valor":37.8,"fecha_hora":"2026-10-29T15:32:16.547Z"}
+[MQTT] Recibido: {"timestamp":"2026-10-29T15:32:16.548Z","event":"received","topic":"ambiente/co2","content":"94.0"}
+[MQTT] Lectura válida: {"tipo_variable":"co2","valor":94,"fecha_hora":"2026-10-29T15:32:16.549Z"}

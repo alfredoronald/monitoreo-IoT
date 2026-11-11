@@ -1,0 +1,25 @@
+{
+  "issue": 149,
+  "scenario": "backend",
+  "started": "2026-10-29T15:26:02.839Z",
+  "ended": "2026-10-29T15:26:15.635Z",
+  "baselineId": "49",
+  "seconds": 12.796,
+  "recovered": {
+    "id": "50",
+    "tipo_variable": "temperatura",
+    "valor": "24.60",
+    "fecha_hora": "2026-10-29T15:26:15.475Z"
+  },
+  "source": "ESP32 físico en aula; interrupción automatizada confirmada por proceso/driver y recuperación hasta primera fila SQL",
+  "firmware": "7a0ac17",
+  "buildFlags": [
+    "WIFI_TEMPORARY_TEST=1"
+  ],
+  "samplingIntervalSeconds": 15,
+  "passed": true,
+  "errors": [],
+  "operatorLocation": "Aula real confirmada por el usuario",
+  "outageHoldSeconds": 3,
+  "restoreRequested": "2026-10-29T15:26:05.845Z"
+}

@@ -1,0 +1,16 @@
+{
+  "ejecucion.json": "9cab6fc3e3f6ca2848a7640e03acfcfadf6b43c574af39feab0a3adca391d46d",
+  "10s-compilacion-carga.txt": "0a91223bc93140f5f1382f6766cea8b77385a559e216c77b036e8b48075e9ddc",
+  "15s-compilacion-carga.txt": "4b496264084d42cbeb475c6ef04a7a1cf7d65d296f72ca4a3521a5c7103dd242",
+  "30s-compilacion-carga.txt": "90401dd4fa77dbc7dc653f43c6c92e892ef238eb8de520f535e660253196ae4f",
+  "final-15s-compilacion-carga.txt": "1ebf579e940355c4e4cc316e0ea436ca320e6b24ed6a81dd3ad026eeeb6ff11f",
+  "10s-captura.txt": "d2cf5091c1b98639d9be0d2ea617f885853cd0236d4f8a30138f5d40ab527c91",
+  "15s-captura.txt": "79f1f53c576a6bbcf6cfab0274ff3b22073230d4f3fbd5fb395c355a5386bdf1",
+  "30s-captura.txt": "5e6d6907a58b387162ef3c23bb2992e01acf26517240216132eeb214d1c8a183",
+  "10s/mensajes.jsonl": "dd93680eee791373c270bb85adef5ac28ec92c0f4d6b9f82bcbad97c3e67b824",
+  "10s/resumen.json": "05db7cfc46165223d43e78aee369c76621af65e94fff68c22206e779fe234c81",
+  "15s/mensajes.jsonl": "0ff9446393b7c8a28dc4a737479bf30946e39274e28ec583ad2039cecb64b776",
+  "15s/resumen.json": "1369bff11e868e6efda35cfbd8ac5187520b08107a5746a182e4a72cb7cdf650",
+  "30s/mensajes.jsonl": "5a8c84fe538efa0bd59f18b83c4a4851fdeeab261a700be0203e5d1efba353fb",
+  "30s/resumen.json": "0a2a57259be4f0d4716834bca03a723b7780b9eafb30d2bbce7551f7113d0889"
+}

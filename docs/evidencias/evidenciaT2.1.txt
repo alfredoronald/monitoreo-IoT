@@ -1,0 +1,92 @@
+=== Evidencia T-2.1 (#15) - Instalacion y arranque de Mosquitto 2.x ===
+Fecha: 2026-10-07 16:26:17
+Rama: chore/15-mosquitto-install-config
+
+--- version instalada (winget: EclipseFoundation.Mosquitto) ---
+mosquitto version 2.1.2
+
+--- servicio Windows (detenido, startup Manual: no secuestra el 1883) ---
+
+
+Name      : mosquitto
+Status    : Stopped
+StartType : Manual
+
+
+
+
+--- puerto 1883 (broker activo con infra/mosquitto/mosquitto.conf) ---
+  TCP    0.0.0.0:1883           0.0.0.0:0              LISTENING       3840
+  TCP    [::]:1883              [::]:0                 LISTENING       3840
+
+--- pruebas de arranque, autenticacion y ACL ---
+T1 cliente anonimo:
+Connection error: Connection Refused: not authorised
+Error: The connection was refused
+  exit=5 (esperado: distinto de 0)
+T2 esp32 publica QoS1:
+  exit=0
+T3 api suscribe ambiente/# y esp32 publica:
+  api recibio: 55
+T4 api intenta publicar:
+  exit=0 (ver Denied PUBLISH en log)
+T5 esp32 suscribe 3s (sin acceso de lectura):
+  esp32 recibio: '' (vacio = correcto)
+
+--- log del broker -v (arranque sin errores) ---
+1791404599: mosquitto version 2.1.2 starting
+1791404599: Config loaded from infra/mosquitto/mosquitto.conf.
+1791404599: Bridge support available.
+1791404599: Persistence support available.
+1791404599: TLS support available.
+1791404599: TLS-PSK support available.
+1791404599: Websockets support available.
+1791404599: Plugin builtin-security has registered to receive 'basic-auth' events.
+1791404599: Plugin builtin-security has registered to receive 'acl-check' events.
+1791404599: Opening ipv6 listen socket on port 1883.
+1791404599: Opening ipv4 listen socket on port 1883.
+1791404599: mosquitto version 2.1.2 running
+1791404602: New connection from ::1:52180 on port 1883.
+1791404602: Sending CONNACK to auto-75A754A8-69BC-2452-7AA5-649FDA8C334E (0, 5)
+1791404602: Client auto-75A754A8-69BC-2452-7AA5-649FDA8C334E [::1:52180] disconnected: not authorised.
+1791404619: New connection from ::1:52183 on port 1883.
+1791404619: Sending CONNACK to auto-645AFB96-512F-0A45-57F9-C6CEA850B759 (0, 5)
+1791404619: Client auto-645AFB96-512F-0A45-57F9-C6CEA850B759 [::1:52183] disconnected: not authorised.
+1791404619: New connection from ::1:52186 on port 1883.
+1791404619: New client connected from ::1:52186 as auto-885A72DB-ABFB-A2CB-7215-E4A7DF05A64E (p4, c1, k60, u'esp32').
+1791404619: No will message specified.
+1791404619: Sending CONNACK to auto-885A72DB-ABFB-A2CB-7215-E4A7DF05A64E (0, 0)
+1791404619: Received PUBLISH from auto-885A72DB-ABFB-A2CB-7215-E4A7DF05A64E (d0, q1, r0, m1, 'ambiente/temperatura', ... (4 bytes))
+1791404619: Sending PUBACK to auto-885A72DB-ABFB-A2CB-7215-E4A7DF05A64E (m1, rc0)
+1791404619: Client auto-885A72DB-ABFB-A2CB-7215-E4A7DF05A64E [::1:52186] disconnected: connection closed by client.
+1791404619: New connection from ::1:52189 on port 1883.
+1791404619: New client connected from ::1:52189 as auto-9446F4EB-E60B-65ED-487B-5EE485EDFF1F (p4, c1, k60, u'api').
+1791404619: No will message specified.
+1791404619: Sending CONNACK to auto-9446F4EB-E60B-65ED-487B-5EE485EDFF1F (0, 0)
+1791404619: Received SUBSCRIBE from auto-9446F4EB-E60B-65ED-487B-5EE485EDFF1F
+1791404619: 	ambiente/# (QoS 0)
+1791404619: auto-9446F4EB-E60B-65ED-487B-5EE485EDFF1F 0 ambiente/#
+1791404619: Sending SUBACK to auto-9446F4EB-E60B-65ED-487B-5EE485EDFF1F
+1791404620: New connection from ::1:52192 on port 1883.
+1791404620: New client connected from ::1:52192 as auto-4D4CE654-C3AD-9BB1-C009-5279F1E4D208 (p4, c1, k60, u'esp32').
+1791404620: No will message specified.
+1791404620: Sending CONNACK to auto-4D4CE654-C3AD-9BB1-C009-5279F1E4D208 (0, 0)
+1791404620: Received PUBLISH from auto-4D4CE654-C3AD-9BB1-C009-5279F1E4D208 (d0, q1, r0, m1, 'ambiente/humedad', ... (2 bytes))
+1791404620: Sending PUBLISH to auto-9446F4EB-E60B-65ED-487B-5EE485EDFF1F (d0, q0, r0, m0, 'ambiente/humedad', ... (2 bytes))
+1791404620: Sending PUBACK to auto-4D4CE654-C3AD-9BB1-C009-5279F1E4D208 (m1, rc0)
+1791404620: Client auto-4D4CE654-C3AD-9BB1-C009-5279F1E4D208 [::1:52192] disconnected: connection closed by client.
+1791404620: Received DISCONNECT from auto-9446F4EB-E60B-65ED-487B-5EE485EDFF1F
+1791404620: Client auto-9446F4EB-E60B-65ED-487B-5EE485EDFF1F [::1:52189] disconnected.
+1791404624: New connection from ::1:52195 on port 1883.
+1791404624: New client connected from ::1:52195 as auto-514E6AC3-A2B2-208A-7E18-C7C5091B6BB1 (p4, c1, k60, u'api').
+1791404624: No will message specified.
+1791404624: Sending CONNACK to auto-514E6AC3-A2B2-208A-7E18-C7C5091B6BB1 (0, 0)
+1791404624: Denied PUBLISH from auto-514E6AC3-A2B2-208A-7E18-C7C5091B6BB1 (d0, q1, r0, m1, 'ambiente/temperatura', ... (2 bytes))
+1791404624: Sending PUBACK to auto-514E6AC3-A2B2-208A-7E18-C7C5091B6BB1 (m1, rc135)
+1791404624: Client auto-514E6AC3-A2B2-208A-7E18-C7C5091B6BB1 [::1:52195] disconnected: connection closed by client.
+1791404624: New connection from ::1:52198 on port 1883.
+1791404624: New client connected from ::1:52198 as auto-A9D4CF38-9AE5-4C7F-17E3-58FEE8AD61FC (p4, c1, k60, u'esp32').
+1791404624: No will message specified.
+1791404624: Sending CONNACK to auto-A9D4CF38-9AE5-4C7F-17E3-58FEE8AD61FC (0, 0)
+
+grep 'Error' en el log: 0 coincidencias

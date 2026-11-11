@@ -1,0 +1,43 @@
+{
+    "recordedAt":  "2026-10-22T03:28:15.5513944Z",
+    "timezone":  "America/La_Paz",
+    "branch":  "test/87-responsive-check",
+    "commit":  "9913129e2cd9a05b7858420825ea3c2b39d55d67",
+    "frontendEnvExists":  false,
+    "node":  "v24.22.0",
+    "npm":  "11.19.1",
+    "browsers":  [
+                     {
+                         "name":  "chrome",
+                         "path":  "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+                         "productVersion":  "155.0.8059.86"
+                     },
+                     {
+                         "name":  "edge",
+                         "path":  "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+                         "productVersion":  "155.0.4283.62"
+                     }
+                 ],
+    "packages":  [
+                     {
+                         "name":  "react",
+                         "version":  "19.3.0"
+                     },
+                     {
+                         "name":  "react-dom",
+                         "version":  "19.3.0"
+                     },
+                     {
+                         "name":  "recharts",
+                         "version":  "3.10.1"
+                     },
+                     {
+                         "name":  "vite",
+                         "version":  "8.3.2"
+                     },
+                     {
+                         "name":  "typescript",
+                         "version":  "6.0.3"
+                     }
+                 ]
+}

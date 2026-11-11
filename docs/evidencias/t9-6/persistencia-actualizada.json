@@ -1,0 +1,78 @@
+{
+  "issue": 152,
+  "status": "PARCIAL",
+  "recorded": "2026-10-28T14:44:23.140Z",
+  "database": "monitoreo_ambiental",
+  "lecturasBefore": 15,
+  "lecturasAfter": 15,
+  "rows": [
+    {
+      "id": "1",
+      "qos": 0,
+      "enviados": 500,
+      "recibidos": 500,
+      "guardados": 500,
+      "perdidos_pct": "0.00",
+      "metricas": {
+        "fin": "2026-10-28T03:27:00.202Z",
+        "inicio": "2026-10-28T03:26:44.426Z",
+        "duplicados": 0,
+        "qos_efectivo": 0,
+        "publicacion_qos": 0,
+        "suscripcion_qos": 0,
+        "recibidos_eventos": 500,
+        "periodo_publicacion_ms": 20
+      }
+    },
+    {
+      "id": "2",
+      "qos": 1,
+      "enviados": 500,
+      "recibidos": 500,
+      "guardados": 500,
+      "perdidos_pct": "0.00",
+      "metricas": {
+        "fin": "2026-10-28T03:27:16.064Z",
+        "inicio": "2026-10-28T03:27:00.202Z",
+        "duplicados": 0,
+        "qos_efectivo": 0,
+        "publicacion_qos": 1,
+        "suscripcion_qos": 0,
+        "recibidos_eventos": 500,
+        "periodo_publicacion_ms": 20
+      }
+    },
+    {
+      "id": "5",
+      "qos": 0,
+      "enviados": 10,
+      "recibidos": 10,
+      "guardados": 10,
+      "perdidos_pct": "0.00",
+      "metricas": {
+        "fin": "2026-10-28T14:33:48.629Z",
+        "inicio": "2026-10-28T14:30:57.374Z",
+        "conteos": "10 publicaciones, observaciones visuales y filas confirmadas; no conteo independiente de eventos MQTT.",
+        "aprobado": true,
+        "promedio_segundos": 14.9012,
+        "latencias_segundos": [
+          15.038,
+          14.81,
+          14.943,
+          14.964,
+          14.85,
+          14.903,
+          14.81,
+          14.853,
+          14.963,
+          14.878
+        ],
+        "datos_sinteticos_eliminados": true
+      }
+    }
+  ],
+  "pending": [
+    149,
+    150
+  ]
+}

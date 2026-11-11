@@ -1,0 +1,33 @@
+{
+  "issue": 149,
+  "checked": "2026-10-28T14:31:55.570Z",
+  "status": "BLOQUEADO_PRECONDICION",
+  "serialPort": "COM5",
+  "serialDevice": "Silicon Labs CP210x",
+  "sensorObservations": {
+    "temperaturaC": 22.9,
+    "humedadPercent": 49.1,
+    "co2PpmProvisional": 339.84
+  },
+  "wifi": "Monitor serie: WiFi intentando reconexi?n; sin flujo f?sico validado",
+  "broker": "Servicio actual solo escucha en loopback:1883",
+  "database": [
+    {
+      "tipo_variable": "co2",
+      "ultima": "2026-10-13T01:55:52.536Z",
+      "cantidad": 5
+    },
+    {
+      "tipo_variable": "humedad",
+      "ultima": "2026-10-13T01:55:52.418Z",
+      "cantidad": 5
+    },
+    {
+      "tipo_variable": "temperatura",
+      "ultima": "2026-10-13T01:55:51.949Z",
+      "cantidad": 5
+    }
+  ],
+  "physicalRecoveryExecuted": false,
+  "notes": "Los valores de sensores son observaciones serie; no acreditan transporte MQTT ni recuperaci?n. Usuario activar? hotspot de 2,4 GHz."
+}

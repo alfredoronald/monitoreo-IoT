@@ -1,0 +1,314 @@
+[
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(23, 43, 58)",
+    "ratio": 14.55,
+    "text": "Saltar al contenido"
+  },
+  {
+    "background": "rgb(20, 92, 120)",
+    "foreground": "rgb(255, 255, 255)",
+    "ratio": 7.42,
+    "text": "m"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(23, 43, 58)",
+    "ratio": 14.55,
+    "text": "Monitoreo IoTCalidad ambiental del aula"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "Calidad ambiental del aula"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(23, 43, 58)",
+    "ratio": 14.55,
+    "text": "Resumen"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(23, 43, 58)",
+    "ratio": 14.55,
+    "text": "Histórico"
+  },
+  {
+    "background": "rgb(243, 246, 250)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 5.57,
+    "text": "CONDICIONES AMBIENTALES"
+  },
+  {
+    "background": "rgb(243, 246, 250)",
+    "foreground": "rgb(23, 43, 58)",
+    "ratio": 13.43,
+    "text": "El ambiente, de un vistazo."
+  },
+  {
+    "background": "rgb(243, 246, 250)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 5.57,
+    "text": "Temperatura, humedad y calidad del aire en un solo lugar."
+  },
+  {
+    "background": "rgb(232, 238, 243)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 5.16,
+    "text": "Sin lecturas disponibles"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(23, 43, 58)",
+    "ratio": 14.55,
+    "text": "Temperatura"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(23, 43, 58)",
+    "ratio": 14.55,
+    "text": "—"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "°C"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "Temperatura del aula"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "Sin datos"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "Última lectura: —"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(23, 43, 58)",
+    "ratio": 14.55,
+    "text": "Humedad"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(23, 43, 58)",
+    "ratio": 14.55,
+    "text": "—"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "% HR"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "Humedad relativa"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "Sin datos"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "Última lectura: —"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(23, 43, 58)",
+    "ratio": 14.55,
+    "text": "CO₂ estimado"
+  },
+  {
+    "background": "rgb(242, 237, 250)",
+    "foreground": "rgb(109, 77, 179)",
+    "ratio": 5.43,
+    "text": "CO₂"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(23, 43, 58)",
+    "ratio": 14.55,
+    "text": "—"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "ppm"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "Estimación del MQ-135"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "Sin datos"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "Última lectura: —"
+  },
+  {
+    "background": "rgb(243, 246, 250)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 5.57,
+    "text": "EVOLUCIÓN DEL AMBIENTE"
+  },
+  {
+    "background": "rgb(243, 246, 250)",
+    "foreground": "rgb(23, 43, 58)",
+    "ratio": 13.43,
+    "text": "Histórico de lecturas"
+  },
+  {
+    "background": "rgb(243, 246, 250)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 5.57,
+    "text": "Una mirada a cada variable a lo largo del tiempo."
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(23, 43, 58)",
+    "ratio": 14.55,
+    "text": "Temperatura"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "°C"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "∿"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "Aún no hay lecturas"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "El histórico se mostrará aquí."
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(23, 43, 58)",
+    "ratio": 14.55,
+    "text": "Humedad"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "% HR"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "∿"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "Aún no hay lecturas"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "El histórico se mostrará aquí."
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(23, 43, 58)",
+    "ratio": 14.55,
+    "text": "CO₂ estimado"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "ppm"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "∿"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "Aún no hay lecturas"
+  },
+  {
+    "background": "rgb(255, 255, 255)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 6.04,
+    "text": "El histórico se mostrará aquí."
+  },
+  {
+    "background": "rgb(232, 238, 243)",
+    "foreground": "rgb(20, 92, 120)",
+    "ratio": 6.34,
+    "text": "i"
+  },
+  {
+    "background": "rgb(232, 238, 243)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 5.16,
+    "text": "Sobre el CO₂ estimado. El MQ-135 ofrece una estimación provisional de "
+  },
+  {
+    "background": "rgb(232, 238, 243)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 5.16,
+    "text": "Sobre el CO₂ estimado."
+  },
+  {
+    "background": "rgb(243, 246, 250)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 5.57,
+    "text": "Monitoreo ambiental del aula"
+  },
+  {
+    "background": "rgb(243, 246, 250)",
+    "foreground": "rgb(82, 101, 117)",
+    "ratio": 5.57,
+    "text": "Servicios Telemáticos · Grupo 22"
+  }
+]

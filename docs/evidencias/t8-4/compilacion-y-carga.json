@@ -1,0 +1,24 @@
+{
+  "entornos": {
+    "esp32dev": {
+      "resultado": "SUCCESS",
+      "segundos": 29.438
+    },
+    "esp32dev-mq135-demo": {
+      "resultado": "SUCCESS",
+      "segundos": 20.523
+    }
+  },
+  "carga_fisica": {
+    "puerto": "COM3",
+    "resultado": "SUCCESS",
+    "segundos": 16.785,
+    "sha256_bin": "9efeb0702d289e69b458254ca95259cca52ef29a83e8a8e29e4af05c878bed14"
+  },
+  "configuracion_privada": {
+    "ro_kohm": 49.486,
+    "supply_v": 4.54,
+    "aceptada": true
+  },
+  "fuente": "Ejecuciones PlatformIO reales del 28-10-2026; no contiene config.h."
+}

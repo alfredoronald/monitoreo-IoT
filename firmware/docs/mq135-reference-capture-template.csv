@@ -1,0 +1,4 @@
+indice,uptime_ms,desde_inicio_mq135_ms,intervalo_real_ms,adc_raw,adc_mv,vc_v,vc_uptime_ms,vao_v,q_i,temperatura_c,humedad_pct,dht_uptime_ms,dht_edad_ms,adc_metodo,revision_electrica,estado_o_motivo
+1,,,,,,,,,,,,,,,,
+2,,,,,,,,,,,,,,,,
+3,,,,,,,,,,,,,,,,
